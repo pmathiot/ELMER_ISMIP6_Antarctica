@@ -75,6 +75,7 @@
 		      <field id="sftgif"     standard_name="land_ice_area_fraction"           unit="1" grid_ref="GridCells" />
                       <field id="sftgrf"     standard_name="grounded_ice_sheet_area_fraction" unit="1" grid_ref="GridCells" />
 		      <field id="sftflf"     standard_name="floating_ice_shelf_area_fraction" unit="1" grid_ref="GridCells" />
+                      <field id="basins"     standard_name="ice_catchments_basins_mask"       unit="1" grid_ref="GridCells" />
 	      </field_group>
 
                <field_group id="elmer_velocity">
