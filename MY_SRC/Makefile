@@ -37,7 +37,7 @@ nearestpoint:$(SRC)/nearestpoint.F90
 
 # PP compute scalar per basin
 INITMIP_Scalar_OUTPUT:$(SRC)/INITMIP_Scalar_OUTPUT_modif.F90
-	elmerf90 $^ -o $(BLD)/$@ $(FFLAGS)
+	elmerf90 $(NCINC) $^ -o $(BLD)/$@ $(FFLAGS) $(NCLIB)
 
 
 #---------------------------------------------------
