@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+
+    <file_definition type="one_file" output_freq="5d" >
+
+      <file_group id="file20" >
+      <file id="state" name="ismip6_states" convention="UGRID" time_counter_name="time" time_counter="instant" time_units="days" >
+	      <field_group group_ref="mesh_info" />
+	      <field_group group_ref="ismip6_2D_state" />
+	      <variable id="elmerversion" name="model_version" type="string"> elmer ice v9.0</variable>
+      </file>
+      <file id="flux" name="ismip6_fluxes" convention="UGRID" time_counter_name="time" time_counter="centered" time_units="days" >
+	      <field_group group_ref="mesh_info" />
+	      <field_group group_ref="ismip6_2D_flux" />
+	      <variable id="elmerversion" name="model_version" type="string"> elmer ice v9.0</variable>
+      </file>     
+      <file id="scalar" name="ismip6_scalar"  time_counter_name="time" time_counter="instant" time_units="days" >
+              <field_group group_ref="ismip6_1D" />
+              <variable id="elmerversion" name="model_version" type="string"> elmer ice v9.0</variable>
+      </file>
+      </file_group>
+
+    </file_definition>

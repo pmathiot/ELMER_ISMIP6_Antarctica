@@ -1,0 +1,35 @@
+!###################### FILE ########################
+!
+! define simulation name
+$name="ANT50.GL1-ISMIP6"
+!
+! define data_dir
+$data_dir = "/ccc/workflash/cont003/gen6035/gen6035//MODEL_INPUTS/ELMER/ANT50.GL1/"
+!
+! define output_dir
+$out_dir = "/ccc/scratch/cont003/gen6035/mathiotp/ELMER/ANT50.GL1/ANT50.GL1-ISMIP6/ANT50.GL1-ISMIP6_S"
+!
+!-----------------------------------------------------------
+! BMB files
+!-----------------------------------------------------------
+! define the PICO file
+$file_pico = "boxmodel/DATA_boxmodel.nc"
+!
+! define the quadratic local file
+! TOADD once solver and file ready
+!
+!-----------------------------------------------------------
+! SMB files
+!-----------------------------------------------------------
+! define smb file
+$file_smb = "SMB/racmo_wessem_initmip8km_mean1995_2014_smbice.nc"
+$var_smb = "SMB"
+!
+! define anomaly file
+! TOADD once ready and file ready
+!
+!-----------------------------------------------------------
+! PP files
+!-----------------------------------------------------------
+! define basin file
+$file_basins = "schmidtko_initmip8km_means.nc"
