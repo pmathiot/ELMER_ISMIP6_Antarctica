@@ -62,7 +62,7 @@ if [[ $RUNSTATUS == 0 ]]; then
    mv scalars_$CONFIG-${CASE}_${i}.dat*                $SELMER/. || nerr=$((nerr+1))
 #   mv *INITMIP_Scalar_OUTPUT_$CONFIG-${CASE}_${i}.dat* $SELMER/. || nerr=$((nerr+1))
    NCFILES=`echo "*_$CONFIG-${CASE}_${i}.nc" | tr [:upper:] [:lower:]`
-   mv $NCFILES                                         $RELMER/.   || nerr=$((nerr+1))
+   mv $NCFILES                                         $SELMER/.   || nerr=$((nerr+1))
 
    # cp restart to RST dir
    echo "cp result to $RELMER"
