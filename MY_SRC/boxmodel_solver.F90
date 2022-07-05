@@ -426,7 +426,7 @@ SUBROUTINE boxmodel_solver( Model,Solver,dt,Transient )
      CALL MPI_ALLREDUCE(TotalMelt,Integ_Reduced,1,MPI_DOUBLE_PRECISION,MPI_SUM,ELMER_COMM_WORLD,ierr)
      IF (Solver % Matrix % ParMatrix % ParEnv % MyPE == 0) THEN
         CALL INFO(SolverName,"----------------------------------------",Level=1)
-        WRITE(meltValue,'(F20.2)') Integ_Reduced*0.917/1.0e6
+        WRITE(meltValue,'(F20.2)') Integ_Reduced*0.917/1.0e9
         Message='PICO INTEGRATED BASAL MELT [Gt/a]: '//meltValue ! 0.917/1.0e6 to convert m3/a in Gt/a
         CALL INFO(SolverName,Message,Level=1)
         CALL INFO(SolverName,"----------------------------------------",Level=1)
