@@ -18,7 +18,7 @@ chgrp -R ${GROUPUSR} ${WELMER}
 # set symbolic link
 if [ ! -L MY_WORK    ]; then ln -s $WELMER MY_WORK    ; fi
 if [ ! -L MY_RESTART ]; then ln -s $RELMER MY_RESTART ; fi
-if [ ! -L MY_OUPUT   ]; then ln -s $SELMER MY_OUPUT   ; fi
+if [ ! -L MY_OUTPUT   ]; then ln -s $SELMER MY_OUTPUT   ; fi
 
 echo ''
 echo "Copy executable to $WELMER"
@@ -52,7 +52,7 @@ echo
 # link data
 # elmer point directly to the data dir => no need to do anything
 # except for the mesh
-if [ ! -d $WELMER/MSH/partitioning.$NELMER ] ; then mkdir -p $WELMER/MSH/partitioning.$NELMER ; fi
+if [ ! -d $WELMER/MSH/partitioning.$NELMER ] ; then mkdir -p $WELMER/MSH/partitioning.$NELMER ; chmod g+s $WELMER/MSH ; chmod g+s $WELMER/MSH/partitioning.$NELMER ; fi
 ln -sf $MSHINITpath/partitioning.$NELMER/part.* $WELMER/MSH/partitioning.$NELMER/.
 
 echo ''
