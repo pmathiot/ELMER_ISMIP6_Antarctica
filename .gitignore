@@ -3,4 +3,6 @@ run_elmer_[0-9]*.slurm
 MY_OUPUT
 MY_RESTART
 MY_WORK
+LOG/*
+MY_BLD/*
 
