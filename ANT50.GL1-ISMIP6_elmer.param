@@ -1,8 +1,8 @@
 !###################### PHYSICAL ########################
 !
 ! define some parameters for the test
-!## From year to seconds
-$yearinsec = 31556926.0
+!## From year to seconds (31536000.0 = 365D)
+$yearinsec = 31536000.0 
 
 !## Ice density
 $rhoi_SI =  917.0             ! Ice density (kg/m^3)

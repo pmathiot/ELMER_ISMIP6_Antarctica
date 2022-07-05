@@ -45,7 +45,7 @@ Simulation
   BDF Order = 2
   Output Intervals(1) = 0
   Timestep Intervals(1) = 25
-  Timestep Sizes(1) = $ 1.0 / 360.0 
+  Timestep Sizes(1) = $ 1.0 / 365.0 
 !2.0e-3
 
   Exit Condition = Variable Time
