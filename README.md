@@ -43,6 +43,7 @@ Repository to work on the Elmer/Ice IGE contribution to ISMIP6.
 
 ### Test to do
 - [ ] Check Benoit's IMITMIP diag and XIOS integrated method
+   - [ ] check all ouput with paraview (min, max, pattern ...)
    - [ ] when succesful rm Benoit's diag
    - [ ] buil pp script to do it
 - [ ] compare overall with Benoit's configuration
