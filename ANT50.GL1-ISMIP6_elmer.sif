@@ -83,6 +83,9 @@ Body Force 1
   Water Pressure = Variable Zb
     Real procedure "USF_WaterPressure" "WaterPressure"
 
+!  slc = Variable Beta_jh, zs, bedrock
+!     Real Procedure "SlipCoef" "CalculSlc_haf"
+
 !---------------------------------------------
 ! BMB body force PICO
 !---------------------------------------------
@@ -102,7 +105,7 @@ End
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 Material 1
 ! Material properties
-  Viscosity Exponent = Real $1/n
+  Viscosity Exponent = Real $1.0/n
   Critical Shear Rate = Real 1.0e-12
 
 ! TODO: Add this straight in the intial condition Mueta2
@@ -111,10 +114,28 @@ Material 1
   SSA Mean Density = Real $rhoi
   SSA Critical Thickness = Real 1.0
 
-! slip coeff for the SSA
+  ! definition of the friction law (linear, Weertman, Coulomb or Regularized coulomb)
+!  SSA Friction Law = String "Regularized coulomb"
+!    ! Coulomb Regularised needed parameter
+!    ! -------------------------------------
+!    ! Friction Parameter = Beta
+!    ! Friction Threshold Velocity = u_0
+!    ! Friction Threshold Height = Treshold in Haf when to start descreasing friction toward GL 
+!    !                                => requires body force section (SlipCoef)
+!    ! Friction Exponent = m 
+!    ! Friction Linear Velocity = u_lin (Min velocity for linearisation where ub=0)
+!    SSA Friction Parameter = Equals slc
+!    SSA Friction Threshold Velocity = Real 300.0
+!    SSA Friction Threshold Height = Real 75.0
+!    SSA Friction Exponent = Real $1.0/n  
+!       ! Commented: Why need SSA Friction Exponent and Viscosity Exponent they are the same ????
+!    SSA Friction Linear Velocity = Real 0.0001
+
   SSA Friction Law = String "linear"
-  SSA Friction Parameter = Variable beta
-     REAL procedure "ElmerIceUSF" "TenPowerA"
+    ! linear needed parameter
+    ! -------------------------------------
+     SSA Friction Parameter = Variable beta
+        REAL procedure "ElmerIceUSF" "TenPowerA"
 
 !! For Save scalar to compute mass flux (=H*SSA_UV)
   Flux = Equals H
@@ -197,6 +218,7 @@ End
 !#                                 * distIF (ice shelf front)
 !#-----------------------------------------------------------------------
 Solver 3
+  Exec Solver = Before Timestep
   Equation = "distance GL"
   Variable = -dofs 1 distGL
     Procedure = "DistanceSolve" "DistanceSolver1"
@@ -204,7 +226,7 @@ Solver 3
 End
 
 Solver 4
-  Exec Solver = Before simulation
+  Exec Solver = Before Timestep
   Equation = "FrontMask"
   Variable = FrontMask
   Variable DOFs = 1
@@ -213,6 +235,8 @@ End
 
 ! move output solver 5 to before simulation as it is fixed in time (or in initial condition)
 Solver 5
+  Exec Solver = Before Timestep   
+     ! Comment: Why Before simulation failed ????? MPI error
   Equation = "Real distance IF"
   Variable = -dofs 1 distIF
     Procedure = "DistanceSolve" "DistanceSolver1"
@@ -221,6 +245,7 @@ Solver 5
 End
 
 Solver 6
+   Exec Solver = Before Timestep
    Exported Variable 1 = -dofs 1 -elem Melt
    Exported Variable 2 = -dofs 1 -elem Boxes
 
@@ -229,14 +254,14 @@ Solver 6
    Procedure = "boxmodel_solver" "boxmodel_solver"
 
    data file = File "$data_dir$/$file_pico$"
+
 End
 
 !#-----------------------------------------------------------------------
 !#                          SSA SOLVER
 !#-----------------------------------------------------------------------
 !# SOLVER to compute SSA velocity
-!#     - input  : * 
-!#                * 
+!#     - input  : * Material section nned to contain the friction law parameters (see doc)
 !#
 !#     - principal output  : * SSA velocity [XXX] (nodal)
 !#     - optional  outputs : * transport across GL [m/s ???] (element)
@@ -279,6 +304,7 @@ Solver 7
   ! Secondary variable (output)
   Exported variable 1 = mu
   Exported Variable 2 = slc0
+    ! TO CHECK with Fab (before it was slc0)
 
   ! grounding line flux [m/s] wrt cell area
   Compute grounding line flux = Logical TRUE
@@ -475,9 +501,48 @@ Solver 10
 
 End
 
+Solver 11
+  Exec Solver = After Timestep
+
+  Equation = "Save Scalars"
+   Procedure = File "SaveData" "SaveScalars"
+
+  Parallel Reduce = logical True
+
+   Filename = File "scalars_$name$_$id$.dat"
+
+  Variable 1 = "Time"
+
+   Variable 2 = "H"
+   Operator 2 = "volume"
+   Operator 3 = "int"
+
+   Variable 4 = "H Velocity"
+   Operator 4 = "int"
+
+    Variable 5 = "H loads"
+    operator 5 = "sum"
+
+   Variable 6 = "smb"
+   operator 6 = "int"
+
+   Variable 7 = "Melt"
+   operator 7 = "int"
+
+   Variable 8 = "h velocity"
+   operator 8 = max
+   operator 9 = min
+
+   Variable 10 = "ssavelocity"
+   operator 10 = max
+   operator 11 = min
+
+End
+
+
 !#####
 Equation 1
-  Active Solvers (10)= 1 2 3 4 5 6 7 8 9 10
+  Active Solvers (11)= 1 2 3 4 5 6 7 8 9 10 11
 End
 
 !#####
