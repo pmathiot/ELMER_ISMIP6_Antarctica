@@ -36,7 +36,7 @@ Simulation
   latitude_of_origin = Real -71.0
 
   Coordinate System  = Cartesian 2D
-  Grounding Line Melt = Logical True
+  Grounding Line Melt = Logical False
 
   Simulation Type = Transient
   Simulation Timing = Logical True
@@ -494,6 +494,8 @@ Solver 10
 
    Scalar Field 23 = String "basins"
 
+   Scalar Field 24 = String "melt"
+
    !Global Variables
    Global Variable 1 = String "time"
 
@@ -527,7 +529,7 @@ Solver 11
    operator 6 = "int"
 
    Variable 7 = "Melt"
-   operator 7 = "int"
+   operator 7 = "volume"
 
    Variable 8 = "h velocity"
    operator 8 = max

@@ -24,8 +24,8 @@
 
               <field_group id="ismip6_2D_flux" grid_ref="GridCells">
 	              <field id="ismip6_acabf"       name="acabf"       field_ref="acabf"           unit="kg m-2 s-1" operation="average" > this*sftgif*917.0/(86400.0*365.0) </field>
-                      <field id="ismip6_libmassbfgr" name="libmassbfgr" field_ref="libmassbf"       unit="kg m-2 s-1" operation="average" > libmassbf*sftgrf*917.0/(86400.0*365.0) </field>
-	              <field id="ismip6_libmassbffl" name="libmassbffl" field_ref="libmassbf"       unit="kg m-2 s-1" operation="average" > libmassbf*sftflf*917.0/(86400.0*365.0) </field>
+                      <field id="ismip6_libmassbfgr" name="libmassbfgr" long_name="Basal mass balance flux (only beneath grounded ice)" field_ref="libmassbf"       unit="kg m-2 s-1" operation="average" > libmassbf*sftgrf*917.0/(86400.0*365.0) </field>
+	              <field id="ismip6_libmassbffl" name="libmassbffl" long_name="Basal mass balance flux (only beneath floating ice)" field_ref="libmassbf"       unit="kg m-2 s-1" operation="average" > libmassbf*sftflf*917.0/(86400.0*365.0) </field>
 		      <field id="ismip6_dlithkdt"    name="dlithkdt"    field_ref="h velocity_elem" unit="m s-1"      operation="average" > this*sftgif/(86400.0*365.0) </field>
 		      <field id="ismip6_ligroundf"   name="ligroundf"   field_ref="ligroundf"       unit="kg m-2 s-1" operation="average" > this*sftgif*917.0/(86400.0*365.0)</field>
 
@@ -102,7 +102,7 @@
 	      </field_group>
 
 	      <field_group id="elmer_forcings" >
-                      <field id="melt" long_name="basal_mass_balance_reference"                         unit="m a-1"  grid_ref="GridCells" operation="once" />
+                      <field id="melt" long_name="basal_mass_balance_reference"                         unit="m a-1"  grid_ref="GridCells" />
                       <field id="smb"  long_name="surface_mass_balance_reference"                       unit="m a-1"  grid_ref="GridNodes" operation="once" />
 		      <field id="dsmb" long_name="surface_mass_balance_anomaly"                         unit="m a-1"  grid_ref="GridNodes" operation="once" />
 		      <field id="acabf"     standard_name="land_ice_surface_specific_mass_balance_flux" unit="m a-1"  grid_ref="GridCells" />

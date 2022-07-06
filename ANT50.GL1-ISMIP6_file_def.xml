@@ -30,6 +30,7 @@
 	      <field name="dvdt"        unit="m3 a-1" field_ref="h velocity_elem" grid_ref="ScalarGrid_sum" > this*cell_area </field>
 	      <field name="smb_int"     unit="m3 a-1" field_ref="acabf"           grid_ref="ScalarGrid_sum" > this*cell_area </field>
 	      <field name="bmb_int"     unit="m3 a-1" field_ref="libmassbf"       grid_ref="ScalarGrid_sum" > this*cell_area </field>
+	      <field name="melt_int"    unit="m3 a-1" field_ref="melt"            grid_ref="ScalarGrid_sum" > this*cell_area </field>
 	      <field name="loads"       unit="m3 a-1" field_ref="h loads"         grid_ref="ScalarGrid_sum" />
 	      <field name="dhdt_max"    unit="m a-1"  field_ref="h velocity"      grid_ref="ScalarGrid_max" />
 	      <field name="dhdt_min"    unit="m a-1"  field_ref="h velocity"      grid_ref="ScalarGrid_min" />
