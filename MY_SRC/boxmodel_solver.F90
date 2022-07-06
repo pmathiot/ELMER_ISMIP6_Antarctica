@@ -435,8 +435,10 @@ SUBROUTINE boxmodel_solver( Model,Solver,dt,Transient )
      Integ_Reduced = Integ
   ENDIF
 
-  DEALLOCATE( Zbox, Abox, Tbox, Sbox, Mbox, T0, S0,rr,localunity)
+  ! reverse signe for Elmer (loss of mass (ie melt) is negative)
+  Melt=-Melt
 
+  DEALLOCATE( Zbox, Abox, Tbox, Sbox, Mbox, T0, S0,rr,localunity)
   DEALLOCATE(basin_Reduced,basinmax,boxes)
   DEALLOCATE(VisitedNode, Basis, dBasisdx)
 
