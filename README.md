@@ -26,13 +26,21 @@ Repository to work on the Elmer/Ice IGE contribution to ISMIP6.
 - [ ] Check SSA  solver
 - [ ] Check H    solver
 - [ ] Check XIOS solver
+    - [x] Check metadata
+    - [x] Check integrated value wrt to save scalar
+    - [ ] Clarify with only Melt give an integrated value different in Savescalar
+    - [ ] Check all netcdf varaible with paraview (need sno account)
+- [ ] Netcdf restart
+- [ ] Coulomb Regularisé
+    - [ ] Convert linear friction coef from initial condition to CR friction coefficient
+    - [ ] Check all blocs
 - [ ] Check SMB solver
     - [ ] Read reference SMB
     - [ ] Read anomaly SMB year by year
     - [ ] Compute SMB as it is required for ISMIP6
 - [ ] Check BMB solver
-    - [ ] PICO melt solver blocs
-    - [ ] Quadratic local melt blocs
+    - [ ] PICO melt solver blocs and parameter
+    - [ ] Quadratic local melt blocs and parameter
     - [ ] Check SIF compatibility (not both melt activated ...)
     - [ ] Compute BMB as it is required for ISMIP6
 - [ ] Nearestpoint => create basin mask
@@ -43,6 +51,7 @@ Repository to work on the Elmer/Ice IGE contribution to ISMIP6.
 
 ### Test to do
 - [ ] Check Benoit's IMITMIP diag and XIOS integrated method
+   - [ ] check all ouput with paraview (min, max, pattern ...)
    - [ ] when succesful rm Benoit's diag
    - [ ] buil pp script to do it
 - [ ] compare overall with Benoit's configuration
