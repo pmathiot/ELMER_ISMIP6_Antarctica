@@ -11,11 +11,11 @@ NN=1
 # first iteration number (if more than 1, means restart i-1 are already in place)
 # end iteration
 STARTITER=1
-ENDITER=1
+ENDITER=2
 
 # restart path and rst file (assume all in $IELMER)
-RSTINITpath=${IELMER}/RST_simplified2/NEWMESH_48part/
-RSTINITfile=NEWMESH.result
+RSTINITpath=${IELMER}/RST_simplified2/
+RSTINITfile=NEWMESH.result.nc
 
 # MSH path and file
 MSHINITpath=${IELMER}/MSH_simplified2/

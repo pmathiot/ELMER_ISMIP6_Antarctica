@@ -97,6 +97,14 @@
 		      <field id="ceff" long_name="ssa_effective_friction_coefficent" unit="MPa m-1 a" grid_ref="GridNodes" />
 	      </field_group>
 
+              <field_group id="elmer_restart" >
+                      <field id="lonlat"   grid_ref="GridNodes" />
+                      <field id="lonlat 1" grid_ref="GridNodes" />
+                      <field id="lonlat 2" grid_ref="GridNodes" />
+                      <field id="beta"     grid_ref="GridNodes" />
+                      <field id="eta"      grid_ref="GridNodes" />
+	      </field_group>
+
 	      <field_group id="elmer_flowlaw" >
 		      <field id="mu" long_name="ssa_mean_viscosity" unit="MPa a1/3" grid_ref="GridNodes" operation="once" />
 	      </field_group>
