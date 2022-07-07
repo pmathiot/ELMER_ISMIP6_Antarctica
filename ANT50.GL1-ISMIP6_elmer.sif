@@ -54,15 +54,11 @@ Simulation
   Steady State Max Iterations = 4
   Steady State Min Iterations = 1
 
+! VTU management (TO BE REMOVED ONCE XIOS validated)
   Vtu Time Collection = Logical True
- 
-  OutPut File = "<RSTFILEa>"
   Post File = "$name$_$id$.vtu"
 
-  Restart File = "<RSTFILEb>"
-  Restart Position = 0
-
-  max output level = 4
+  max output level = 100
 End
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 Body 1
@@ -141,32 +137,37 @@ Material 1
   Flux = Equals H
 
 End
+!#-----------------------------------------------------------------------
+!#                          READ NETCDF RESTART SOLVER
+!#-----------------------------------------------------------------------
+!# SOLVER to read restart from netcdf file
+!#     - input  : * restart netcdf file from previous segment or simulation (File Name)
+!#                * Time Point ????
+!#
+!#     - output : * all the restart variable loaded in ElmerIce
+!#
+!#     - comments : to convert a previous .result file to .nc file, 
+!#                  a tools is available in TOOLS/RSL2NC
+!#-----------------------------------------------------------------------
 
-!#-----------------------------------------------------------------------
-!#              COMPUTE BASIN FOR ELMER POST PROCESSING
-!#     - input  : * basin netcdf file (Variable 1 data file)
-!#                * basin variable name (Variable 1)
-!#
-!#     - output : basins [] (elemental)
-!#
-!#     - method : nearest point interpolation from stereo netcdf input file
-!#                
-!#     - comments : basin names are not saved => TODO in the futur need to 
-!#                  find a way to keep this info
-!#-----------------------------------------------------------------------
 Solver 1
-   Exec Solver = Before all
-   Equation = "point"
-   Variable = -nooutput "dumy"
+   Exec Solver = Before Simulation
 
-   procedure = "nearestpoint" "nearestpoint"
+   Equation = "UGridDataReader"
+   Procedure = "ElmerIceSolvers" "UGridDataReader"
 
-   ! netcdf management
-   Variable 1 = File "basins"
-   Variable 1 data file = File "$data_dir$/$file_basins$"
-   Target Variable 1 = String "basins"
+   File Name = File "MSH/restart_$idm1$.nc"
 
-   Exported Variable 1 = -dofs 1 -elem basins
+   Time Point = Real 100.0
+
+   Variable Name 1 = File "h"
+   Variable Name 2 = File "zs"
+   Variable Name 3 = File "zb"
+   Variable Name 4 = File "bedrock"
+   Variable Name 5 = File "groundedmask"
+   Variable Name 6 = File "mu"
+   Variable Name 7 = File "eta"
+   Variable Name 8 = File "beta"
 End
 
 !#-----------------------------------------------------------------------
@@ -319,6 +320,10 @@ Solver 7
  ! and nodal effective friction coefficient
   Exported Variable 5 = -elem "strbasemag"
   Exported Variable 6 = "Ceff"
+
+! restart variable ????? needed ????
+  Exported variable 7 = beta
+  Exported variable 8 = eta
 !
 End
 
@@ -496,6 +501,10 @@ Solver 10
 
    Scalar Field 24 = String "melt"
 
+   Scalar Field 25 = String "eta"
+
+   Scalar Field 26 = String "beta"
+
    !Global Variables
    Global Variable 1 = String "time"
 
@@ -541,10 +550,38 @@ Solver 11
 
 End
 
+!#-----------------------------------------------------------------------
+!#              COMPUTE BASIN FOR ELMER POST PROCESSING
+!#     - input  : * basin netcdf file (Variable 1 data file)
+!#                * basin variable name (Variable 1)
+!#
+!#     - output : basins [] (elemental)
+!#
+!#     - method : nearest point interpolation from stereo netcdf input file
+!#                
+!#     - comments : basin names are not saved => TODO in the futur need to 
+!#                  find a way to keep this info
+!#-----------------------------------------------------------------------
+Solver 12
+   Exec Solver = Before all
+   Equation = "point"
+   Variable = -nooutput "dumy"
+
+   procedure = "nearestpoint" "nearestpoint"
+
+   ! netcdf management
+   Variable 1 = File "basins"
+   Variable 1 data file = File "$data_dir$/$file_basins$"
+   Target Variable 1 = String "basins"
+
+   Exported Variable 1 = -dofs 1 -elem basins
+End
+
+
 
 !#####
 Equation 1
-  Active Solvers (11)= 1 2 3 4 5 6 7 8 9 10 11
+  Active Solvers (12)= 1 2 3 4 5 6 7 8 9 10 11 12
 End
 
 !#####
