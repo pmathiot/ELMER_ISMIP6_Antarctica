@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 
-    <file_definition type="one_file" output_freq="5d" >
+    <file_definition type="one_file" output_freq="1ts" >
 
 <!-- RESTART OUTPUT -->
 <!--      <file id="file01" name="restart" convention="UGRID"  time_counter_name="time" time_counter="instant" time_units="days" >
@@ -20,9 +20,11 @@
 	      </field_group>
               <variable id="elmerversion" name="model_version" type="string"> elmer ice v9.0</variable>
       </file> -->
-      <file id="file01" name="restart" convention="UGRID"  time_counter_name="time" time_counter="instant" time_units="days" >
+      <file id="file01" name="restart" convention="UGRID"  time_counter_name="time" time_counter="instant" time_units="days" output_freq="25d" >
               <field_group group_ref="mesh_info" />
               <field_group prec="8" >
+		  <field field_ref="ssavelocity 1" />
+		  <field field_ref="ssavelocity 2" />
                   <field field_ref="h"             />
                   <field field_ref="zs"            />
                   <field field_ref="zb"            />
