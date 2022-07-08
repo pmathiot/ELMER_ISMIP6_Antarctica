@@ -26,11 +26,14 @@ Repository to work on the Elmer/Ice IGE contribution to ISMIP6.
 - [ ] Check SSA  solver
 - [ ] Check H    solver
 - [ ] Check XIOS solver
-    - [x] Check metadata
-    - [x] Check integrated value wrt to save scalar
+    - [X] Check metadata
+    - [X] Check integrated value wrt to save scalar
     - [ ] Clarify with only Melt give an integrated value different in Savescalar
     - [ ] Check all netcdf varaible with paraview (need sno account)
 - [ ] Netcdf restart
+    - [X] Tools to interpolate from a result file to a netcdf file has been done
+    - [X] Differences on domain interior tiny in a comparison .result and .nc restart format
+    - [ ] Why is there differences on the domain edges ?
 - [ ] Coulomb Regularisé
     - [ ] Convert linear friction coef from initial condition to CR friction coefficient
     - [ ] Check all blocs
