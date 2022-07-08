@@ -4,7 +4,7 @@
 ! of the thickness and velocity observation
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !name of the RUN : optimised mesh will be saved in MESH_$RUN
-$RUN="3_simplify"
+$RUN="output"
 ! the name of the mesh to optimize
 $MESH_IN="contour"
 !##########################################################
