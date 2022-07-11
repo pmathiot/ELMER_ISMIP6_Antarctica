@@ -79,6 +79,9 @@ Body Force 1
   Water Pressure = Variable Zb
     Real procedure "USF_WaterPressure" "WaterPressure"
 
+  ! H internal limiters (Thickness solver)
+  H Lower Limit = Real 1.0
+
 !  slc = Variable Beta_jh, zs, bedrock
 !     Real Procedure "SlipCoef" "CalculSlc_haf"
 
@@ -264,6 +267,9 @@ End
 !# SOLVER to compute SSA velocity
 !#     - input  : * Material section nned to contain the friction law parameters (see doc)
 !#
+!#     - option : * GL integration points number to increase precision when computing
+!#                  the grounded/floating area of partially floated element precision. 
+!#
 !#     - principal output  : * SSA velocity [XXX] (nodal)
 !#     - optional  outputs : * transport across GL [m/s ???] (element)
 !#                           * transport across calving front [m/s ???] (element)
@@ -397,6 +403,10 @@ End
 !#                * bedrock
 !#                * ice and water density
 !#
+!#     - option : * GL integration points number to increase precision when computing
+!#                  the grounded/floating area of partially floated element precision. 
+!#                  20 is choosen by consistency with SSA solver
+!#
 !#     - principal output  : * groundedmask [-1 afloat, 0 grounded, 1 grounded] (nodal)
 !#     - optional  outputs : * surface elevation (nodal)
 !#                           * ice shelf draft (nodal)
@@ -409,6 +419,8 @@ Solver 9
    Equation = "Flotation"
    Variable = GroundedMask
       Procedure = "ElmerIceSolvers" "Flotation"
+
+   GL integration points number = Integer 20
 
    Exported Variable 1 = zs
    Exported Variable 2 = zb
