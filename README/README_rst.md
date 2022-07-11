@@ -14,5 +14,9 @@ Modification to the sif
 
 Checks did
 ----------
-- Compare output between .nc and .result restart => differences on the partition edges: Need to be clarified
+- Compare output between .nc and .result restart => differences on the partition edges: This comes from the interpolation error in the .result that comes from Benoit (change of domain and decomposition). There is a minor difference of value on common point between 2 partition. With the netcdf, the value are exactly the same on the common node on the 2 ppartitions.
 
+How to activate netcdf restart
+------------------------------
+- Be sure the UgridReader solver read all the variable you need.
+- Possibility to do the interpolation from on domain to another on the fly possible (Key word Mesh to add in the solver)

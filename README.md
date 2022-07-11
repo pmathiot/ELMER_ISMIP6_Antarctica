@@ -16,10 +16,12 @@ Repository to work on the Elmer/Ice IGE contribution to ISMIP6.
     - [ ] ... to be completed
 - [ ] Benoit's grid (first)
     - [ ] grid with ice tongue and instruction to do it in README or elsewhere
+    - [ ] tools and instruction to convert restart from 1 grid to another that also manage change in partition numbers
     - [ ] grid refined over all the run history and instruction to do it in README or elsewhere
 - [ ] Initial condition compatible with Benoit's grid (first)
     - [ ] Initial condition compatible with grid with no ice tongue
     - [ ] Initial condition compatible with grid refined
+    - [ ] Build netcdf restart => this will make obsolete the two previous points.
 - [ ] Clean directory for only the production file
 
 ### SIF
@@ -30,10 +32,10 @@ Repository to work on the Elmer/Ice IGE contribution to ISMIP6.
     - [X] Check integrated value wrt to save scalar
     - [ ] Clarify with only Melt give an integrated value different in Savescalar
     - [ ] Check all netcdf varaible with paraview (need sno account)
-- [ ] Netcdf restart
+- [X] Netcdf restart
     - [X] Tools to interpolate from a result file to a netcdf file has been done
     - [X] Differences on domain interior tiny in a comparison .result and .nc restart format
-    - [ ] Why is there differences on the domain edges ?
+    - [X] Why is there differences on the domain edges ?
 - [ ] Coulomb Regularisé
     - [ ] Convert linear friction coef from initial condition to CR friction coefficient
     - [ ] Check all blocs
