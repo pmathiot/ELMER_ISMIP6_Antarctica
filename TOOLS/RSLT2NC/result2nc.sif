@@ -28,7 +28,6 @@ Simulation
   Output Intervals(1) = 0
   Timestep Intervals(1) = 1 
   Timestep Sizes(1) = $ 1.0 / 365.0 
-!2.0e-3
 
   Steady State Max Iterations = 4
   Steady State Min Iterations = 1

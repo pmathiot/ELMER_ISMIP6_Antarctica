@@ -82,8 +82,8 @@ Body Force 1
   ! H internal limiters (Thickness solver)
   H Lower Limit = Real 1.0
 
-!  slc = Variable Beta_jh, zs, bedrock
-!     Real Procedure "SlipCoef" "CalculSlc_haf"
+  slc = Variable Beta_jh, Haf
+     Real Procedure "SlipCoef" "CalculSlc_haf"
 
 !---------------------------------------------
 ! BMB body force PICO
@@ -114,27 +114,27 @@ Material 1
   SSA Critical Thickness = Real 1.0
 
   ! definition of the friction law (linear, Weertman, Coulomb or Regularized coulomb)
-!  SSA Friction Law = String "Regularized coulomb"
-!    ! Coulomb Regularised needed parameter
-!    ! -------------------------------------
-!    ! Friction Parameter = Beta
-!    ! Friction Threshold Velocity = u_0
-!    ! Friction Threshold Height = Treshold in Haf when to start descreasing friction toward GL 
-!    !                                => requires body force section (SlipCoef)
-!    ! Friction Exponent = m 
-!    ! Friction Linear Velocity = u_lin (Min velocity for linearisation where ub=0)
-!    SSA Friction Parameter = Equals slc
-!    SSA Friction Threshold Velocity = Real 300.0
-!    SSA Friction Threshold Height = Real 75.0
-!    SSA Friction Exponent = Real $1.0/n  
-!       ! Commented: Why need SSA Friction Exponent and Viscosity Exponent they are the same ????
-!    SSA Friction Linear Velocity = Real 0.0001
-
-  SSA Friction Law = String "linear"
-    ! linear needed parameter
+  SSA Friction Law = String "Regularized coulomb"
+    ! Coulomb Regularised needed parameter
     ! -------------------------------------
-     SSA Friction Parameter = Variable beta
-        REAL procedure "ElmerIceUSF" "TenPowerA"
+    ! Friction Parameter = Beta
+    ! Friction Threshold Velocity = u_0
+    ! Friction Threshold Height = Treshold in Haf when to start descreasing friction toward GL 
+    !                                => requires body force section (SlipCoef)
+    ! Friction Exponent = m 
+    ! Friction Linear Velocity = u_lin (Min velocity for linearisation where ub=0)
+    SSA Friction Parameter = Equals slc
+    SSA Friction Threshold Velocity = Real 300.0
+    SSA Friction Threshold Height = Real 75.0
+    SSA Friction Exponent = Real $1.0/n  
+       ! Commented: Why need SSA Friction Exponent and Viscosity Exponent they are the same ????
+    SSA Friction Linear Velocity = Real 0.0001
+
+!  SSA Friction Law = String "linear"
+!    ! linear needed parameter
+!    ! -------------------------------------
+!     SSA Friction Parameter = Variable beta
+!        REAL procedure "ElmerIceUSF" "TenPowerA"
 
 !! For Save scalar to compute mass flux (=H*SSA_UV)
   Flux = Equals H
@@ -154,6 +154,33 @@ End
 !#-----------------------------------------------------------------------
 
 Solver 1
+!#-----------------------------------------------------------------------
+!#                          READ RESTART SOLVER
+!#-----------------------------------------------------------------------
+!# SOLVER to read restart from netcdf file
+!#     - time variable inputs :
+!#                * h            : the only really pronostic variable
+!#                * ssa velocity : if available, it speed up the convergence of the first time step
+!#                * groundedmask : needed for SSA because now flotation is call after the SSA solver
+!#                * zs           : "" ???????????
+!#                * zb           : "" ???????????
+!#                * Haf          : ""
+!#
+!#     - constant input :           
+!#                * bedrock      : Used to compute Haf
+!#                * mu           : Used to compute mean viscosity
+!#                * eta          : Used to compute mean viscosity
+!#                * beta_jh      : Used to compute slc
+!#                
+!#
+!#     - output : restart variables
+!#
+!#     - option : Melt keyword if input from another grid i
+!#                (as in M2M tools to change partition and interpolation .result)
+!#
+!#     - comments: Please document in the netcdf the source of each constant field
+!#-----------------------------------------------------------------------
+
    Exec Solver = Before Simulation
 
    Equation = "UGridDataReader"
@@ -170,8 +197,21 @@ Solver 1
    Variable Name 5 = File "groundedmask"
    Variable Name 6 = File "mu"
    Variable Name 7 = File "eta"
-   Variable Name 8 = File "beta"
+   Variable Name 8 = File "Haf"
+   Variable Name 9 = File "beta_jh"
 End
+
+!# 
+! This solver update exported variables from their definition in
+! the body forces
+Solver 2
+ Exec Solver = Before Timestep
+ Equation = "Update"
+ Procedure = "ElmerIceSolvers" "UpdateExport"
+
+ Exported Variable 1 = slc
+ Exported Variable 4 = Water Pressure
+End 
 
 !#-----------------------------------------------------------------------
 !#                          SMB SOLVER
