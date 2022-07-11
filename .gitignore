@@ -1,8 +1,7 @@
 zELMER_*
 run_elmer_[0-9]*.slurm
-MY_OUPUT
+MY_OUTPUT
 MY_RESTART
 MY_WORK
-LOG/*
-MY_BLD/*
-
+LOG/[A-Z]*
+MY_BLD/[A-Z]*

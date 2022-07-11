@@ -7,10 +7,14 @@ HELMER=<HELMER>
 # segment number
 i=<ID>
 # restart name
-RSTFILEb=<RSTFILEb>
+RSTFILEnc=<RSTFILEnc>
 # conf case
 CONFIG=<ECONFIG>
 CASE=<ECASE>
+
+# LOG links
+ln -sf LOG/${CONFIG}-${CASE}_${i}.e$SLURM_JOBID elmer.err
+ln -sf LOG/${CONFIG}-${CASE}_${i}.o$SLURM_JOBID elmer.out
 
 # load arch parameter
 . ./param_arch.bash
@@ -33,9 +37,9 @@ if [ ! -f elmer_t${i}.sif ] ; then echo "E R R O R: sif file missing"; exit 42; 
 echo elmer_t${i}.sif > ELMERSOLVER_STARTINFO
 
 # manage restart
-if [[ $i -gt 1 ]] && [[ ! -f $WELMER/${RSTFILEb}.0 ]]; then
-   echo '$WELMER/${RSTFILEb}.0 is missing, we pick it up from $RELMER'
-   cp -f $RELMER/${RSTFILEb}.* $WELMER/MSH/. || nerr=$((nerr+1))
+if [[ $i -gt 1 ]] ; then
+   echo '$WELMER/${RSTFILEnc} is missing, we pick it up from $RELMER'
+   ln -sf $RELMER/${RSTFILEnc} $WELMER/MSH/restart_$((i-1)).nc || nerr=$((nerr+1))
 
    if [[ $nerr -ne 0 ]] ; then
    echo 'ERROR during copying restart file; please check'
@@ -53,6 +57,11 @@ if [[ $RUNSTATUS == 0 ]]; then
    # error count
    nerr=0
 
+   # cp restart to RST dir
+   echo "cp restart to $RELMER"
+   RSTFILES=`echo "restart_$CONFIG-${CASE}_${i}.nc" | tr [:upper:] [:lower:]`
+   mv -f $RSTFILES $RELMER/$CONFIG-${CASE}_${i}.restart.nc   || nerr=$((nerr+1))
+
    # mv data to S dir
    echo ''
    echo "mv vtu and dat to $SELMER"
@@ -60,16 +69,11 @@ if [[ $RUNSTATUS == 0 ]]; then
    mv MSH/$CONFIG-${CASE}_${i}_t????.pvtu              $SELMER/. || nerr=$((nerr+1))
    DATFILES=`echo "scalars_$CONFIG-${CASE}_${i}.nc" | tr [:upper:] [:lower:]`
    mv scalars_$CONFIG-${CASE}_${i}.dat*                $SELMER/. || nerr=$((nerr+1))
-#   mv *INITMIP_Scalar_OUTPUT_$CONFIG-${CASE}_${i}.dat* $SELMER/. || nerr=$((nerr+1))
    NCFILES=`echo "*_$CONFIG-${CASE}_${i}.nc" | tr [:upper:] [:lower:]`
    mv $NCFILES                                         $SELMER/.   || nerr=$((nerr+1))
 
-   # cp restart to RST dir
-   echo "cp result to $RELMER"
-   cp -f MSH/$CONFIG-${CASE}_${i}.result.* $RELMER/.   || nerr=$((nerr+1))
-
    if [[ $nerr -ne 0 ]] ; then
-      echo 'ERROR during copying output file/results; please check'
+      echo 'ERROR during copying output file/restarts; please check'
       mv ${HELMER}/zELMER_${i}_IN_PROGRESS ${HELMER}/zELMER_${i}_ERROR_pp
       exit 42
    fi
