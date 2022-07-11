@@ -27,10 +27,7 @@
                       <field id="ismip6_libmassbfgr" name="libmassbfgr" long_name="Basal mass balance flux (only beneath grounded ice)" field_ref="libmassbf"       unit="kg m-2 s-1" operation="average" > libmassbf*sftgrf*917.0/(86400.0*365.0) </field>
 	              <field id="ismip6_libmassbffl" name="libmassbffl" long_name="Basal mass balance flux (only beneath floating ice)" field_ref="libmassbf"       unit="kg m-2 s-1" operation="average" > libmassbf*sftflf*917.0/(86400.0*365.0) </field>
 		      <field id="ismip6_dlithkdt"    name="dlithkdt"    field_ref="h velocity_elem" unit="m s-1"      operation="average" > this*sftgif/(86400.0*365.0) </field>
-		      <field id="ismip6_ligroundf"   name="ligroundf"   field_ref="ligroundf"       unit="kg m-2 s-1" operation="average" > this*sftgif*917.0/(86400.0*365.0)</field>
-
-		      <!-- ice_flux is positive if outward, so as it is mass loss it should be reversed sign...  -->
-		      <!-- and we don't make the distuinction between calving and front melt...  -->
+		      <field id="ismip6_ligroundf"   name="ligroundf"   field_ref="ligroundf"       unit="kg m-2 s-1" operation="average" > -this*sftgif*917.0/(86400.0*365.0)</field>
 		      <field id="ismip6_lifmassbf" name="lifmassbf" unit="kg m-2 s-1" field_ref="calving_front_flux" operation="average" > -this*sftgif*917.0/(86400.0*365.0) </field>
 	      </field_group>
 
@@ -117,6 +114,12 @@
 		      <field id="libmassbf" standard_name="land_ice_basal_specific_mass_balance_flux"   unit="m a-1"  grid_ref="GridCells" />
 		      <field id="h loads"                                                               unit="m3 a-1" grid_ref="GridNodes" />
 	      </field_group>
+
+              <field_group id="mesh_info2" operation= "instant" >
+                       <field id="node_x" name="x" standard_name="projection_x_coordinate" unit="m" grid_ref="GridNodes" />
+                       <field id="node_y" name="y" standard_name="projection_y_coordinate" unit="m" grid_ref="GridNodes" />
+                       <field id="cell_area" name="cell_area" unit="m2" grid_ref="GridCells" />
+              </field_group>
 
 	      <field_group id="elmer_global" grid_ref="ScalarGrid_sum">
 		      <field id="time" name="elmer_time" unit="a" prec="8" />
