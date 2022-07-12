@@ -1,0 +1,540 @@
+slurmstepd-irene4344: error: task[0] unable to set taskset '0x0'
++ SCRIPT_PID=201674
++ /bin/bash -x /tmp/jobstart.201627
++ set +x
++ unset _mlshdbg
++ '[' 1 = 1 ']'
++ case "$-" in
++ set +x
++ unset _mlshdbg
++ . /ccc/cont003/home/ige/mathiotp/.bashrc
+++ '[' -f /etc/bashrc ']'
+++ . /etc/bashrc
++++ '[' '' ']'
++++ shopt -q login_shell
++++ '[' 38252 -lt 1000 ']'
++++ for i in '/etc/profile.d/*.sh'
++++ '[' -r /etc/profile.d/256term.sh ']'
++++ '[' '' ']'
++++ . /etc/profile.d/256term.sh
++++ for i in '/etc/profile.d/*.sh'
++++ '[' -r /etc/profile.d/abrt-console-notification.sh ']'
++++ '[' '' ']'
++++ . /etc/profile.d/abrt-console-notification.sh
++++ for i in '/etc/profile.d/*.sh'
++++ '[' -r /etc/profile.d/bash_completion.sh ']'
++++ '[' '' ']'
++++ . /etc/profile.d/bash_completion.sh
++++ for i in '/etc/profile.d/*.sh'
++++ '[' -r /etc/profile.d/bash_env.sh ']'
++++ '[' '' ']'
++++ . /etc/profile.d/bash_env.sh
++++ for i in '/etc/profile.d/*.sh'
++++ '[' -r /etc/profile.d/colorgrep.sh ']'
++++ '[' '' ']'
++++ . /etc/profile.d/colorgrep.sh
++++ for i in '/etc/profile.d/*.sh'
++++ '[' -r /etc/profile.d/colorls.sh ']'
++++ '[' '' ']'
++++ . /etc/profile.d/colorls.sh
++++ for i in '/etc/profile.d/*.sh'
++++ '[' -r /etc/profile.d/cvs.sh ']'
++++ '[' '' ']'
++++ . /etc/profile.d/cvs.sh
++++ for i in '/etc/profile.d/*.sh'
++++ '[' -r /etc/profile.d/exit-if-no-home.sh ']'
++++ '[' '' ']'
++++ . /etc/profile.d/exit-if-no-home.sh
++++ for i in '/etc/profile.d/*.sh'
++++ '[' -r /etc/profile.d/flatpak.sh ']'
++++ '[' '' ']'
++++ . /etc/profile.d/flatpak.sh
++++ for i in '/etc/profile.d/*.sh'
++++ '[' -r /etc/profile.d/lang.sh ']'
++++ '[' '' ']'
++++ . /etc/profile.d/lang.sh
++++ for i in '/etc/profile.d/*.sh'
++++ '[' -r /etc/profile.d/less.sh ']'
++++ '[' '' ']'
++++ . /etc/profile.d/less.sh
++++ for i in '/etc/profile.d/*.sh'
++++ '[' -r /etc/profile.d/lustre-job-id.sh ']'
++++ '[' '' ']'
++++ . /etc/profile.d/lustre-job-id.sh
++++ for i in '/etc/profile.d/*.sh'
++++ '[' -r /etc/profile.d/modules.sh ']'
++++ '[' '' ']'
++++ . /etc/profile.d/modules.sh
++++ for i in '/etc/profile.d/*.sh'
++++ '[' -r /etc/profile.d/PackageKit.sh ']'
++++ '[' '' ']'
++++ . /etc/profile.d/PackageKit.sh
++++ for i in '/etc/profile.d/*.sh'
++++ '[' -r /etc/profile.d/qt-graphicssystem.sh ']'
++++ '[' '' ']'
++++ . /etc/profile.d/qt-graphicssystem.sh
++++ for i in '/etc/profile.d/*.sh'
++++ '[' -r /etc/profile.d/vim.sh ']'
++++ '[' '' ']'
++++ . /etc/profile.d/vim.sh
++++ for i in '/etc/profile.d/*.sh'
++++ '[' -r /etc/profile.d/vte.sh ']'
++++ '[' '' ']'
++++ . /etc/profile.d/vte.sh
++++ for i in '/etc/profile.d/*.sh'
++++ '[' -r /etc/profile.d/which2.sh ']'
++++ '[' '' ']'
++++ . /etc/profile.d/which2.sh
++++ unset i
++++ unset pathmunge
+++ module switch dfldatadir/gen6035
+++ unset _mlshdbg
+++ '[' 1 = 1 ']'
+++ case "$-" in
+++ set +x
+unload module dfldatadir/gen6035 (Data Directory)
+unload module datadir/gen6035 (Data Directory)
+load module datadir/gen6035 (Data Directory)
+load module dfldatadir/gen6035 (Data Directory)
+++ unset _mlshdbg
+++ return 0
+++ ulimit -s unlimited
+++ export PATH=./:/ccc/work/cont003/gen6066/chekkimo/ELMERICE/install_elmerice/elmerice-bfd923fb-opt/bin:/ccc/products/netcdf-fortran-4.4.4/intel--19.0.5.281__openmpi--4.0.1/hdf5__parallel/bin:/ccc/products/netcdf-c-4.6.0/intel--19.0.5.281__openmpi--4.0.1/hdf5__parallel/bin:/ccc/products/hdf5-1.8.20/intel--19.0.5.281__openmpi--4.0.1/parallel/bin:/ccc/products/openmpi-4.0.2/intel--19.0.5.281/default/bin:/ccc/products/gcc-8.3.0/system/default/bin:/ccc/products/ucx-1.7.0/system/default/bin:/ccc/products/pmix-3.1.3/system/default/bin:/ccc/products/hwloc-2.0.4/system/default/bin:/ccc/products/icc-19.0.5.281/system/default/19.0.5.281/bin/intel64:/ccc/workflash/cont003/gen6035/gen6035/.conda_libs/bin:/ccc/workflash/cont003/gen6035/gen6035/.conda_libs/condabin:.:/usr/share/Modules/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/ccc/products/ccc_users_env/bin:/ccc/products/ccc_crontab/bin:/ccc/products/ccc_prod/bin:/ccc/products/ccc_genodata/bin:/ccc/cont003/home/ige/mathiotp/bin:/ccc/products/ifort-19.0.5.281/system/default/19.0.5.281/bin/intel64:/ccc/products/sharp-2.0/system/default/bin:/ccc/products/hcoll-4.4.2938/system/default/bin
+++ PATH=./:/ccc/work/cont003/gen6066/chekkimo/ELMERICE/install_elmerice/elmerice-bfd923fb-opt/bin:/ccc/products/netcdf-fortran-4.4.4/intel--19.0.5.281__openmpi--4.0.1/hdf5__parallel/bin:/ccc/products/netcdf-c-4.6.0/intel--19.0.5.281__openmpi--4.0.1/hdf5__parallel/bin:/ccc/products/hdf5-1.8.20/intel--19.0.5.281__openmpi--4.0.1/parallel/bin:/ccc/products/openmpi-4.0.2/intel--19.0.5.281/default/bin:/ccc/products/gcc-8.3.0/system/default/bin:/ccc/products/ucx-1.7.0/system/default/bin:/ccc/products/pmix-3.1.3/system/default/bin:/ccc/products/hwloc-2.0.4/system/default/bin:/ccc/products/icc-19.0.5.281/system/default/19.0.5.281/bin/intel64:/ccc/workflash/cont003/gen6035/gen6035/.conda_libs/bin:/ccc/workflash/cont003/gen6035/gen6035/.conda_libs/condabin:.:/usr/share/Modules/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/ccc/products/ccc_users_env/bin:/ccc/products/ccc_crontab/bin:/ccc/products/ccc_prod/bin:/ccc/products/ccc_genodata/bin:/ccc/cont003/home/ige/mathiotp/bin:/ccc/products/ifort-19.0.5.281/system/default/19.0.5.281/bin/intel64:/ccc/products/sharp-2.0/system/default/bin:/ccc/products/hcoll-4.4.2938/system/default/bin
+++ shopt -s histappend
+++ HISTCONTROL=ignoreboth
+++ HISTIGNORE='cd:ls:[bf]g:rm -rf:rm -f:rm -r'
+++ HISTSIZE=1000
+++ HISTFILESIZE=2000
+++ shopt -s checkwinsize
+++ alias 'rm=rm -i'
+++ alias 'cp=cp -i'
+++ alias 'mv=mv -i'
+++ alias 'nh=ncdump -hs'
+++ alias 'll=ls -l'
+++ alias python_VALSO=python3
+++ '[' -x /usr/bin/dircolors ']'
+++ test -r /ccc/cont003/home/ige/mathiotp/.dircolors
++++ dircolors -b
+++ eval 'LS_COLORS='\''rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.axv=01;35:*.anx=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.axa=00;36:*.oga=00;36:*.spx=00;36:*.xspf=00;36:'\'';
+export LS_COLORS'
++++ LS_COLORS='rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.axv=01;35:*.anx=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.axa=00;36:*.oga=00;36:*.spx=00;36:*.xspf=00;36:'
++++ export LS_COLORS
+++ alias 'ls=ls --color=auto'
+++ alias 'grep=grep --color=auto'
+++ alias 'fgrep=fgrep --color=auto'
+++ alias 'egrep=egrep --color=auto'
+++ export DEVGIT=/ccc/workflash/cont003/gen6035/mathiotp/TOOLS
+++ DEVGIT=/ccc/workflash/cont003/gen6035/mathiotp/TOOLS
+++ export WORKDIR=/ccc/scratch/cont003/gen6035/mathiotp
+++ WORKDIR=/ccc/scratch/cont003/gen6035/mathiotp
+++ export UDIR=/ccc/cont003/home/gen6035/mathiotp/NEMO/DRAKKAR/CONFIGS
+++ UDIR=/ccc/cont003/home/gen6035/mathiotp/NEMO/DRAKKAR/CONFIGS
+++ export CDIR=/ccc/workflash/cont003/gen6035/mathiotp/NEMO/DRAKKAR
+++ CDIR=/ccc/workflash/cont003/gen6035/mathiotp/NEMO/DRAKKAR
+++ export DDIR=/ccc/scratch/cont003/gen6035/mathiotp/DRAKKAR
+++ DDIR=/ccc/scratch/cont003/gen6035/mathiotp/DRAKKAR
+++ export PDIR=/ccc/cont003/home/gen6035/mathiotp/NEMO/DRAKKAR/RUNS
+++ PDIR=/ccc/cont003/home/gen6035/mathiotp/NEMO/DRAKKAR/RUNS
+++ export SDIR=/ccc/store/cont003/gen6035/mathiotp/DRAKKAR
+++ SDIR=/ccc/store/cont003/gen6035/mathiotp/DRAKKAR
+++ export EHDIR=/ccc/cont003/home/gen6035/mathiotp/ELMER/ELMER_CM/
+++ EHDIR=/ccc/cont003/home/gen6035/mathiotp/ELMER/ELMER_CM/
+++ export EDDIR=/ccc/scratch/cont003/gen6035/mathiotp/ELMER
+++ EDDIR=/ccc/scratch/cont003/gen6035/mathiotp/ELMER
+++ export ESDIR=/ccc/store/cont003/gen6035/mathiotp/ELMER
+++ ESDIR=/ccc/store/cont003/gen6035/mathiotp/ELMER
+++ export MODULEPATH=/usr/share/modulefiles/applications:/usr/share/modulefiles/environment:/usr/share/modulefiles/configurations:/usr/share/modulefiles/tools:/usr/share/modulefiles/graphics:/usr/share/modulefiles/parallel:/usr/share/modulefiles/libraries:/usr/share/modulefiles/compilers:/ccc/cont003/home/gen6035/gen6035/modules/:/ccc/work/cont003/gen6066/chekkimo/ELMERICE/install_elmerice/Modules:/ccc/cont003/home/ige/mathiotp/modules/:/ccc/cont003/home/gen6035/gen6035/modules/:/ccc/work/cont003/gen6066/chekkimo/ELMERICE/install_elmerice/Modules:/ccc/cont003/home/ige/mathiotp/modules/
+++ MODULEPATH=/usr/share/modulefiles/applications:/usr/share/modulefiles/environment:/usr/share/modulefiles/configurations:/usr/share/modulefiles/tools:/usr/share/modulefiles/graphics:/usr/share/modulefiles/parallel:/usr/share/modulefiles/libraries:/usr/share/modulefiles/compilers:/ccc/cont003/home/gen6035/gen6035/modules/:/ccc/work/cont003/gen6066/chekkimo/ELMERICE/install_elmerice/Modules:/ccc/cont003/home/ige/mathiotp/modules/:/ccc/cont003/home/gen6035/gen6035/modules/:/ccc/work/cont003/gen6066/chekkimo/ELMERICE/install_elmerice/Modules:/ccc/cont003/home/ige/mathiotp/modules/
+++ export MODULES_AUTO_HANDLING=1
+++ MODULES_AUTO_HANDLING=1
++++ /ccc/workflash/cont003/gen6035/gen6035/.conda_libs/bin/conda shell.bash hook
+++ __conda_setup='export CONDA_EXE='\''/ccc/workflash/cont003/gen6035/gen6035/.conda_libs/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/ccc/workflash/cont003/gen6035/gen6035/.conda_libs/bin/python'\''
+
+# Copyright (C) 2012 Anaconda, Inc
+# SPDX-License-Identifier: BSD-3-Clause
+
+__add_sys_prefix_to_path() {
+    # In dev-mode CONDA_EXE is python.exe and on Windows
+    # it is in a different relative location to condabin.
+    if [ -n "${_CE_CONDA}" ] && [ -n "${WINDIR+x}" ]; then
+        SYSP=$(\dirname "${CONDA_EXE}")
+    else
+        SYSP=$(\dirname "${CONDA_EXE}")
+        SYSP=$(\dirname "${SYSP}")
+    fi
+
+    if [ -n "${WINDIR+x}" ]; then
+        PATH="${SYSP}/bin:${PATH}"
+        PATH="${SYSP}/Scripts:${PATH}"
+        PATH="${SYSP}/Library/bin:${PATH}"
+        PATH="${SYSP}/Library/usr/bin:${PATH}"
+        PATH="${SYSP}/Library/mingw-w64/bin:${PATH}"
+        PATH="${SYSP}:${PATH}"
+    else
+        PATH="${SYSP}/bin:${PATH}"
+    fi
+    \export PATH
+}
+
+__conda_exe() (
+    __add_sys_prefix_to_path
+    "$CONDA_EXE" $_CE_M $_CE_CONDA "$@"
+)
+
+__conda_hashr() {
+    if [ -n "${ZSH_VERSION:+x}" ]; then
+        \rehash
+    elif [ -n "${POSH_VERSION:+x}" ]; then
+        :  # pass
+    else
+        \hash -r
+    fi
+}
+
+__conda_activate() {
+    if [ -n "${CONDA_PS1_BACKUP:+x}" ]; then
+        # Handle transition from shell activated with conda <= 4.3 to a subsequent activation
+        # after conda updated to >= 4.4. See issue #6173.
+        PS1="$CONDA_PS1_BACKUP"
+        \unset CONDA_PS1_BACKUP
+    fi
+    \local ask_conda
+    ask_conda="$(PS1="${PS1:-}" __conda_exe shell.posix "$@")" || \return
+    \eval "$ask_conda"
+    __conda_hashr
+}
+
+__conda_reactivate() {
+    \local ask_conda
+    ask_conda="$(PS1="${PS1:-}" __conda_exe shell.posix reactivate)" || \return
+    \eval "$ask_conda"
+    __conda_hashr
+}
+
+conda() {
+    \local cmd="${1-__missing__}"
+    case "$cmd" in
+        activate|deactivate)
+            __conda_activate "$@"
+            ;;
+        install|update|upgrade|remove|uninstall)
+            __conda_exe "$@" || \return
+            __conda_reactivate
+            ;;
+        *)
+            __conda_exe "$@"
+            ;;
+    esac
+}
+
+if [ -z "${CONDA_SHLVL+x}" ]; then
+    \export CONDA_SHLVL=0
+    # In dev-mode CONDA_EXE is python.exe and on Windows
+    # it is in a different relative location to condabin.
+    if [ -n "${_CE_CONDA:+x}" ] && [ -n "${WINDIR+x}" ]; then
+        PATH="$(\dirname "$CONDA_EXE")/condabin${PATH:+":${PATH}"}"
+    else
+        PATH="$(\dirname "$(\dirname "$CONDA_EXE")")/condabin${PATH:+":${PATH}"}"
+    fi
+    \export PATH
+
+    # We'\''re not allowing PS1 to be unbound. It must at least be set.
+    # However, we'\''re not exporting it, which can cause problems when starting a second shell
+    # via a first shell (i.e. starting zsh from bash).
+    if [ -z "${PS1+x}" ]; then
+        PS1=
+    fi
+fi
+
+conda activate base'
+++ '[' 0 -eq 0 ']'
+++ eval 'export CONDA_EXE='\''/ccc/workflash/cont003/gen6035/gen6035/.conda_libs/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/ccc/workflash/cont003/gen6035/gen6035/.conda_libs/bin/python'\''
+
+# Copyright (C) 2012 Anaconda, Inc
+# SPDX-License-Identifier: BSD-3-Clause
+
+__add_sys_prefix_to_path() {
+    # In dev-mode CONDA_EXE is python.exe and on Windows
+    # it is in a different relative location to condabin.
+    if [ -n "${_CE_CONDA}" ] && [ -n "${WINDIR+x}" ]; then
+        SYSP=$(\dirname "${CONDA_EXE}")
+    else
+        SYSP=$(\dirname "${CONDA_EXE}")
+        SYSP=$(\dirname "${SYSP}")
+    fi
+
+    if [ -n "${WINDIR+x}" ]; then
+        PATH="${SYSP}/bin:${PATH}"
+        PATH="${SYSP}/Scripts:${PATH}"
+        PATH="${SYSP}/Library/bin:${PATH}"
+        PATH="${SYSP}/Library/usr/bin:${PATH}"
+        PATH="${SYSP}/Library/mingw-w64/bin:${PATH}"
+        PATH="${SYSP}:${PATH}"
+    else
+        PATH="${SYSP}/bin:${PATH}"
+    fi
+    \export PATH
+}
+
+__conda_exe() (
+    __add_sys_prefix_to_path
+    "$CONDA_EXE" $_CE_M $_CE_CONDA "$@"
+)
+
+__conda_hashr() {
+    if [ -n "${ZSH_VERSION:+x}" ]; then
+        \rehash
+    elif [ -n "${POSH_VERSION:+x}" ]; then
+        :  # pass
+    else
+        \hash -r
+    fi
+}
+
+__conda_activate() {
+    if [ -n "${CONDA_PS1_BACKUP:+x}" ]; then
+        # Handle transition from shell activated with conda <= 4.3 to a subsequent activation
+        # after conda updated to >= 4.4. See issue #6173.
+        PS1="$CONDA_PS1_BACKUP"
+        \unset CONDA_PS1_BACKUP
+    fi
+    \local ask_conda
+    ask_conda="$(PS1="${PS1:-}" __conda_exe shell.posix "$@")" || \return
+    \eval "$ask_conda"
+    __conda_hashr
+}
+
+__conda_reactivate() {
+    \local ask_conda
+    ask_conda="$(PS1="${PS1:-}" __conda_exe shell.posix reactivate)" || \return
+    \eval "$ask_conda"
+    __conda_hashr
+}
+
+conda() {
+    \local cmd="${1-__missing__}"
+    case "$cmd" in
+        activate|deactivate)
+            __conda_activate "$@"
+            ;;
+        install|update|upgrade|remove|uninstall)
+            __conda_exe "$@" || \return
+            __conda_reactivate
+            ;;
+        *)
+            __conda_exe "$@"
+            ;;
+    esac
+}
+
+if [ -z "${CONDA_SHLVL+x}" ]; then
+    \export CONDA_SHLVL=0
+    # In dev-mode CONDA_EXE is python.exe and on Windows
+    # it is in a different relative location to condabin.
+    if [ -n "${_CE_CONDA:+x}" ] && [ -n "${WINDIR+x}" ]; then
+        PATH="$(\dirname "$CONDA_EXE")/condabin${PATH:+":${PATH}"}"
+    else
+        PATH="$(\dirname "$(\dirname "$CONDA_EXE")")/condabin${PATH:+":${PATH}"}"
+    fi
+    \export PATH
+
+    # We'\''re not allowing PS1 to be unbound. It must at least be set.
+    # However, we'\''re not exporting it, which can cause problems when starting a second shell
+    # via a first shell (i.e. starting zsh from bash).
+    if [ -z "${PS1+x}" ]; then
+        PS1=
+    fi
+fi
+
+conda activate base'
++++ export CONDA_EXE=/ccc/workflash/cont003/gen6035/gen6035/.conda_libs/bin/conda
++++ CONDA_EXE=/ccc/workflash/cont003/gen6035/gen6035/.conda_libs/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/ccc/workflash/cont003/gen6035/gen6035/.conda_libs/bin/python
++++ CONDA_PYTHON_EXE=/ccc/workflash/cont003/gen6035/gen6035/.conda_libs/bin/python
++++ '[' -z x ']'
++++ conda activate base
++++ local cmd=activate
++++ case "$cmd" in
++++ __conda_activate activate base
++++ '[' -n '' ']'
++++ local ask_conda
+++++ PS1=
+++++ __conda_exe shell.posix activate base
+++++ __add_sys_prefix_to_path
+++++ '[' -n '' ']'
++++++ dirname /ccc/workflash/cont003/gen6035/gen6035/.conda_libs/bin/conda
+++++ SYSP=/ccc/workflash/cont003/gen6035/gen6035/.conda_libs/bin
++++++ dirname /ccc/workflash/cont003/gen6035/gen6035/.conda_libs/bin
+++++ SYSP=/ccc/workflash/cont003/gen6035/gen6035/.conda_libs
+++++ '[' -n '' ']'
+++++ PATH=/ccc/workflash/cont003/gen6035/gen6035/.conda_libs/bin:./:/ccc/work/cont003/gen6066/chekkimo/ELMERICE/install_elmerice/elmerice-bfd923fb-opt/bin:/ccc/products/netcdf-fortran-4.4.4/intel--19.0.5.281__openmpi--4.0.1/hdf5__parallel/bin:/ccc/products/netcdf-c-4.6.0/intel--19.0.5.281__openmpi--4.0.1/hdf5__parallel/bin:/ccc/products/hdf5-1.8.20/intel--19.0.5.281__openmpi--4.0.1/parallel/bin:/ccc/products/openmpi-4.0.2/intel--19.0.5.281/default/bin:/ccc/products/gcc-8.3.0/system/default/bin:/ccc/products/ucx-1.7.0/system/default/bin:/ccc/products/pmix-3.1.3/system/default/bin:/ccc/products/hwloc-2.0.4/system/default/bin:/ccc/products/icc-19.0.5.281/system/default/19.0.5.281/bin/intel64:/ccc/workflash/cont003/gen6035/gen6035/.conda_libs/bin:/ccc/workflash/cont003/gen6035/gen6035/.conda_libs/condabin:.:/usr/share/Modules/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/ccc/products/ccc_users_env/bin:/ccc/products/ccc_crontab/bin:/ccc/products/ccc_prod/bin:/ccc/products/ccc_genodata/bin:/ccc/cont003/home/ige/mathiotp/bin:/ccc/products/ifort-19.0.5.281/system/default/19.0.5.281/bin/intel64:/ccc/products/sharp-2.0/system/default/bin:/ccc/products/hcoll-4.4.2938/system/default/bin
+++++ export PATH
+++++ /ccc/workflash/cont003/gen6035/gen6035/.conda_libs/bin/conda shell.posix activate base
++++ ask_conda='PS1='\''(base) '\''
+export PATH='\''.:/ccc/work/cont003/gen6066/chekkimo/ELMERICE/install_elmerice/elmerice-bfd923fb-opt/bin:/ccc/products/netcdf-fortran-4.4.4/intel--19.0.5.281__openmpi--4.0.1/hdf5__parallel/bin:/ccc/products/netcdf-c-4.6.0/intel--19.0.5.281__openmpi--4.0.1/hdf5__parallel/bin:/ccc/products/hdf5-1.8.20/intel--19.0.5.281__openmpi--4.0.1/parallel/bin:/ccc/products/openmpi-4.0.2/intel--19.0.5.281/default/bin:/ccc/products/gcc-8.3.0/system/default/bin:/ccc/products/ucx-1.7.0/system/default/bin:/ccc/products/pmix-3.1.3/system/default/bin:/ccc/products/hwloc-2.0.4/system/default/bin:/ccc/products/icc-19.0.5.281/system/default/19.0.5.281/bin/intel64:/ccc/workflash/cont003/gen6035/gen6035/.conda_libs/bin:/ccc/workflash/cont003/gen6035/gen6035/.conda_libs/condabin:.:/usr/share/Modules/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/ccc/products/ccc_users_env/bin:/ccc/products/ccc_crontab/bin:/ccc/products/ccc_prod/bin:/ccc/products/ccc_genodata/bin:/ccc/cont003/home/ige/mathiotp/bin:/ccc/products/ifort-19.0.5.281/system/default/19.0.5.281/bin/intel64:/ccc/products/sharp-2.0/system/default/bin:/ccc/products/hcoll-4.4.2938/system/default/bin'\''
+export CONDA_SHLVL='\''1'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\'''
++++ eval 'PS1='\''(base) '\''
+export PATH='\''.:/ccc/work/cont003/gen6066/chekkimo/ELMERICE/install_elmerice/elmerice-bfd923fb-opt/bin:/ccc/products/netcdf-fortran-4.4.4/intel--19.0.5.281__openmpi--4.0.1/hdf5__parallel/bin:/ccc/products/netcdf-c-4.6.0/intel--19.0.5.281__openmpi--4.0.1/hdf5__parallel/bin:/ccc/products/hdf5-1.8.20/intel--19.0.5.281__openmpi--4.0.1/parallel/bin:/ccc/products/openmpi-4.0.2/intel--19.0.5.281/default/bin:/ccc/products/gcc-8.3.0/system/default/bin:/ccc/products/ucx-1.7.0/system/default/bin:/ccc/products/pmix-3.1.3/system/default/bin:/ccc/products/hwloc-2.0.4/system/default/bin:/ccc/products/icc-19.0.5.281/system/default/19.0.5.281/bin/intel64:/ccc/workflash/cont003/gen6035/gen6035/.conda_libs/bin:/ccc/workflash/cont003/gen6035/gen6035/.conda_libs/condabin:.:/usr/share/Modules/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/ccc/products/ccc_users_env/bin:/ccc/products/ccc_crontab/bin:/ccc/products/ccc_prod/bin:/ccc/products/ccc_genodata/bin:/ccc/cont003/home/ige/mathiotp/bin:/ccc/products/ifort-19.0.5.281/system/default/19.0.5.281/bin/intel64:/ccc/products/sharp-2.0/system/default/bin:/ccc/products/hcoll-4.4.2938/system/default/bin'\''
+export CONDA_SHLVL='\''1'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\'''
+++++ PS1='(base) '
+++++ export PATH=.:/ccc/work/cont003/gen6066/chekkimo/ELMERICE/install_elmerice/elmerice-bfd923fb-opt/bin:/ccc/products/netcdf-fortran-4.4.4/intel--19.0.5.281__openmpi--4.0.1/hdf5__parallel/bin:/ccc/products/netcdf-c-4.6.0/intel--19.0.5.281__openmpi--4.0.1/hdf5__parallel/bin:/ccc/products/hdf5-1.8.20/intel--19.0.5.281__openmpi--4.0.1/parallel/bin:/ccc/products/openmpi-4.0.2/intel--19.0.5.281/default/bin:/ccc/products/gcc-8.3.0/system/default/bin:/ccc/products/ucx-1.7.0/system/default/bin:/ccc/products/pmix-3.1.3/system/default/bin:/ccc/products/hwloc-2.0.4/system/default/bin:/ccc/products/icc-19.0.5.281/system/default/19.0.5.281/bin/intel64:/ccc/workflash/cont003/gen6035/gen6035/.conda_libs/bin:/ccc/workflash/cont003/gen6035/gen6035/.conda_libs/condabin:.:/usr/share/Modules/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/ccc/products/ccc_users_env/bin:/ccc/products/ccc_crontab/bin:/ccc/products/ccc_prod/bin:/ccc/products/ccc_genodata/bin:/ccc/cont003/home/ige/mathiotp/bin:/ccc/products/ifort-19.0.5.281/system/default/19.0.5.281/bin/intel64:/ccc/products/sharp-2.0/system/default/bin:/ccc/products/hcoll-4.4.2938/system/default/bin
+++++ PATH=.:/ccc/work/cont003/gen6066/chekkimo/ELMERICE/install_elmerice/elmerice-bfd923fb-opt/bin:/ccc/products/netcdf-fortran-4.4.4/intel--19.0.5.281__openmpi--4.0.1/hdf5__parallel/bin:/ccc/products/netcdf-c-4.6.0/intel--19.0.5.281__openmpi--4.0.1/hdf5__parallel/bin:/ccc/products/hdf5-1.8.20/intel--19.0.5.281__openmpi--4.0.1/parallel/bin:/ccc/products/openmpi-4.0.2/intel--19.0.5.281/default/bin:/ccc/products/gcc-8.3.0/system/default/bin:/ccc/products/ucx-1.7.0/system/default/bin:/ccc/products/pmix-3.1.3/system/default/bin:/ccc/products/hwloc-2.0.4/system/default/bin:/ccc/products/icc-19.0.5.281/system/default/19.0.5.281/bin/intel64:/ccc/workflash/cont003/gen6035/gen6035/.conda_libs/bin:/ccc/workflash/cont003/gen6035/gen6035/.conda_libs/condabin:.:/usr/share/Modules/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/ccc/products/ccc_users_env/bin:/ccc/products/ccc_crontab/bin:/ccc/products/ccc_prod/bin:/ccc/products/ccc_genodata/bin:/ccc/cont003/home/ige/mathiotp/bin:/ccc/products/ifort-19.0.5.281/system/default/19.0.5.281/bin/intel64:/ccc/products/sharp-2.0/system/default/bin:/ccc/products/hcoll-4.4.2938/system/default/bin
+++++ export CONDA_SHLVL=1
+++++ CONDA_SHLVL=1
+++++ export 'CONDA_PROMPT_MODIFIER=(base) '
+++++ CONDA_PROMPT_MODIFIER='(base) '
++++ __conda_hashr
++++ '[' -n '' ']'
++++ '[' -n '' ']'
++++ hash -r
+++ unset __conda_setup
++ newgrp gen6035
++ ulimit -s unlimit
+/tmp/jobstart.201627: line 27: ulimit: unlimit: invalid number
++ . param_arch.bash
+++ GROUPUSR=gen6035
+++ ELMER_SCRATCHDIR=/ccc/scratch/cont003/gen6035/mathiotp
+++ ELMER_WORKDIR=/ccc/workflash/cont003/gen6035/gen6035
+++ ELMER_HOMEDIR=/ccc/cont003/home/gen6035/mathiotp
+++ WELMER=/ccc/scratch/cont003/gen6035/mathiotp/ELMER//-/-_WORK
+++ RELMER=/ccc/scratch/cont003/gen6035/mathiotp/ELMER//-/-_R
+++ IELMER=/ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT/
+++ SELMER=/ccc/scratch/cont003/gen6035/mathiotp/ELMER//-/-_S
++ . run_param.bash
+++ NELMER=48
+++ NXIOS=1
+++ NP=49
+++ NN=1
+++ STARTITER=1
+++ ENDITER=2
+++ RSTINITpath=/ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//RST_simplified2/
+++ RSTINITfile=NEWMESH.result.nc
+++ MSHINITpath=/ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2/
++ load_elmer_modules
++ module purge
++ unset _mlshdbg
++ '[' 1 = 1 ']'
++ case "$-" in
++ set +x
+module dfldatadir/gen6035 (Data Directory) cannot be unloaded
+unload module netcdf-fortran/4.4.4 (NetCDF Fortran HDF5 parallel flavor)
+unload module netcdf-c/4.6.0 (NetCDF-CNetCDF-C HDF5 hdf5__parallel flavor)
+unload module hdf5/1.8.20 (HDF5)
+unload module mpi/openmpi/4.0.2 (Open MPI)
+unload module gnu/8.3.0 (GNU Compiler Collection)
+unload module fortran/gnu/8.3.0 (GNU Fortran compiler)
+unload module c++/gnu/8.3.0 (GNU C++ compiler)
+unload module c/gnu/8.3.0 (GNU C compiler)
+unload module flavor/hdf5/parallel (HDF5 flavor)
+unload module ucx/1.7.0 (Mellanox backend)
+unload module flavor/ucx/standard (ucx flavor)
+unload module pmix/3.1.3 (Process Management Interface (PMI) for eXascale)
+unload module hwloc/2.0.4 (Hwloc)
+unload module flavor/libccc_user/hwloc2 (libccc_user flavor)
+unload module hcoll/4.4.2938 (Mellanox hcoll)
+unload module sharp/2.0 (Mellanox backend)
+unload module feature/hcoll/multicast/enable (Hcoll features)
+unload module flavor/hcoll/standard (hcoll flavor)
+unload module feature/openmpi/net/auto (MPI Network backend feature)
+unload module feature/openmpi/io/standard (MPI-IO feature)
+unload module flavor/openmpi/standard (Open MPI flavor)
+unload module feature/openmpi/mpi_compiler/intel (MPI Compiler feature)
+unload module flavor/buildmpi/openmpi/4.0 (MPI build flavor)
+unload module intel/19.0.5.281 (Intel Compiler Suite)
+unload module mkl/19.0.5.281 (Intel MKL LP64 Sequential without mpi interfaces)
+unload module feature/mkl/vector/avx2 (MKL vectorization feature)
+unload module feature/mkl/single_node (MKL without mpi interface)
+unload module feature/mkl/sequential (MKL feature)
+unload module feature/mkl/lp64 (MKL feature)
+unload module fortran/intel/19.0.5.281 (Intel Fortran compiler)
+unload module c++/intel/19.0.5.281 (Intel C++ Compiler)
+unload module c/intel/19.0.5.281 (Intel C Compiler)
+unload module licsrv/intel (License service)
+unload module flavor/buildcompiler/intel/19 (Compiler build flavor)
+module ccc/1.0 (CCC User Environment) cannot be unloaded
++ unset _mlshdbg
++ return 1
++ module load elmerfem/elmerfem-bfd923fb-opt
++ unset _mlshdbg
++ '[' 1 = 1 ']'
++ case "$-" in
++ set +x
+load module flavor/buildcompiler/intel/19 (Compiler build flavor)
+load module licsrv/intel (License service)
+load module c/intel/19.0.5.281 (Intel C Compiler)
+load module c++/intel/19.0.5.281 (Intel C++ Compiler)
+load module fortran/intel/19.0.5.281 (Intel Fortran compiler)
+load module feature/mkl/lp64 (MKL feature)
+load module feature/mkl/sequential (MKL feature)
+load module feature/mkl/single_node (MKL without mpi interface)
+load module feature/mkl/vector/avx2 (MKL vectorization feature)
+load module mkl/19.0.5.281 (Intel MKL LP64 Sequential without mpi interfaces)
+load module intel/19.0.5.281 (Intel Compiler Suite)
+load module flavor/buildmpi/openmpi/4.0 (MPI build flavor)
+load module feature/openmpi/mpi_compiler/intel (MPI Compiler feature)
+load module flavor/openmpi/standard (Open MPI flavor)
+load module feature/openmpi/io/standard (MPI-IO feature)
+load module feature/openmpi/net/auto (MPI Network backend feature)
+load module flavor/hcoll/standard (hcoll flavor)
+load module feature/hcoll/multicast/enable (Hcoll features)
+load module sharp/2.0 (Mellanox backend)
+load module hcoll/4.4.2938 (Mellanox hcoll)
+load module flavor/libccc_user/hwloc2 (libccc_user flavor)
+load module hwloc/2.0.4 (Hwloc)
+load module pmix/3.1.3 (Process Management Interface (PMI) for eXascale)
+load module flavor/ucx/standard (ucx flavor)
+load module ucx/1.7.0 (Mellanox backend)
+load module mpi/openmpi/4.0.2 (Open MPI)
+load module flavor/hdf5/parallel (HDF5 flavor)
+load module hdf5/1.8.20 (HDF5)
+load module netcdf-c/4.6.0 (NetCDF-CNetCDF-C HDF5 hdf5__parallel flavor)
+load module netcdf-fortran/4.4.4 (NetCDF Fortran HDF5 parallel flavor)
+unload module netcdf-fortran/4.4.4 (NetCDF Fortran HDF5 parallel flavor)
+unload module netcdf-c/4.6.0 (NetCDF-CNetCDF-C HDF5 hdf5__parallel flavor)
+unload module hdf5/1.8.20 (HDF5)
+unload module mpi/openmpi/4.0.2 (Open MPI)
+load module c/gnu/8.3.0 (GNU C compiler)
+load module c++/gnu/8.3.0 (GNU C++ compiler)
+load module fortran/gnu/8.3.0 (GNU Fortran compiler)
+load module gnu/8.3.0 (GNU Compiler Collection)
+load module mpi/openmpi/4.0.2 (Open MPI)
+load module hdf5/1.8.20 (HDF5)
+load module netcdf-c/4.6.0 (NetCDF-CNetCDF-C HDF5 hdf5__parallel flavor)
+load module netcdf-fortran/4.4.4 (NetCDF Fortran HDF5 parallel flavor)
++ unset _mlshdbg
++ return 0
++ '[' '!' -d /ccc/workflash/cont003/gen6035/mathiotp/ELMER/TMPDIR/ADD_VAR_TO_RST ']'
++ ln -sf /ccc/workflash/cont003/gen6035/mathiotp/ELMER/TMPDIR/ADD_VAR_TO_RST MY_WORK
++ cp add_var_to_rst.sif MY_WORK/.
++ cp add_var_to_rst.incf MY_WORK/.
++ cp add_var_to_rst.param MY_WORK/.
++ cp context_elmer.xml file_def_elmer.xml iodef.xml MY_WORK/.
++ '[' '!' -d MY_WORK/MSH/partitioning.48 ']'
++ ln -sf /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.10.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.10.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.10.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.10.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.10.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.11.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.11.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.11.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.11.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.11.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.12.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.12.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.12.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.12.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.12.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.13.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.13.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.13.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.13.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.13.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.14.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.14.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.14.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.14.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.14.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.15.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.15.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.15.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.15.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.15.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.16.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.16.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.16.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.16.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.16.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.17.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.17.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.17.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.17.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.17.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.18.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.18.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.18.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.18.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.18.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.19.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.19.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.19.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.19.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.19.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.1.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.1.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.1.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.1.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.1.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.20.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.20.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.20.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.20.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.20.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.21.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.21.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.21.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.21.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.21.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.22.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.22.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.22.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.22.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.22.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.23.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.23.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.23.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.23.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.23.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.24.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.24.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.24.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.24.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.24.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.25.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.25.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.25.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.25.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.25.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.26.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.26.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.26.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.26.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.26.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.27.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.27.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.27.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.27.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.27.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.28.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.28.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.28.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.28.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.28.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.29.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.29.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.29.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.29.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.29.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.2.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.2.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.2.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.2.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.2.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.30.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.30.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.30.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.30.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.30.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.31.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.31.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.31.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.31.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.31.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.32.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.32.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.32.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.32.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.32.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.33.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.33.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.33.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.33.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.33.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.34.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.34.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.34.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.34.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.34.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.35.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.35.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.35.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.35.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.35.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.36.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.36.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.36.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.36.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.36.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.37.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.37.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.37.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.37.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.37.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.38.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.38.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.38.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.38.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.38.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.39.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.39.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.39.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.39.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.39.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.3.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.3.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.3.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.3.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.3.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.40.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.40.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.40.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.40.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.40.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.41.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.41.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.41.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.41.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.41.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.42.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.42.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.42.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.42.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.42.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.43.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.43.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.43.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.43.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.43.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.44.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.44.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.44.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.44.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.44.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.45.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.45.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.45.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.45.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.45.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.46.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.46.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.46.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.46.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.46.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.47.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.47.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.47.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.47.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.47.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.48.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.48.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.48.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.48.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.48.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.4.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.4.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.4.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.4.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.4.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.5.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.5.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.5.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.5.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.5.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.6.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.6.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.6.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.6.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.6.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.7.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.7.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.7.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.7.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.7.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.8.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.8.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.8.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.8.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.8.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.9.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.9.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.9.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.9.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.9.shared /ccc/workflash/cont003/gen6035/mathiotp/ELMER/TMPDIR/ADD_VAR_TO_RST/MSH/partitioning.48/.
++ cp /ccc/work/cont003/gen6066/chekkimo/ELMERICE/install_elmerice/libelmerice/xios-2.0_rev2320_install/bin/xios_server.exe MY_WORK/.
++ cp nearestpoint MY_WORK/.
++ cp USF_SSAViscosity MY_WORK/.
++ cd MY_WORK/.
++ '[' -f app.conf ']'
++ rm -f app.conf
++ touch app.conf
++ echo '48 ElmerSolver_mpi'
++ echo '1 ./xios_server.exe'
++ echo add_var_to_rst.sif
++ run_elmer
++ ccc_mprun -f app.conf
++ RUNSTATUS=0
++ exit 0

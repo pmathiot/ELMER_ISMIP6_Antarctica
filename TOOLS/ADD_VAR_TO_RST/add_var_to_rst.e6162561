@@ -1,0 +1,2033 @@
+slurmstepd-irene4857: error: task[0] unable to set taskset '0x0'
++ SCRIPT_PID=199034
++ /bin/bash -x /tmp/jobstart.198986
++ set +x
++ unset _mlshdbg
++ '[' 1 = 1 ']'
++ case "$-" in
++ set +x
++ unset _mlshdbg
++ . /ccc/cont003/home/ige/mathiotp/.bashrc
+++ '[' -f /etc/bashrc ']'
+++ . /etc/bashrc
++++ '[' '' ']'
++++ shopt -q login_shell
++++ '[' 38252 -lt 1000 ']'
++++ for i in '/etc/profile.d/*.sh'
++++ '[' -r /etc/profile.d/256term.sh ']'
++++ '[' '' ']'
++++ . /etc/profile.d/256term.sh
++++ for i in '/etc/profile.d/*.sh'
++++ '[' -r /etc/profile.d/abrt-console-notification.sh ']'
++++ '[' '' ']'
++++ . /etc/profile.d/abrt-console-notification.sh
++++ for i in '/etc/profile.d/*.sh'
++++ '[' -r /etc/profile.d/bash_completion.sh ']'
++++ '[' '' ']'
++++ . /etc/profile.d/bash_completion.sh
++++ for i in '/etc/profile.d/*.sh'
++++ '[' -r /etc/profile.d/bash_env.sh ']'
++++ '[' '' ']'
++++ . /etc/profile.d/bash_env.sh
++++ for i in '/etc/profile.d/*.sh'
++++ '[' -r /etc/profile.d/colorgrep.sh ']'
++++ '[' '' ']'
++++ . /etc/profile.d/colorgrep.sh
++++ for i in '/etc/profile.d/*.sh'
++++ '[' -r /etc/profile.d/colorls.sh ']'
++++ '[' '' ']'
++++ . /etc/profile.d/colorls.sh
++++ for i in '/etc/profile.d/*.sh'
++++ '[' -r /etc/profile.d/cvs.sh ']'
++++ '[' '' ']'
++++ . /etc/profile.d/cvs.sh
++++ for i in '/etc/profile.d/*.sh'
++++ '[' -r /etc/profile.d/exit-if-no-home.sh ']'
++++ '[' '' ']'
++++ . /etc/profile.d/exit-if-no-home.sh
++++ for i in '/etc/profile.d/*.sh'
++++ '[' -r /etc/profile.d/flatpak.sh ']'
++++ '[' '' ']'
++++ . /etc/profile.d/flatpak.sh
++++ for i in '/etc/profile.d/*.sh'
++++ '[' -r /etc/profile.d/lang.sh ']'
++++ '[' '' ']'
++++ . /etc/profile.d/lang.sh
++++ for i in '/etc/profile.d/*.sh'
++++ '[' -r /etc/profile.d/less.sh ']'
++++ '[' '' ']'
++++ . /etc/profile.d/less.sh
++++ for i in '/etc/profile.d/*.sh'
++++ '[' -r /etc/profile.d/lustre-job-id.sh ']'
++++ '[' '' ']'
++++ . /etc/profile.d/lustre-job-id.sh
++++ for i in '/etc/profile.d/*.sh'
++++ '[' -r /etc/profile.d/modules.sh ']'
++++ '[' '' ']'
++++ . /etc/profile.d/modules.sh
++++ for i in '/etc/profile.d/*.sh'
++++ '[' -r /etc/profile.d/PackageKit.sh ']'
++++ '[' '' ']'
++++ . /etc/profile.d/PackageKit.sh
++++ for i in '/etc/profile.d/*.sh'
++++ '[' -r /etc/profile.d/qt-graphicssystem.sh ']'
++++ '[' '' ']'
++++ . /etc/profile.d/qt-graphicssystem.sh
++++ for i in '/etc/profile.d/*.sh'
++++ '[' -r /etc/profile.d/vim.sh ']'
++++ '[' '' ']'
++++ . /etc/profile.d/vim.sh
++++ for i in '/etc/profile.d/*.sh'
++++ '[' -r /etc/profile.d/vte.sh ']'
++++ '[' '' ']'
++++ . /etc/profile.d/vte.sh
++++ for i in '/etc/profile.d/*.sh'
++++ '[' -r /etc/profile.d/which2.sh ']'
++++ '[' '' ']'
++++ . /etc/profile.d/which2.sh
++++ unset i
++++ unset pathmunge
+++ module switch dfldatadir/gen6035
+++ unset _mlshdbg
+++ '[' 1 = 1 ']'
+++ case "$-" in
+++ set +x
+unload module dfldatadir/gen6035 (Data Directory)
+unload module datadir/gen6035 (Data Directory)
+load module datadir/gen6035 (Data Directory)
+load module dfldatadir/gen6035 (Data Directory)
+++ unset _mlshdbg
+++ return 0
+++ ulimit -s unlimited
+++ export PATH=./:/ccc/work/cont003/gen6066/chekkimo/ELMERICE/install_elmerice/elmerice-bfd923fb-opt/bin:/ccc/products/netcdf-fortran-4.4.4/intel--19.0.5.281__openmpi--4.0.1/hdf5__parallel/bin:/ccc/products/netcdf-c-4.6.0/intel--19.0.5.281__openmpi--4.0.1/hdf5__parallel/bin:/ccc/products/hdf5-1.8.20/intel--19.0.5.281__openmpi--4.0.1/parallel/bin:/ccc/products/openmpi-4.0.2/intel--19.0.5.281/default/bin:/ccc/products/gcc-8.3.0/system/default/bin:/ccc/products/ucx-1.7.0/system/default/bin:/ccc/products/pmix-3.1.3/system/default/bin:/ccc/products/hwloc-2.0.4/system/default/bin:/ccc/products/icc-19.0.5.281/system/default/19.0.5.281/bin/intel64:/ccc/workflash/cont003/gen6035/gen6035/.conda_libs/bin:/ccc/workflash/cont003/gen6035/gen6035/.conda_libs/condabin:.:/usr/share/Modules/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/ccc/products/ccc_users_env/bin:/ccc/products/ccc_crontab/bin:/ccc/products/ccc_prod/bin:/ccc/products/ccc_genodata/bin:/ccc/cont003/home/ige/mathiotp/bin:/ccc/products/ifort-19.0.5.281/system/default/19.0.5.281/bin/intel64:/ccc/products/sharp-2.0/system/default/bin:/ccc/products/hcoll-4.4.2938/system/default/bin
+++ PATH=./:/ccc/work/cont003/gen6066/chekkimo/ELMERICE/install_elmerice/elmerice-bfd923fb-opt/bin:/ccc/products/netcdf-fortran-4.4.4/intel--19.0.5.281__openmpi--4.0.1/hdf5__parallel/bin:/ccc/products/netcdf-c-4.6.0/intel--19.0.5.281__openmpi--4.0.1/hdf5__parallel/bin:/ccc/products/hdf5-1.8.20/intel--19.0.5.281__openmpi--4.0.1/parallel/bin:/ccc/products/openmpi-4.0.2/intel--19.0.5.281/default/bin:/ccc/products/gcc-8.3.0/system/default/bin:/ccc/products/ucx-1.7.0/system/default/bin:/ccc/products/pmix-3.1.3/system/default/bin:/ccc/products/hwloc-2.0.4/system/default/bin:/ccc/products/icc-19.0.5.281/system/default/19.0.5.281/bin/intel64:/ccc/workflash/cont003/gen6035/gen6035/.conda_libs/bin:/ccc/workflash/cont003/gen6035/gen6035/.conda_libs/condabin:.:/usr/share/Modules/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/ccc/products/ccc_users_env/bin:/ccc/products/ccc_crontab/bin:/ccc/products/ccc_prod/bin:/ccc/products/ccc_genodata/bin:/ccc/cont003/home/ige/mathiotp/bin:/ccc/products/ifort-19.0.5.281/system/default/19.0.5.281/bin/intel64:/ccc/products/sharp-2.0/system/default/bin:/ccc/products/hcoll-4.4.2938/system/default/bin
+++ shopt -s histappend
+++ HISTCONTROL=ignoreboth
+++ HISTIGNORE='cd:ls:[bf]g:rm -rf:rm -f:rm -r'
+++ HISTSIZE=1000
+++ HISTFILESIZE=2000
+++ shopt -s checkwinsize
+++ alias 'rm=rm -i'
+++ alias 'cp=cp -i'
+++ alias 'mv=mv -i'
+++ alias 'nh=ncdump -hs'
+++ alias 'll=ls -l'
+++ alias python_VALSO=python3
+++ '[' -x /usr/bin/dircolors ']'
+++ test -r /ccc/cont003/home/ige/mathiotp/.dircolors
++++ dircolors -b
+++ eval 'LS_COLORS='\''rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.axv=01;35:*.anx=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.axa=00;36:*.oga=00;36:*.spx=00;36:*.xspf=00;36:'\'';
+export LS_COLORS'
++++ LS_COLORS='rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.axv=01;35:*.anx=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.axa=00;36:*.oga=00;36:*.spx=00;36:*.xspf=00;36:'
++++ export LS_COLORS
+++ alias 'ls=ls --color=auto'
+++ alias 'grep=grep --color=auto'
+++ alias 'fgrep=fgrep --color=auto'
+++ alias 'egrep=egrep --color=auto'
+++ export DEVGIT=/ccc/workflash/cont003/gen6035/mathiotp/TOOLS
+++ DEVGIT=/ccc/workflash/cont003/gen6035/mathiotp/TOOLS
+++ export WORKDIR=/ccc/scratch/cont003/gen6035/mathiotp
+++ WORKDIR=/ccc/scratch/cont003/gen6035/mathiotp
+++ export UDIR=/ccc/cont003/home/gen6035/mathiotp/NEMO/DRAKKAR/CONFIGS
+++ UDIR=/ccc/cont003/home/gen6035/mathiotp/NEMO/DRAKKAR/CONFIGS
+++ export CDIR=/ccc/workflash/cont003/gen6035/mathiotp/NEMO/DRAKKAR
+++ CDIR=/ccc/workflash/cont003/gen6035/mathiotp/NEMO/DRAKKAR
+++ export DDIR=/ccc/scratch/cont003/gen6035/mathiotp/DRAKKAR
+++ DDIR=/ccc/scratch/cont003/gen6035/mathiotp/DRAKKAR
+++ export PDIR=/ccc/cont003/home/gen6035/mathiotp/NEMO/DRAKKAR/RUNS
+++ PDIR=/ccc/cont003/home/gen6035/mathiotp/NEMO/DRAKKAR/RUNS
+++ export SDIR=/ccc/store/cont003/gen6035/mathiotp/DRAKKAR
+++ SDIR=/ccc/store/cont003/gen6035/mathiotp/DRAKKAR
+++ export EHDIR=/ccc/cont003/home/gen6035/mathiotp/ELMER/ELMER_CM/
+++ EHDIR=/ccc/cont003/home/gen6035/mathiotp/ELMER/ELMER_CM/
+++ export EDDIR=/ccc/scratch/cont003/gen6035/mathiotp/ELMER
+++ EDDIR=/ccc/scratch/cont003/gen6035/mathiotp/ELMER
+++ export ESDIR=/ccc/store/cont003/gen6035/mathiotp/ELMER
+++ ESDIR=/ccc/store/cont003/gen6035/mathiotp/ELMER
+++ export MODULEPATH=/usr/share/modulefiles/applications:/usr/share/modulefiles/environment:/usr/share/modulefiles/configurations:/usr/share/modulefiles/tools:/usr/share/modulefiles/graphics:/usr/share/modulefiles/parallel:/usr/share/modulefiles/libraries:/usr/share/modulefiles/compilers:/ccc/cont003/home/gen6035/gen6035/modules/:/ccc/work/cont003/gen6066/chekkimo/ELMERICE/install_elmerice/Modules:/ccc/cont003/home/ige/mathiotp/modules/:/ccc/cont003/home/gen6035/gen6035/modules/:/ccc/work/cont003/gen6066/chekkimo/ELMERICE/install_elmerice/Modules:/ccc/cont003/home/ige/mathiotp/modules/
+++ MODULEPATH=/usr/share/modulefiles/applications:/usr/share/modulefiles/environment:/usr/share/modulefiles/configurations:/usr/share/modulefiles/tools:/usr/share/modulefiles/graphics:/usr/share/modulefiles/parallel:/usr/share/modulefiles/libraries:/usr/share/modulefiles/compilers:/ccc/cont003/home/gen6035/gen6035/modules/:/ccc/work/cont003/gen6066/chekkimo/ELMERICE/install_elmerice/Modules:/ccc/cont003/home/ige/mathiotp/modules/:/ccc/cont003/home/gen6035/gen6035/modules/:/ccc/work/cont003/gen6066/chekkimo/ELMERICE/install_elmerice/Modules:/ccc/cont003/home/ige/mathiotp/modules/
+++ export MODULES_AUTO_HANDLING=1
+++ MODULES_AUTO_HANDLING=1
++++ /ccc/workflash/cont003/gen6035/gen6035/.conda_libs/bin/conda shell.bash hook
+++ __conda_setup='export CONDA_EXE='\''/ccc/workflash/cont003/gen6035/gen6035/.conda_libs/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/ccc/workflash/cont003/gen6035/gen6035/.conda_libs/bin/python'\''
+
+# Copyright (C) 2012 Anaconda, Inc
+# SPDX-License-Identifier: BSD-3-Clause
+
+__add_sys_prefix_to_path() {
+    # In dev-mode CONDA_EXE is python.exe and on Windows
+    # it is in a different relative location to condabin.
+    if [ -n "${_CE_CONDA}" ] && [ -n "${WINDIR+x}" ]; then
+        SYSP=$(\dirname "${CONDA_EXE}")
+    else
+        SYSP=$(\dirname "${CONDA_EXE}")
+        SYSP=$(\dirname "${SYSP}")
+    fi
+
+    if [ -n "${WINDIR+x}" ]; then
+        PATH="${SYSP}/bin:${PATH}"
+        PATH="${SYSP}/Scripts:${PATH}"
+        PATH="${SYSP}/Library/bin:${PATH}"
+        PATH="${SYSP}/Library/usr/bin:${PATH}"
+        PATH="${SYSP}/Library/mingw-w64/bin:${PATH}"
+        PATH="${SYSP}:${PATH}"
+    else
+        PATH="${SYSP}/bin:${PATH}"
+    fi
+    \export PATH
+}
+
+__conda_exe() (
+    __add_sys_prefix_to_path
+    "$CONDA_EXE" $_CE_M $_CE_CONDA "$@"
+)
+
+__conda_hashr() {
+    if [ -n "${ZSH_VERSION:+x}" ]; then
+        \rehash
+    elif [ -n "${POSH_VERSION:+x}" ]; then
+        :  # pass
+    else
+        \hash -r
+    fi
+}
+
+__conda_activate() {
+    if [ -n "${CONDA_PS1_BACKUP:+x}" ]; then
+        # Handle transition from shell activated with conda <= 4.3 to a subsequent activation
+        # after conda updated to >= 4.4. See issue #6173.
+        PS1="$CONDA_PS1_BACKUP"
+        \unset CONDA_PS1_BACKUP
+    fi
+    \local ask_conda
+    ask_conda="$(PS1="${PS1:-}" __conda_exe shell.posix "$@")" || \return
+    \eval "$ask_conda"
+    __conda_hashr
+}
+
+__conda_reactivate() {
+    \local ask_conda
+    ask_conda="$(PS1="${PS1:-}" __conda_exe shell.posix reactivate)" || \return
+    \eval "$ask_conda"
+    __conda_hashr
+}
+
+conda() {
+    \local cmd="${1-__missing__}"
+    case "$cmd" in
+        activate|deactivate)
+            __conda_activate "$@"
+            ;;
+        install|update|upgrade|remove|uninstall)
+            __conda_exe "$@" || \return
+            __conda_reactivate
+            ;;
+        *)
+            __conda_exe "$@"
+            ;;
+    esac
+}
+
+if [ -z "${CONDA_SHLVL+x}" ]; then
+    \export CONDA_SHLVL=0
+    # In dev-mode CONDA_EXE is python.exe and on Windows
+    # it is in a different relative location to condabin.
+    if [ -n "${_CE_CONDA:+x}" ] && [ -n "${WINDIR+x}" ]; then
+        PATH="$(\dirname "$CONDA_EXE")/condabin${PATH:+":${PATH}"}"
+    else
+        PATH="$(\dirname "$(\dirname "$CONDA_EXE")")/condabin${PATH:+":${PATH}"}"
+    fi
+    \export PATH
+
+    # We'\''re not allowing PS1 to be unbound. It must at least be set.
+    # However, we'\''re not exporting it, which can cause problems when starting a second shell
+    # via a first shell (i.e. starting zsh from bash).
+    if [ -z "${PS1+x}" ]; then
+        PS1=
+    fi
+fi
+
+conda activate base'
+++ '[' 0 -eq 0 ']'
+++ eval 'export CONDA_EXE='\''/ccc/workflash/cont003/gen6035/gen6035/.conda_libs/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/ccc/workflash/cont003/gen6035/gen6035/.conda_libs/bin/python'\''
+
+# Copyright (C) 2012 Anaconda, Inc
+# SPDX-License-Identifier: BSD-3-Clause
+
+__add_sys_prefix_to_path() {
+    # In dev-mode CONDA_EXE is python.exe and on Windows
+    # it is in a different relative location to condabin.
+    if [ -n "${_CE_CONDA}" ] && [ -n "${WINDIR+x}" ]; then
+        SYSP=$(\dirname "${CONDA_EXE}")
+    else
+        SYSP=$(\dirname "${CONDA_EXE}")
+        SYSP=$(\dirname "${SYSP}")
+    fi
+
+    if [ -n "${WINDIR+x}" ]; then
+        PATH="${SYSP}/bin:${PATH}"
+        PATH="${SYSP}/Scripts:${PATH}"
+        PATH="${SYSP}/Library/bin:${PATH}"
+        PATH="${SYSP}/Library/usr/bin:${PATH}"
+        PATH="${SYSP}/Library/mingw-w64/bin:${PATH}"
+        PATH="${SYSP}:${PATH}"
+    else
+        PATH="${SYSP}/bin:${PATH}"
+    fi
+    \export PATH
+}
+
+__conda_exe() (
+    __add_sys_prefix_to_path
+    "$CONDA_EXE" $_CE_M $_CE_CONDA "$@"
+)
+
+__conda_hashr() {
+    if [ -n "${ZSH_VERSION:+x}" ]; then
+        \rehash
+    elif [ -n "${POSH_VERSION:+x}" ]; then
+        :  # pass
+    else
+        \hash -r
+    fi
+}
+
+__conda_activate() {
+    if [ -n "${CONDA_PS1_BACKUP:+x}" ]; then
+        # Handle transition from shell activated with conda <= 4.3 to a subsequent activation
+        # after conda updated to >= 4.4. See issue #6173.
+        PS1="$CONDA_PS1_BACKUP"
+        \unset CONDA_PS1_BACKUP
+    fi
+    \local ask_conda
+    ask_conda="$(PS1="${PS1:-}" __conda_exe shell.posix "$@")" || \return
+    \eval "$ask_conda"
+    __conda_hashr
+}
+
+__conda_reactivate() {
+    \local ask_conda
+    ask_conda="$(PS1="${PS1:-}" __conda_exe shell.posix reactivate)" || \return
+    \eval "$ask_conda"
+    __conda_hashr
+}
+
+conda() {
+    \local cmd="${1-__missing__}"
+    case "$cmd" in
+        activate|deactivate)
+            __conda_activate "$@"
+            ;;
+        install|update|upgrade|remove|uninstall)
+            __conda_exe "$@" || \return
+            __conda_reactivate
+            ;;
+        *)
+            __conda_exe "$@"
+            ;;
+    esac
+}
+
+if [ -z "${CONDA_SHLVL+x}" ]; then
+    \export CONDA_SHLVL=0
+    # In dev-mode CONDA_EXE is python.exe and on Windows
+    # it is in a different relative location to condabin.
+    if [ -n "${_CE_CONDA:+x}" ] && [ -n "${WINDIR+x}" ]; then
+        PATH="$(\dirname "$CONDA_EXE")/condabin${PATH:+":${PATH}"}"
+    else
+        PATH="$(\dirname "$(\dirname "$CONDA_EXE")")/condabin${PATH:+":${PATH}"}"
+    fi
+    \export PATH
+
+    # We'\''re not allowing PS1 to be unbound. It must at least be set.
+    # However, we'\''re not exporting it, which can cause problems when starting a second shell
+    # via a first shell (i.e. starting zsh from bash).
+    if [ -z "${PS1+x}" ]; then
+        PS1=
+    fi
+fi
+
+conda activate base'
++++ export CONDA_EXE=/ccc/workflash/cont003/gen6035/gen6035/.conda_libs/bin/conda
++++ CONDA_EXE=/ccc/workflash/cont003/gen6035/gen6035/.conda_libs/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/ccc/workflash/cont003/gen6035/gen6035/.conda_libs/bin/python
++++ CONDA_PYTHON_EXE=/ccc/workflash/cont003/gen6035/gen6035/.conda_libs/bin/python
++++ '[' -z x ']'
++++ conda activate base
++++ local cmd=activate
++++ case "$cmd" in
++++ __conda_activate activate base
++++ '[' -n '' ']'
++++ local ask_conda
+++++ PS1=
+++++ __conda_exe shell.posix activate base
+++++ __add_sys_prefix_to_path
+++++ '[' -n '' ']'
++++++ dirname /ccc/workflash/cont003/gen6035/gen6035/.conda_libs/bin/conda
+++++ SYSP=/ccc/workflash/cont003/gen6035/gen6035/.conda_libs/bin
++++++ dirname /ccc/workflash/cont003/gen6035/gen6035/.conda_libs/bin
+++++ SYSP=/ccc/workflash/cont003/gen6035/gen6035/.conda_libs
+++++ '[' -n '' ']'
+++++ PATH=/ccc/workflash/cont003/gen6035/gen6035/.conda_libs/bin:./:/ccc/work/cont003/gen6066/chekkimo/ELMERICE/install_elmerice/elmerice-bfd923fb-opt/bin:/ccc/products/netcdf-fortran-4.4.4/intel--19.0.5.281__openmpi--4.0.1/hdf5__parallel/bin:/ccc/products/netcdf-c-4.6.0/intel--19.0.5.281__openmpi--4.0.1/hdf5__parallel/bin:/ccc/products/hdf5-1.8.20/intel--19.0.5.281__openmpi--4.0.1/parallel/bin:/ccc/products/openmpi-4.0.2/intel--19.0.5.281/default/bin:/ccc/products/gcc-8.3.0/system/default/bin:/ccc/products/ucx-1.7.0/system/default/bin:/ccc/products/pmix-3.1.3/system/default/bin:/ccc/products/hwloc-2.0.4/system/default/bin:/ccc/products/icc-19.0.5.281/system/default/19.0.5.281/bin/intel64:/ccc/workflash/cont003/gen6035/gen6035/.conda_libs/bin:/ccc/workflash/cont003/gen6035/gen6035/.conda_libs/condabin:.:/usr/share/Modules/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/ccc/products/ccc_users_env/bin:/ccc/products/ccc_crontab/bin:/ccc/products/ccc_prod/bin:/ccc/products/ccc_genodata/bin:/ccc/cont003/home/ige/mathiotp/bin:/ccc/products/ifort-19.0.5.281/system/default/19.0.5.281/bin/intel64:/ccc/products/sharp-2.0/system/default/bin:/ccc/products/hcoll-4.4.2938/system/default/bin
+++++ export PATH
+++++ /ccc/workflash/cont003/gen6035/gen6035/.conda_libs/bin/conda shell.posix activate base
++++ ask_conda='PS1='\''(base) '\''
+export PATH='\''.:/ccc/work/cont003/gen6066/chekkimo/ELMERICE/install_elmerice/elmerice-bfd923fb-opt/bin:/ccc/products/netcdf-fortran-4.4.4/intel--19.0.5.281__openmpi--4.0.1/hdf5__parallel/bin:/ccc/products/netcdf-c-4.6.0/intel--19.0.5.281__openmpi--4.0.1/hdf5__parallel/bin:/ccc/products/hdf5-1.8.20/intel--19.0.5.281__openmpi--4.0.1/parallel/bin:/ccc/products/openmpi-4.0.2/intel--19.0.5.281/default/bin:/ccc/products/gcc-8.3.0/system/default/bin:/ccc/products/ucx-1.7.0/system/default/bin:/ccc/products/pmix-3.1.3/system/default/bin:/ccc/products/hwloc-2.0.4/system/default/bin:/ccc/products/icc-19.0.5.281/system/default/19.0.5.281/bin/intel64:/ccc/workflash/cont003/gen6035/gen6035/.conda_libs/bin:/ccc/workflash/cont003/gen6035/gen6035/.conda_libs/condabin:.:/usr/share/Modules/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/ccc/products/ccc_users_env/bin:/ccc/products/ccc_crontab/bin:/ccc/products/ccc_prod/bin:/ccc/products/ccc_genodata/bin:/ccc/cont003/home/ige/mathiotp/bin:/ccc/products/ifort-19.0.5.281/system/default/19.0.5.281/bin/intel64:/ccc/products/sharp-2.0/system/default/bin:/ccc/products/hcoll-4.4.2938/system/default/bin'\''
+export CONDA_SHLVL='\''1'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\'''
++++ eval 'PS1='\''(base) '\''
+export PATH='\''.:/ccc/work/cont003/gen6066/chekkimo/ELMERICE/install_elmerice/elmerice-bfd923fb-opt/bin:/ccc/products/netcdf-fortran-4.4.4/intel--19.0.5.281__openmpi--4.0.1/hdf5__parallel/bin:/ccc/products/netcdf-c-4.6.0/intel--19.0.5.281__openmpi--4.0.1/hdf5__parallel/bin:/ccc/products/hdf5-1.8.20/intel--19.0.5.281__openmpi--4.0.1/parallel/bin:/ccc/products/openmpi-4.0.2/intel--19.0.5.281/default/bin:/ccc/products/gcc-8.3.0/system/default/bin:/ccc/products/ucx-1.7.0/system/default/bin:/ccc/products/pmix-3.1.3/system/default/bin:/ccc/products/hwloc-2.0.4/system/default/bin:/ccc/products/icc-19.0.5.281/system/default/19.0.5.281/bin/intel64:/ccc/workflash/cont003/gen6035/gen6035/.conda_libs/bin:/ccc/workflash/cont003/gen6035/gen6035/.conda_libs/condabin:.:/usr/share/Modules/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/ccc/products/ccc_users_env/bin:/ccc/products/ccc_crontab/bin:/ccc/products/ccc_prod/bin:/ccc/products/ccc_genodata/bin:/ccc/cont003/home/ige/mathiotp/bin:/ccc/products/ifort-19.0.5.281/system/default/19.0.5.281/bin/intel64:/ccc/products/sharp-2.0/system/default/bin:/ccc/products/hcoll-4.4.2938/system/default/bin'\''
+export CONDA_SHLVL='\''1'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\'''
+++++ PS1='(base) '
+++++ export PATH=.:/ccc/work/cont003/gen6066/chekkimo/ELMERICE/install_elmerice/elmerice-bfd923fb-opt/bin:/ccc/products/netcdf-fortran-4.4.4/intel--19.0.5.281__openmpi--4.0.1/hdf5__parallel/bin:/ccc/products/netcdf-c-4.6.0/intel--19.0.5.281__openmpi--4.0.1/hdf5__parallel/bin:/ccc/products/hdf5-1.8.20/intel--19.0.5.281__openmpi--4.0.1/parallel/bin:/ccc/products/openmpi-4.0.2/intel--19.0.5.281/default/bin:/ccc/products/gcc-8.3.0/system/default/bin:/ccc/products/ucx-1.7.0/system/default/bin:/ccc/products/pmix-3.1.3/system/default/bin:/ccc/products/hwloc-2.0.4/system/default/bin:/ccc/products/icc-19.0.5.281/system/default/19.0.5.281/bin/intel64:/ccc/workflash/cont003/gen6035/gen6035/.conda_libs/bin:/ccc/workflash/cont003/gen6035/gen6035/.conda_libs/condabin:.:/usr/share/Modules/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/ccc/products/ccc_users_env/bin:/ccc/products/ccc_crontab/bin:/ccc/products/ccc_prod/bin:/ccc/products/ccc_genodata/bin:/ccc/cont003/home/ige/mathiotp/bin:/ccc/products/ifort-19.0.5.281/system/default/19.0.5.281/bin/intel64:/ccc/products/sharp-2.0/system/default/bin:/ccc/products/hcoll-4.4.2938/system/default/bin
+++++ PATH=.:/ccc/work/cont003/gen6066/chekkimo/ELMERICE/install_elmerice/elmerice-bfd923fb-opt/bin:/ccc/products/netcdf-fortran-4.4.4/intel--19.0.5.281__openmpi--4.0.1/hdf5__parallel/bin:/ccc/products/netcdf-c-4.6.0/intel--19.0.5.281__openmpi--4.0.1/hdf5__parallel/bin:/ccc/products/hdf5-1.8.20/intel--19.0.5.281__openmpi--4.0.1/parallel/bin:/ccc/products/openmpi-4.0.2/intel--19.0.5.281/default/bin:/ccc/products/gcc-8.3.0/system/default/bin:/ccc/products/ucx-1.7.0/system/default/bin:/ccc/products/pmix-3.1.3/system/default/bin:/ccc/products/hwloc-2.0.4/system/default/bin:/ccc/products/icc-19.0.5.281/system/default/19.0.5.281/bin/intel64:/ccc/workflash/cont003/gen6035/gen6035/.conda_libs/bin:/ccc/workflash/cont003/gen6035/gen6035/.conda_libs/condabin:.:/usr/share/Modules/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/ccc/products/ccc_users_env/bin:/ccc/products/ccc_crontab/bin:/ccc/products/ccc_prod/bin:/ccc/products/ccc_genodata/bin:/ccc/cont003/home/ige/mathiotp/bin:/ccc/products/ifort-19.0.5.281/system/default/19.0.5.281/bin/intel64:/ccc/products/sharp-2.0/system/default/bin:/ccc/products/hcoll-4.4.2938/system/default/bin
+++++ export CONDA_SHLVL=1
+++++ CONDA_SHLVL=1
+++++ export 'CONDA_PROMPT_MODIFIER=(base) '
+++++ CONDA_PROMPT_MODIFIER='(base) '
++++ __conda_hashr
++++ '[' -n '' ']'
++++ '[' -n '' ']'
++++ hash -r
+++ unset __conda_setup
++ newgrp gen6035
++ ulimit -s unlimit
+/tmp/jobstart.198986: line 27: ulimit: unlimit: invalid number
++ . param_arch.bash
+++ GROUPUSR=gen6035
+++ ELMER_SCRATCHDIR=/ccc/scratch/cont003/gen6035/mathiotp
+++ ELMER_WORKDIR=/ccc/workflash/cont003/gen6035/gen6035
+++ ELMER_HOMEDIR=/ccc/cont003/home/gen6035/mathiotp
+++ WELMER=/ccc/scratch/cont003/gen6035/mathiotp/ELMER//-/-_WORK
+++ RELMER=/ccc/scratch/cont003/gen6035/mathiotp/ELMER//-/-_R
+++ IELMER=/ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT/
+++ SELMER=/ccc/scratch/cont003/gen6035/mathiotp/ELMER//-/-_S
++ . run_param.bash
+++ NELMER=48
+++ NXIOS=1
+++ NP=49
+++ NN=1
+++ STARTITER=1
+++ ENDITER=2
+++ RSTINITpath=/ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//RST_simplified2/
+++ RSTINITfile=NEWMESH.result.nc
+++ MSHINITpath=/ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2/
++ load_elmer_modules
++ module purge
++ unset _mlshdbg
++ '[' 1 = 1 ']'
++ case "$-" in
++ set +x
+module dfldatadir/gen6035 (Data Directory) cannot be unloaded
+unload module netcdf-fortran/4.4.4 (NetCDF Fortran HDF5 parallel flavor)
+unload module netcdf-c/4.6.0 (NetCDF-CNetCDF-C HDF5 hdf5__parallel flavor)
+unload module hdf5/1.8.20 (HDF5)
+unload module mpi/openmpi/4.0.2 (Open MPI)
+unload module gnu/8.3.0 (GNU Compiler Collection)
+unload module fortran/gnu/8.3.0 (GNU Fortran compiler)
+unload module c++/gnu/8.3.0 (GNU C++ compiler)
+unload module c/gnu/8.3.0 (GNU C compiler)
+unload module flavor/hdf5/parallel (HDF5 flavor)
+unload module ucx/1.7.0 (Mellanox backend)
+unload module flavor/ucx/standard (ucx flavor)
+unload module pmix/3.1.3 (Process Management Interface (PMI) for eXascale)
+unload module hwloc/2.0.4 (Hwloc)
+unload module flavor/libccc_user/hwloc2 (libccc_user flavor)
+unload module hcoll/4.4.2938 (Mellanox hcoll)
+unload module sharp/2.0 (Mellanox backend)
+unload module feature/hcoll/multicast/enable (Hcoll features)
+unload module flavor/hcoll/standard (hcoll flavor)
+unload module feature/openmpi/net/auto (MPI Network backend feature)
+unload module feature/openmpi/io/standard (MPI-IO feature)
+unload module flavor/openmpi/standard (Open MPI flavor)
+unload module feature/openmpi/mpi_compiler/intel (MPI Compiler feature)
+unload module flavor/buildmpi/openmpi/4.0 (MPI build flavor)
+unload module intel/19.0.5.281 (Intel Compiler Suite)
+unload module mkl/19.0.5.281 (Intel MKL LP64 Sequential without mpi interfaces)
+unload module feature/mkl/vector/avx2 (MKL vectorization feature)
+unload module feature/mkl/single_node (MKL without mpi interface)
+unload module feature/mkl/sequential (MKL feature)
+unload module feature/mkl/lp64 (MKL feature)
+unload module fortran/intel/19.0.5.281 (Intel Fortran compiler)
+unload module c++/intel/19.0.5.281 (Intel C++ Compiler)
+unload module c/intel/19.0.5.281 (Intel C Compiler)
+unload module licsrv/intel (License service)
+unload module flavor/buildcompiler/intel/19 (Compiler build flavor)
+module ccc/1.0 (CCC User Environment) cannot be unloaded
++ unset _mlshdbg
++ return 1
++ module load elmerfem/elmerfem-bfd923fb-opt
++ unset _mlshdbg
++ '[' 1 = 1 ']'
++ case "$-" in
++ set +x
+load module flavor/buildcompiler/intel/19 (Compiler build flavor)
+load module licsrv/intel (License service)
+load module c/intel/19.0.5.281 (Intel C Compiler)
+load module c++/intel/19.0.5.281 (Intel C++ Compiler)
+load module fortran/intel/19.0.5.281 (Intel Fortran compiler)
+load module feature/mkl/lp64 (MKL feature)
+load module feature/mkl/sequential (MKL feature)
+load module feature/mkl/single_node (MKL without mpi interface)
+load module feature/mkl/vector/avx2 (MKL vectorization feature)
+load module mkl/19.0.5.281 (Intel MKL LP64 Sequential without mpi interfaces)
+load module intel/19.0.5.281 (Intel Compiler Suite)
+load module flavor/buildmpi/openmpi/4.0 (MPI build flavor)
+load module feature/openmpi/mpi_compiler/intel (MPI Compiler feature)
+load module flavor/openmpi/standard (Open MPI flavor)
+load module feature/openmpi/io/standard (MPI-IO feature)
+load module feature/openmpi/net/auto (MPI Network backend feature)
+load module flavor/hcoll/standard (hcoll flavor)
+load module feature/hcoll/multicast/enable (Hcoll features)
+load module sharp/2.0 (Mellanox backend)
+load module hcoll/4.4.2938 (Mellanox hcoll)
+load module flavor/libccc_user/hwloc2 (libccc_user flavor)
+load module hwloc/2.0.4 (Hwloc)
+load module pmix/3.1.3 (Process Management Interface (PMI) for eXascale)
+load module flavor/ucx/standard (ucx flavor)
+load module ucx/1.7.0 (Mellanox backend)
+load module mpi/openmpi/4.0.2 (Open MPI)
+load module flavor/hdf5/parallel (HDF5 flavor)
+load module hdf5/1.8.20 (HDF5)
+load module netcdf-c/4.6.0 (NetCDF-CNetCDF-C HDF5 hdf5__parallel flavor)
+load module netcdf-fortran/4.4.4 (NetCDF Fortran HDF5 parallel flavor)
+unload module netcdf-fortran/4.4.4 (NetCDF Fortran HDF5 parallel flavor)
+unload module netcdf-c/4.6.0 (NetCDF-CNetCDF-C HDF5 hdf5__parallel flavor)
+unload module hdf5/1.8.20 (HDF5)
+unload module mpi/openmpi/4.0.2 (Open MPI)
+load module c/gnu/8.3.0 (GNU C compiler)
+load module c++/gnu/8.3.0 (GNU C++ compiler)
+load module fortran/gnu/8.3.0 (GNU Fortran compiler)
+load module gnu/8.3.0 (GNU Compiler Collection)
+load module mpi/openmpi/4.0.2 (Open MPI)
+load module hdf5/1.8.20 (HDF5)
+load module netcdf-c/4.6.0 (NetCDF-CNetCDF-C HDF5 hdf5__parallel flavor)
+load module netcdf-fortran/4.4.4 (NetCDF Fortran HDF5 parallel flavor)
++ unset _mlshdbg
++ return 0
++ '[' '!' -d /ccc/workflash/cont003/gen6035/mathiotp/ELMER/TMPDIR/ADD_VAR_TO_RST ']'
++ ln -sf /ccc/workflash/cont003/gen6035/mathiotp/ELMER/TMPDIR/ADD_VAR_TO_RST MY_WORK
++ cp add_var_to_rst.sif MY_WORK/.
++ cp add_var_to_rst.incf MY_WORK/.
++ cp add_var_to_rst.param MY_WORK/.
++ cp context_elmer.xml file_def_elmer.xml iodef.xml MY_WORK/.
++ '[' '!' -d MY_WORK/MSH/partitioning.48 ']'
++ ln -sf /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.10.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.10.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.10.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.10.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.10.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.11.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.11.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.11.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.11.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.11.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.12.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.12.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.12.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.12.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.12.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.13.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.13.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.13.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.13.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.13.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.14.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.14.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.14.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.14.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.14.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.15.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.15.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.15.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.15.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.15.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.16.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.16.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.16.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.16.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.16.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.17.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.17.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.17.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.17.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.17.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.18.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.18.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.18.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.18.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.18.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.19.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.19.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.19.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.19.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.19.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.1.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.1.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.1.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.1.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.1.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.20.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.20.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.20.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.20.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.20.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.21.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.21.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.21.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.21.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.21.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.22.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.22.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.22.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.22.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.22.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.23.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.23.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.23.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.23.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.23.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.24.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.24.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.24.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.24.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.24.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.25.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.25.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.25.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.25.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.25.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.26.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.26.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.26.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.26.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.26.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.27.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.27.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.27.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.27.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.27.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.28.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.28.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.28.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.28.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.28.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.29.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.29.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.29.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.29.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.29.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.2.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.2.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.2.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.2.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.2.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.30.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.30.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.30.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.30.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.30.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.31.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.31.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.31.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.31.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.31.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.32.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.32.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.32.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.32.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.32.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.33.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.33.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.33.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.33.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.33.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.34.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.34.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.34.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.34.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.34.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.35.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.35.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.35.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.35.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.35.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.36.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.36.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.36.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.36.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.36.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.37.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.37.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.37.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.37.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.37.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.38.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.38.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.38.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.38.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.38.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.39.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.39.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.39.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.39.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.39.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.3.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.3.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.3.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.3.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.3.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.40.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.40.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.40.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.40.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.40.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.41.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.41.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.41.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.41.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.41.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.42.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.42.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.42.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.42.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.42.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.43.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.43.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.43.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.43.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.43.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.44.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.44.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.44.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.44.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.44.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.45.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.45.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.45.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.45.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.45.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.46.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.46.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.46.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.46.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.46.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.47.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.47.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.47.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.47.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.47.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.48.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.48.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.48.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.48.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.48.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.4.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.4.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.4.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.4.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.4.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.5.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.5.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.5.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.5.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.5.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.6.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.6.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.6.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.6.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.6.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.7.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.7.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.7.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.7.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.7.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.8.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.8.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.8.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.8.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.8.shared /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.9.boundary /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.9.elements /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.9.header /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.9.nodes /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT//MSH_simplified2//partitioning.48/part.9.shared /ccc/workflash/cont003/gen6035/mathiotp/ELMER/TMPDIR/ADD_VAR_TO_RST/MSH/partitioning.48/.
++ cp /ccc/work/cont003/gen6066/chekkimo/ELMERICE/install_elmerice/libelmerice/xios-2.0_rev2320_install/bin/xios_server.exe MY_WORK/.
++ cp nearestpoint MY_WORK/.
++ cp USF_SSAViscosity MY_WORK/.
++ cd MY_WORK/.
++ '[' -f app.conf ']'
++ rm -f app.conf
++ touch app.conf
++ echo '48 ElmerSolver_mpi'
++ echo '1 ./xios_server.exe'
++ echo add_var_to_rst.sif
++ run_elmer
++ ccc_mprun -f app.conf
+terminate called after throwing an instance of 'xios::CException'
+terminate called after throwing an instance of 'xios::CException'
+terminate called after throwing an instance of 'xios::CException'
+terminate called after throwing an instance of 'xios::CException'
+terminate called after throwing an instance of 'xios::CException'
+terminate called after throwing an instance of 'xios::CException'
+terminate called after throwing an instance of 'xios::CException'
+terminate called after throwing an instance of 'xios::CException'
+terminate called after throwing an instance of 'xios::CException'
+terminate called after throwing an instance of 'xios::CException'
+terminate called after throwing an instance of 'xios::CException'
+terminate called after throwing an instance of 'xios::CException'
+terminate called after throwing an instance of 'xios::CException'
+terminate called after throwing an instance of 'xios::CException'
+terminate called after throwing an instance of 'xios::CException'
+terminate called after throwing an instance of 'xios::CException'
+terminate called after throwing an instance of 'xios::CException'
+terminate called after throwing an instance of 'xios::CException'
+terminate called after throwing an instance of 'xios::CException'
+terminate called after throwing an instance of 'xios::CException'
+terminate called after throwing an instance of 'xios::CException'
+terminate called after throwing an instance of 'xios::CException'
+terminate called after throwing an instance of 'xios::CException'
+terminate called after throwing an instance of 'xios::CException'
+terminate called after throwing an instance of 'xios::CException'
+terminate called after throwing an instance of 'xios::CException'
+terminate called after throwing an instance of 'xios::CException'
+terminate called after throwing an instance of 'xios::CException'
+terminate called after throwing an instance of 'xios::CException'
+terminate called after throwing an instance of 'xios::CException'
+terminate called after throwing an instance of 'xios::CException'
+terminate called after throwing an instance of 'xios::CException'
+terminate called after throwing an instance of 'xios::CException'
+terminate called after throwing an instance of 'xios::CException'
+terminate called after throwing an instance of 'xios::CException'
+terminate called after throwing an instance of 'xios::CException'
+terminate called after throwing an instance of 'xios::CException'
+terminate called after throwing an instance of 'xios::CException'
+terminate called after throwing an instance of 'xios::CException'
+terminate called after throwing an instance of 'xios::CException'
+terminate called after throwing an instance of 'xios::CException'
+terminate called after throwing an instance of 'xios::CException'
+terminate called after throwing an instance of 'xios::CException'
+terminate called after throwing an instance of 'xios::CException'
+terminate called after throwing an instance of 'xios::CException'
+terminate called after throwing an instance of 'xios::CException'
+terminate called after throwing an instance of 'xios::CException'
+terminate called after throwing an instance of 'xios::CException'
+forrtl: error (76): Abort trap signal
+Image              PC                Routine            Line        Source             
+ElmerSolver_mpi    0000000000435064  Unknown               Unknown  Unknown
+libpthread-2.17.s  00002B55F01D4630  Unknown               Unknown  Unknown
+libc-2.17.so       00002B55F735D387  gsignal               Unknown  Unknown
+libc-2.17.so       00002B55F735EA78  abort                 Unknown  Unknown
+libstdc++.so.6.0.  00002B55E71334F3  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B55E7139686  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B55E71396C1  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B55E71398F4  Unknown               Unknown  Unknown
+libxios.so         00002B55F4C32753  _ZN4xios6CField18     Unknown  Unknown
+libxios.so         00002B55F4C323CA  _ZN4xios6CField30     Unknown  Unknown
+libxios.so         00002B55F4C6C822  _ZN4xios5CFile27s     Unknown  Unknown
+libxios.so         00002B55F4B78459  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B55F4B758EB  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B55F4B733A5  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B55F4B86495  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B55F4F6B046  cxios_context_clo     Unknown  Unknown
+ElmerIceSolvers.s  00002B56562CEA67  xiosoutputsolver_         296  XIOSOutputSolver.F90
+libelmersolver.so  00002B55E780B298  loadmod_mp_execso         449  LoadMod.F90
+libelmersolver.so  00002B55E7B55A36  mainutils_mp_sing        5315  MainUtils.F90
+libelmersolver.so  00002B55E7B530DB  mainutils_mp_solv        5558  MainUtils.F90
+libelmersolver.so  00002B55E7B4B1D7  mainutils_mp_solv        3079  MainUtils.F90
+libelmersolver.so  00002B55E7F72A89  elmersolver_IP_ex        3074  ElmerSolver.F90
+libelmersolver.so  00002B55E7F5C359  elmersolver_              603  ElmerSolver.F90
+ElmerSolver_mpi    000000000040F317  MAIN__                     57  Solver.F90
+ElmerSolver_mpi    000000000040F0D2  Unknown               Unknown  Unknown
+libc-2.17.so       00002B55F7349555  __libc_start_main     Unknown  Unknown
+ElmerSolver_mpi    000000000040EFE9  Unknown               Unknown  Unknown
+forrtl: error (76): Abort trap signal
+Image              PC                Routine            Line        Source             
+ElmerSolver_mpi    0000000000435064  Unknown               Unknown  Unknown
+libpthread-2.17.s  00002B45C46C3630  Unknown               Unknown  Unknown
+libc-2.17.so       00002B45CB84C387  gsignal               Unknown  Unknown
+libc-2.17.so       00002B45CB84DA78  abort                 Unknown  Unknown
+libstdc++.so.6.0.  00002B45BB6224F3  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B45BB628686  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B45BB6286C1  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B45BB6288F4  Unknown               Unknown  Unknown
+libxios.so         00002B45C9121753  _ZN4xios6CField18     Unknown  Unknown
+libxios.so         00002B45C91213CA  _ZN4xios6CField30     Unknown  Unknown
+libxios.so         00002B45C915B822  _ZN4xios5CFile27s     Unknown  Unknown
+libxios.so         00002B45C9067459  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B45C90648EB  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B45C90623A5  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B45C9075495  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B45C945A046  cxios_context_clo     Unknown  Unknown
+ElmerIceSolvers.s  00002B462A8C4A67  xiosoutputsolver_         296  XIOSOutputSolver.F90
+libelmersolver.so  00002B45BBCFA298  loadmod_mp_execso         449  LoadMod.F90
+libelmersolver.so  00002B45BC044A36  mainutils_mp_sing        5315  MainUtils.F90
+libelmersolver.so  00002B45BC0420DB  mainutils_mp_solv        5558  MainUtils.F90
+libelmersolver.so  00002B45BC03A1D7  mainutils_mp_solv        3079  MainUtils.F90
+libelmersolver.so  00002B45BC461A89  elmersolver_IP_ex        3074  ElmerSolver.F90
+libelmersolver.so  00002B45BC44B359  elmersolver_              603  ElmerSolver.F90
+ElmerSolver_mpi    000000000040F317  MAIN__                     57  Solver.F90
+ElmerSolver_mpi    000000000040F0D2  Unknown               Unknown  Unknown
+libc-2.17.so       00002B45CB838555  __libc_start_main     Unknown  Unknown
+ElmerSolver_mpi    000000000040EFE9  Unknown               Unknown  Unknown
+forrtl: error (76): Abort trap signal
+Image              PC                Routine            Line        Source             
+ElmerSolver_mpi    0000000000435064  Unknown               Unknown  Unknown
+libpthread-2.17.s  00002B085B5BC630  Unknown               Unknown  Unknown
+libc-2.17.so       00002B0862745387  gsignal               Unknown  Unknown
+libc-2.17.so       00002B0862746A78  abort                 Unknown  Unknown
+libstdc++.so.6.0.  00002B085251B4F3  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B0852521686  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B08525216C1  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B08525218F4  Unknown               Unknown  Unknown
+libxios.so         00002B086001A753  _ZN4xios6CField18     Unknown  Unknown
+libxios.so         00002B086001A3CA  _ZN4xios6CField30     Unknown  Unknown
+libxios.so         00002B0860054822  _ZN4xios5CFile27s     Unknown  Unknown
+libxios.so         00002B085FF60459  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B085FF5D8EB  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B085FF5B3A5  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B085FF6E495  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B0860353046  cxios_context_clo     Unknown  Unknown
+ElmerIceSolvers.s  00002B08C17BAA67  xiosoutputsolver_         296  XIOSOutputSolver.F90
+libelmersolver.so  00002B0852BF3298  loadmod_mp_execso         449  LoadMod.F90
+libelmersolver.so  00002B0852F3DA36  mainutils_mp_sing        5315  MainUtils.F90
+libelmersolver.so  00002B0852F3B0DB  mainutils_mp_solv        5558  MainUtils.F90
+libelmersolver.so  00002B0852F331D7  mainutils_mp_solv        3079  MainUtils.F90
+libelmersolver.so  00002B085335AA89  elmersolver_IP_ex        3074  ElmerSolver.F90
+libelmersolver.so  00002B0853344359  elmersolver_              603  ElmerSolver.F90
+ElmerSolver_mpi    000000000040F317  MAIN__                     57  Solver.F90
+ElmerSolver_mpi    000000000040F0D2  Unknown               Unknown  Unknown
+libc-2.17.so       00002B0862731555  __libc_start_main     Unknown  Unknown
+ElmerSolver_mpi    000000000040EFE9  Unknown               Unknown  Unknown
+forrtl: error (76): Abort trap signal
+Image              PC                Routine            Line        Source             
+ElmerSolver_mpi    0000000000435064  Unknown               Unknown  Unknown
+libpthread-2.17.s  00002B5F5974C630  Unknown               Unknown  Unknown
+libc-2.17.so       00002B5F608D5387  gsignal               Unknown  Unknown
+libc-2.17.so       00002B5F608D6A78  abort                 Unknown  Unknown
+libstdc++.so.6.0.  00002B5F506AD4F3  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B5F506B3686  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B5F506B36C1  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B5F506B38F4  Unknown               Unknown  Unknown
+libxios.so         00002B5F5E1AA753  _ZN4xios6CField18     Unknown  Unknown
+libxios.so         00002B5F5E1AA3CA  _ZN4xios6CField30     Unknown  Unknown
+libxios.so         00002B5F5E1E4822  _ZN4xios5CFile27s     Unknown  Unknown
+libxios.so         00002B5F5E0F0459  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B5F5E0ED8EB  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B5F5E0EB3A5  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B5F5E0FE495  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B5F5E4E3046  cxios_context_clo     Unknown  Unknown
+ElmerIceSolvers.s  00002B5FBF242A67  xiosoutputsolver_         296  XIOSOutputSolver.F90
+libelmersolver.so  00002B5F50D83298  loadmod_mp_execso         449  LoadMod.F90
+libelmersolver.so  00002B5F510CDA36  mainutils_mp_sing        5315  MainUtils.F90
+libelmersolver.so  00002B5F510CB0DB  mainutils_mp_solv        5558  MainUtils.F90
+libelmersolver.so  00002B5F510C31D7  mainutils_mp_solv        3079  MainUtils.F90
+libelmersolver.so  00002B5F514EAA89  elmersolver_IP_ex        3074  ElmerSolver.F90
+libelmersolver.so  00002B5F514D4359  elmersolver_              603  ElmerSolver.F90
+ElmerSolver_mpi    000000000040F317  MAIN__                     57  Solver.F90
+ElmerSolver_mpi    000000000040F0D2  Unknown               Unknown  Unknown
+libc-2.17.so       00002B5F608C1555  __libc_start_main     Unknown  Unknown
+ElmerSolver_mpi    000000000040EFE9  Unknown               Unknown  Unknown
+forrtl: error (76): Abort trap signal
+Image              PC                Routine            Line        Source             
+ElmerSolver_mpi    0000000000435064  Unknown               Unknown  Unknown
+libpthread-2.17.s  00002B2EC745F630  Unknown               Unknown  Unknown
+libc-2.17.so       00002B2ECE5E8387  gsignal               Unknown  Unknown
+libc-2.17.so       00002B2ECE5E9A78  abort                 Unknown  Unknown
+libstdc++.so.6.0.  00002B2EBE3BE4F3  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B2EBE3C4686  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B2EBE3C46C1  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B2EBE3C48F4  Unknown               Unknown  Unknown
+libxios.so         00002B2ECBEBD753  _ZN4xios6CField18     Unknown  Unknown
+libxios.so         00002B2ECBEBD3CA  _ZN4xios6CField30     Unknown  Unknown
+libxios.so         00002B2ECBEF7822  _ZN4xios5CFile27s     Unknown  Unknown
+libxios.so         00002B2ECBE03459  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B2ECBE008EB  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B2ECBDFE3A5  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B2ECBE11495  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B2ECC1F6046  cxios_context_clo     Unknown  Unknown
+ElmerIceSolvers.s  00002B2F2CF3BA67  xiosoutputsolver_         296  XIOSOutputSolver.F90
+libelmersolver.so  00002B2EBEA96298  loadmod_mp_execso         449  LoadMod.F90
+libelmersolver.so  00002B2EBEDE0A36  mainutils_mp_sing        5315  MainUtils.F90
+libelmersolver.so  00002B2EBEDDE0DB  mainutils_mp_solv        5558  MainUtils.F90
+libelmersolver.so  00002B2EBEDD61D7  mainutils_mp_solv        3079  MainUtils.F90
+libelmersolver.so  00002B2EBF1FDA89  elmersolver_IP_ex        3074  ElmerSolver.F90
+libelmersolver.so  00002B2EBF1E7359  elmersolver_              603  ElmerSolver.F90
+ElmerSolver_mpi    000000000040F317  MAIN__                     57  Solver.F90
+ElmerSolver_mpi    000000000040F0D2  Unknown               Unknown  Unknown
+libc-2.17.so       00002B2ECE5D4555  __libc_start_main     Unknown  Unknown
+ElmerSolver_mpi    000000000040EFE9  Unknown               Unknown  Unknown
+forrtl: error (76): Abort trap signal
+Image              PC                Routine            Line        Source             
+ElmerSolver_mpi    0000000000435064  Unknown               Unknown  Unknown
+libpthread-2.17.s  00002B692EB4A630  Unknown               Unknown  Unknown
+libc-2.17.so       00002B6935CD3387  gsignal               Unknown  Unknown
+libc-2.17.so       00002B6935CD4A78  abort                 Unknown  Unknown
+libstdc++.so.6.0.  00002B6925AA94F3  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B6925AAF686  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B6925AAF6C1  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B6925AAF8F4  Unknown               Unknown  Unknown
+libxios.so         00002B69335A8753  _ZN4xios6CField18     Unknown  Unknown
+libxios.so         00002B69335A83CA  _ZN4xios6CField30     Unknown  Unknown
+libxios.so         00002B69335E2822  _ZN4xios5CFile27s     Unknown  Unknown
+libxios.so         00002B69334EE459  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B69334EB8EB  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B69334E93A5  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B69334FC495  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B69338E1046  cxios_context_clo     Unknown  Unknown
+ElmerIceSolvers.s  00002B6994C45A67  xiosoutputsolver_         296  XIOSOutputSolver.F90
+libelmersolver.so  00002B6926181298  loadmod_mp_execso         449  LoadMod.F90
+libelmersolver.so  00002B69264CBA36  mainutils_mp_sing        5315  MainUtils.F90
+libelmersolver.so  00002B69264C90DB  mainutils_mp_solv        5558  MainUtils.F90
+libelmersolver.so  00002B69264C11D7  mainutils_mp_solv        3079  MainUtils.F90
+libelmersolver.so  00002B69268E8A89  elmersolver_IP_ex        3074  ElmerSolver.F90
+libelmersolver.so  00002B69268D2359  elmersolver_              603  ElmerSolver.F90
+ElmerSolver_mpi    000000000040F317  MAIN__                     57  Solver.F90
+ElmerSolver_mpi    000000000040F0D2  Unknown               Unknown  Unknown
+libc-2.17.so       00002B6935CBF555  __libc_start_main     Unknown  Unknown
+ElmerSolver_mpi    000000000040EFE9  Unknown               Unknown  Unknown
+forrtl: error (76): Abort trap signal
+Image              PC                Routine            Line        Source             
+ElmerSolver_mpi    0000000000435064  Unknown               Unknown  Unknown
+libpthread-2.17.s  00002B09C9356630  Unknown               Unknown  Unknown
+libc-2.17.so       00002B09D04DF387  gsignal               Unknown  Unknown
+libc-2.17.so       00002B09D04E0A78  abort                 Unknown  Unknown
+libstdc++.so.6.0.  00002B09C02B54F3  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B09C02BB686  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B09C02BB6C1  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B09C02BB8F4  Unknown               Unknown  Unknown
+libxios.so         00002B09CDDB4753  _ZN4xios6CField18     Unknown  Unknown
+libxios.so         00002B09CDDB43CA  _ZN4xios6CField30     Unknown  Unknown
+libxios.so         00002B09CDDEE822  _ZN4xios5CFile27s     Unknown  Unknown
+libxios.so         00002B09CDCFA459  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B09CDCF78EB  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B09CDCF53A5  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B09CDD08495  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B09CE0ED046  cxios_context_clo     Unknown  Unknown
+ElmerIceSolvers.s  00002B0A2F245A67  xiosoutputsolver_         296  XIOSOutputSolver.F90
+libelmersolver.so  00002B09C098D298  loadmod_mp_execso         449  LoadMod.F90
+libelmersolver.so  00002B09C0CD7A36  mainutils_mp_sing        5315  MainUtils.F90
+libelmersolver.so  00002B09C0CD50DB  mainutils_mp_solv        5558  MainUtils.F90
+libelmersolver.so  00002B09C0CCD1D7  mainutils_mp_solv        3079  MainUtils.F90
+libelmersolver.so  00002B09C10F4A89  elmersolver_IP_ex        3074  ElmerSolver.F90
+libelmersolver.so  00002B09C10DE359  elmersolver_              603  ElmerSolver.F90
+ElmerSolver_mpi    000000000040F317  MAIN__                     57  Solver.F90
+ElmerSolver_mpi    000000000040F0D2  Unknown               Unknown  Unknown
+libc-2.17.so       00002B09D04CB555  __libc_start_main     Unknown  Unknown
+ElmerSolver_mpi    000000000040EFE9  Unknown               Unknown  Unknown
+forrtl: error (76): Abort trap signal
+Image              PC                Routine            Line        Source             
+ElmerSolver_mpi    0000000000435064  Unknown               Unknown  Unknown
+libpthread-2.17.s  00002ADD7D90B630  Unknown               Unknown  Unknown
+libc-2.17.so       00002ADD84A94387  gsignal               Unknown  Unknown
+libc-2.17.so       00002ADD84A95A78  abort                 Unknown  Unknown
+libstdc++.so.6.0.  00002ADD7486C4F3  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002ADD74872686  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002ADD748726C1  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002ADD748728F4  Unknown               Unknown  Unknown
+libxios.so         00002ADD82369753  _ZN4xios6CField18     Unknown  Unknown
+libxios.so         00002ADD823693CA  _ZN4xios6CField30     Unknown  Unknown
+libxios.so         00002ADD823A3822  _ZN4xios5CFile27s     Unknown  Unknown
+libxios.so         00002ADD822AF459  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002ADD822AC8EB  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002ADD822AA3A5  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002ADD822BD495  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002ADD826A2046  cxios_context_clo     Unknown  Unknown
+ElmerIceSolvers.s  00002ADDE34EEA67  xiosoutputsolver_         296  XIOSOutputSolver.F90
+libelmersolver.so  00002ADD74F42298  loadmod_mp_execso         449  LoadMod.F90
+libelmersolver.so  00002ADD7528CA36  mainutils_mp_sing        5315  MainUtils.F90
+libelmersolver.so  00002ADD7528A0DB  mainutils_mp_solv        5558  MainUtils.F90
+libelmersolver.so  00002ADD752821D7  mainutils_mp_solv        3079  MainUtils.F90
+libelmersolver.so  00002ADD756A9A89  elmersolver_IP_ex        3074  ElmerSolver.F90
+libelmersolver.so  00002ADD75693359  elmersolver_              603  ElmerSolver.F90
+ElmerSolver_mpi    000000000040F317  MAIN__                     57  Solver.F90
+ElmerSolver_mpi    000000000040F0D2  Unknown               Unknown  Unknown
+libc-2.17.so       00002ADD84A80555  __libc_start_main     Unknown  Unknown
+ElmerSolver_mpi    000000000040EFE9  Unknown               Unknown  Unknown
+forrtl: error (76): Abort trap signal
+Image              PC                Routine            Line        Source             
+ElmerSolver_mpi    0000000000435064  Unknown               Unknown  Unknown
+libpthread-2.17.s  00002B8115FFA630  Unknown               Unknown  Unknown
+libc-2.17.so       00002B811D183387  gsignal               Unknown  Unknown
+libc-2.17.so       00002B811D184A78  abort                 Unknown  Unknown
+libstdc++.so.6.0.  00002B810CF594F3  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B810CF5F686  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B810CF5F6C1  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B810CF5F8F4  Unknown               Unknown  Unknown
+libxios.so         00002B811AA58753  _ZN4xios6CField18     Unknown  Unknown
+libxios.so         00002B811AA583CA  _ZN4xios6CField30     Unknown  Unknown
+libxios.so         00002B811AA92822  _ZN4xios5CFile27s     Unknown  Unknown
+libxios.so         00002B811A99E459  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B811A99B8EB  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B811A9993A5  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B811A9AC495  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B811AD91046  cxios_context_clo     Unknown  Unknown
+ElmerIceSolvers.s  00002B817C0F3A67  xiosoutputsolver_         296  XIOSOutputSolver.F90
+libelmersolver.so  00002B810D631298  loadmod_mp_execso         449  LoadMod.F90
+libelmersolver.so  00002B810D97BA36  mainutils_mp_sing        5315  MainUtils.F90
+libelmersolver.so  00002B810D9790DB  mainutils_mp_solv        5558  MainUtils.F90
+libelmersolver.so  00002B810D9711D7  mainutils_mp_solv        3079  MainUtils.F90
+libelmersolver.so  00002B810DD98A89  elmersolver_IP_ex        3074  ElmerSolver.F90
+libelmersolver.so  00002B810DD82359  elmersolver_              603  ElmerSolver.F90
+ElmerSolver_mpi    000000000040F317  MAIN__                     57  Solver.F90
+ElmerSolver_mpi    000000000040F0D2  Unknown               Unknown  Unknown
+libc-2.17.so       00002B811D16F555  __libc_start_main     Unknown  Unknown
+ElmerSolver_mpi    000000000040EFE9  Unknown               Unknown  Unknown
+forrtl: error (76): Abort trap signal
+Image              PC                Routine            Line        Source             
+ElmerSolver_mpi    0000000000435064  Unknown               Unknown  Unknown
+libpthread-2.17.s  00002B19E5B7D630  Unknown               Unknown  Unknown
+libc-2.17.so       00002B19ECD06387  gsignal               Unknown  Unknown
+libc-2.17.so       00002B19ECD07A78  abort                 Unknown  Unknown
+libstdc++.so.6.0.  00002B19DCADC4F3  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B19DCAE2686  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B19DCAE26C1  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B19DCAE28F4  Unknown               Unknown  Unknown
+libxios.so         00002B19EA5DB753  _ZN4xios6CField18     Unknown  Unknown
+libxios.so         00002B19EA5DB3CA  _ZN4xios6CField30     Unknown  Unknown
+libxios.so         00002B19EA615822  _ZN4xios5CFile27s     Unknown  Unknown
+libxios.so         00002B19EA521459  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B19EA51E8EB  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B19EA51C3A5  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B19EA52F495  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B19EA914046  cxios_context_clo     Unknown  Unknown
+ElmerIceSolvers.s  00002B1A4B75EA67  xiosoutputsolver_         296  XIOSOutputSolver.F90
+libelmersolver.so  00002B19DD1B4298  loadmod_mp_execso         449  LoadMod.F90
+libelmersolver.so  00002B19DD4FEA36  mainutils_mp_sing        5315  MainUtils.F90
+libelmersolver.so  00002B19DD4FC0DB  mainutils_mp_solv        5558  MainUtils.F90
+libelmersolver.so  00002B19DD4F41D7  mainutils_mp_solv        3079  MainUtils.F90
+libelmersolver.so  00002B19DD91BA89  elmersolver_IP_ex        3074  ElmerSolver.F90
+libelmersolver.so  00002B19DD905359  elmersolver_              603  ElmerSolver.F90
+ElmerSolver_mpi    000000000040F317  MAIN__                     57  Solver.F90
+ElmerSolver_mpi    000000000040F0D2  Unknown               Unknown  Unknown
+libc-2.17.so       00002B19ECCF2555  __libc_start_main     Unknown  Unknown
+ElmerSolver_mpi    000000000040EFE9  Unknown               Unknown  Unknown
+forrtl: error (76): Abort trap signal
+Image              PC                Routine            Line        Source             
+ElmerSolver_mpi    0000000000435064  Unknown               Unknown  Unknown
+libpthread-2.17.s  00002B7DC2B2E630  Unknown               Unknown  Unknown
+libc-2.17.so       00002B7DC9CB7387  gsignal               Unknown  Unknown
+libc-2.17.so       00002B7DC9CB8A78  abort                 Unknown  Unknown
+libstdc++.so.6.0.  00002B7DB9A8D4F3  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B7DB9A93686  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B7DB9A936C1  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B7DB9A938F4  Unknown               Unknown  Unknown
+libxios.so         00002B7DC758C753  _ZN4xios6CField18     Unknown  Unknown
+libxios.so         00002B7DC758C3CA  _ZN4xios6CField30     Unknown  Unknown
+libxios.so         00002B7DC75C6822  _ZN4xios5CFile27s     Unknown  Unknown
+libxios.so         00002B7DC74D2459  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B7DC74CF8EB  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B7DC74CD3A5  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B7DC74E0495  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B7DC78C5046  cxios_context_clo     Unknown  Unknown
+ElmerIceSolvers.s  00002B7E28622A67  xiosoutputsolver_         296  XIOSOutputSolver.F90
+libelmersolver.so  00002B7DBA165298  loadmod_mp_execso         449  LoadMod.F90
+libelmersolver.so  00002B7DBA4AFA36  mainutils_mp_sing        5315  MainUtils.F90
+libelmersolver.so  00002B7DBA4AD0DB  mainutils_mp_solv        5558  MainUtils.F90
+libelmersolver.so  00002B7DBA4A51D7  mainutils_mp_solv        3079  MainUtils.F90
+libelmersolver.so  00002B7DBA8CCA89  elmersolver_IP_ex        3074  ElmerSolver.F90
+libelmersolver.so  00002B7DBA8B6359  elmersolver_              603  ElmerSolver.F90
+ElmerSolver_mpi    000000000040F317  MAIN__                     57  Solver.F90
+ElmerSolver_mpi    000000000040F0D2  Unknown               Unknown  Unknown
+libc-2.17.so       00002B7DC9CA3555  __libc_start_main     Unknown  Unknown
+ElmerSolver_mpi    000000000040EFE9  Unknown               Unknown  Unknown
+forrtl: error (76): Abort trap signal
+Image              PC                Routine            Line        Source             
+ElmerSolver_mpi    0000000000435064  Unknown               Unknown  Unknown
+libpthread-2.17.s  00002B009F629630  Unknown               Unknown  Unknown
+libc-2.17.so       00002B00A67B2387  gsignal               Unknown  Unknown
+libc-2.17.so       00002B00A67B3A78  abort                 Unknown  Unknown
+libstdc++.so.6.0.  00002B00965884F3  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B009658E686  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B009658E6C1  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B009658E8F4  Unknown               Unknown  Unknown
+libxios.so         00002B00A4087753  _ZN4xios6CField18     Unknown  Unknown
+libxios.so         00002B00A40873CA  _ZN4xios6CField30     Unknown  Unknown
+libxios.so         00002B00A40C1822  _ZN4xios5CFile27s     Unknown  Unknown
+libxios.so         00002B00A3FCD459  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B00A3FCA8EB  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B00A3FC83A5  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B00A3FDB495  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B00A43C0046  cxios_context_clo     Unknown  Unknown
+ElmerIceSolvers.s  00002B0105214A67  xiosoutputsolver_         296  XIOSOutputSolver.F90
+libelmersolver.so  00002B0096C60298  loadmod_mp_execso         449  LoadMod.F90
+libelmersolver.so  00002B0096FAAA36  mainutils_mp_sing        5315  MainUtils.F90
+libelmersolver.so  00002B0096FA80DB  mainutils_mp_solv        5558  MainUtils.F90
+libelmersolver.so  00002B0096FA01D7  mainutils_mp_solv        3079  MainUtils.F90
+libelmersolver.so  00002B00973C7A89  elmersolver_IP_ex        3074  ElmerSolver.F90
+libelmersolver.so  00002B00973B1359  elmersolver_              603  ElmerSolver.F90
+ElmerSolver_mpi    000000000040F317  MAIN__                     57  Solver.F90
+ElmerSolver_mpi    000000000040F0D2  Unknown               Unknown  Unknown
+libc-2.17.so       00002B00A679E555  __libc_start_main     Unknown  Unknown
+ElmerSolver_mpi    000000000040EFE9  Unknown               Unknown  Unknown
+forrtl: error (76): Abort trap signal
+Image              PC                Routine            Line        Source             
+ElmerSolver_mpi    0000000000435064  Unknown               Unknown  Unknown
+libpthread-2.17.s  00002B6119257630  Unknown               Unknown  Unknown
+libc-2.17.so       00002B61203E0387  gsignal               Unknown  Unknown
+libc-2.17.so       00002B61203E1A78  abort                 Unknown  Unknown
+libstdc++.so.6.0.  00002B61101B64F3  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B61101BC686  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B61101BC6C1  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B61101BC8F4  Unknown               Unknown  Unknown
+libxios.so         00002B611DCB5753  _ZN4xios6CField18     Unknown  Unknown
+libxios.so         00002B611DCB53CA  _ZN4xios6CField30     Unknown  Unknown
+libxios.so         00002B611DCEF822  _ZN4xios5CFile27s     Unknown  Unknown
+libxios.so         00002B611DBFB459  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B611DBF88EB  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B611DBF63A5  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B611DC09495  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B611DFEE046  cxios_context_clo     Unknown  Unknown
+ElmerIceSolvers.s  00002B617F456A67  xiosoutputsolver_         296  XIOSOutputSolver.F90
+libelmersolver.so  00002B611088E298  loadmod_mp_execso         449  LoadMod.F90
+libelmersolver.so  00002B6110BD8A36  mainutils_mp_sing        5315  MainUtils.F90
+libelmersolver.so  00002B6110BD60DB  mainutils_mp_solv        5558  MainUtils.F90
+libelmersolver.so  00002B6110BCE1D7  mainutils_mp_solv        3079  MainUtils.F90
+libelmersolver.so  00002B6110FF5A89  elmersolver_IP_ex        3074  ElmerSolver.F90
+libelmersolver.so  00002B6110FDF359  elmersolver_              603  ElmerSolver.F90
+ElmerSolver_mpi    000000000040F317  MAIN__                     57  Solver.F90
+ElmerSolver_mpi    000000000040F0D2  Unknown               Unknown  Unknown
+libc-2.17.so       00002B61203CC555  __libc_start_main     Unknown  Unknown
+ElmerSolver_mpi    000000000040EFE9  Unknown               Unknown  Unknown
+forrtl: error (76): Abort trap signal
+Image              PC                Routine            Line        Source             
+ElmerSolver_mpi    0000000000435064  Unknown               Unknown  Unknown
+libpthread-2.17.s  00002B86E85A9630  Unknown               Unknown  Unknown
+libc-2.17.so       00002B86EF732387  gsignal               Unknown  Unknown
+libc-2.17.so       00002B86EF733A78  abort                 Unknown  Unknown
+libstdc++.so.6.0.  00002B86DF5084F3  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B86DF50E686  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B86DF50E6C1  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B86DF50E8F4  Unknown               Unknown  Unknown
+libxios.so         00002B86ED007753  _ZN4xios6CField18     Unknown  Unknown
+libxios.so         00002B86ED0073CA  _ZN4xios6CField30     Unknown  Unknown
+libxios.so         00002B86ED041822  _ZN4xios5CFile27s     Unknown  Unknown
+libxios.so         00002B86ECF4D459  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B86ECF4A8EB  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B86ECF483A5  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B86ECF5B495  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B86ED340046  cxios_context_clo     Unknown  Unknown
+ElmerIceSolvers.s  00002B874E6A3A67  xiosoutputsolver_         296  XIOSOutputSolver.F90
+libelmersolver.so  00002B86DFBE0298  loadmod_mp_execso         449  LoadMod.F90
+libelmersolver.so  00002B86DFF2AA36  mainutils_mp_sing        5315  MainUtils.F90
+libelmersolver.so  00002B86DFF280DB  mainutils_mp_solv        5558  MainUtils.F90
+libelmersolver.so  00002B86DFF201D7  mainutils_mp_solv        3079  MainUtils.F90
+libelmersolver.so  00002B86E0347A89  elmersolver_IP_ex        3074  ElmerSolver.F90
+libelmersolver.so  00002B86E0331359  elmersolver_              603  ElmerSolver.F90
+ElmerSolver_mpi    000000000040F317  MAIN__                     57  Solver.F90
+ElmerSolver_mpi    000000000040F0D2  Unknown               Unknown  Unknown
+libc-2.17.so       00002B86EF71E555  __libc_start_main     Unknown  Unknown
+ElmerSolver_mpi    000000000040EFE9  Unknown               Unknown  Unknown
+forrtl: error (76): Abort trap signal
+Image              PC                Routine            Line        Source             
+ElmerSolver_mpi    0000000000435064  Unknown               Unknown  Unknown
+libpthread-2.17.s  00002B45C81ED630  Unknown               Unknown  Unknown
+libc-2.17.so       00002B45CF376387  gsignal               Unknown  Unknown
+libc-2.17.so       00002B45CF377A78  abort                 Unknown  Unknown
+libstdc++.so.6.0.  00002B45BF14C4F3  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B45BF152686  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B45BF1526C1  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B45BF1528F4  Unknown               Unknown  Unknown
+libxios.so         00002B45CCC4B753  _ZN4xios6CField18     Unknown  Unknown
+libxios.so         00002B45CCC4B3CA  _ZN4xios6CField30     Unknown  Unknown
+libxios.so         00002B45CCC85822  _ZN4xios5CFile27s     Unknown  Unknown
+libxios.so         00002B45CCB91459  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B45CCB8E8EB  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B45CCB8C3A5  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B45CCB9F495  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B45CCF84046  cxios_context_clo     Unknown  Unknown
+ElmerIceSolvers.s  00002B462E2EDA67  xiosoutputsolver_         296  XIOSOutputSolver.F90
+libelmersolver.so  00002B45BF824298  loadmod_mp_execso         449  LoadMod.F90
+libelmersolver.so  00002B45BFB6EA36  mainutils_mp_sing        5315  MainUtils.F90
+libelmersolver.so  00002B45BFB6C0DB  mainutils_mp_solv        5558  MainUtils.F90
+libelmersolver.so  00002B45BFB641D7  mainutils_mp_solv        3079  MainUtils.F90
+libelmersolver.so  00002B45BFF8BA89  elmersolver_IP_ex        3074  ElmerSolver.F90
+libelmersolver.so  00002B45BFF75359  elmersolver_              603  ElmerSolver.F90
+ElmerSolver_mpi    000000000040F317  MAIN__                     57  Solver.F90
+ElmerSolver_mpi    000000000040F0D2  Unknown               Unknown  Unknown
+libc-2.17.so       00002B45CF362555  __libc_start_main     Unknown  Unknown
+ElmerSolver_mpi    000000000040EFE9  Unknown               Unknown  Unknown
+forrtl: error (76): Abort trap signal
+Image              PC                Routine            Line        Source             
+ElmerSolver_mpi    0000000000435064  Unknown               Unknown  Unknown
+libpthread-2.17.s  00002B0F4A2CC630  Unknown               Unknown  Unknown
+libc-2.17.so       00002B0F51455387  gsignal               Unknown  Unknown
+libc-2.17.so       00002B0F51456A78  abort                 Unknown  Unknown
+libstdc++.so.6.0.  00002B0F4122B4F3  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B0F41231686  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B0F412316C1  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B0F412318F4  Unknown               Unknown  Unknown
+libxios.so         00002B0F4ED2A753  _ZN4xios6CField18     Unknown  Unknown
+libxios.so         00002B0F4ED2A3CA  _ZN4xios6CField30     Unknown  Unknown
+libxios.so         00002B0F4ED64822  _ZN4xios5CFile27s     Unknown  Unknown
+libxios.so         00002B0F4EC70459  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B0F4EC6D8EB  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B0F4EC6B3A5  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B0F4EC7E495  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B0F4F063046  cxios_context_clo     Unknown  Unknown
+ElmerIceSolvers.s  00002B0FB03C5A67  xiosoutputsolver_         296  XIOSOutputSolver.F90
+libelmersolver.so  00002B0F41903298  loadmod_mp_execso         449  LoadMod.F90
+libelmersolver.so  00002B0F41C4DA36  mainutils_mp_sing        5315  MainUtils.F90
+libelmersolver.so  00002B0F41C4B0DB  mainutils_mp_solv        5558  MainUtils.F90
+libelmersolver.so  00002B0F41C431D7  mainutils_mp_solv        3079  MainUtils.F90
+libelmersolver.so  00002B0F4206AA89  elmersolver_IP_ex        3074  ElmerSolver.F90
+libelmersolver.so  00002B0F42054359  elmersolver_              603  ElmerSolver.F90
+ElmerSolver_mpi    000000000040F317  MAIN__                     57  Solver.F90
+ElmerSolver_mpi    000000000040F0D2  Unknown               Unknown  Unknown
+libc-2.17.so       00002B0F51441555  __libc_start_main     Unknown  Unknown
+ElmerSolver_mpi    000000000040EFE9  Unknown               Unknown  Unknown
+forrtl: error (76): Abort trap signal
+Image              PC                Routine            Line        Source             
+ElmerSolver_mpi    0000000000435064  Unknown               Unknown  Unknown
+libpthread-2.17.s  00002B26D5819630  Unknown               Unknown  Unknown
+libc-2.17.so       00002B26DC9A2387  gsignal               Unknown  Unknown
+libc-2.17.so       00002B26DC9A3A78  abort                 Unknown  Unknown
+libstdc++.so.6.0.  00002B26CC7784F3  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B26CC77E686  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B26CC77E6C1  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B26CC77E8F4  Unknown               Unknown  Unknown
+libxios.so         00002B26DA277753  _ZN4xios6CField18     Unknown  Unknown
+libxios.so         00002B26DA2773CA  _ZN4xios6CField30     Unknown  Unknown
+libxios.so         00002B26DA2B1822  _ZN4xios5CFile27s     Unknown  Unknown
+libxios.so         00002B26DA1BD459  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B26DA1BA8EB  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B26DA1B83A5  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B26DA1CB495  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B26DA5B0046  cxios_context_clo     Unknown  Unknown
+ElmerIceSolvers.s  00002B273B708A67  xiosoutputsolver_         296  XIOSOutputSolver.F90
+libelmersolver.so  00002B26CCE50298  loadmod_mp_execso         449  LoadMod.F90
+libelmersolver.so  00002B26CD19AA36  mainutils_mp_sing        5315  MainUtils.F90
+libelmersolver.so  00002B26CD1980DB  mainutils_mp_solv        5558  MainUtils.F90
+libelmersolver.so  00002B26CD1901D7  mainutils_mp_solv        3079  MainUtils.F90
+libelmersolver.so  00002B26CD5B7A89  elmersolver_IP_ex        3074  ElmerSolver.F90
+libelmersolver.so  00002B26CD5A1359  elmersolver_              603  ElmerSolver.F90
+ElmerSolver_mpi    000000000040F317  MAIN__                     57  Solver.F90
+ElmerSolver_mpi    000000000040F0D2  Unknown               Unknown  Unknown
+libc-2.17.so       00002B26DC98E555  __libc_start_main     Unknown  Unknown
+ElmerSolver_mpi    000000000040EFE9  Unknown               Unknown  Unknown
+forrtl: error (76): Abort trap signal
+Image              PC                Routine            Line        Source             
+ElmerSolver_mpi    0000000000435064  Unknown               Unknown  Unknown
+libpthread-2.17.s  00002AD5C63B2630  Unknown               Unknown  Unknown
+libc-2.17.so       00002AD5CD53B387  gsignal               Unknown  Unknown
+libc-2.17.so       00002AD5CD53CA78  abort                 Unknown  Unknown
+libstdc++.so.6.0.  00002AD5BD3114F3  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002AD5BD317686  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002AD5BD3176C1  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002AD5BD3178F4  Unknown               Unknown  Unknown
+libxios.so         00002AD5CAE10753  _ZN4xios6CField18     Unknown  Unknown
+libxios.so         00002AD5CAE103CA  _ZN4xios6CField30     Unknown  Unknown
+libxios.so         00002AD5CAE4A822  _ZN4xios5CFile27s     Unknown  Unknown
+libxios.so         00002AD5CAD56459  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002AD5CAD538EB  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002AD5CAD513A5  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002AD5CAD64495  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002AD5CB149046  cxios_context_clo     Unknown  Unknown
+ElmerIceSolvers.s  00002AD62BE8EA67  xiosoutputsolver_         296  XIOSOutputSolver.F90
+libelmersolver.so  00002AD5BD9E9298  loadmod_mp_execso         449  LoadMod.F90
+libelmersolver.so  00002AD5BDD33A36  mainutils_mp_sing        5315  MainUtils.F90
+libelmersolver.so  00002AD5BDD310DB  mainutils_mp_solv        5558  MainUtils.F90
+libelmersolver.so  00002AD5BDD291D7  mainutils_mp_solv        3079  MainUtils.F90
+libelmersolver.so  00002AD5BE150A89  elmersolver_IP_ex        3074  ElmerSolver.F90
+libelmersolver.so  00002AD5BE13A359  elmersolver_              603  ElmerSolver.F90
+ElmerSolver_mpi    000000000040F317  MAIN__                     57  Solver.F90
+ElmerSolver_mpi    000000000040F0D2  Unknown               Unknown  Unknown
+libc-2.17.so       00002AD5CD527555  __libc_start_main     Unknown  Unknown
+ElmerSolver_mpi    000000000040EFE9  Unknown               Unknown  Unknown
+forrtl: error (76): Abort trap signal
+Image              PC                Routine            Line        Source             
+ElmerSolver_mpi    0000000000435064  Unknown               Unknown  Unknown
+libpthread-2.17.s  00002B5286330630  Unknown               Unknown  Unknown
+libc-2.17.so       00002B528D4B9387  gsignal               Unknown  Unknown
+libc-2.17.so       00002B528D4BAA78  abort                 Unknown  Unknown
+libstdc++.so.6.0.  00002B527D28F4F3  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B527D295686  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B527D2956C1  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B527D2958F4  Unknown               Unknown  Unknown
+libxios.so         00002B528AD8E753  _ZN4xios6CField18     Unknown  Unknown
+libxios.so         00002B528AD8E3CA  _ZN4xios6CField30     Unknown  Unknown
+libxios.so         00002B528ADC8822  _ZN4xios5CFile27s     Unknown  Unknown
+libxios.so         00002B528ACD4459  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B528ACD18EB  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B528ACCF3A5  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B528ACE2495  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B528B0C7046  cxios_context_clo     Unknown  Unknown
+ElmerIceSolvers.s  00002B52EBF10A67  xiosoutputsolver_         296  XIOSOutputSolver.F90
+libelmersolver.so  00002B527D967298  loadmod_mp_execso         449  LoadMod.F90
+libelmersolver.so  00002B527DCB1A36  mainutils_mp_sing        5315  MainUtils.F90
+libelmersolver.so  00002B527DCAF0DB  mainutils_mp_solv        5558  MainUtils.F90
+libelmersolver.so  00002B527DCA71D7  mainutils_mp_solv        3079  MainUtils.F90
+libelmersolver.so  00002B527E0CEA89  elmersolver_IP_ex        3074  ElmerSolver.F90
+libelmersolver.so  00002B527E0B8359  elmersolver_              603  ElmerSolver.F90
+ElmerSolver_mpi    000000000040F317  MAIN__                     57  Solver.F90
+ElmerSolver_mpi    000000000040F0D2  Unknown               Unknown  Unknown
+libc-2.17.so       00002B528D4A5555  __libc_start_main     Unknown  Unknown
+ElmerSolver_mpi    000000000040EFE9  Unknown               Unknown  Unknown
+forrtl: error (76): Abort trap signal
+Image              PC                Routine            Line        Source             
+ElmerSolver_mpi    0000000000435064  Unknown               Unknown  Unknown
+libpthread-2.17.s  00002B67C7F35630  Unknown               Unknown  Unknown
+libc-2.17.so       00002B67CF0BE387  gsignal               Unknown  Unknown
+libc-2.17.so       00002B67CF0BFA78  abort                 Unknown  Unknown
+libstdc++.so.6.0.  00002B67BEE964F3  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B67BEE9C686  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B67BEE9C6C1  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B67BEE9C8F4  Unknown               Unknown  Unknown
+libxios.so         00002B67CC993753  _ZN4xios6CField18     Unknown  Unknown
+libxios.so         00002B67CC9933CA  _ZN4xios6CField30     Unknown  Unknown
+libxios.so         00002B67CC9CD822  _ZN4xios5CFile27s     Unknown  Unknown
+libxios.so         00002B67CC8D9459  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B67CC8D68EB  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B67CC8D43A5  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B67CC8E7495  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B67CCCCC046  cxios_context_clo     Unknown  Unknown
+ElmerIceSolvers.s  00002B682E03FA67  xiosoutputsolver_         296  XIOSOutputSolver.F90
+libelmersolver.so  00002B67BF56C298  loadmod_mp_execso         449  LoadMod.F90
+libelmersolver.so  00002B67BF8B6A36  mainutils_mp_sing        5315  MainUtils.F90
+libelmersolver.so  00002B67BF8B40DB  mainutils_mp_solv        5558  MainUtils.F90
+libelmersolver.so  00002B67BF8AC1D7  mainutils_mp_solv        3079  MainUtils.F90
+libelmersolver.so  00002B67BFCD3A89  elmersolver_IP_ex        3074  ElmerSolver.F90
+libelmersolver.so  00002B67BFCBD359  elmersolver_              603  ElmerSolver.F90
+ElmerSolver_mpi    000000000040F317  MAIN__                     57  Solver.F90
+ElmerSolver_mpi    000000000040F0D2  Unknown               Unknown  Unknown
+libc-2.17.so       00002B67CF0AA555  __libc_start_main     Unknown  Unknown
+ElmerSolver_mpi    000000000040EFE9  Unknown               Unknown  Unknown
+forrtl: error (76): Abort trap signal
+Image              PC                Routine            Line        Source             
+ElmerSolver_mpi    0000000000435064  Unknown               Unknown  Unknown
+libpthread-2.17.s  00002ADE620D4630  Unknown               Unknown  Unknown
+libc-2.17.so       00002ADE6925D387  gsignal               Unknown  Unknown
+libc-2.17.so       00002ADE6925EA78  abort                 Unknown  Unknown
+libstdc++.so.6.0.  00002ADE590334F3  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002ADE59039686  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002ADE590396C1  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002ADE590398F4  Unknown               Unknown  Unknown
+libxios.so         00002ADE66B32753  _ZN4xios6CField18     Unknown  Unknown
+libxios.so         00002ADE66B323CA  _ZN4xios6CField30     Unknown  Unknown
+libxios.so         00002ADE66B6C822  _ZN4xios5CFile27s     Unknown  Unknown
+libxios.so         00002ADE66A78459  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002ADE66A758EB  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002ADE66A733A5  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002ADE66A86495  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002ADE66E6B046  cxios_context_clo     Unknown  Unknown
+ElmerIceSolvers.s  00002ADEC81CEA67  xiosoutputsolver_         296  XIOSOutputSolver.F90
+libelmersolver.so  00002ADE5970B298  loadmod_mp_execso         449  LoadMod.F90
+libelmersolver.so  00002ADE59A55A36  mainutils_mp_sing        5315  MainUtils.F90
+libelmersolver.so  00002ADE59A530DB  mainutils_mp_solv        5558  MainUtils.F90
+libelmersolver.so  00002ADE59A4B1D7  mainutils_mp_solv        3079  MainUtils.F90
+libelmersolver.so  00002ADE59E72A89  elmersolver_IP_ex        3074  ElmerSolver.F90
+libelmersolver.so  00002ADE59E5C359  elmersolver_              603  ElmerSolver.F90
+ElmerSolver_mpi    000000000040F317  MAIN__                     57  Solver.F90
+ElmerSolver_mpi    000000000040F0D2  Unknown               Unknown  Unknown
+libc-2.17.so       00002ADE69249555  __libc_start_main     Unknown  Unknown
+ElmerSolver_mpi    000000000040EFE9  Unknown               Unknown  Unknown
+forrtl: error (76): Abort trap signal
+Image              PC                Routine            Line        Source             
+ElmerSolver_mpi    0000000000435064  Unknown               Unknown  Unknown
+libpthread-2.17.s  00002AD5C8682630  Unknown               Unknown  Unknown
+libc-2.17.so       00002AD5CF80B387  gsignal               Unknown  Unknown
+libc-2.17.so       00002AD5CF80CA78  abort                 Unknown  Unknown
+libstdc++.so.6.0.  00002AD5BF5E14F3  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002AD5BF5E7686  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002AD5BF5E76C1  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002AD5BF5E78F4  Unknown               Unknown  Unknown
+libxios.so         00002AD5CD0E0753  _ZN4xios6CField18     Unknown  Unknown
+libxios.so         00002AD5CD0E03CA  _ZN4xios6CField30     Unknown  Unknown
+libxios.so         00002AD5CD11A822  _ZN4xios5CFile27s     Unknown  Unknown
+libxios.so         00002AD5CD026459  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002AD5CD0238EB  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002AD5CD0213A5  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002AD5CD034495  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002AD5CD419046  cxios_context_clo     Unknown  Unknown
+ElmerIceSolvers.s  00002AD62E77BA67  xiosoutputsolver_         296  XIOSOutputSolver.F90
+libelmersolver.so  00002AD5BFCB9298  loadmod_mp_execso         449  LoadMod.F90
+libelmersolver.so  00002AD5C0003A36  mainutils_mp_sing        5315  MainUtils.F90
+libelmersolver.so  00002AD5C00010DB  mainutils_mp_solv        5558  MainUtils.F90
+libelmersolver.so  00002AD5BFFF91D7  mainutils_mp_solv        3079  MainUtils.F90
+libelmersolver.so  00002AD5C0420A89  elmersolver_IP_ex        3074  ElmerSolver.F90
+libelmersolver.so  00002AD5C040A359  elmersolver_              603  ElmerSolver.F90
+ElmerSolver_mpi    000000000040F317  MAIN__                     57  Solver.F90
+ElmerSolver_mpi    000000000040F0D2  Unknown               Unknown  Unknown
+libc-2.17.so       00002AD5CF7F7555  __libc_start_main     Unknown  Unknown
+ElmerSolver_mpi    000000000040EFE9  Unknown               Unknown  Unknown
+forrtl: error (76): Abort trap signal
+Image              PC                Routine            Line        Source             
+ElmerSolver_mpi    0000000000435064  Unknown               Unknown  Unknown
+libpthread-2.17.s  00002ACE3B57E630  Unknown               Unknown  Unknown
+libc-2.17.so       00002ACE42707387  gsignal               Unknown  Unknown
+libc-2.17.so       00002ACE42708A78  abort                 Unknown  Unknown
+libstdc++.so.6.0.  00002ACE324DF4F3  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002ACE324E5686  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002ACE324E56C1  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002ACE324E58F4  Unknown               Unknown  Unknown
+libxios.so         00002ACE3FFDC753  _ZN4xios6CField18     Unknown  Unknown
+libxios.so         00002ACE3FFDC3CA  _ZN4xios6CField30     Unknown  Unknown
+libxios.so         00002ACE40016822  _ZN4xios5CFile27s     Unknown  Unknown
+libxios.so         00002ACE3FF22459  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002ACE3FF1F8EB  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002ACE3FF1D3A5  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002ACE3FF30495  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002ACE40315046  cxios_context_clo     Unknown  Unknown
+ElmerIceSolvers.s  00002ACEA1473A67  xiosoutputsolver_         296  XIOSOutputSolver.F90
+libelmersolver.so  00002ACE32BB5298  loadmod_mp_execso         449  LoadMod.F90
+libelmersolver.so  00002ACE32EFFA36  mainutils_mp_sing        5315  MainUtils.F90
+libelmersolver.so  00002ACE32EFD0DB  mainutils_mp_solv        5558  MainUtils.F90
+libelmersolver.so  00002ACE32EF51D7  mainutils_mp_solv        3079  MainUtils.F90
+libelmersolver.so  00002ACE3331CA89  elmersolver_IP_ex        3074  ElmerSolver.F90
+libelmersolver.so  00002ACE33306359  elmersolver_              603  ElmerSolver.F90
+ElmerSolver_mpi    000000000040F317  MAIN__                     57  Solver.F90
+ElmerSolver_mpi    000000000040F0D2  Unknown               Unknown  Unknown
+libc-2.17.so       00002ACE426F3555  __libc_start_main     Unknown  Unknown
+ElmerSolver_mpi    000000000040EFE9  Unknown               Unknown  Unknown
+forrtl: error (76): Abort trap signal
+Image              PC                Routine            Line        Source             
+ElmerSolver_mpi    0000000000435064  Unknown               Unknown  Unknown
+libpthread-2.17.s  00002B1226FE2630  Unknown               Unknown  Unknown
+libc-2.17.so       00002B122E16B387  gsignal               Unknown  Unknown
+libc-2.17.so       00002B122E16CA78  abort                 Unknown  Unknown
+libstdc++.so.6.0.  00002B121DF414F3  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B121DF47686  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B121DF476C1  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B121DF478F4  Unknown               Unknown  Unknown
+libxios.so         00002B122BA40753  _ZN4xios6CField18     Unknown  Unknown
+libxios.so         00002B122BA403CA  _ZN4xios6CField30     Unknown  Unknown
+libxios.so         00002B122BA7A822  _ZN4xios5CFile27s     Unknown  Unknown
+libxios.so         00002B122B986459  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B122B9838EB  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B122B9813A5  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B122B994495  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B122BD79046  cxios_context_clo     Unknown  Unknown
+ElmerIceSolvers.s  00002B128CABDA67  xiosoutputsolver_         296  XIOSOutputSolver.F90
+libelmersolver.so  00002B121E619298  loadmod_mp_execso         449  LoadMod.F90
+libelmersolver.so  00002B121E963A36  mainutils_mp_sing        5315  MainUtils.F90
+libelmersolver.so  00002B121E9610DB  mainutils_mp_solv        5558  MainUtils.F90
+libelmersolver.so  00002B121E9591D7  mainutils_mp_solv        3079  MainUtils.F90
+libelmersolver.so  00002B121ED80A89  elmersolver_IP_ex        3074  ElmerSolver.F90
+libelmersolver.so  00002B121ED6A359  elmersolver_              603  ElmerSolver.F90
+ElmerSolver_mpi    000000000040F317  MAIN__                     57  Solver.F90
+ElmerSolver_mpi    000000000040F0D2  Unknown               Unknown  Unknown
+libc-2.17.so       00002B122E157555  __libc_start_main     Unknown  Unknown
+ElmerSolver_mpi    000000000040EFE9  Unknown               Unknown  Unknown
+forrtl: error (76): Abort trap signal
+Image              PC                Routine            Line        Source             
+ElmerSolver_mpi    0000000000435064  Unknown               Unknown  Unknown
+libpthread-2.17.s  00002B92194AF630  Unknown               Unknown  Unknown
+libc-2.17.so       00002B9220638387  gsignal               Unknown  Unknown
+libc-2.17.so       00002B9220639A78  abort                 Unknown  Unknown
+libstdc++.so.6.0.  00002B921040E4F3  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B9210414686  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B92104146C1  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B92104148F4  Unknown               Unknown  Unknown
+libxios.so         00002B921DF0D753  _ZN4xios6CField18     Unknown  Unknown
+libxios.so         00002B921DF0D3CA  _ZN4xios6CField30     Unknown  Unknown
+libxios.so         00002B921DF47822  _ZN4xios5CFile27s     Unknown  Unknown
+libxios.so         00002B921DE53459  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B921DE508EB  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B921DE4E3A5  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B921DE61495  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B921E246046  cxios_context_clo     Unknown  Unknown
+ElmerIceSolvers.s  00002B927F5A8A67  xiosoutputsolver_         296  XIOSOutputSolver.F90
+libelmersolver.so  00002B9210AE6298  loadmod_mp_execso         449  LoadMod.F90
+libelmersolver.so  00002B9210E30A36  mainutils_mp_sing        5315  MainUtils.F90
+libelmersolver.so  00002B9210E2E0DB  mainutils_mp_solv        5558  MainUtils.F90
+libelmersolver.so  00002B9210E261D7  mainutils_mp_solv        3079  MainUtils.F90
+libelmersolver.so  00002B921124DA89  elmersolver_IP_ex        3074  ElmerSolver.F90
+libelmersolver.so  00002B9211237359  elmersolver_              603  ElmerSolver.F90
+ElmerSolver_mpi    000000000040F317  MAIN__                     57  Solver.F90
+ElmerSolver_mpi    000000000040F0D2  Unknown               Unknown  Unknown
+libc-2.17.so       00002B9220624555  __libc_start_main     Unknown  Unknown
+ElmerSolver_mpi    000000000040EFE9  Unknown               Unknown  Unknown
+forrtl: error (76): Abort trap signal
+Image              PC                Routine            Line        Source             
+ElmerSolver_mpi    0000000000435064  Unknown               Unknown  Unknown
+libpthread-2.17.s  00002B4314856630  Unknown               Unknown  Unknown
+libc-2.17.so       00002B431B9DF387  gsignal               Unknown  Unknown
+libc-2.17.so       00002B431B9E0A78  abort                 Unknown  Unknown
+libstdc++.so.6.0.  00002B430B7B54F3  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B430B7BB686  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B430B7BB6C1  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B430B7BB8F4  Unknown               Unknown  Unknown
+libxios.so         00002B43192B4753  _ZN4xios6CField18     Unknown  Unknown
+libxios.so         00002B43192B43CA  _ZN4xios6CField30     Unknown  Unknown
+libxios.so         00002B43192EE822  _ZN4xios5CFile27s     Unknown  Unknown
+libxios.so         00002B43191FA459  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B43191F78EB  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B43191F53A5  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B4319208495  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B43195ED046  cxios_context_clo     Unknown  Unknown
+ElmerIceSolvers.s  00002B437A94FA67  xiosoutputsolver_         296  XIOSOutputSolver.F90
+libelmersolver.so  00002B430BE8D298  loadmod_mp_execso         449  LoadMod.F90
+libelmersolver.so  00002B430C1D7A36  mainutils_mp_sing        5315  MainUtils.F90
+libelmersolver.so  00002B430C1D50DB  mainutils_mp_solv        5558  MainUtils.F90
+libelmersolver.so  00002B430C1CD1D7  mainutils_mp_solv        3079  MainUtils.F90
+libelmersolver.so  00002B430C5F4A89  elmersolver_IP_ex        3074  ElmerSolver.F90
+libelmersolver.so  00002B430C5DE359  elmersolver_              603  ElmerSolver.F90
+ElmerSolver_mpi    000000000040F317  MAIN__                     57  Solver.F90
+ElmerSolver_mpi    000000000040F0D2  Unknown               Unknown  Unknown
+libc-2.17.so       00002B431B9CB555  __libc_start_main     Unknown  Unknown
+ElmerSolver_mpi    000000000040EFE9  Unknown               Unknown  Unknown
+forrtl: error (76): Abort trap signal
+Image              PC                Routine            Line        Source             
+ElmerSolver_mpi    0000000000435064  Unknown               Unknown  Unknown
+libpthread-2.17.s  00002B046EFA6630  Unknown               Unknown  Unknown
+libc-2.17.so       00002B047612F387  gsignal               Unknown  Unknown
+libc-2.17.so       00002B0476130A78  abort                 Unknown  Unknown
+libstdc++.so.6.0.  00002B0465F054F3  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B0465F0B686  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B0465F0B6C1  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B0465F0B8F4  Unknown               Unknown  Unknown
+libxios.so         00002B0473A04753  _ZN4xios6CField18     Unknown  Unknown
+libxios.so         00002B0473A043CA  _ZN4xios6CField30     Unknown  Unknown
+libxios.so         00002B0473A3E822  _ZN4xios5CFile27s     Unknown  Unknown
+libxios.so         00002B047394A459  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B04739478EB  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B04739453A5  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B0473958495  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B0473D3D046  cxios_context_clo     Unknown  Unknown
+ElmerIceSolvers.s  00002B04D50ABA67  xiosoutputsolver_         296  XIOSOutputSolver.F90
+libelmersolver.so  00002B04665DD298  loadmod_mp_execso         449  LoadMod.F90
+libelmersolver.so  00002B0466927A36  mainutils_mp_sing        5315  MainUtils.F90
+libelmersolver.so  00002B04669250DB  mainutils_mp_solv        5558  MainUtils.F90
+libelmersolver.so  00002B046691D1D7  mainutils_mp_solv        3079  MainUtils.F90
+libelmersolver.so  00002B0466D44A89  elmersolver_IP_ex        3074  ElmerSolver.F90
+libelmersolver.so  00002B0466D2E359  elmersolver_              603  ElmerSolver.F90
+ElmerSolver_mpi    000000000040F317  MAIN__                     57  Solver.F90
+ElmerSolver_mpi    000000000040F0D2  Unknown               Unknown  Unknown
+libc-2.17.so       00002B047611B555  __libc_start_main     Unknown  Unknown
+ElmerSolver_mpi    000000000040EFE9  Unknown               Unknown  Unknown
+forrtl: error (76): Abort trap signal
+Image              PC                Routine            Line        Source             
+ElmerSolver_mpi    0000000000435064  Unknown               Unknown  Unknown
+libpthread-2.17.s  00002B17CEED2630  Unknown               Unknown  Unknown
+libc-2.17.so       00002B17D605B387  gsignal               Unknown  Unknown
+libc-2.17.so       00002B17D605CA78  abort                 Unknown  Unknown
+libstdc++.so.6.0.  00002B17C5E314F3  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B17C5E37686  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B17C5E376C1  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B17C5E378F4  Unknown               Unknown  Unknown
+libxios.so         00002B17D3930753  _ZN4xios6CField18     Unknown  Unknown
+libxios.so         00002B17D39303CA  _ZN4xios6CField30     Unknown  Unknown
+libxios.so         00002B17D396A822  _ZN4xios5CFile27s     Unknown  Unknown
+libxios.so         00002B17D3876459  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B17D38738EB  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B17D38713A5  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B17D3884495  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B17D3C69046  cxios_context_clo     Unknown  Unknown
+ElmerIceSolvers.s  00002B1834FD6A67  xiosoutputsolver_         296  XIOSOutputSolver.F90
+libelmersolver.so  00002B17C6509298  loadmod_mp_execso         449  LoadMod.F90
+libelmersolver.so  00002B17C6853A36  mainutils_mp_sing        5315  MainUtils.F90
+libelmersolver.so  00002B17C68510DB  mainutils_mp_solv        5558  MainUtils.F90
+libelmersolver.so  00002B17C68491D7  mainutils_mp_solv        3079  MainUtils.F90
+libelmersolver.so  00002B17C6C70A89  elmersolver_IP_ex        3074  ElmerSolver.F90
+libelmersolver.so  00002B17C6C5A359  elmersolver_              603  ElmerSolver.F90
+ElmerSolver_mpi    000000000040F317  MAIN__                     57  Solver.F90
+ElmerSolver_mpi    000000000040F0D2  Unknown               Unknown  Unknown
+libc-2.17.so       00002B17D6047555  __libc_start_main     Unknown  Unknown
+ElmerSolver_mpi    000000000040EFE9  Unknown               Unknown  Unknown
+forrtl: error (76): Abort trap signal
+Image              PC                Routine            Line        Source             
+ElmerSolver_mpi    0000000000435064  Unknown               Unknown  Unknown
+libpthread-2.17.s  00002ACC4B382630  Unknown               Unknown  Unknown
+libc-2.17.so       00002ACC5250B387  gsignal               Unknown  Unknown
+libc-2.17.so       00002ACC5250CA78  abort                 Unknown  Unknown
+libstdc++.so.6.0.  00002ACC422E14F3  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002ACC422E7686  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002ACC422E76C1  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002ACC422E78F4  Unknown               Unknown  Unknown
+libxios.so         00002ACC4FDE0753  _ZN4xios6CField18     Unknown  Unknown
+libxios.so         00002ACC4FDE03CA  _ZN4xios6CField30     Unknown  Unknown
+libxios.so         00002ACC4FE1A822  _ZN4xios5CFile27s     Unknown  Unknown
+libxios.so         00002ACC4FD26459  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002ACC4FD238EB  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002ACC4FD213A5  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002ACC4FD34495  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002ACC50119046  cxios_context_clo     Unknown  Unknown
+ElmerIceSolvers.s  00002ACCB0F62A67  xiosoutputsolver_         296  XIOSOutputSolver.F90
+libelmersolver.so  00002ACC429B9298  loadmod_mp_execso         449  LoadMod.F90
+libelmersolver.so  00002ACC42D03A36  mainutils_mp_sing        5315  MainUtils.F90
+libelmersolver.so  00002ACC42D010DB  mainutils_mp_solv        5558  MainUtils.F90
+libelmersolver.so  00002ACC42CF91D7  mainutils_mp_solv        3079  MainUtils.F90
+libelmersolver.so  00002ACC43120A89  elmersolver_IP_ex        3074  ElmerSolver.F90
+libelmersolver.so  00002ACC4310A359  elmersolver_              603  ElmerSolver.F90
+ElmerSolver_mpi    000000000040F317  MAIN__                     57  Solver.F90
+ElmerSolver_mpi    000000000040F0D2  Unknown               Unknown  Unknown
+libc-2.17.so       00002ACC524F7555  __libc_start_main     Unknown  Unknown
+ElmerSolver_mpi    000000000040EFE9  Unknown               Unknown  Unknown
+forrtl: error (76): Abort trap signal
+Image              PC                Routine            Line        Source             
+ElmerSolver_mpi    0000000000435064  Unknown               Unknown  Unknown
+libpthread-2.17.s  00002B4F3FA65630  Unknown               Unknown  Unknown
+libc-2.17.so       00002B4F46BEE387  gsignal               Unknown  Unknown
+libc-2.17.so       00002B4F46BEFA78  abort                 Unknown  Unknown
+libstdc++.so.6.0.  00002B4F369C44F3  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B4F369CA686  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B4F369CA6C1  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B4F369CA8F4  Unknown               Unknown  Unknown
+libxios.so         00002B4F444C3753  _ZN4xios6CField18     Unknown  Unknown
+libxios.so         00002B4F444C33CA  _ZN4xios6CField30     Unknown  Unknown
+libxios.so         00002B4F444FD822  _ZN4xios5CFile27s     Unknown  Unknown
+libxios.so         00002B4F44409459  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B4F444068EB  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B4F444043A5  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B4F44417495  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B4F447FC046  cxios_context_clo     Unknown  Unknown
+ElmerIceSolvers.s  00002B4FA5C63A67  xiosoutputsolver_         296  XIOSOutputSolver.F90
+libelmersolver.so  00002B4F3709C298  loadmod_mp_execso         449  LoadMod.F90
+libelmersolver.so  00002B4F373E6A36  mainutils_mp_sing        5315  MainUtils.F90
+libelmersolver.so  00002B4F373E40DB  mainutils_mp_solv        5558  MainUtils.F90
+libelmersolver.so  00002B4F373DC1D7  mainutils_mp_solv        3079  MainUtils.F90
+libelmersolver.so  00002B4F37803A89  elmersolver_IP_ex        3074  ElmerSolver.F90
+libelmersolver.so  00002B4F377ED359  elmersolver_              603  ElmerSolver.F90
+ElmerSolver_mpi    000000000040F317  MAIN__                     57  Solver.F90
+ElmerSolver_mpi    000000000040F0D2  Unknown               Unknown  Unknown
+libc-2.17.so       00002B4F46BDA555  __libc_start_main     Unknown  Unknown
+ElmerSolver_mpi    000000000040EFE9  Unknown               Unknown  Unknown
+forrtl: error (76): Abort trap signal
+Image              PC                Routine            Line        Source             
+ElmerSolver_mpi    0000000000435064  Unknown               Unknown  Unknown
+libpthread-2.17.s  00002AEE89D9D630  Unknown               Unknown  Unknown
+libc-2.17.so       00002AEE90F26387  gsignal               Unknown  Unknown
+libc-2.17.so       00002AEE90F27A78  abort                 Unknown  Unknown
+libstdc++.so.6.0.  00002AEE80CFE4F3  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002AEE80D04686  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002AEE80D046C1  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002AEE80D048F4  Unknown               Unknown  Unknown
+libxios.so         00002AEE8E7FB753  _ZN4xios6CField18     Unknown  Unknown
+libxios.so         00002AEE8E7FB3CA  _ZN4xios6CField30     Unknown  Unknown
+libxios.so         00002AEE8E835822  _ZN4xios5CFile27s     Unknown  Unknown
+libxios.so         00002AEE8E741459  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002AEE8E73E8EB  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002AEE8E73C3A5  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002AEE8E74F495  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002AEE8EB34046  cxios_context_clo     Unknown  Unknown
+ElmerIceSolvers.s  00002AEEEFE98A67  xiosoutputsolver_         296  XIOSOutputSolver.F90
+libelmersolver.so  00002AEE813D4298  loadmod_mp_execso         449  LoadMod.F90
+libelmersolver.so  00002AEE8171EA36  mainutils_mp_sing        5315  MainUtils.F90
+libelmersolver.so  00002AEE8171C0DB  mainutils_mp_solv        5558  MainUtils.F90
+libelmersolver.so  00002AEE817141D7  mainutils_mp_solv        3079  MainUtils.F90
+libelmersolver.so  00002AEE81B3BA89  elmersolver_IP_ex        3074  ElmerSolver.F90
+libelmersolver.so  00002AEE81B25359  elmersolver_              603  ElmerSolver.F90
+ElmerSolver_mpi    000000000040F317  MAIN__                     57  Solver.F90
+ElmerSolver_mpi    000000000040F0D2  Unknown               Unknown  Unknown
+libc-2.17.so       00002AEE90F12555  __libc_start_main     Unknown  Unknown
+ElmerSolver_mpi    000000000040EFE9  Unknown               Unknown  Unknown
+forrtl: error (76): Abort trap signal
+Image              PC                Routine            Line        Source             
+ElmerSolver_mpi    0000000000435064  Unknown               Unknown  Unknown
+libpthread-2.17.s  00002AD507AC1630  Unknown               Unknown  Unknown
+libc-2.17.so       00002AD50EC4A387  gsignal               Unknown  Unknown
+libc-2.17.so       00002AD50EC4BA78  abort                 Unknown  Unknown
+libstdc++.so.6.0.  00002AD4FEA204F3  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002AD4FEA26686  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002AD4FEA266C1  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002AD4FEA268F4  Unknown               Unknown  Unknown
+libxios.so         00002AD50C51F753  _ZN4xios6CField18     Unknown  Unknown
+libxios.so         00002AD50C51F3CA  _ZN4xios6CField30     Unknown  Unknown
+libxios.so         00002AD50C559822  _ZN4xios5CFile27s     Unknown  Unknown
+libxios.so         00002AD50C465459  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002AD50C4628EB  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002AD50C4603A5  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002AD50C473495  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002AD50C858046  cxios_context_clo     Unknown  Unknown
+ElmerIceSolvers.s  00002AD56DCD3A67  xiosoutputsolver_         296  XIOSOutputSolver.F90
+libelmersolver.so  00002AD4FF0F8298  loadmod_mp_execso         449  LoadMod.F90
+libelmersolver.so  00002AD4FF442A36  mainutils_mp_sing        5315  MainUtils.F90
+libelmersolver.so  00002AD4FF4400DB  mainutils_mp_solv        5558  MainUtils.F90
+libelmersolver.so  00002AD4FF4381D7  mainutils_mp_solv        3079  MainUtils.F90
+libelmersolver.so  00002AD4FF85FA89  elmersolver_IP_ex        3074  ElmerSolver.F90
+libelmersolver.so  00002AD4FF849359  elmersolver_              603  ElmerSolver.F90
+ElmerSolver_mpi    000000000040F317  MAIN__                     57  Solver.F90
+ElmerSolver_mpi    000000000040F0D2  Unknown               Unknown  Unknown
+libc-2.17.so       00002AD50EC36555  __libc_start_main     Unknown  Unknown
+ElmerSolver_mpi    000000000040EFE9  Unknown               Unknown  Unknown
+forrtl: error (76): Abort trap signal
+Image              PC                Routine            Line        Source             
+ElmerSolver_mpi    0000000000435064  Unknown               Unknown  Unknown
+libpthread-2.17.s  00002B54AC73F630  Unknown               Unknown  Unknown
+libc-2.17.so       00002B54B38C8387  gsignal               Unknown  Unknown
+libc-2.17.so       00002B54B38C9A78  abort                 Unknown  Unknown
+libstdc++.so.6.0.  00002B54A369E4F3  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B54A36A4686  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B54A36A46C1  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B54A36A48F4  Unknown               Unknown  Unknown
+libxios.so         00002B54B119D753  _ZN4xios6CField18     Unknown  Unknown
+libxios.so         00002B54B119D3CA  _ZN4xios6CField30     Unknown  Unknown
+libxios.so         00002B54B11D7822  _ZN4xios5CFile27s     Unknown  Unknown
+libxios.so         00002B54B10E3459  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B54B10E08EB  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B54B10DE3A5  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B54B10F1495  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B54B14D6046  cxios_context_clo     Unknown  Unknown
+ElmerIceSolvers.s  00002B551262EA67  xiosoutputsolver_         296  XIOSOutputSolver.F90
+libelmersolver.so  00002B54A3D76298  loadmod_mp_execso         449  LoadMod.F90
+libelmersolver.so  00002B54A40C0A36  mainutils_mp_sing        5315  MainUtils.F90
+libelmersolver.so  00002B54A40BE0DB  mainutils_mp_solv        5558  MainUtils.F90
+libelmersolver.so  00002B54A40B61D7  mainutils_mp_solv        3079  MainUtils.F90
+libelmersolver.so  00002B54A44DDA89  elmersolver_IP_ex        3074  ElmerSolver.F90
+libelmersolver.so  00002B54A44C7359  elmersolver_              603  ElmerSolver.F90
+ElmerSolver_mpi    000000000040F317  MAIN__                     57  Solver.F90
+ElmerSolver_mpi    000000000040F0D2  Unknown               Unknown  Unknown
+libc-2.17.so       00002B54B38B4555  __libc_start_main     Unknown  Unknown
+ElmerSolver_mpi    000000000040EFE9  Unknown               Unknown  Unknown
+forrtl: error (76): Abort trap signal
+Image              PC                Routine            Line        Source             
+ElmerSolver_mpi    0000000000435064  Unknown               Unknown  Unknown
+libpthread-2.17.s  00002B13C7934630  Unknown               Unknown  Unknown
+libc-2.17.so       00002B13CEABD387  gsignal               Unknown  Unknown
+libc-2.17.so       00002B13CEABEA78  abort                 Unknown  Unknown
+libstdc++.so.6.0.  00002B13BE8954F3  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B13BE89B686  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B13BE89B6C1  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B13BE89B8F4  Unknown               Unknown  Unknown
+libxios.so         00002B13CC392753  _ZN4xios6CField18     Unknown  Unknown
+libxios.so         00002B13CC3923CA  _ZN4xios6CField30     Unknown  Unknown
+libxios.so         00002B13CC3CC822  _ZN4xios5CFile27s     Unknown  Unknown
+libxios.so         00002B13CC2D8459  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B13CC2D58EB  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B13CC2D33A5  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B13CC2E6495  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B13CC6CB046  cxios_context_clo     Unknown  Unknown
+ElmerIceSolvers.s  00002B142D82DA67  xiosoutputsolver_         296  XIOSOutputSolver.F90
+libelmersolver.so  00002B13BEF6B298  loadmod_mp_execso         449  LoadMod.F90
+libelmersolver.so  00002B13BF2B5A36  mainutils_mp_sing        5315  MainUtils.F90
+libelmersolver.so  00002B13BF2B30DB  mainutils_mp_solv        5558  MainUtils.F90
+libelmersolver.so  00002B13BF2AB1D7  mainutils_mp_solv        3079  MainUtils.F90
+libelmersolver.so  00002B13BF6D2A89  elmersolver_IP_ex        3074  ElmerSolver.F90
+libelmersolver.so  00002B13BF6BC359  elmersolver_              603  ElmerSolver.F90
+ElmerSolver_mpi    000000000040F317  MAIN__                     57  Solver.F90
+ElmerSolver_mpi    000000000040F0D2  Unknown               Unknown  Unknown
+libc-2.17.so       00002B13CEAA9555  __libc_start_main     Unknown  Unknown
+ElmerSolver_mpi    000000000040EFE9  Unknown               Unknown  Unknown
+forrtl: error (76): Abort trap signal
+Image              PC                Routine            Line        Source             
+ElmerSolver_mpi    0000000000435064  Unknown               Unknown  Unknown
+libpthread-2.17.s  00002B24118F8630  Unknown               Unknown  Unknown
+libc-2.17.so       00002B2418A81387  gsignal               Unknown  Unknown
+libc-2.17.so       00002B2418A82A78  abort                 Unknown  Unknown
+libstdc++.so.6.0.  00002B24088594F3  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B240885F686  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B240885F6C1  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B240885F8F4  Unknown               Unknown  Unknown
+libxios.so         00002B2416356753  _ZN4xios6CField18     Unknown  Unknown
+libxios.so         00002B24163563CA  _ZN4xios6CField30     Unknown  Unknown
+libxios.so         00002B2416390822  _ZN4xios5CFile27s     Unknown  Unknown
+libxios.so         00002B241629C459  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B24162998EB  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B24162973A5  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B24162AA495  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B241668F046  cxios_context_clo     Unknown  Unknown
+ElmerIceSolvers.s  00002B24774DAA67  xiosoutputsolver_         296  XIOSOutputSolver.F90
+libelmersolver.so  00002B2408F2F298  loadmod_mp_execso         449  LoadMod.F90
+libelmersolver.so  00002B2409279A36  mainutils_mp_sing        5315  MainUtils.F90
+libelmersolver.so  00002B24092770DB  mainutils_mp_solv        5558  MainUtils.F90
+libelmersolver.so  00002B240926F1D7  mainutils_mp_solv        3079  MainUtils.F90
+libelmersolver.so  00002B2409696A89  elmersolver_IP_ex        3074  ElmerSolver.F90
+libelmersolver.so  00002B2409680359  elmersolver_              603  ElmerSolver.F90
+ElmerSolver_mpi    000000000040F317  MAIN__                     57  Solver.F90
+ElmerSolver_mpi    000000000040F0D2  Unknown               Unknown  Unknown
+libc-2.17.so       00002B2418A6D555  __libc_start_main     Unknown  Unknown
+ElmerSolver_mpi    000000000040EFE9  Unknown               Unknown  Unknown
+forrtl: error (76): Abort trap signal
+Image              PC                Routine            Line        Source             
+ElmerSolver_mpi    0000000000435064  Unknown               Unknown  Unknown
+libpthread-2.17.s  00002BA19C96B630  Unknown               Unknown  Unknown
+libc-2.17.so       00002BA1A3AF4387  gsignal               Unknown  Unknown
+libc-2.17.so       00002BA1A3AF5A78  abort                 Unknown  Unknown
+libstdc++.so.6.0.  00002BA1938CA4F3  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002BA1938D0686  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002BA1938D06C1  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002BA1938D08F4  Unknown               Unknown  Unknown
+libxios.so         00002BA1A13C9753  _ZN4xios6CField18     Unknown  Unknown
+libxios.so         00002BA1A13C93CA  _ZN4xios6CField30     Unknown  Unknown
+libxios.so         00002BA1A1403822  _ZN4xios5CFile27s     Unknown  Unknown
+libxios.so         00002BA1A130F459  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002BA1A130C8EB  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002BA1A130A3A5  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002BA1A131D495  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002BA1A1702046  cxios_context_clo     Unknown  Unknown
+ElmerIceSolvers.s  00002BA20254CA67  xiosoutputsolver_         296  XIOSOutputSolver.F90
+libelmersolver.so  00002BA193FA2298  loadmod_mp_execso         449  LoadMod.F90
+libelmersolver.so  00002BA1942ECA36  mainutils_mp_sing        5315  MainUtils.F90
+libelmersolver.so  00002BA1942EA0DB  mainutils_mp_solv        5558  MainUtils.F90
+libelmersolver.so  00002BA1942E21D7  mainutils_mp_solv        3079  MainUtils.F90
+libelmersolver.so  00002BA194709A89  elmersolver_IP_ex        3074  ElmerSolver.F90
+libelmersolver.so  00002BA1946F3359  elmersolver_              603  ElmerSolver.F90
+ElmerSolver_mpi    000000000040F317  MAIN__                     57  Solver.F90
+ElmerSolver_mpi    000000000040F0D2  Unknown               Unknown  Unknown
+libc-2.17.so       00002BA1A3AE0555  __libc_start_main     Unknown  Unknown
+ElmerSolver_mpi    000000000040EFE9  Unknown               Unknown  Unknown
+forrtl: error (76): Abort trap signal
+Image              PC                Routine            Line        Source             
+ElmerSolver_mpi    0000000000435064  Unknown               Unknown  Unknown
+libpthread-2.17.s  00002B90F8A82630  Unknown               Unknown  Unknown
+libc-2.17.so       00002B90FFC0B387  gsignal               Unknown  Unknown
+libc-2.17.so       00002B90FFC0CA78  abort                 Unknown  Unknown
+libstdc++.so.6.0.  00002B90EF9E14F3  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B90EF9E7686  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B90EF9E76C1  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B90EF9E78F4  Unknown               Unknown  Unknown
+libxios.so         00002B90FD4E0753  _ZN4xios6CField18     Unknown  Unknown
+libxios.so         00002B90FD4E03CA  _ZN4xios6CField30     Unknown  Unknown
+libxios.so         00002B90FD51A822  _ZN4xios5CFile27s     Unknown  Unknown
+libxios.so         00002B90FD426459  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B90FD4238EB  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B90FD4213A5  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B90FD434495  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B90FD819046  cxios_context_clo     Unknown  Unknown
+ElmerIceSolvers.s  00002B915EC80A67  xiosoutputsolver_         296  XIOSOutputSolver.F90
+libelmersolver.so  00002B90F00B9298  loadmod_mp_execso         449  LoadMod.F90
+libelmersolver.so  00002B90F0403A36  mainutils_mp_sing        5315  MainUtils.F90
+libelmersolver.so  00002B90F04010DB  mainutils_mp_solv        5558  MainUtils.F90
+libelmersolver.so  00002B90F03F91D7  mainutils_mp_solv        3079  MainUtils.F90
+libelmersolver.so  00002B90F0820A89  elmersolver_IP_ex        3074  ElmerSolver.F90
+libelmersolver.so  00002B90F080A359  elmersolver_              603  ElmerSolver.F90
+ElmerSolver_mpi    000000000040F317  MAIN__                     57  Solver.F90
+ElmerSolver_mpi    000000000040F0D2  Unknown               Unknown  Unknown
+libc-2.17.so       00002B90FFBF7555  __libc_start_main     Unknown  Unknown
+ElmerSolver_mpi    000000000040EFE9  Unknown               Unknown  Unknown
+forrtl: error (76): Abort trap signal
+Image              PC                Routine            Line        Source             
+ElmerSolver_mpi    0000000000435064  Unknown               Unknown  Unknown
+libpthread-2.17.s  00002B5FB5D8D630  Unknown               Unknown  Unknown
+libc-2.17.so       00002B5FBCF16387  gsignal               Unknown  Unknown
+libc-2.17.so       00002B5FBCF17A78  abort                 Unknown  Unknown
+libstdc++.so.6.0.  00002B5FACCEC4F3  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B5FACCF2686  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B5FACCF26C1  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B5FACCF28F4  Unknown               Unknown  Unknown
+libxios.so         00002B5FBA7EB753  _ZN4xios6CField18     Unknown  Unknown
+libxios.so         00002B5FBA7EB3CA  _ZN4xios6CField30     Unknown  Unknown
+libxios.so         00002B5FBA825822  _ZN4xios5CFile27s     Unknown  Unknown
+libxios.so         00002B5FBA731459  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B5FBA72E8EB  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B5FBA72C3A5  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B5FBA73F495  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B5FBAB24046  cxios_context_clo     Unknown  Unknown
+ElmerIceSolvers.s  00002B601BF8CA67  xiosoutputsolver_         296  XIOSOutputSolver.F90
+libelmersolver.so  00002B5FAD3C4298  loadmod_mp_execso         449  LoadMod.F90
+libelmersolver.so  00002B5FAD70EA36  mainutils_mp_sing        5315  MainUtils.F90
+libelmersolver.so  00002B5FAD70C0DB  mainutils_mp_solv        5558  MainUtils.F90
+libelmersolver.so  00002B5FAD7041D7  mainutils_mp_solv        3079  MainUtils.F90
+libelmersolver.so  00002B5FADB2BA89  elmersolver_IP_ex        3074  ElmerSolver.F90
+libelmersolver.so  00002B5FADB15359  elmersolver_              603  ElmerSolver.F90
+ElmerSolver_mpi    000000000040F317  MAIN__                     57  Solver.F90
+ElmerSolver_mpi    000000000040F0D2  Unknown               Unknown  Unknown
+libc-2.17.so       00002B5FBCF02555  __libc_start_main     Unknown  Unknown
+ElmerSolver_mpi    000000000040EFE9  Unknown               Unknown  Unknown
+forrtl: error (76): Abort trap signal
+Image              PC                Routine            Line        Source             
+ElmerSolver_mpi    0000000000435064  Unknown               Unknown  Unknown
+libpthread-2.17.s  00002B4811E41630  Unknown               Unknown  Unknown
+libc-2.17.so       00002B4818FCA387  gsignal               Unknown  Unknown
+libc-2.17.so       00002B4818FCBA78  abort                 Unknown  Unknown
+libstdc++.so.6.0.  00002B4808DA04F3  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B4808DA6686  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B4808DA66C1  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B4808DA68F4  Unknown               Unknown  Unknown
+libxios.so         00002B481689F753  _ZN4xios6CField18     Unknown  Unknown
+libxios.so         00002B481689F3CA  _ZN4xios6CField30     Unknown  Unknown
+libxios.so         00002B48168D9822  _ZN4xios5CFile27s     Unknown  Unknown
+libxios.so         00002B48167E5459  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B48167E28EB  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B48167E03A5  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B48167F3495  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B4816BD8046  cxios_context_clo     Unknown  Unknown
+ElmerIceSolvers.s  00002B4878044A67  xiosoutputsolver_         296  XIOSOutputSolver.F90
+libelmersolver.so  00002B4809478298  loadmod_mp_execso         449  LoadMod.F90
+libelmersolver.so  00002B48097C2A36  mainutils_mp_sing        5315  MainUtils.F90
+libelmersolver.so  00002B48097C00DB  mainutils_mp_solv        5558  MainUtils.F90
+libelmersolver.so  00002B48097B81D7  mainutils_mp_solv        3079  MainUtils.F90
+libelmersolver.so  00002B4809BDFA89  elmersolver_IP_ex        3074  ElmerSolver.F90
+libelmersolver.so  00002B4809BC9359  elmersolver_              603  ElmerSolver.F90
+ElmerSolver_mpi    000000000040F317  MAIN__                     57  Solver.F90
+ElmerSolver_mpi    000000000040F0D2  Unknown               Unknown  Unknown
+libc-2.17.so       00002B4818FB6555  __libc_start_main     Unknown  Unknown
+ElmerSolver_mpi    000000000040EFE9  Unknown               Unknown  Unknown
+forrtl: error (76): Abort trap signal
+Image              PC                Routine            Line        Source             
+ElmerSolver_mpi    0000000000435064  Unknown               Unknown  Unknown
+libpthread-2.17.s  00002ACCFBF4E630  Unknown               Unknown  Unknown
+libc-2.17.so       00002ACD030D7387  gsignal               Unknown  Unknown
+libc-2.17.so       00002ACD030D8A78  abort                 Unknown  Unknown
+libstdc++.so.6.0.  00002ACCF2EAD4F3  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002ACCF2EB3686  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002ACCF2EB36C1  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002ACCF2EB38F4  Unknown               Unknown  Unknown
+libxios.so         00002ACD009AC753  _ZN4xios6CField18     Unknown  Unknown
+libxios.so         00002ACD009AC3CA  _ZN4xios6CField30     Unknown  Unknown
+libxios.so         00002ACD009E6822  _ZN4xios5CFile27s     Unknown  Unknown
+libxios.so         00002ACD008F2459  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002ACD008EF8EB  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002ACD008ED3A5  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002ACD00900495  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002ACD00CE5046  cxios_context_clo     Unknown  Unknown
+ElmerIceSolvers.s  00002ACD6214DA67  xiosoutputsolver_         296  XIOSOutputSolver.F90
+libelmersolver.so  00002ACCF3585298  loadmod_mp_execso         449  LoadMod.F90
+libelmersolver.so  00002ACCF38CFA36  mainutils_mp_sing        5315  MainUtils.F90
+libelmersolver.so  00002ACCF38CD0DB  mainutils_mp_solv        5558  MainUtils.F90
+libelmersolver.so  00002ACCF38C51D7  mainutils_mp_solv        3079  MainUtils.F90
+libelmersolver.so  00002ACCF3CECA89  elmersolver_IP_ex        3074  ElmerSolver.F90
+libelmersolver.so  00002ACCF3CD6359  elmersolver_              603  ElmerSolver.F90
+ElmerSolver_mpi    000000000040F317  MAIN__                     57  Solver.F90
+ElmerSolver_mpi    000000000040F0D2  Unknown               Unknown  Unknown
+libc-2.17.so       00002ACD030C3555  __libc_start_main     Unknown  Unknown
+ElmerSolver_mpi    000000000040EFE9  Unknown               Unknown  Unknown
+forrtl: error (76): Abort trap signal
+Image              PC                Routine            Line        Source             
+ElmerSolver_mpi    0000000000435064  Unknown               Unknown  Unknown
+libpthread-2.17.s  00002ACD2ADD7630  Unknown               Unknown  Unknown
+libc-2.17.so       00002ACD31F60387  gsignal               Unknown  Unknown
+libc-2.17.so       00002ACD31F61A78  abort                 Unknown  Unknown
+libstdc++.so.6.0.  00002ACD21D364F3  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002ACD21D3C686  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002ACD21D3C6C1  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002ACD21D3C8F4  Unknown               Unknown  Unknown
+libxios.so         00002ACD2F835753  _ZN4xios6CField18     Unknown  Unknown
+libxios.so         00002ACD2F8353CA  _ZN4xios6CField30     Unknown  Unknown
+libxios.so         00002ACD2F86F822  _ZN4xios5CFile27s     Unknown  Unknown
+libxios.so         00002ACD2F77B459  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002ACD2F7788EB  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002ACD2F7763A5  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002ACD2F789495  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002ACD2FB6E046  cxios_context_clo     Unknown  Unknown
+ElmerIceSolvers.s  00002ACD90CCFA67  xiosoutputsolver_         296  XIOSOutputSolver.F90
+libelmersolver.so  00002ACD2240E298  loadmod_mp_execso         449  LoadMod.F90
+libelmersolver.so  00002ACD22758A36  mainutils_mp_sing        5315  MainUtils.F90
+libelmersolver.so  00002ACD227560DB  mainutils_mp_solv        5558  MainUtils.F90
+libelmersolver.so  00002ACD2274E1D7  mainutils_mp_solv        3079  MainUtils.F90
+libelmersolver.so  00002ACD22B75A89  elmersolver_IP_ex        3074  ElmerSolver.F90
+libelmersolver.so  00002ACD22B5F359  elmersolver_              603  ElmerSolver.F90
+ElmerSolver_mpi    000000000040F317  MAIN__                     57  Solver.F90
+ElmerSolver_mpi    000000000040F0D2  Unknown               Unknown  Unknown
+libc-2.17.so       00002ACD31F4C555  __libc_start_main     Unknown  Unknown
+ElmerSolver_mpi    000000000040EFE9  Unknown               Unknown  Unknown
+forrtl: error (76): Abort trap signal
+Image              PC                Routine            Line        Source             
+ElmerSolver_mpi    0000000000435064  Unknown               Unknown  Unknown
+libpthread-2.17.s  00002B8DC06E8630  Unknown               Unknown  Unknown
+libc-2.17.so       00002B8DC7871387  gsignal               Unknown  Unknown
+libc-2.17.so       00002B8DC7872A78  abort                 Unknown  Unknown
+libstdc++.so.6.0.  00002B8DB76474F3  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B8DB764D686  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B8DB764D6C1  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B8DB764D8F4  Unknown               Unknown  Unknown
+libxios.so         00002B8DC5146753  _ZN4xios6CField18     Unknown  Unknown
+libxios.so         00002B8DC51463CA  _ZN4xios6CField30     Unknown  Unknown
+libxios.so         00002B8DC5180822  _ZN4xios5CFile27s     Unknown  Unknown
+libxios.so         00002B8DC508C459  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B8DC50898EB  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B8DC50873A5  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B8DC509A495  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B8DC547F046  cxios_context_clo     Unknown  Unknown
+ElmerIceSolvers.s  00002B8E265E6A67  xiosoutputsolver_         296  XIOSOutputSolver.F90
+libelmersolver.so  00002B8DB7D1F298  loadmod_mp_execso         449  LoadMod.F90
+libelmersolver.so  00002B8DB8069A36  mainutils_mp_sing        5315  MainUtils.F90
+libelmersolver.so  00002B8DB80670DB  mainutils_mp_solv        5558  MainUtils.F90
+libelmersolver.so  00002B8DB805F1D7  mainutils_mp_solv        3079  MainUtils.F90
+libelmersolver.so  00002B8DB8486A89  elmersolver_IP_ex        3074  ElmerSolver.F90
+libelmersolver.so  00002B8DB8470359  elmersolver_              603  ElmerSolver.F90
+ElmerSolver_mpi    000000000040F317  MAIN__                     57  Solver.F90
+ElmerSolver_mpi    000000000040F0D2  Unknown               Unknown  Unknown
+libc-2.17.so       00002B8DC785D555  __libc_start_main     Unknown  Unknown
+ElmerSolver_mpi    000000000040EFE9  Unknown               Unknown  Unknown
+forrtl: error (76): Abort trap signal
+Image              PC                Routine            Line        Source             
+ElmerSolver_mpi    0000000000435064  Unknown               Unknown  Unknown
+libpthread-2.17.s  00002B1364C40630  Unknown               Unknown  Unknown
+libc-2.17.so       00002B136BDC9387  gsignal               Unknown  Unknown
+libc-2.17.so       00002B136BDCAA78  abort                 Unknown  Unknown
+libstdc++.so.6.0.  00002B135BB9F4F3  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B135BBA5686  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B135BBA56C1  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B135BBA58F4  Unknown               Unknown  Unknown
+libxios.so         00002B136969E753  _ZN4xios6CField18     Unknown  Unknown
+libxios.so         00002B136969E3CA  _ZN4xios6CField30     Unknown  Unknown
+libxios.so         00002B13696D8822  _ZN4xios5CFile27s     Unknown  Unknown
+libxios.so         00002B13695E4459  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B13695E18EB  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B13695DF3A5  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B13695F2495  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B13699D7046  cxios_context_clo     Unknown  Unknown
+ElmerIceSolvers.s  00002B13CAB30A67  xiosoutputsolver_         296  XIOSOutputSolver.F90
+libelmersolver.so  00002B135C277298  loadmod_mp_execso         449  LoadMod.F90
+libelmersolver.so  00002B135C5C1A36  mainutils_mp_sing        5315  MainUtils.F90
+libelmersolver.so  00002B135C5BF0DB  mainutils_mp_solv        5558  MainUtils.F90
+libelmersolver.so  00002B135C5B71D7  mainutils_mp_solv        3079  MainUtils.F90
+libelmersolver.so  00002B135C9DEA89  elmersolver_IP_ex        3074  ElmerSolver.F90
+libelmersolver.so  00002B135C9C8359  elmersolver_              603  ElmerSolver.F90
+ElmerSolver_mpi    000000000040F317  MAIN__                     57  Solver.F90
+ElmerSolver_mpi    000000000040F0D2  Unknown               Unknown  Unknown
+libc-2.17.so       00002B136BDB5555  __libc_start_main     Unknown  Unknown
+ElmerSolver_mpi    000000000040EFE9  Unknown               Unknown  Unknown
+forrtl: error (76): Abort trap signal
+Image              PC                Routine            Line        Source             
+ElmerSolver_mpi    0000000000435064  Unknown               Unknown  Unknown
+libpthread-2.17.s  00002B5B3C78A630  Unknown               Unknown  Unknown
+libc-2.17.so       00002B5B43913387  gsignal               Unknown  Unknown
+libc-2.17.so       00002B5B43914A78  abort                 Unknown  Unknown
+libstdc++.so.6.0.  00002B5B336E94F3  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B5B336EF686  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B5B336EF6C1  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B5B336EF8F4  Unknown               Unknown  Unknown
+libxios.so         00002B5B411E8753  _ZN4xios6CField18     Unknown  Unknown
+libxios.so         00002B5B411E83CA  _ZN4xios6CField30     Unknown  Unknown
+libxios.so         00002B5B41222822  _ZN4xios5CFile27s     Unknown  Unknown
+libxios.so         00002B5B4112E459  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B5B4112B8EB  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B5B411293A5  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B5B4113C495  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B5B41521046  cxios_context_clo     Unknown  Unknown
+ElmerIceSolvers.s  00002B5BA2266A67  xiosoutputsolver_         296  XIOSOutputSolver.F90
+libelmersolver.so  00002B5B33DC1298  loadmod_mp_execso         449  LoadMod.F90
+libelmersolver.so  00002B5B3410BA36  mainutils_mp_sing        5315  MainUtils.F90
+libelmersolver.so  00002B5B341090DB  mainutils_mp_solv        5558  MainUtils.F90
+libelmersolver.so  00002B5B341011D7  mainutils_mp_solv        3079  MainUtils.F90
+libelmersolver.so  00002B5B34528A89  elmersolver_IP_ex        3074  ElmerSolver.F90
+libelmersolver.so  00002B5B34512359  elmersolver_              603  ElmerSolver.F90
+ElmerSolver_mpi    000000000040F317  MAIN__                     57  Solver.F90
+ElmerSolver_mpi    000000000040F0D2  Unknown               Unknown  Unknown
+libc-2.17.so       00002B5B438FF555  __libc_start_main     Unknown  Unknown
+ElmerSolver_mpi    000000000040EFE9  Unknown               Unknown  Unknown
+forrtl: error (76): Abort trap signal
+Image              PC                Routine            Line        Source             
+ElmerSolver_mpi    0000000000435064  Unknown               Unknown  Unknown
+libpthread-2.17.s  00002AEE6D72B630  Unknown               Unknown  Unknown
+libc-2.17.so       00002AEE748B4387  gsignal               Unknown  Unknown
+libc-2.17.so       00002AEE748B5A78  abort                 Unknown  Unknown
+libstdc++.so.6.0.  00002AEE6468A4F3  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002AEE64690686  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002AEE646906C1  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002AEE646908F4  Unknown               Unknown  Unknown
+libxios.so         00002AEE72189753  _ZN4xios6CField18     Unknown  Unknown
+libxios.so         00002AEE721893CA  _ZN4xios6CField30     Unknown  Unknown
+libxios.so         00002AEE721C3822  _ZN4xios5CFile27s     Unknown  Unknown
+libxios.so         00002AEE720CF459  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002AEE720CC8EB  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002AEE720CA3A5  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002AEE720DD495  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002AEE724C2046  cxios_context_clo     Unknown  Unknown
+ElmerIceSolvers.s  00002AEED3207A67  xiosoutputsolver_         296  XIOSOutputSolver.F90
+libelmersolver.so  00002AEE64D62298  loadmod_mp_execso         449  LoadMod.F90
+libelmersolver.so  00002AEE650ACA36  mainutils_mp_sing        5315  MainUtils.F90
+libelmersolver.so  00002AEE650AA0DB  mainutils_mp_solv        5558  MainUtils.F90
+libelmersolver.so  00002AEE650A21D7  mainutils_mp_solv        3079  MainUtils.F90
+libelmersolver.so  00002AEE654C9A89  elmersolver_IP_ex        3074  ElmerSolver.F90
+libelmersolver.so  00002AEE654B3359  elmersolver_              603  ElmerSolver.F90
+ElmerSolver_mpi    000000000040F317  MAIN__                     57  Solver.F90
+ElmerSolver_mpi    000000000040F0D2  Unknown               Unknown  Unknown
+libc-2.17.so       00002AEE748A0555  __libc_start_main     Unknown  Unknown
+ElmerSolver_mpi    000000000040EFE9  Unknown               Unknown  Unknown
+forrtl: error (76): Abort trap signal
+Image              PC                Routine            Line        Source             
+ElmerSolver_mpi    0000000000435064  Unknown               Unknown  Unknown
+libpthread-2.17.s  00002B10D0565630  Unknown               Unknown  Unknown
+libc-2.17.so       00002B10D76EE387  gsignal               Unknown  Unknown
+libc-2.17.so       00002B10D76EFA78  abort                 Unknown  Unknown
+libstdc++.so.6.0.  00002B10C74C44F3  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B10C74CA686  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B10C74CA6C1  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B10C74CA8F4  Unknown               Unknown  Unknown
+libxios.so         00002B10D4FC3753  _ZN4xios6CField18     Unknown  Unknown
+libxios.so         00002B10D4FC33CA  _ZN4xios6CField30     Unknown  Unknown
+libxios.so         00002B10D4FFD822  _ZN4xios5CFile27s     Unknown  Unknown
+libxios.so         00002B10D4F09459  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B10D4F068EB  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B10D4F043A5  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B10D4F17495  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B10D52FC046  cxios_context_clo     Unknown  Unknown
+ElmerIceSolvers.s  00002B1136041A67  xiosoutputsolver_         296  XIOSOutputSolver.F90
+libelmersolver.so  00002B10C7B9C298  loadmod_mp_execso         449  LoadMod.F90
+libelmersolver.so  00002B10C7EE6A36  mainutils_mp_sing        5315  MainUtils.F90
+libelmersolver.so  00002B10C7EE40DB  mainutils_mp_solv        5558  MainUtils.F90
+libelmersolver.so  00002B10C7EDC1D7  mainutils_mp_solv        3079  MainUtils.F90
+libelmersolver.so  00002B10C8303A89  elmersolver_IP_ex        3074  ElmerSolver.F90
+libelmersolver.so  00002B10C82ED359  elmersolver_              603  ElmerSolver.F90
+ElmerSolver_mpi    000000000040F317  MAIN__                     57  Solver.F90
+ElmerSolver_mpi    000000000040F0D2  Unknown               Unknown  Unknown
+libc-2.17.so       00002B10D76DA555  __libc_start_main     Unknown  Unknown
+ElmerSolver_mpi    000000000040EFE9  Unknown               Unknown  Unknown
+forrtl: error (76): Abort trap signal
+Image              PC                Routine            Line        Source             
+ElmerSolver_mpi    0000000000435064  Unknown               Unknown  Unknown
+libpthread-2.17.s  00002B1199D75630  Unknown               Unknown  Unknown
+libc-2.17.so       00002B11A0EFE387  gsignal               Unknown  Unknown
+libc-2.17.so       00002B11A0EFFA78  abort                 Unknown  Unknown
+libstdc++.so.6.0.  00002B1190CD44F3  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B1190CDA686  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B1190CDA6C1  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B1190CDA8F4  Unknown               Unknown  Unknown
+libxios.so         00002B119E7D3753  _ZN4xios6CField18     Unknown  Unknown
+libxios.so         00002B119E7D33CA  _ZN4xios6CField30     Unknown  Unknown
+libxios.so         00002B119E80D822  _ZN4xios5CFile27s     Unknown  Unknown
+libxios.so         00002B119E719459  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B119E7168EB  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B119E7143A5  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B119E727495  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B119EB0C046  cxios_context_clo     Unknown  Unknown
+ElmerIceSolvers.s  00002B11FF852A67  xiosoutputsolver_         296  XIOSOutputSolver.F90
+libelmersolver.so  00002B11913AC298  loadmod_mp_execso         449  LoadMod.F90
+libelmersolver.so  00002B11916F6A36  mainutils_mp_sing        5315  MainUtils.F90
+libelmersolver.so  00002B11916F40DB  mainutils_mp_solv        5558  MainUtils.F90
+libelmersolver.so  00002B11916EC1D7  mainutils_mp_solv        3079  MainUtils.F90
+libelmersolver.so  00002B1191B13A89  elmersolver_IP_ex        3074  ElmerSolver.F90
+libelmersolver.so  00002B1191AFD359  elmersolver_              603  ElmerSolver.F90
+ElmerSolver_mpi    000000000040F317  MAIN__                     57  Solver.F90
+ElmerSolver_mpi    000000000040F0D2  Unknown               Unknown  Unknown
+libc-2.17.so       00002B11A0EEA555  __libc_start_main     Unknown  Unknown
+ElmerSolver_mpi    000000000040EFE9  Unknown               Unknown  Unknown
+forrtl: error (76): Abort trap signal
+Image              PC                Routine            Line        Source             
+ElmerSolver_mpi    0000000000435064  Unknown               Unknown  Unknown
+libpthread-2.17.s  00002B4A097C6630  Unknown               Unknown  Unknown
+libc-2.17.so       00002B4A1094F387  gsignal               Unknown  Unknown
+libc-2.17.so       00002B4A10950A78  abort                 Unknown  Unknown
+libstdc++.so.6.0.  00002B4A007254F3  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B4A0072B686  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B4A0072B6C1  Unknown               Unknown  Unknown
+libstdc++.so.6.0.  00002B4A0072B8F4  Unknown               Unknown  Unknown
+libxios.so         00002B4A0E224753  _ZN4xios6CField18     Unknown  Unknown
+libxios.so         00002B4A0E2243CA  _ZN4xios6CField30     Unknown  Unknown
+libxios.so         00002B4A0E25E822  _ZN4xios5CFile27s     Unknown  Unknown
+libxios.so         00002B4A0E16A459  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B4A0E1678EB  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B4A0E1653A5  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B4A0E178495  _ZN4xios8CContext     Unknown  Unknown
+libxios.so         00002B4A0E55D046  cxios_context_clo     Unknown  Unknown
+ElmerIceSolvers.s  00002B4A6F9C4A67  xiosoutputsolver_         296  XIOSOutputSolver.F90
+libelmersolver.so  00002B4A00DFD298  loadmod_mp_execso         449  LoadMod.F90
+libelmersolver.so  00002B4A01147A36  mainutils_mp_sing        5315  MainUtils.F90
+libelmersolver.so  00002B4A011450DB  mainutils_mp_solv        5558  MainUtils.F90
+libelmersolver.so  00002B4A0113D1D7  mainutils_mp_solv        3079  MainUtils.F90
+libelmersolver.so  00002B4A01564A89  elmersolver_IP_ex        3074  ElmerSolver.F90
+libelmersolver.so  00002B4A0154E359  elmersolver_              603  ElmerSolver.F90
+ElmerSolver_mpi    000000000040F317  MAIN__                     57  Solver.F90
+ElmerSolver_mpi    000000000040F0D2  Unknown               Unknown  Unknown
+libc-2.17.so       00002B4A1093B555  __libc_start_main     Unknown  Unknown
+ElmerSolver_mpi    000000000040EFE9  Unknown               Unknown  Unknown
+/ccc/cont003/home/gen6035/mathiotp/ELMER/ELMER_CM/ANT50.GL1/SIMU/ANT50.GL1-ISMIP6/TOOLS/ADD_VAR_TO_RST/MY_WORK/app.conf_cE5C3k: line 9: 200616: Abort(coredump)
+/ccc/cont003/home/gen6035/mathiotp/ELMER/ELMER_CM/ANT50.GL1/SIMU/ANT50.GL1-ISMIP6/TOOLS/ADD_VAR_TO_RST/MY_WORK/app.conf_cE5C3k: line 9: 200607: Abort(coredump)
+/ccc/cont003/home/gen6035/mathiotp/ELMER/ELMER_CM/ANT50.GL1/SIMU/ANT50.GL1-ISMIP6/TOOLS/ADD_VAR_TO_RST/MY_WORK/app.conf_cE5C3k: line 9: 200578: Abort(coredump)
+/ccc/cont003/home/gen6035/mathiotp/ELMER/ELMER_CM/ANT50.GL1/SIMU/ANT50.GL1-ISMIP6/TOOLS/ADD_VAR_TO_RST/MY_WORK/app.conf_cE5C3k: line 9: 200615: Abort(coredump)
+/ccc/cont003/home/gen6035/mathiotp/ELMER/ELMER_CM/ANT50.GL1/SIMU/ANT50.GL1-ISMIP6/TOOLS/ADD_VAR_TO_RST/MY_WORK/app.conf_cE5C3k: line 9: 200617: Abort(coredump)
+/ccc/cont003/home/gen6035/mathiotp/ELMER/ELMER_CM/ANT50.GL1/SIMU/ANT50.GL1-ISMIP6/TOOLS/ADD_VAR_TO_RST/MY_WORK/app.conf_cE5C3k: line 9: 200588: Abort(coredump)
+/ccc/cont003/home/gen6035/mathiotp/ELMER/ELMER_CM/ANT50.GL1/SIMU/ANT50.GL1-ISMIP6/TOOLS/ADD_VAR_TO_RST/MY_WORK/app.conf_cE5C3k: line 9: 200609: Abort(coredump)
+/ccc/cont003/home/gen6035/mathiotp/ELMER/ELMER_CM/ANT50.GL1/SIMU/ANT50.GL1-ISMIP6/TOOLS/ADD_VAR_TO_RST/MY_WORK/app.conf_cE5C3k: line 9: 200596: Abort(coredump)
+/ccc/cont003/home/gen6035/mathiotp/ELMER/ELMER_CM/ANT50.GL1/SIMU/ANT50.GL1-ISMIP6/TOOLS/ADD_VAR_TO_RST/MY_WORK/app.conf_cE5C3k: line 9: 200589: Abort(coredump)
+/ccc/cont003/home/gen6035/mathiotp/ELMER/ELMER_CM/ANT50.GL1/SIMU/ANT50.GL1-ISMIP6/TOOLS/ADD_VAR_TO_RST/MY_WORK/app.conf_cE5C3k: line 9: 200580: Abort(coredump)
+/ccc/cont003/home/gen6035/mathiotp/ELMER/ELMER_CM/ANT50.GL1/SIMU/ANT50.GL1-ISMIP6/TOOLS/ADD_VAR_TO_RST/MY_WORK/app.conf_cE5C3k: line 9: 200571: Abort(coredump)
+/ccc/cont003/home/gen6035/mathiotp/ELMER/ELMER_CM/ANT50.GL1/SIMU/ANT50.GL1-ISMIP6/TOOLS/ADD_VAR_TO_RST/MY_WORK/app.conf_cE5C3k: line 9: 200604: Abort(coredump)
+/ccc/cont003/home/gen6035/mathiotp/ELMER/ELMER_CM/ANT50.GL1/SIMU/ANT50.GL1-ISMIP6/TOOLS/ADD_VAR_TO_RST/MY_WORK/app.conf_cE5C3k: line 9: 200577: Abort(coredump)
+/ccc/cont003/home/gen6035/mathiotp/ELMER/ELMER_CM/ANT50.GL1/SIMU/ANT50.GL1-ISMIP6/TOOLS/ADD_VAR_TO_RST/MY_WORK/app.conf_cE5C3k: line 9: 200594: Abort(coredump)
+/ccc/cont003/home/gen6035/mathiotp/ELMER/ELMER_CM/ANT50.GL1/SIMU/ANT50.GL1-ISMIP6/TOOLS/ADD_VAR_TO_RST/MY_WORK/app.conf_cE5C3k: line 9: 200603: Abort(coredump)
+/ccc/cont003/home/gen6035/mathiotp/ELMER/ELMER_CM/ANT50.GL1/SIMU/ANT50.GL1-ISMIP6/TOOLS/ADD_VAR_TO_RST/MY_WORK/app.conf_cE5C3k: line 9: 200602: Abort(coredump)
+/ccc/cont003/home/gen6035/mathiotp/ELMER/ELMER_CM/ANT50.GL1/SIMU/ANT50.GL1-ISMIP6/TOOLS/ADD_VAR_TO_RST/MY_WORK/app.conf_cE5C3k: line 9: 200610: Abort(coredump)
+/ccc/cont003/home/gen6035/mathiotp/ELMER/ELMER_CM/ANT50.GL1/SIMU/ANT50.GL1-ISMIP6/TOOLS/ADD_VAR_TO_RST/MY_WORK/app.conf_cE5C3k: line 9: 200618: Abort(coredump)
+/ccc/cont003/home/gen6035/mathiotp/ELMER/ELMER_CM/ANT50.GL1/SIMU/ANT50.GL1-ISMIP6/TOOLS/ADD_VAR_TO_RST/MY_WORK/app.conf_cE5C3k: line 9: 200572: Abort(coredump)
+/ccc/cont003/home/gen6035/mathiotp/ELMER/ELMER_CM/ANT50.GL1/SIMU/ANT50.GL1-ISMIP6/TOOLS/ADD_VAR_TO_RST/MY_WORK/app.conf_cE5C3k: line 9: 200608: Abort(coredump)
+/ccc/cont003/home/gen6035/mathiotp/ELMER/ELMER_CM/ANT50.GL1/SIMU/ANT50.GL1-ISMIP6/TOOLS/ADD_VAR_TO_RST/MY_WORK/app.conf_cE5C3k: line 9: 200595: Abort(coredump)
+/ccc/cont003/home/gen6035/mathiotp/ELMER/ELMER_CM/ANT50.GL1/SIMU/ANT50.GL1-ISMIP6/TOOLS/ADD_VAR_TO_RST/MY_WORK/app.conf_cE5C3k: line 9: 200583: Abort(coredump)
+/ccc/cont003/home/gen6035/mathiotp/ELMER/ELMER_CM/ANT50.GL1/SIMU/ANT50.GL1-ISMIP6/TOOLS/ADD_VAR_TO_RST/MY_WORK/app.conf_cE5C3k: line 9: 200605: Abort(coredump)
+/ccc/cont003/home/gen6035/mathiotp/ELMER/ELMER_CM/ANT50.GL1/SIMU/ANT50.GL1-ISMIP6/TOOLS/ADD_VAR_TO_RST/MY_WORK/app.conf_cE5C3k: line 9: 200612: Abort(coredump)
+/ccc/cont003/home/gen6035/mathiotp/ELMER/ELMER_CM/ANT50.GL1/SIMU/ANT50.GL1-ISMIP6/TOOLS/ADD_VAR_TO_RST/MY_WORK/app.conf_cE5C3k: line 9: 200599: Abort(coredump)
+/ccc/cont003/home/gen6035/mathiotp/ELMER/ELMER_CM/ANT50.GL1/SIMU/ANT50.GL1-ISMIP6/TOOLS/ADD_VAR_TO_RST/MY_WORK/app.conf_cE5C3k: line 9: 200597: Abort(coredump)
+/ccc/cont003/home/gen6035/mathiotp/ELMER/ELMER_CM/ANT50.GL1/SIMU/ANT50.GL1-ISMIP6/TOOLS/ADD_VAR_TO_RST/MY_WORK/app.conf_cE5C3k: line 9: 200593: Abort(coredump)
+/ccc/cont003/home/gen6035/mathiotp/ELMER/ELMER_CM/ANT50.GL1/SIMU/ANT50.GL1-ISMIP6/TOOLS/ADD_VAR_TO_RST/MY_WORK/app.conf_cE5C3k: line 9: 200592: Abort(coredump)
+/ccc/cont003/home/gen6035/mathiotp/ELMER/ELMER_CM/ANT50.GL1/SIMU/ANT50.GL1-ISMIP6/TOOLS/ADD_VAR_TO_RST/MY_WORK/app.conf_cE5C3k: line 9: 200601: Abort(coredump)
+/ccc/cont003/home/gen6035/mathiotp/ELMER/ELMER_CM/ANT50.GL1/SIMU/ANT50.GL1-ISMIP6/TOOLS/ADD_VAR_TO_RST/MY_WORK/app.conf_cE5C3k: line 9: 200581: Abort(coredump)
+/ccc/cont003/home/gen6035/mathiotp/ELMER/ELMER_CM/ANT50.GL1/SIMU/ANT50.GL1-ISMIP6/TOOLS/ADD_VAR_TO_RST/MY_WORK/app.conf_cE5C3k: line 9: 200598: Abort(coredump)
+/ccc/cont003/home/gen6035/mathiotp/ELMER/ELMER_CM/ANT50.GL1/SIMU/ANT50.GL1-ISMIP6/TOOLS/ADD_VAR_TO_RST/MY_WORK/app.conf_cE5C3k: line 9: 200619: Abort(coredump)
+/ccc/cont003/home/gen6035/mathiotp/ELMER/ELMER_CM/ANT50.GL1/SIMU/ANT50.GL1-ISMIP6/TOOLS/ADD_VAR_TO_RST/MY_WORK/app.conf_cE5C3k: line 9: 200587: Abort(coredump)
+/ccc/cont003/home/gen6035/mathiotp/ELMER/ELMER_CM/ANT50.GL1/SIMU/ANT50.GL1-ISMIP6/TOOLS/ADD_VAR_TO_RST/MY_WORK/app.conf_cE5C3k: line 9: 200579: Abort(coredump)
+/ccc/cont003/home/gen6035/mathiotp/ELMER/ELMER_CM/ANT50.GL1/SIMU/ANT50.GL1-ISMIP6/TOOLS/ADD_VAR_TO_RST/MY_WORK/app.conf_cE5C3k: line 9: 200573: Abort(coredump)
+/ccc/cont003/home/gen6035/mathiotp/ELMER/ELMER_CM/ANT50.GL1/SIMU/ANT50.GL1-ISMIP6/TOOLS/ADD_VAR_TO_RST/MY_WORK/app.conf_cE5C3k: line 9: 200575: Abort(coredump)
+/ccc/cont003/home/gen6035/mathiotp/ELMER/ELMER_CM/ANT50.GL1/SIMU/ANT50.GL1-ISMIP6/TOOLS/ADD_VAR_TO_RST/MY_WORK/app.conf_cE5C3k: line 9: 200585: Abort(coredump)
+/ccc/cont003/home/gen6035/mathiotp/ELMER/ELMER_CM/ANT50.GL1/SIMU/ANT50.GL1-ISMIP6/TOOLS/ADD_VAR_TO_RST/MY_WORK/app.conf_cE5C3k: line 9: 200606: Abort(coredump)
+/ccc/cont003/home/gen6035/mathiotp/ELMER/ELMER_CM/ANT50.GL1/SIMU/ANT50.GL1-ISMIP6/TOOLS/ADD_VAR_TO_RST/MY_WORK/app.conf_cE5C3k: line 9: 200584: Abort(coredump)
+/ccc/cont003/home/gen6035/mathiotp/ELMER/ELMER_CM/ANT50.GL1/SIMU/ANT50.GL1-ISMIP6/TOOLS/ADD_VAR_TO_RST/MY_WORK/app.conf_cE5C3k: line 9: 200574: Abort(coredump)
+/ccc/cont003/home/gen6035/mathiotp/ELMER/ELMER_CM/ANT50.GL1/SIMU/ANT50.GL1-ISMIP6/TOOLS/ADD_VAR_TO_RST/MY_WORK/app.conf_cE5C3k: line 9: 200582: Abort(coredump)
+/ccc/cont003/home/gen6035/mathiotp/ELMER/ELMER_CM/ANT50.GL1/SIMU/ANT50.GL1-ISMIP6/TOOLS/ADD_VAR_TO_RST/MY_WORK/app.conf_cE5C3k: line 9: 200600: Abort(coredump)
+/ccc/cont003/home/gen6035/mathiotp/ELMER/ELMER_CM/ANT50.GL1/SIMU/ANT50.GL1-ISMIP6/TOOLS/ADD_VAR_TO_RST/MY_WORK/app.conf_cE5C3k: line 9: 200613: Abort(coredump)
+/ccc/cont003/home/gen6035/mathiotp/ELMER/ELMER_CM/ANT50.GL1/SIMU/ANT50.GL1-ISMIP6/TOOLS/ADD_VAR_TO_RST/MY_WORK/app.conf_cE5C3k: line 9: 200586: Abort(coredump)
+/ccc/cont003/home/gen6035/mathiotp/ELMER/ELMER_CM/ANT50.GL1/SIMU/ANT50.GL1-ISMIP6/TOOLS/ADD_VAR_TO_RST/MY_WORK/app.conf_cE5C3k: line 9: 200591: Abort(coredump)
+/ccc/cont003/home/gen6035/mathiotp/ELMER/ELMER_CM/ANT50.GL1/SIMU/ANT50.GL1-ISMIP6/TOOLS/ADD_VAR_TO_RST/MY_WORK/app.conf_cE5C3k: line 9: 200576: Abort(coredump)
+/ccc/cont003/home/gen6035/mathiotp/ELMER/ELMER_CM/ANT50.GL1/SIMU/ANT50.GL1-ISMIP6/TOOLS/ADD_VAR_TO_RST/MY_WORK/app.conf_cE5C3k: line 9: 200611: Abort(coredump)
+/ccc/cont003/home/gen6035/mathiotp/ELMER/ELMER_CM/ANT50.GL1/SIMU/ANT50.GL1-ISMIP6/TOOLS/ADD_VAR_TO_RST/MY_WORK/app.conf_cE5C3k: line 9: 200590: Abort(coredump)
+srun: error: irene4857: tasks 0-47: Aborted (core dumped)
+slurmstepd-irene4857: error:  mpi/pmix_v3: _errhandler: irene4857 [0]: pmixp_client_v2.c:211: Error handler invoked: status = -25, source = [slurm.pmix.6162561.0:45]
+slurmstepd-irene4857: error: *** STEP 6162561.0 ON irene4857 CANCELLED AT 2022-07-12T17:39:34 ***
+srun: Job step aborted: Waiting up to 302 seconds for job step to finish.
+srun: error: irene4857: task 48: Killed
++ RUNSTATUS=137
++ exit 0
