@@ -36,8 +36,13 @@ $lambda1 =   -0.0573          ! Liquidus slope  (K/psu)
 $lambda2 =    0.0832          ! Liquidus intercept  (K)
 $lambda3 =   -7.53e-8 * grav_SI * rhosw_SI ! Liquidus pressure coefficient  (K/m)
 
+!############### ICE SHEET MODEL ################
+!
 !## Glen Exponent
 $n = 3.0
+!
+!## H min (limiter treshold)
+$Hmin = 1.0
 
 !###################### PICO ####################
 !- specific to PICO melt parameterizations :

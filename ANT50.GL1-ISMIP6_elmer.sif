@@ -43,22 +43,17 @@ Simulation
 
   Timestepping Method = "bdf"
   BDF Order = 2
-  Output Intervals(1) = 1
   Timestep Intervals(1) = 25
   Timestep Sizes(1) = $ 1.0 / 365.0 
-!2.0e-3
 
+  ! Add check on the SSAnorm and Hnorm to force Exit in case Elmer did not stop before
   Exit Condition = Variable Time
      Real Procedure "USF_ExitCondition" "ExitCondition"
 
   Steady State Max Iterations = 4
-  Steady State Min Iterations = 1
+  Steady State Min Iterations = 2
 
-! VTU management (TO BE REMOVED ONCE XIOS validated)
-  Vtu Time Collection = Logical True
-  Post File = "$name$_$id$.vtu"
-
-  max output level = 100
+  max output level = 4
 End
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 Body 1
@@ -76,14 +71,8 @@ Body Force 1
 
   Bottom Surface Accumulation = Equals Melt
 
-  Water Pressure = Variable Zb
-    Real procedure "USF_WaterPressure" "WaterPressure"
-
   ! H internal limiters (Thickness solver)
-  H Lower Limit = Real 1.0
-
-  slc = Variable Beta_jh, Haf
-     Real Procedure "SlipCoef" "CalculSlc_haf"
+  H Lower Limit = Real $Hmin
 
 !---------------------------------------------
 ! BMB body force PICO
@@ -107,11 +96,9 @@ Material 1
   Viscosity Exponent = Real $1.0/n
   Critical Shear Rate = Real 1.0e-12
 
-! TODO: Add this straight in the intial condition Mueta2
-  SSA Mean Viscosity = Variable eta, Mu
-     REAL procedure "USF_SSAViscosity" "SSAViscosity"
+  SSA Mean Viscosity = Variable mueta2
   SSA Mean Density = Real $rhoi
-  SSA Critical Thickness = Real 1.0
+  SSA Critical Thickness = Real $Hmin
 
   ! definition of the friction law (linear, Weertman, Coulomb or Regularized coulomb)
   SSA Friction Law = String "Regularized coulomb"
@@ -123,7 +110,10 @@ Material 1
     !                                => requires body force section (SlipCoef)
     ! Friction Exponent = m 
     ! Friction Linear Velocity = u_lin (Min velocity for linearisation where ub=0)
-    SSA Friction Parameter = Equals slc
+    ! Values of the various coeficient comes from Joughin et al. (XXXX)
+    !
+    SSA Friction Parameter = Variable Beta_jh, Haf
+       Real Procedure "SlipCoef" "CalculSlc_haf"
     SSA Friction Threshold Velocity = Real 300.0
     SSA Friction Threshold Height = Real 75.0
     SSA Friction Exponent = Real $1.0/n  
@@ -140,20 +130,7 @@ Material 1
   Flux = Equals H
 
 End
-!#-----------------------------------------------------------------------
-!#                          READ NETCDF RESTART SOLVER
-!#-----------------------------------------------------------------------
-!# SOLVER to read restart from netcdf file
-!#     - input  : * restart netcdf file from previous segment or simulation (File Name)
-!#                * Time Point ????
-!#
-!#     - output : * all the restart variable loaded in ElmerIce
-!#
-!#     - comments : to convert a previous .result file to .nc file, 
-!#                  a tools is available in TOOLS/RSL2NC
-!#-----------------------------------------------------------------------
 
-Solver 1
 !#-----------------------------------------------------------------------
 !#                          READ RESTART SOLVER
 !#-----------------------------------------------------------------------
@@ -162,24 +139,24 @@ Solver 1
 !#                * h            : the only really pronostic variable
 !#                * ssa velocity : if available, it speed up the convergence of the first time step
 !#                * groundedmask : needed for SSA because now flotation is call after the SSA solver
-!#                * zs           : "" ???????????
-!#                * zb           : "" ???????????
-!#                * Haf          : ""
+!#                * zs           : needed for SSA to compute the surface slope
+!#                * zb           : needed for SSA to retreive the thickness
+!#                * Haf          : needed for SSA to adjust beta (and because flotation called after SSA)
 !#
 !#     - constant input :           
-!#                * bedrock      : Used to compute Haf
-!#                * mu           : Used to compute mean viscosity
-!#                * eta          : Used to compute mean viscosity
-!#                * beta_jh      : Used to compute slc
+!#                * bedrock      : Bedrock altitude used to compute Haf
+!#                * mueta2       : Mean SSA viscosity
+!#                * beta_jh      : beta used to compute slip coefficient
 !#                
 !#
 !#     - output : restart variables
 !#
-!#     - option : Melt keyword if input from another grid i
+!#     - option : Melt keyword if input from another grid
 !#                (as in M2M tools to change partition and interpolation .result)
 !#
 !#     - comments: Please document in the netcdf the source of each constant field
 !#-----------------------------------------------------------------------
+Solver 1
 
    Exec Solver = Before Simulation
 
@@ -190,28 +167,31 @@ Solver 1
 
    Time Point = Real 100.0
 
+!# Time variable inputs
    Variable Name 1 = File "h"
    Variable Name 2 = File "zs"
    Variable Name 3 = File "zb"
-   Variable Name 4 = File "bedrock"
+   Variable Name 4 = File "Haf"
    Variable Name 5 = File "groundedmask"
-   Variable Name 6 = File "mu"
-   Variable Name 7 = File "eta"
-   Variable Name 8 = File "Haf"
-   Variable Name 9 = File "beta_jh"
+
+!# Constant inputs
+!# Nodal inputs
+   Variable Name 6  = File "bedrock"
+   Variable Name 7  = File "mueta2"
+   Variable Name 8  = File "beta_jh"
+
+!# Elemental inputs
+   Variable Name 9  = File "smb"
+   Variable Name 10 = File "basins"
+
+!# Export Constant inputs to feed next restart
+   Exported Variable 1 = bedrock
+   Exported Variable 2 = mueta2
+   Exported Variable 3 = beta_jh
+
+   Exported Variable 4 = -elem smb
+   Exported Variable 5 = -elem basins
 End
-
-!# 
-! This solver update exported variables from their definition in
-! the body forces
-Solver 2
- Exec Solver = Before Timestep
- Equation = "Update"
- Procedure = "ElmerIceSolvers" "UpdateExport"
-
- Exported Variable 1 = slc
- Exported Variable 4 = Water Pressure
-End 
 
 !#-----------------------------------------------------------------------
 !#                          SMB SOLVER
@@ -298,7 +278,6 @@ Solver 6
    Procedure = "boxmodel_solver" "boxmodel_solver"
 
    data file = File "$data_dir$/$file_pico$"
-
 End
 
 !#-----------------------------------------------------------------------
@@ -346,13 +325,9 @@ Solver 7
   Sub-Element GL parameterization = Logical True
   GL integration points number = Integer 20
 
-  velocity norm limit = Real 12000.0
+  velocity norm limit = Real 30000.0
 
   ! Secondary variable (output)
-  Exported variable 1 = mu
-  Exported Variable 2 = slc0
-    ! TO CHECK with Fab (before it was slc0)
-
   ! grounding line flux [m/s] wrt cell area
   Compute grounding line flux = Logical TRUE
   Exported Variable 3 = -elem "ligroundf"
@@ -366,11 +341,6 @@ Solver 7
  ! and nodal effective friction coefficient
   Exported Variable 5 = -elem "strbasemag"
   Exported Variable 6 = "Ceff"
-
-! restart variable ????? needed ????
-  Exported variable 7 = beta
-  Exported variable 8 = eta
-!
 End
 
 !#-----------------------------------------------------------------------
@@ -404,7 +374,7 @@ Solver 8
     Linear System Convergence Tolerance = 1.0E-12
     Linear System Abort Not Converged = Logical True
     Linear System Residual Output = 1
-    Linear System Preconditioning = "ILU2"
+    Linear System Preconditioning = "ILU0"
    
    ! equation is linear if no min/max
     Nonlinear System Max Iterations = 15
@@ -457,20 +427,24 @@ End
 !#-----------------------------------------------------------------------
 Solver 9
    Equation = "Flotation"
-   Variable = GroundedMask
-      Procedure = "ElmerIceSolvers" "Flotation"
+   Procedure = "ElmerIceSolvers" "Flotation"
 
+   ! primary variable
+   Variable = GroundedMask
+
+   ! options
    GL integration points number = Integer 20
 
+   ! secondary variables (output): surface and base altitude, heigh above flotation
+   !                               ice mask, floated and grounded fraction
    Exported Variable 1 = zs
    Exported Variable 2 = zb
-   Exported Variable 3 = bedrock
-   Exported Variable 4 = Haf
+   Exported Variable 3 = Haf
 
    compute ice area fractions = Logical TRUE
-   Exported Variable 5 = -elem "sftgif"
-   Exported Variable 6 = -elem "sftgrf"
-   Exported Variable 7 = -elem "sftflf"
+   Exported Variable 4 = -elem "sftgif"
+   Exported Variable 5 = -elem "sftgrf"
+   Exported Variable 6 = -elem "sftflf"
 End
 
 !#-----------------------------------------------------------------------
@@ -536,7 +510,7 @@ Solver 10
 
    Scalar Field 15 = String "groundedmask"
 
-   Scalar Field 16 = String "mu"
+   Scalar Field 16 = String "mueta2"
 
    Scalar Field 17 = String "h loads"
 
@@ -553,9 +527,7 @@ Solver 10
 
    Scalar Field 24 = String "melt"
 
-   Scalar Field 25 = String "eta"
-
-   Scalar Field 26 = String "beta"
+   Scalar Field 26 = String "beta_jh"
 
    !Global Variables
    Global Variable 1 = String "time"
@@ -602,38 +574,9 @@ Solver 11
 
 End
 
-!#-----------------------------------------------------------------------
-!#              COMPUTE BASIN FOR ELMER POST PROCESSING
-!#     - input  : * basin netcdf file (Variable 1 data file)
-!#                * basin variable name (Variable 1)
-!#
-!#     - output : basins [] (elemental)
-!#
-!#     - method : nearest point interpolation from stereo netcdf input file
-!#                
-!#     - comments : basin names are not saved => TODO in the futur need to 
-!#                  find a way to keep this info
-!#-----------------------------------------------------------------------
-Solver 12
-   Exec Solver = Before all
-   Equation = "point"
-   Variable = -nooutput "dumy"
-
-   procedure = "nearestpoint" "nearestpoint"
-
-   ! netcdf management
-   Variable 1 = File "basins"
-   Variable 1 data file = File "$data_dir$/$file_basins$"
-   Target Variable 1 = String "basins"
-
-   Exported Variable 1 = -dofs 1 -elem basins
-End
-
-
-
 !#####
 Equation 1
-  Active Solvers (12)= 1 2 3 4 5 6 7 8 9 10 11 12
+  Active Solvers (11)= 1 2 3 4 5 6 7 8 9 10 11
 End
 
 !#####
