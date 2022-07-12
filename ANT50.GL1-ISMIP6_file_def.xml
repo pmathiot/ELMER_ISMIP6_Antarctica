@@ -82,6 +82,7 @@
               <field_group group_ref="ismip6_1D" />
               <variable id="elmerversion" name="model_version" type="string"> elmer ice v9.0</variable>
       </file>
+ 
       </file_group>
 
     </file_definition>

@@ -183,6 +183,7 @@ Solver 1
 !# Elemental inputs
    Variable Name 9  = File "smb"
    Variable Name 10 = File "basins"
+   Variable Name 11 = File "true_cell_area"
 
 !# Export Constant inputs to feed next restart
    Exported Variable 1 = bedrock
@@ -191,6 +192,7 @@ Solver 1
 
    Exported Variable 4 = -elem smb
    Exported Variable 5 = -elem basins
+   Exported Variable 6 = -elem true_cell_area
 End
 
 !#-----------------------------------------------------------------------
@@ -528,6 +530,8 @@ Solver 10
    Scalar Field 24 = String "melt"
 
    Scalar Field 26 = String "beta_jh"
+
+   Scalar Field 27 = String "true_cell_area"
 
    !Global Variables
    Global Variable 1 = String "time"
