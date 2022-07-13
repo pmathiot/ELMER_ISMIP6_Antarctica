@@ -105,6 +105,7 @@ do
     if [[ $i == 1 ]];then touch ${HELMER}/zELMER_${i}_READY; fi
 
     # submit job
+    set -x
     if [ ! -z "$jobid0" ];then
         jobid=$(submit_elmer_dependency $jobid0)
         echo "        id        : $jobid"
@@ -114,6 +115,7 @@ do
         echo "        id        : $jobid"
     fi
     jobid0=$jobid
+    set +x
  
 done
 echo ''

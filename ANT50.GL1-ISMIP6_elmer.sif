@@ -96,7 +96,7 @@ Material 1
   Viscosity Exponent = Real $1.0/n
   Critical Shear Rate = Real 1.0e-12
 
-  SSA Mean Viscosity = Variable mueta2
+  SSA Mean Viscosity = Equals mueta2
   SSA Mean Density = Real $rhoi
   SSA Critical Thickness = Real $Hmin
 
@@ -112,7 +112,7 @@ Material 1
     ! Friction Linear Velocity = u_lin (Min velocity for linearisation where ub=0)
     ! Values of the various coeficient comes from Joughin et al. (XXXX)
     !
-    SSA Friction Parameter = Variable Beta_jh, Haf
+    SSA Friction Parameter = Variable beta_cr, Haf
        Real Procedure "SlipCoef" "CalculSlc_haf"
     SSA Friction Threshold Velocity = Real 300.0
     SSA Friction Threshold Height = Real 75.0
@@ -146,7 +146,7 @@ End
 !#     - constant input :           
 !#                * bedrock      : Bedrock altitude used to compute Haf
 !#                * mueta2       : Mean SSA viscosity
-!#                * beta_jh      : beta used to compute slip coefficient
+!#                * beta_cr      : beta used to compute slip coefficient
 !#                
 !#
 !#     - output : restart variables
@@ -165,34 +165,40 @@ Solver 1
 
    File Name = File "MSH/restart_$idm1$.nc"
 
-   Time Point = Real 100.0
+!# Read last time frame of the restart
+   Time Index = Integer -1
 
 !# Time variable inputs
    Variable Name 1 = File "h"
    Variable Name 2 = File "zs"
    Variable Name 3 = File "zb"
-   Variable Name 4 = File "Haf"
+   Variable Name 4 = File "haf"
    Variable Name 5 = File "groundedmask"
+
+   ADD SSAvelocity
 
 !# Constant inputs
 !# Nodal inputs
    Variable Name 6  = File "bedrock"
    Variable Name 7  = File "mueta2"
-   Variable Name 8  = File "beta_jh"
+   Variable Name 8  = File "beta_cr"
 
 !# Elemental inputs
    Variable Name 9  = File "smb"
    Variable Name 10 = File "basins"
    Variable Name 11 = File "true_cell_area"
 
+!# Time
+   Variable Name 12 = File "elmer_time"
+   Target Variable 12 = String "time"
+
 !# Export Constant inputs to feed next restart
    Exported Variable 1 = bedrock
    Exported Variable 2 = mueta2
-   Exported Variable 3 = beta_jh
+   Exported Variable 3 = beta_cr
 
-   Exported Variable 4 = -elem smb
-   Exported Variable 5 = -elem basins
-   Exported Variable 6 = -elem true_cell_area
+   Exported Variable 4 = -elem basins
+   Exported Variable 5 = -elem true_cell_area
 End
 
 !#-----------------------------------------------------------------------
@@ -222,7 +228,6 @@ Solver 2
    Target Variable 1 = String "smb"
    Variable 1 method = String "li"
    Exported Variable 1 = smb
-   Exported Variable 2 = dsmb
 End
 
 !#-----------------------------------------------------------------------
@@ -519,7 +524,6 @@ Solver 10
    Scalar Field 18 = String "ceff"
 
    Scalar Field 19 = String "smb"
-   Scalar Field 20 = String "dsmb"
 
    Scalar Field 21 = String "ligroundf"
 
@@ -529,7 +533,7 @@ Solver 10
 
    Scalar Field 24 = String "melt"
 
-   Scalar Field 26 = String "beta_jh"
+   Scalar Field 26 = String "beta_cr"
 
    Scalar Field 27 = String "true_cell_area"
 

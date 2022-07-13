@@ -13,6 +13,7 @@
                   <field field_ref="groundedmask"       />
                   <field field_ref="mueta2"             />
                   <field field_ref="beta"               />
+                  <field field_ref="basins"             />
                   <field field_ref="true_cell_area"     />
                   <field field_ref="smb"                />
                   <field field_ref="ssavelocity 1"      />

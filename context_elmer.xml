@@ -2,7 +2,7 @@
 <!-- Context elmerice -->
    <context id="elmerice">
 
-    <calendar type="NoLeap" start_date="2015-01-01 00:00:00" time_origin="2013-01-01 00:00:00" />
+    <calendar type="NoLeap" time_origin="2013-01-01 00:00:00" />
 
 <!-- ============== Variable definition ======================== -->
     <variable_definition>
@@ -119,6 +119,7 @@
                       <field id="lonlat 1" grid_ref="GridNodes" />
                       <field id="lonlat 2" grid_ref="GridNodes" />
                       <field id="beta"     grid_ref="GridNodes" />
+                      <field id="beta_cr"  grid_ref="GridNodes" />
                       <field id="eta"      grid_ref="GridNodes" />
 	      </field_group>
 

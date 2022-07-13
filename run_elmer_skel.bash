@@ -60,6 +60,7 @@ if [[ $RUNSTATUS == 0 ]]; then
    # cp restart to RST dir
    echo "cp restart to $RELMER"
    RSTFILES=`echo "restart_$CONFIG-${CASE}_${i}.nc" | tr [:upper:] [:lower:]`
+   ncks -A -v elmer_time restart_time.nc $RSTFILES           || nerr=$((nerr+1))
    mv -f $RSTFILES $RELMER/$CONFIG-${CASE}_${i}.restart.nc   || nerr=$((nerr+1))
 
    # mv data to S dir

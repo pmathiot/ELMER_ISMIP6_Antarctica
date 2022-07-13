@@ -28,17 +28,18 @@
                   <field field_ref="h"             />
                   <field field_ref="zs"            />
                   <field field_ref="zb"            />
+                  <field field_ref="haf"           />
                   <field field_ref="bedrock"       />   <!-- ???????? -->
                   <field field_ref="groundedmask"  />
-                  <field field_ref="beta"          />
-                  <field field_ref="eta"           />
-                  <field field_ref="mu"            />
-                  <field field_ref="lonlat"        />
-                  <field field_ref="lonlat 1"      />
-                  <field field_ref="lonlat 2"      />
+                  <field field_ref="beta_cr"       />
+                  <field field_ref="mueta2"        />
               </field_group>
               <variable id="elmerversion" name="model_version" type="string"> elmer ice v9.0</variable>
       </file>
+      <file id="file02" name="restart_time" time_counter_name="time" time_counter="instant" time_units="days" >
+              <field_group group_ref="elmer_global"/>
+      </file>
+
 
 <!-- INTEGRATED OUTPUT -->
       <file_group id="file10" >

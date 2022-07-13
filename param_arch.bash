@@ -46,6 +46,7 @@ function load_elmer_modules() {
 #     module load cmake/3.16.5
 #     module load ELMER/Elmer_v9.0_r21ddff3a
      module load  elmerfem/elmerfem-bfd923fb-opt
+     module load  nco
 
      # add check on elmerf90 et elmersolver_mpi here
 
