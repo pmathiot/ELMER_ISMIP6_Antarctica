@@ -120,9 +120,9 @@
                        <field id="cell_area" name="cell_area" unit="m2" grid_ref="GridCells" />
               </field_group>
 
-	      <field_group id="elmer_global" grid_ref="ScalarGrid_sum">
-		      <field id="time" name="elmer_time" unit="a" prec="8" />
-	      </field_group>
+              <field_group id="elmer_global" grid_ref="ScalarGrid_sum">
+                      <field id="time" name="elmer_time" unit="a" prec="8" />
+              </field_group>
 
       </field_group>
 

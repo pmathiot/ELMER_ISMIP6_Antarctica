@@ -39,6 +39,7 @@ ln -sf $CCCWORKDIR/ELMER/TMPDIR/ADD_VAR_TO_RST MY_WORK
 \cp add_var_to_rst.sif    MY_WORK/.
 \cp add_var_to_rst.incf   MY_WORK/.
 \cp add_var_to_rst.param  MY_WORK/.
+\cp add_var_to_rst.lsol   MY_WORK/.
 \cp *xml                  MY_WORK/.
 
 # link data
@@ -68,3 +69,5 @@ echo add_var_to_rst.sif > ELMERSOLVER_STARTINFO
 
 # run elmer
 run_elmer ; RUNSTATUS=$?
+
+ncks -A -v elmer_time elmer_scalars.nc restart_newmesh.nc

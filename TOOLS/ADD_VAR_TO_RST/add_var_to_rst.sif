@@ -31,6 +31,9 @@ Simulation
   Timestep Intervals(1) = 1
   Timestep Sizes(1) = $ 1.0 / 365.0 
 
+  Steady State Max Iterations = 4
+  Steady State Min Iterations = 2
+  
   max output level = 4
 End
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -41,12 +44,33 @@ Body 1
 End
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 Body Force 1
+  Flow BodyForce 1 = Real 0.0
+  Flow BodyForce 2 = Real 0.0
+  Flow BodyForce 3 = Real $gravity
+
+  ! H internal limiters (Thickness solver)
+  H Lower Limit = Real 1.0
+
   mueta2 = Variable eta, Mu
      REAL procedure "USF_SSAViscosity" "SSAViscosity"
 End
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 Material 1
+! Material properties
+  Viscosity Exponent = Real $1.0/n
+  Critical Shear Rate = Real 1.0e-12
+
+  SSA Mean Viscosity = Variable eta, Mu
+     REAL procedure "USF_SSAViscosity" "SSAViscosity"
   SSA Mean Density = Real $rhoi
+  SSA Critical Thickness = Real 1.0
+
+  SSA Friction Law = String "linear"
+    ! linear needed parameter
+    ! -------------------------------------
+     SSA Friction Parameter = Variable beta
+        REAL procedure "ElmerIceUSF" "TenPowerA"
+
 End
 
 !#-----------------------------------------------------------------------
@@ -230,6 +254,53 @@ Solver 6
 End 
 
 !#-----------------------------------------------------------------------
+!#                          SSA SOLVER
+!#-----------------------------------------------------------------------
+!# SOLVER to compute SSA velocity
+!#     - input  : * Material section nned to contain the friction law parameters (see doc)
+!#
+!#     - option : * GL integration points number to increase precision when computing
+!#                  the grounded/floating area of partially floated element precision.
+!#
+!#     - principal output  : * SSA velocity [XXX] (nodal)
+!#     - optional  outputs : * transport across GL [m/s ???] (element)
+!#                           * transport across calving front [m/s ???] (element)
+!#                           * element average basal stress [???] (element)
+!#                           * effective friction coefficient [???] (nodal)
+!#
+!#     - comments: * Friction law defined in material section
+!#-----------------------------------------------------------------------
+Solver 7
+  Equation = "SSA"
+  Procedure = "ElmerIceSolvers" "SSABasalSolver"
+
+  ! primary variable 
+  Variable = -dofs 2 "SSAVelocity"
+   
+  ! numerical setting
+  include add_var_to_rst.lsol 
+
+  Nonlinear System Max Iterations = 15
+  Nonlinear System Convergence Tolerance = 1.0e-04
+  Nonlinear System Newton After Iterations = 5
+  Nonlinear System Newton After Tolerance = 1.0e-04
+  Nonlinear System Relaxation Factor = 1.00
+  Nonlinear System Abort Not Converged = Logical True
+
+  Bulk Assembly Timing = Logical True
+  Linear System Timing = Logical True
+  Linear System Timing Cumulative = Logical True
+ 
+  Steady State Convergence Tolerance = 1.0e-3
+ 
+  ! GL subgrid element
+  Sub-Element GL parameterization = Logical True
+  GL integration points number = Integer 20
+
+  velocity norm limit = Real 30000.0
+End
+
+!#-----------------------------------------------------------------------
 !#                          XIOS Output SOLVER
 !#-----------------------------------------------------------------------
 !# SOLVER to manage XIOS output (for setting required output, see XIOS xmlf files)
@@ -238,7 +309,7 @@ End
 !#     - principal output  : * N/A
 !#     - optional  outputs : * N/A
 !#-----------------------------------------------------------------------
-Solver 7 
+Solver 8
    Exec Solver = After Timestep
 
    Equation = "XIOSOutPutSolve"
@@ -291,6 +362,9 @@ Solver 7
 
    Scalar Field 13 = String "true_cell_area"
 
+   Scalar Field 14= String "ssavelocity 1"
+   Scalar Field 15= String "ssavelocity 2"
+
    !Global Variables
    Global Variable 1 = String "time"
 
@@ -300,7 +374,7 @@ End
 
 !#####
 Equation 1
-  Active Solvers (7)= 1 2 3 4 5 6 7
+  Active Solvers (8)= 1 2 3 4 5 6 7 8
 End
 
 !#####
