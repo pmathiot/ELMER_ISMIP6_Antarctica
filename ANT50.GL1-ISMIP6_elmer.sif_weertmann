@@ -43,8 +43,8 @@ Simulation
 
   Timestepping Method = "bdf"
   BDF Order = 2
-  Timestep Intervals(1) = 25
-  Timestep Sizes(1) = $ 1.0 / 365.0 
+  Timestep Intervals(1) = <NSTEPS>
+  Timestep Sizes(1) = $ <STPINDAYS> / 365.0 
 
   ! Add check on the SSAnorm and Hnorm to force Exit in case Elmer did not stop before
   Exit Condition = Variable Time
@@ -53,7 +53,7 @@ Simulation
   Steady State Max Iterations = 4
   Steady State Min Iterations = 2
 
-  max output level = 4
+  max output level = 5
 End
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 Body 1
@@ -74,16 +74,15 @@ Body Force 1
   ! H internal limiters (Thickness solver)
   H Lower Limit = Real $Hmin
 
-!---------------------------------------------
-! BMB body force PICO
-!---------------------------------------------
-  ! Body force for PICO distance solver
-  ! distance GL initialisation
+  !---------------------------------------------
+  ! BMB body force PICO
+  !---------------------------------------------
+     ! distance GL initialisation
   distGL = Real 0.0  ! used in Solver DistanceSolver1
   distGL Condition = Variable GroundedMask
     Real procedure "USF_CondDistance" "CondDistance"
 
-  ! distance IF initialisation => to move to the initial condition as it is fixed in time
+     ! distance IF initialisation
   distIF = Real 0.0
   distIF Condition = Variable FrontMask
     Real procedure "USF_CondFront" "CondFront"
@@ -101,30 +100,30 @@ Material 1
   SSA Critical Thickness = Real $Hmin
 
   ! definition of the friction law (linear, Weertman, Coulomb or Regularized coulomb)
-  SSA Friction Law = String "Regularized coulomb"
-    ! Coulomb Regularised needed parameter
-    ! -------------------------------------
-    ! Friction Parameter = Beta
-    ! Friction Threshold Velocity = u_0
-    ! Friction Threshold Height = Treshold in Haf when to start descreasing friction toward GL 
-    !                                => requires body force section (SlipCoef)
-    ! Friction Exponent = m 
-    ! Friction Linear Velocity = u_lin (Min velocity for linearisation where ub=0)
-    ! Values of the various coeficient comes from Joughin et al. (XXXX)
-    !
-    SSA Friction Parameter = Variable beta_cr, Haf
-       Real Procedure "SlipCoef" "CalculSlc_haf"
-    SSA Friction Threshold Velocity = Real 300.0
-    SSA Friction Threshold Height = Real 75.0
-    SSA Friction Exponent = Real $1.0/n  
-       ! Commented: Why need SSA Friction Exponent and Viscosity Exponent they are the same ????
-    SSA Friction Linear Velocity = Real 0.0001
-
-!  SSA Friction Law = String "linear"
-!    ! linear needed parameter
+!  SSA Friction Law = String "Regularized coulomb"
+!    ! Coulomb Regularised needed parameter
 !    ! -------------------------------------
-!     SSA Friction Parameter = Variable beta
-!        REAL procedure "ElmerIceUSF" "TenPowerA"
+!    ! Friction Parameter = Beta
+!    ! Friction Threshold Velocity = u_0
+!    ! Friction Threshold Height = Treshold in Haf when to start descreasing friction toward GL 
+!    !                                => requires body force section (SlipCoef)
+!    ! Friction Exponent = m 
+!    ! Friction Linear Velocity = u_lin (Min velocity for linearisation where ub=0)
+!    ! Values of the various coeficient comes from Joughin et al. (XXXX)
+!    !
+!    SSA Friction Parameter = Variable beta_cr, Haf
+!       Real Procedure "SlipCoef" "CalculSlc_haf"
+!    SSA Friction Threshold Velocity = Real 300.0
+!    SSA Friction Threshold Height = Real 75.0
+!    SSA Friction Exponent = Real $1.0/n  
+!       ! Commented: Why need SSA Friction Exponent and Viscosity Exponent they are the same ????
+!    SSA Friction Linear Velocity = Real 0.0001
+
+  SSA Friction Law = String "linear"
+    ! linear needed parameter
+    ! -------------------------------------
+     SSA Friction Parameter = Variable beta
+        REAL procedure "ElmerIceUSF" "TenPowerA"
 
 !! For Save scalar to compute mass flux (=H*SSA_UV)
   Flux = Equals H
@@ -146,7 +145,7 @@ End
 !#     - constant input :           
 !#                * bedrock      : Bedrock altitude used to compute Haf
 !#                * mueta2       : Mean SSA viscosity
-!#                * beta_cr      : beta used to compute slip coefficient
+!#                * beta         : beta used to compute slip coefficient
 !#                
 !#
 !#     - output : restart variables
@@ -157,9 +156,7 @@ End
 !#     - comments: Please document in the netcdf the source of each constant field
 !#-----------------------------------------------------------------------
 Solver 1
-
    Exec Solver = Before Simulation
-
    Equation = "UGridDataReader"
    Procedure = "ElmerIceSolvers" "UGridDataReader"
 
@@ -169,33 +166,36 @@ Solver 1
    Time Index = Integer -1
 
 !# Time variable inputs
+   !# geometry
    Variable Name 1 = File "h"
    Variable Name 2 = File "zs"
    Variable Name 3 = File "zb"
    Variable Name 4 = File "haf"
    Variable Name 5 = File "groundedmask"
 
-   ADD SSAvelocity
+   !# ssa velocity
+   Variable Name 6 = File "ssavelocity 1"
+   Variable Name 7 = File "ssavelocity 2"
 
 !# Constant inputs
-!# Nodal inputs
-   Variable Name 6  = File "bedrock"
-   Variable Name 7  = File "mueta2"
-   Variable Name 8  = File "beta_cr"
+   !# Nodal inputs
+   Variable Name 8  = File "bedrock"
+   Variable Name 9  = File "mueta2"
+   Variable Name 10 = File "beta"
 
-!# Elemental inputs
-   Variable Name 9  = File "smb"
-   Variable Name 10 = File "basins"
-   Variable Name 11 = File "true_cell_area"
+   !# Elemental inputs
+   Variable Name 11 = File "smb"
+   Variable Name 12 = File "basins"
+   Variable Name 13 = File "true_cell_area"
 
 !# Time
-   Variable Name 12 = File "elmer_time"
-   Target Variable 12 = String "time"
+   Variable Name 14 = File "elmer_time"
+   Target Variable 14 = String "time"
 
 !# Export Constant inputs to feed next restart
    Exported Variable 1 = bedrock
    Exported Variable 2 = mueta2
-   Exported Variable 3 = beta_cr
+   Exported Variable 3 = beta
 
    Exported Variable 4 = -elem basins
    Exported Variable 5 = -elem true_cell_area
@@ -248,6 +248,10 @@ End
 !#                                 * FrontMask
 !#                                 * distIF (ice shelf front)
 !#-----------------------------------------------------------------------
+
+   !# Compute distance to Grounding Line
+   !#    - Requierement: initialisation as body force
+   !#------------------------------------------------
 Solver 3
   Exec Solver = Before Timestep
   Equation = "distance GL"
@@ -256,6 +260,8 @@ Solver 3
   Optimize Bandwidth = logical False
 End
 
+   !# Compute Front mask (used by next solver)
+   !#-----------------------------------------
 Solver 4
   Exec Solver = Before Timestep
   Equation = "FrontMask"
@@ -264,27 +270,32 @@ Solver 4
     Procedure = "FrontThickness_mask" "FrontThickness_mask"
 End
 
-! move output solver 5 to before simulation as it is fixed in time (or in initial condition)
+   !# Compute distance to Ice Front
+   !#    - Requierement: initialisation as body force
+   !#------------------------------
 Solver 5
-  Exec Solver = Before Timestep   
-     ! Comment: Why Before simulation failed ????? MPI error
-  Equation = "Real distance IF"
-  Variable = -dofs 1 distIF
-    Procedure = "DistanceSolve" "DistanceSolver1"
-  Optimize Bandwidth = logical False
-  Exported variable 1 = -dofs 1 distIF
+   Exec Solver = Before Timestep   
+   Equation = "Real distance IF"
+   Variable = -dofs 1 distIF
+      Procedure = "DistanceSolve" "DistanceSolver1"
+   Optimize Bandwidth = logical False
 End
 
+   !# Compute basal melt using PICO
+   !#    - Requierement: distGL, FrontMask, distIF
+   !#------------------------------
 Solver 6
    Exec Solver = Before Timestep
-   Exported Variable 1 = -dofs 1 -elem Melt
-   Exported Variable 2 = -dofs 1 -elem Boxes
-
    Equation = "box melt"
    Variable = -nooutput dummy
    Procedure = "boxmodel_solver" "boxmodel_solver"
 
+   !# input file
    data file = File "$data_dir$/$file_pico$"
+
+   !# output variables
+   Exported Variable 1 = -dofs 1 -elem Melt
+   Exported Variable 2 = -dofs 1 -elem Boxes
 End
 
 !#-----------------------------------------------------------------------
@@ -337,17 +348,17 @@ Solver 7
   ! Secondary variable (output)
   ! grounding line flux [m/s] wrt cell area
   Compute grounding line flux = Logical TRUE
-  Exported Variable 3 = -elem "ligroundf"
+  Exported Variable 1 = -elem "ligroundf"
 
   ! calving front flux [m/s] wrt cell area
   Compute calving front flux = Logical TRUE
-  Exported Variable 4 = -elem "calving_front_flux"
+  Exported Variable 2 = -elem "calving_front_flux"
 
  ! if variables with this names exist compute the
  ! element average basal stress
  ! and nodal effective friction coefficient
-  Exported Variable 5 = -elem "strbasemag"
-  Exported Variable 6 = "Ceff"
+  Exported Variable 3 = -elem "strbasemag"
+  Exported Variable 4 = "Ceff"
 End
 
 !#-----------------------------------------------------------------------
@@ -387,13 +398,13 @@ Solver 8
     Nonlinear System Max Iterations = 15
     Nonlinear System Convergence Tolerance  = 1.0e-08
     Nonlinear System Relaxation Factor = 1.00
-!
+
     Bulk Assembly Timing = Logical True
     Linear System Timing = Logical True
     Linear System Timing Cumulative = Logical True
-!
+
     Steady State Convergence Tolerance = 1.0e-6
-!
+
     Stabilization Method = Stabilized
     Transient Stabilisation = logical true
     Apply Dirichlet = Logical FALSE
@@ -525,17 +536,17 @@ Solver 10
 
    Scalar Field 19 = String "smb"
 
-   Scalar Field 21 = String "ligroundf"
+   Scalar Field 20 = String "ligroundf"
 
-   Scalar Field 22 = String "calving_front_flux"
+   Scalar Field 21 = String "calving_front_flux"
 
-   Scalar Field 23 = String "basins"
+   Scalar Field 22 = String "basins"
 
-   Scalar Field 24 = String "melt"
+   Scalar Field 23 = String "melt"
 
-   Scalar Field 26 = String "beta_cr"
+   Scalar Field 24 = String "beta"
 
-   Scalar Field 27 = String "true_cell_area"
+   Scalar Field 25 = String "true_cell_area"
 
    !Global Variables
    Global Variable 1 = String "time"
