@@ -53,7 +53,7 @@ Simulation
   Steady State Max Iterations = 4
   Steady State Min Iterations = 2
 
-  max output level = 5
+  max output level = 4
 End
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 Body 1
@@ -328,7 +328,7 @@ Solver 7
 
   Nonlinear System Max Iterations = 15
   Nonlinear System Convergence Tolerance = 1.0e-04
-  Nonlinear System Newton After Iterations = 5
+  Nonlinear System Newton After Iterations = 3
   Nonlinear System Newton After Tolerance = 1.0e-04
   Nonlinear System Relaxation Factor = 1.00
   Nonlinear System Abort Not Converged = Logical True
@@ -483,7 +483,7 @@ Solver 10
    time_units=String "1y"
 
  ! time-step: optional the duration of the tile step; other time_step=time_units*dt
-   timestep=String "1d"
+   timestep=String "2.5d"
  ! for consitency check we check that taking 1/dt time_step leads 
  !  to the same duration than time_units with xx seconds
    timestep tolerance = Real 1.0

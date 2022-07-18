@@ -28,18 +28,18 @@
                       <field id="ismip6_sftflf"     name="sftflf"     field_ref="sftflf"       />
 	      </field_group>
 
-              <field_group id="ismip6_2D_flux" grid_ref="GridCells">
-	              <field id="ismip6_acabf"       name="acabf"       field_ref="acabf"           unit="kg m-2 s-1" operation="average" > this*sftgif*$rhoi/$nsec_per_year </field>
-                      <field id="ismip6_libmassbfgr" name="libmassbfgr" long_name="Basal mass balance flux (only beneath grounded ice)" field_ref="libmassbf"       unit="kg m-2 s-1" operation="average" > libmassbf*sftgrf*$rhoi/$nsec_per_year </field>
-	              <field id="ismip6_libmassbffl" name="libmassbffl" long_name="Basal mass balance flux (only beneath floating ice)" field_ref="libmassbf"       unit="kg m-2 s-1" operation="average" > libmassbf*sftflf*$rhoi/$nsec_per_year </field>
-		      <field id="ismip6_dlithkdt"    name="dlithkdt"    field_ref="h velocity_elem" unit="m s-1"      operation="average" > this*sftgif/$nsec_per_year </field>
-		      <field id="ismip6_ligroundf"   name="ligroundf"   field_ref="ligroundf"       unit="kg m-2 s-1" operation="average" > -this*sftgif*$rhoi/$nsec_per_year</field>
-		      <field id="ismip6_lifmassbf" name="lifmassbf" unit="kg m-2 s-1" field_ref="calving_front_flux" operation="average" > -this*sftgif*$rhoi/$nsec_per_year </field>
+              <field_group id="ismip6_2D_flux" grid_ref="GridCells" operation="average">
+	              <field id="ismip6_acabf"       name="acabf"       field_ref="acabf"           unit="kg m-2 s-1" > this*sftgif*$rhoi/$nsec_per_year </field>
+                      <field id="ismip6_libmassbfgr" name="libmassbfgr" long_name="Basal mass balance flux (only beneath grounded ice)" field_ref="libmassbf"       unit="kg m-2 s-1" > libmassbf*sftgrf*$rhoi/$nsec_per_year </field>
+	              <field id="ismip6_libmassbffl" name="libmassbffl" long_name="Basal mass balance flux (only beneath floating ice)" field_ref="libmassbf"       unit="kg m-2 s-1" > libmassbf*sftflf*$rhoi/$nsec_per_year </field>
+		      <field id="ismip6_dlithkdt"    name="dlithkdt"    field_ref="h velocity_elem" unit="m s-1"      > this*sftgif/$nsec_per_year </field>
+		      <field id="ismip6_ligroundf"   name="ligroundf"   field_ref="ligroundf"       unit="kg m-2 s-1" > -this*sftgif*$rhoi/$nsec_per_year</field>
+		      <field id="ismip6_lifmassbf" name="lifmassbf" unit="kg m-2 s-1" field_ref="calving_front_flux"  > -this*sftgif*$rhoi/$nsec_per_year </field>
 	      </field_group>
 
 	      <field_group id="ismip6_1D" grid_ref="ScalarGrid_sum">
-		      <field id="ismip6_lim"             name="lim"             standard_name="land_ice_mass" unit="kg" field_ref="ismip6_lithk"  > this*cell_area*$rhoi </field>
-		      <field id="ismip6_limnsw"          name="limnsw"          standard_name="land_ice_mass_not_displacing_sea_water" unit="kg" field_ref="haf_elem"      > this*cell_area*$rhoi </field>
+		      <field id="ismip6_lim"             name="lim"             standard_name="land_ice_mass" unit="kg" field_ref="ismip6_lithk" > this*cell_area*$rhoi </field>
+		      <field id="ismip6_limnsw"          name="limnsw"          standard_name="land_ice_mass_not_displacing_sea_water" unit="kg" field_ref="haf_elem" > this*cell_area*$rhoi </field>
                       <field id="ismip6_iareagr"         name="iareagr"         standard_name="grounded_ice_sheet_area" unit="m2" field_ref="ismip6_sftgrf" > this*cell_area </field>
                       <field id="ismip6_iareafl"         name="iareafl"         standard_name="floating_ice_shelf_area" unit="m2" field_ref="ismip6_sftflf" > this*cell_area </field>
                       <field id="ismip6_tendacabf"       name="tendacabf"       standard_name="tendency_of_land_ice_mass_due_to_surface_mass_balance" unit="kg s-1" field_ref="ismip6_acabf" > this*cell_area </field>

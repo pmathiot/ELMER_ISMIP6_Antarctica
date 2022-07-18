@@ -11,11 +11,11 @@ NN=1
 # first iteration number (if more than 1, means restart i-1 are already in place)
 # end iteration
 STARTITER=1
-ENDITER=2
+ENDITER=5
 
 # define length of each segments
-NSTEP=10
-TIME_STP=1.0       # in days
+NSTEP=146
+TIME_STP=2.5       # in days
 
 calc() { awk "BEGIN{print $*}"; }
 TIME_RST=`calc $NSTEP*$TIME_STP` # in days
