@@ -457,7 +457,7 @@ Solver 9
    !                               ice mask, floated and grounded fraction
    Exported Variable 1 = zs
    Exported Variable 2 = zb
-   Exported Variable 3 = Haf
+   Exported Variable 3 = haf
 
    compute ice area fractions = Logical TRUE
    Exported Variable 4 = -elem "sftgif"
@@ -508,7 +508,7 @@ Solver 10
    Scalar Field 4 = String "bedrock"
    Scalar Field 4 compute cell average = Logical True
 
-   Scalar Field 5 = String "Haf"
+   Scalar Field 5 = String "haf"
    Scalar Field 5 compute cell average = Logical True
 
    Scalar Field 6 =String "strbasemag"
