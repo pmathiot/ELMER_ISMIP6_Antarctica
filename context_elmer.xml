@@ -110,15 +110,14 @@
 
 	      <field_group id="elmer_friction" >
 		      <field id="strbasemag" standard_name="land_ice_basal_drag"     unit="MPa"       grid_ref="GridCells" />
-		      <field id="slc0" long_name="ssa_linear_friction_coefficent"    unit="MPa m-1 a" grid_ref="GridNodes" operation="once" />
 		      <field id="ceff" long_name="ssa_effective_friction_coefficent" unit="MPa m-1 a" grid_ref="GridNodes" />
 	      </field_group>
 
               <field_group id="elmer_restart" >
-                      <field id="beta"     grid_ref="GridNodes" operation="once" />
-                      <field id="eta"      grid_ref="GridNodes" operation="once" />
-                      <field id="mueta2"   grid_ref="GridNodes" operation="once" />
-                      <field id="true_cell_area" grid_ref="GridCells" operation="once" />
+                      <field id="beta"     grid_ref="GridNodes" />
+                      <field id="beta_cr"  grid_ref="GridNodes" />
+                      <field id="eta"      grid_ref="GridNodes" />
+                      <field id="mueta2"   grid_ref="GridNodes" />
 	      </field_group>
 
 	      <field_group id="elmer_flowlaw" >
