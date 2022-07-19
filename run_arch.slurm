@@ -11,10 +11,10 @@
 #MSUB -o LOG/<NAME>.o%j
 #MSUB -n <NTASKS>
 #MSUB -x
-#MSUB -T 1200
+#MSUB -T 5400
 #MSUB -A <GROUPUSR>
 #MSUB -q rome
-#MSUB -m store,work,workflash,scratch
+#MSUB -m work,workflash,scratch
 #MSUB -E "--parsable"
 
 # here are define option specific to irene

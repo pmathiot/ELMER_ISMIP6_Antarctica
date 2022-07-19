@@ -1,3 +1,49 @@
+FUNCTION Calcul_Slc(model, nodenumber, VarIn) RESULT(VarOut)
+   USE DefUtils
+   IMPLICIT NONE 
+   TYPE(Model_t) :: model
+   INTEGER :: nodenumber
+   REAL (KIND=dp) :: VarIn(2) ! slc0, Haf
+   REAL (KIND=dp) :: VarOut   ! slc
+
+   TYPE(ValueList_t), POINTER :: material
+   REAL(kind=dp) :: lda    ! ratio Haf/Haf_treshold (max set to=1)
+   REAL(kind=dp) :: h_af   ! Haf
+   REAL(kind=dp) :: hth    ! Haf treshold
+   REAL(kind=dp) :: slc0   ! non modified slip coeficient
+ 
+   ! inquire SSA friction exponent from Material properties
+   material => GetMaterial()
+   IF (.NOT. ASSOCIATED(material)) CALL Fatal('SlipCoef_USF', "No material found?")
+
+   ! get needed variable
+   hth  = ListGetConstReal( Material, 'SSA Friction Threshold Height',UnFoundFatal=.TRUE.) 
+
+   ! non modified slip coneficient (slc0)
+   slc0 = VarIn(1)
+
+   ! heigh above flotation (h_af)
+   h_af = VarIn(2)
+
+   ! compute scale scale factor  
+   !     0 on floating part
+   !     1 where above treshold
+   ! [0-1] where between free floating and treshold
+
+   ! general case
+   lda=h_af/hth
+
+   ! where floating => 0
+   IF ( lda .LE. 0.0 ) lda=+0.0
+
+   ! haf superior to h_threshold => 1
+   IF ( h_af .GE. hth ) lda=+1.0
+
+   ! output : slc corrected by Haf (ie close to GL, we decrease slc)
+   VarOut = slc0 * lda
+ 
+END FUNCTION Calcul_Slc
+
 FUNCTION CalculSlc_haf (model, nodenumber, VarIn) RESULT(VarOut)
  USE DefUtils
  IMPLICIT NONE 

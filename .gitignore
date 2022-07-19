@@ -5,3 +5,5 @@ MY_RESTART
 MY_WORK
 LOG/[A-Z]*
 MY_BLD/[A-Z]*
+TOOLS/ADD_VAR_TO_RST/add_var_to_rst.o*
+TOOLS/ADD_VAR_TO_RST/add_var_to_rst.e*

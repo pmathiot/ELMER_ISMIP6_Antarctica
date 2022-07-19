@@ -48,7 +48,7 @@ Repository to work on the Elmer/Ice IGE contribution to ISMIP6.
     - [ ] Quadratic local melt blocs and parameter
     - [ ] Check SIF compatibility (not both melt activated ...)
     - [ ] Compute BMB as it is required for ISMIP6
-- [ ] Nearestpoint => create basin mask
+- [X] Nearestpoint => create basin mask : variable added in restart (see TOOL/ADD_RST_VAR for method)
 
 ### Solver
 - [ ] Build Quadratic melt Solver.F90
