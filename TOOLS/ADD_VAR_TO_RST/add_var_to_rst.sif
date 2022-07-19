@@ -51,7 +51,7 @@ Body Force 1
   ! H internal limiters (Thickness solver)
   H Lower Limit = Real 1.0
 
-  mueta2 = Variable eta, Mu
+  mueta2 = Variable eta, mu
      REAL procedure "USF_SSAViscosity" "SSAViscosity"
 End
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -60,7 +60,7 @@ Material 1
   Viscosity Exponent = Real $1.0/n
   Critical Shear Rate = Real 1.0e-12
 
-  SSA Mean Viscosity = Variable eta, Mu
+  SSA Mean Viscosity = Variable eta, mu
      REAL procedure "USF_SSAViscosity" "SSAViscosity"
   SSA Mean Density = Real $rhoi
   SSA Critical Thickness = Real 1.0
@@ -343,7 +343,7 @@ Solver 8
    Scalar Field 4 = String "bedrock"
    Scalar Field 4 compute cell average = Logical True
 
-   Scalar Field 5 = String "Haf"
+   Scalar Field 5 = String "haf"
    Scalar Field 5 compute cell average = Logical True
 
    Scalar Field 6  = String "groundedmask"

@@ -43,8 +43,8 @@ Simulation
 
   Timestepping Method = "bdf"
   BDF Order = 2
-  Timestep Intervals(1) = 25
-  Timestep Sizes(1) = $ 1.0 / 365.0 
+  Timestep Intervals(1) = <NSTEPS>
+  Timestep Sizes(1) = $ <STPINDAYS> / 365.0 
 
   ! Add check on the SSAnorm and Hnorm to force Exit in case Elmer did not stop before
   Exit Condition = Variable Time
@@ -53,7 +53,7 @@ Simulation
   Steady State Max Iterations = 4
   Steady State Min Iterations = 2
 
-  max output level = 10
+  max output level = 4
 End
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 Body 1
@@ -111,8 +111,8 @@ Material 1
     ! Friction Linear Velocity = u_lin (Min velocity for linearisation where ub=0)
     ! Values of the various coeficient comes from Joughin et al. (XXXX)
     !
-    SSA Friction Parameter = Variable beta_cr, Haf
-       Real Procedure "SlipCoef" "CalculSlc_haf"
+    SSA Friction Parameter = Variable beta_cr, haf
+       Real Procedure "SlipCoef" "Calcul_Slc"
     SSA Friction Threshold Velocity = Real 300.0
     SSA Friction Threshold Height = Real 75.0
     SSA Friction Exponent = Real $1.0/n  
@@ -247,6 +247,10 @@ End
 !#                                 * FrontMask
 !#                                 * distIF (ice shelf front)
 !#-----------------------------------------------------------------------
+
+   !# Compute distance to Grounding Line
+   !#    - Requierement: initialisation as body force
+   !#------------------------------------------------
 Solver 3
   Exec Solver = Before Timestep
   Equation = "distance GL"
@@ -255,6 +259,8 @@ Solver 3
   Optimize Bandwidth = logical False
 End
 
+   !# Compute Front mask (used by next solver)
+   !#-----------------------------------------
 Solver 4
   Exec Solver = Before Timestep
   Equation = "FrontMask"
@@ -263,17 +269,20 @@ Solver 4
     Procedure = "FrontThickness_mask" "FrontThickness_mask"
 End
 
+   !# Compute distance to Ice Front
+   !#    - Requierement: initialisation as body force
+   !#------------------------------
 Solver 5
-  Exec Solver = Before Timestep   
-  Equation = "Real distance IF"
-  Variable = -dofs 1 distIF
-    Procedure = "DistanceSolve" "DistanceSolver1"
-  Optimize Bandwidth = logical False
-
-  !# output variables
-  Exported variable 1 = -dofs 1 distIF
+   Exec Solver = Before Timestep   
+   Equation = "Real distance IF"
+   Variable = -dofs 1 distIF
+      Procedure = "DistanceSolve" "DistanceSolver1"
+   Optimize Bandwidth = logical False
 End
 
+   !# Compute basal melt using PICO
+   !#    - Requierement: distGL, FrontMask, distIF
+   !#------------------------------
 Solver 6
    Exec Solver = Before Timestep
    Equation = "box melt"
@@ -316,7 +325,7 @@ Solver 7
   ! numerical setting
   include elmer.lsol
 
-  Nonlinear System Max Iterations = 15
+  Nonlinear System Max Iterations = 50
   Nonlinear System Convergence Tolerance = 1.0e-04
   Nonlinear System Newton After Iterations = 5
   Nonlinear System Newton After Tolerance = 1.0e-04
@@ -333,7 +342,7 @@ Solver 7
   Sub-Element GL parameterization = Logical True
   GL integration points number = Integer 20
 
-  velocity norm limit = Real 30000.0
+  ! velocity norm limit = Real 30000.0
 
   ! Secondary variable (output)
   ! grounding line flux [m/s] wrt cell area
@@ -447,7 +456,7 @@ Solver 9
    !                               ice mask, floated and grounded fraction
    Exported Variable 1 = zs
    Exported Variable 2 = zb
-   Exported Variable 3 = Haf
+   Exported Variable 3 = haf
 
    compute ice area fractions = Logical TRUE
    Exported Variable 4 = -elem "sftgif"
@@ -473,7 +482,7 @@ Solver 10
    time_units=String "1y"
 
  ! time-step: optional the duration of the tile step; other time_step=time_units*dt
-   timestep=String "1d"
+   timestep=String "2.5d"
  ! for consitency check we check that taking 1/dt time_step leads 
  !  to the same duration than time_units with xx seconds
    timestep tolerance = Real 1.0
@@ -498,7 +507,7 @@ Solver 10
    Scalar Field 4 = String "bedrock"
    Scalar Field 4 compute cell average = Logical True
 
-   Scalar Field 5 = String "Haf"
+   Scalar Field 5 = String "haf"
    Scalar Field 5 compute cell average = Logical True
 
    Scalar Field 6 =String "strbasemag"
