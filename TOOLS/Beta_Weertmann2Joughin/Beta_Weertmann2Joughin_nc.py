@@ -25,8 +25,8 @@ import xarray as xr
 # In[2]:
 
 
-cfilein='MY_WORK/restart_newmesh.nc'
-cfileout='MY_WORK/restart_newmesh_beta_coulomg_reg.nc'
+cfilein='ANT50.GL1-ISMIP6_5.restart_weertman_only.nc'
+cfileout='ANT50.GL1-ISMIP6_5.restart_beta_coulomg_reg.nc'
 
 
 # ### Constants
@@ -35,17 +35,17 @@ cfileout='MY_WORK/restart_newmesh_beta_coulomg_reg.nc'
 
 
 # Ice sheet parameters
-m = 1.0 / 3.0   # Exposant loi Weertman NL ou Schoof
-Cmax = 0.4  # Cmax loi Schoof
-hth=75      # [m]   treshold on high above flotation 
-u0=300      # [m/a]  
+m = 1.0 / 3.0  # Exposant loi Weertman NL ou Schoof
+Cmax = 0.4     # Cmax loi Schoof
+hth=75         # [m]   treshold on high above flotation 
+u0=300         # [m/a]  
 
 # Physical constant
 z_sl=0         # [m] sea level heigh
 yrs=31556926.0 # [s]
 g = 9.81 * yrs**2
-rho_ice = 917/(10**6*yrs**2)
-rho_sea = 1027/(10**6*yrs**2)
+rho_ice = 917.0  * 1.0e-6 /(yrs**2)
+rho_sea = 1027.0 * 1.0e-6 /(yrs**2)
 
 
 # ### Load input files
@@ -63,10 +63,7 @@ ds_cr=ds_weert.copy(deep=True)
 
 
 # geometry
-da_zb    = ds_weert['zb']
-da_zs    = ds_weert['zs']
-da_bed   = ds_weert['bedrock']
-da_h     = ds_weert['h']
+da_haf   = ds_weert['haf']
 da_gmask = ds_weert['groundedmask'] 
 
 # velocities
@@ -102,15 +99,6 @@ coef=(u_norm/(u_norm+u0))
 
 Beta_j=taub/(coef**m)
 
-
-# ### Compute heigh above flotation (haf)
-
-# In[8]:
-
-
-haf=(da_zs-((rho_sea/rho_ice)*(z_sl-da_bed)+da_bed))
-
-
 # ### Restore Beta
 # In order to have a generic file, we need to increase beta when haf below a treshold (hth). The correction is based on haf.
 
@@ -120,7 +108,7 @@ haf=(da_zs-((rho_sea/rho_ice)*(z_sl-da_bed)+da_bed))
 # coefficient reducteur lambda
 # haf > hth => no change
 # haf < 0   => floating part 
-lbd=haf/hth
+lbd=da_haf/hth
 lbd.values[lbd.values>1]=1
 lbd.values[lbd.values<0]=1
 
