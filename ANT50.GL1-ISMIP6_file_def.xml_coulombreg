@@ -72,7 +72,7 @@
 	      <field_group group_ref="ismip6_2D_flux" />
 	      <variable id="elmerversion" name="model_version" type="string"> elmer ice v9.0</variable>
       </file>     
-      <file id="scalar" name="ismip6_scalar"  time_counter_name="time" time_counter="instant" time_units="days" >
+      <file id="scalar" name="ismip6_scalars"  time_counter_name="time" time_counter="instant" time_units="days" >
               <field_group group_ref="ismip6_1D" />
               <variable id="elmerversion" name="model_version" type="string"> elmer ice v9.0</variable>
       </file>

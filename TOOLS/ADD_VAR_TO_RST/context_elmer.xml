@@ -95,10 +95,11 @@
 	      </field_group>
 
               <field_group id="elmer_restart" >
-                      <field id="beta"     grid_ref="GridNodes" operation="once" />
-                      <field id="eta"      grid_ref="GridNodes" operation="once" />
-                      <field id="mueta2"   grid_ref="GridNodes" operation="once" />
-                      <field id="true_cell_area" grid_ref="GridCells" operation="once" />
+                      <field id="beta"     grid_ref="GridNodes" />
+                      <field id="beta_1"   grid_ref="GridNodes" />
+                      <field id="eta"      grid_ref="GridNodes" />
+                      <field id="mueta2"   grid_ref="GridNodes" />
+                      <field id="true_cell_area" grid_ref="GridCells" />
 	      </field_group>
 
 	      <field_group id="elmer_flowlaw" >

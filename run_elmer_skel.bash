@@ -1,6 +1,24 @@
 #!/bin/bash
 ulimit -s unlimited
 
+function mv_data_to_s() {
+   NCFILES=`echo "$1" | tr [:upper:] [:lower:]`
+   # check file is present
+   if [ ! -f $NCFILES ]; then 
+      echo "$NCFILES missing; E R R O R"; nerr=$((nerr+1))
+   else
+      # check file is a netcdf
+      cnc=$(ncdump -h $f 2> /dev/null | grep UNLIM )
+      if [[ $? != 0 ]] ; then
+        printf "\e[0;31;1m                E R R O R : %-50s is not a valid netcdf\e[0m \n" $f
+        nerr=$((nerr+1))
+      else
+        # all seem good, we move the file
+        mv $NCFILES  $SELMER/.  || nerr=$((nerr+1))
+      fi
+   fi
+                        }
+
 HELMER=<HELMER>
 
 # INPUTS
@@ -66,11 +84,18 @@ if [[ $RUNSTATUS == 0 ]]; then
 
    # mv data to S dir
    echo ''
-   echo "mv dat to $SELMER"
-   DATFILES=`echo "scalars_$CONFIG-${CASE}_${i}.nc" | tr [:upper:] [:lower:]`
-   mv scalars_$CONFIG-${CASE}_${i}.dat*                $SELMER/. || nerr=$((nerr+1))
-   NCFILES=`echo "*_$CONFIG-${CASE}_${i}.nc" | tr [:upper:] [:lower:]`
-   mv $NCFILES                                         $SELMER/.   || nerr=$((nerr+1))
+   echo "mv ismip6 output to $SELMER"
+   # fluxes
+   NCFILES=`echo "ismip6_fluxes_$CONFIG-${CASE}_${i}.nc" | tr [:upper:] [:lower:]`
+   mv_data_to_s $NCFILES
+
+   # states
+   NCFILES=`echo "ismip6_states_$CONFIG-${CASE}_${i}.nc" | tr [:upper:] [:lower:]`
+   mv_data_to_s $NCFILES
+
+   # scalar
+   NCFILES=`echo "ismip6_scalars_$CONFIG-${CASE}_${i}.nc" | tr [:upper:] [:lower:]`
+   mv_data_to_s $NCFILES
 
    if [[ $nerr -ne 0 ]] ; then
       echo 'ERROR during copying output file/restarts; please check'

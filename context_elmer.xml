@@ -6,8 +6,8 @@
 
 <!-- ============== Variable definition ======================== -->
     <variable_definition>
-       <variable id="nsec_per_year"  type="float" > 86400.0*365.0 </variable>
-       <variable id="rhoi"           type="float" > 917.0         </variable>
+       <variable id="nsec_per_year"  type="float"  > 86400.0*365.0 </variable>
+       <variable id="rhoi"           type="float"  > 917.0         </variable>
     </variable_definition>
 
 <!-- ============== FIELD DEFINITION =========================== -->
@@ -71,22 +71,24 @@
 
 	      <field_group id="elmer_topo" >
 		      <field id="h"       standard_name="land_ice_thickness" unit="m" grid_ref="GridNodes"  />
-		      <field id="h_elem"  standard_name="land_ice_thickness" unit="m"  grid_ref="GridCells" />
+		      <field id="h_elem"  standard_name="land_ice_thickness" unit="m" grid_ref="GridCells"  />
 
 		      <field id="h velocity"                      standard_name="tendency_of_land_ice_thickness" unit="m a-1" grid_ref="GridNodes" />
 		      <field id="h velocity_elem" name="dlithkdt" standard_name="tendency_of_land_ice_thickness" unit="m a-1" grid_ref="GridCells" />
 
-		      <field id="zs"      standard_name="surface_altitude"   unit="m"  grid_ref="GridNodes" />
-		      <field id="zs_elem" standard_name="surface_altitude"   unit="m"  grid_ref="GridCells" />
+		      <field id="zs"      standard_name="surface_altitude"   unit="m"  grid_ref="GridNodes" comment="The altitude or surface elevation of the ice sheet wrt geoid EIGEN-6C4 (positive up)" />
+		      <field id="zs_elem" standard_name="surface_altitude"   unit="m"  grid_ref="GridCells" comment="The altitude or surface elevation of the ice sheet wrt geoid EIGEN-6C4 (positive up)" />
 
-		      <field id="zb"      standard_name="base_altitude"      unit="m"  grid_ref="GridNodes" />
-		      <field id="zb_elem" standard_name="base_altitude"      unit="m"  grid_ref="GridCells" />
+		      <field id="zb"      standard_name="base_altitude"      unit="m"  grid_ref="GridNodes" comment="The altitude of the lower ice surface elevation of the ice sheet wrt geoid EIGEN-6C4 (positive up)" />
+		      <field id="zb_elem" standard_name="base_altitude"      unit="m"  grid_ref="GridCells" comment="The altitude of the lower ice surface elevation of the ice sheet wrt geoid EIGEN-6C4 (positive up)" />
 
 		      <field id="haf"      standard_name="heigh_above_flotation" unit="m"  grid_ref="GridNodes" />
 		      <field id="haf_elem" standard_name="heigh_above_flotation" unit="m"  grid_ref="GridCells" />
 
-		      <field id="bedrock"      standard_name="bedrock_altitude" unit="m"  grid_ref="GridNodes" operation="once" />
-		      <field id="bedrock_elem" standard_name="bedrock_altitude" unit="m" grid_ref="GridCells" operation="once" />
+		      <field id="bedrock"      standard_name="bedrock_altitude" unit="m"  grid_ref="GridNodes" comment="The bedrock topography wrt geoid EIGEN-6C4 (positive up)" />
+		      <field id="bedrock_elem" standard_name="bedrock_altitude" unit="m" grid_ref="GridCells"  >
+                           <variable name="double_attr" type="double"> 3.141592654 </variable>
+                      </field>
 	      </field_group>
 
 	      <field_group id="elmer_masks" >
@@ -132,16 +134,19 @@
 
 	      <field_group id="elmer_forcings" >
                       <field id="melt" long_name="basal_mass_balance_reference"                         unit="m a-1"  grid_ref="GridCells" />
-                      <field id="smb"  long_name="surface_mass_balance_reference"                       unit="m a-1"  grid_ref="GridNodes" operation="once" />
-		      <field id="dsmb" long_name="surface_mass_balance_anomaly"                         unit="m a-1"  grid_ref="GridNodes" operation="once" />
+                      <field id="smb"  long_name="surface_mass_balance_reference"                       unit="m a-1"  grid_ref="GridNodes" />
+		      <field id="dsmb" long_name="surface_mass_balance_anomaly"                         unit="m a-1"  grid_ref="GridNodes" />
 		      <field id="acabf"     standard_name="land_ice_surface_specific_mass_balance_flux" unit="m a-1"  grid_ref="GridCells" />
 		      <field id="libmassbf" standard_name="land_ice_basal_specific_mass_balance_flux"   unit="m a-1"  grid_ref="GridCells" />
 		      <field id="h loads"                                                               unit="m3 a-1" grid_ref="GridNodes" />
 	      </field_group>
 
               <field_group id="mesh_info2" operation= "instant" >
-                       <field id="node_x" name="x" standard_name="projection_x_coordinate" unit="m" grid_ref="GridNodes" />
-                       <field id="node_y" name="y" standard_name="projection_y_coordinate" unit="m" grid_ref="GridNodes" />
+                       <field id="node_x" name="x" standard_name="projection_x_coordinate" unit="m" grid_ref="GridNodes" >
+                             <variable name="int_attr" type="int"> 10 </variable>
+                             <variable name="double_attr" type="double"> 3.141592654 </variable>
+                       </field>
+                       <field id="node_y" name="y" standard_name="projection_y_coordinate" unit="m" comment="projection system is espg:3031" grid_ref="GridNodes" />
                        <field id="cell_area" name="cell_area" unit="m2" grid_ref="GridCells" />
                        <field id="true_cell_area" name="true_cell_area" unit="m2" grid_ref="GridCells" />
               </field_group>
