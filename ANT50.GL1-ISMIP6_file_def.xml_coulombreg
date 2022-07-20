@@ -18,6 +18,7 @@
                   <field field_ref="beta_cr"        />
                   <field field_ref="smb"            />
                   <field field_ref="mueta2"         />
+	          <field field_ref="ceff"           />
                   <field field_ref="basins"         />
               </field_group>
               <variable id="elmerversion" name="model_version" type="string"> elmer ice v9.0</variable>
@@ -28,7 +29,7 @@
       </file_group>
 
 <!-- INTEGRATED OUTPUT (instant) -->
-      <file_group id="file10" output_freq="1ts" >
+      <file_group id="file10" output_freq="1y" >
       <file id="elmer_scalars" name="elmer_scalars" time_counter_name="time" time_counter="instant" time_units="days" >
 	      <field_group group_ref="elmer_global" />
               <field_group prec="8" operation="instant">
@@ -45,20 +46,16 @@
               </field_group>
       </file>
 
-      <file id="elmer_others" name="elmer_others" convention="UGRID" time_counter_name="time" time_counter="instant" time_units="days" >
+      <file id="elmer_debug" name="elmer_debug" convention="UGRID" time_counter_name="time" time_counter="instant" time_units="days" >
 	      <field_group group_ref="mesh_info2" />
-              <field field_ref='basins' />
-	      <field field_ref="ceff"   />
-<!--
-	      <field name="dhdt_max" field_ref="h velocity" operation="maximum" />
-	      <field name="dhdt_min" field_ref="h velocity" operation="minimum" />
-	      <field name="vmin"     field_ref="vnorm" operation="minimum" />
-	      <field name="vmax"     field_ref="vnorm" operation="maximum" />
--->
-              <field field_ref="strbasemag" />
-              <field field_ref="vnorm"    />
-              <field field_ref="calving_front_flux"         />
-              <field name="dhdt"     field_ref="h velocity" />
+	      <field name="dhdt_max"  field_ref="h velocity" operation="maximum" />
+	      <field name="dhdt_min"  field_ref="h velocity" operation="minimum" />
+	      <field name="dhdt_mean" field_ref="h velocity" operation="average" />
+              <field name="dhdt"      field_ref="h velocity" />
+	      <field name="vmin"      field_ref="vnorm" operation="minimum" />
+	      <field name="vmax"      field_ref="vnorm" operation="maximum" />
+              <field name="vmean"     field_ref="vnorm" operation="average" />
+              <field name="vnorm"     field_ref="vnorm" />
       </file>
 
       </file_group>

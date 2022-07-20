@@ -317,7 +317,7 @@ End
 Solver 7
 
   Equation = "SSA"
-  Procedure = "ElmerIceSolvers" "SSABasalSolver"
+  Procedure = "SSASolver_bugfix" "SSABasalSolver_bugfix"
 
   ! primary variable
   Variable = -dofs 2 "SSAVelocity"
@@ -325,9 +325,9 @@ Solver 7
   ! numerical setting
   include elmer.lsol
 
-  Nonlinear System Max Iterations = 50
+  Nonlinear System Max Iterations = 25
   Nonlinear System Convergence Tolerance = 1.0e-04
-  Nonlinear System Newton After Iterations = 5
+  Nonlinear System Newton After Iterations = 3 
   Nonlinear System Newton After Tolerance = 1.0e-04
   Nonlinear System Relaxation Factor = 1.00
   Nonlinear System Abort Not Converged = Logical True
@@ -482,7 +482,7 @@ Solver 10
    time_units=String "1y"
 
  ! time-step: optional the duration of the tile step; other time_step=time_units*dt
-   timestep=String "2.5d"
+   timestep=String "<STPINDAYS>d"
  ! for consitency check we check that taking 1/dt time_step leads 
  !  to the same duration than time_units with xx seconds
    timestep tolerance = Real 1.0
@@ -495,6 +495,7 @@ Solver 10
    file names suffix = String "_$name$_$id$"
 
 ! node and elem vars
+   ! geometry
    Scalar Field 1 = String "h"
    Scalar Field 1 compute cell average = Logical True
 
@@ -510,21 +511,29 @@ Solver 10
    Scalar Field 5 = String "haf"
    Scalar Field 5 compute cell average = Logical True
 
+   ! Friction
    Scalar Field 6 =String "strbasemag"
 
+   ! Mask and fraction
    Scalar Field 7 =String "sftgif"
    Scalar Field 8 =String "sftgrf"
    Scalar Field 9 =String "sftflf"
 
+   ! Mass balance
    Scalar Field 10= String "acabf"
    Scalar Field 11= String "libmassbf"
 
+   ! Velocities
    Scalar Field 12= String "ssavelocity 1"
+   Scalar Field 12 compute cell average = Logical True
+
    Scalar Field 13= String "ssavelocity 2"
+   Scalar Field 13 compute cell average = Logical True
 
    Scalar Field 14= String "h velocity"
    Scalar Field 14 compute cell average = Logical True
 
+   ! others
    Scalar Field 15 = String "groundedmask"
 
    Scalar Field 16 = String "mueta2"

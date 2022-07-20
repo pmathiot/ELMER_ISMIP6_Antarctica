@@ -16,8 +16,9 @@
       <!-- ismip6 variables  -->
       <field_group id="ismip6" >
 	      <field_group id="ismip6_2D_state"  operation="instant">
-		      <field id="ismip6_xvelmean"   name="xvelmean"   field_ref="ssavelocity 1" unit="m s-1" > this/$nsec_per_year </field> 
-		      <field id="ismip6_yvelmean"   name="yvelmean"   field_ref="ssavelocity 2" unit="m s-1" > this/$nsec_per_year </field>
+		      <field id="ismip6_xvelmean"   name="xvelmean"   field_ref="ssavelocity 1_elem" unit="m s-1" > this/$nsec_per_year </field> 
+		      <field id="ismip6_yvelmean"   name="yvelmean"   field_ref="ssavelocity 2_elem" unit="m s-1" > this/$nsec_per_year </field>
+		      <field id="ismip6_velmean"    name="velmean"    field_ref="ssavelocity_elem"   unit="m s-1" > this/$nsec_per_year </field>
 		      <field id="ismip6_lithk"      name="lithk"      field_ref="h_elem"  > this*sftgif </field>
 		      <field id="ismip6_orog"       name="orog"       field_ref="zs_elem" > this*sftgif </field>
 		      <field id="ismip6_base"       name="base"       field_ref="zb_elem" > this*sftgif </field>
@@ -97,14 +98,19 @@
 	      </field_group>
 
                <field_group id="elmer_velocity">
-		      <field id="ssavelocity 1"   standard_name="land_ice_vertical_mean_x_velocity"             unit="m a-1" grid_ref="GridNodes" />
-		      <field id="ssavelocity 2"   standard_name="land_ice_vertical_mean_y_velocity"             unit="m a-1" grid_ref="GridNodes" />
-		      <field id="ligroundf"       standard_name="land_ice_specific_mass_flux_at_grounding_line" unit="m a-1" grid_ref="GridCells" />
+		      <field id="ssavelocity 1"      standard_name="land_ice_vertical_mean_x_velocity"             unit="m a-1" grid_ref="GridNodes" />
+		      <field id="ssavelocity 2"      standard_name="land_ice_vertical_mean_y_velocity"             unit="m a-1" grid_ref="GridNodes" />
+		      <field id="ssavelocity 1_elem" standard_name="land_ice_vertical_mean_x_velocity"             unit="m a-1" grid_ref="GridCells" />
+		      <field id="ssavelocity 2_elem" standard_name="land_ice_vertical_mean_y_velocity"             unit="m a-1" grid_ref="GridCells" />
+		      <field id="ligroundf"          standard_name="land_ice_specific_mass_flux_at_grounding_line" unit="m a-1" grid_ref="GridCells" />
                       <field id="calving_front_flux" standard_name="land_ice_specific_mass_flux_due_to_calving_and_ice_front_melting" unit="m a-1" grid_ref="GridCells" />
 
 		      <field id="vx" field_ref="ssavelocity 1" />
 		      <field id="vy" field_ref="ssavelocity 2" />
 		      <field id="vnorm" unit="m a-1" grid_ref="GridNodes" > sqrt(vx^2+vy^2) </field>
+		      <field id="vx_elem" field_ref="ssavelocity 1_elem" />
+		      <field id="vy_elem" field_ref="ssavelocity 2_elem" />
+		      <field id="ssavelocity_elem" unit="m a-1" grid_ref="GridNodes" > sqrt(vx_elem^2+vy_elem^2) </field>
 	      </field_group>
 
 
