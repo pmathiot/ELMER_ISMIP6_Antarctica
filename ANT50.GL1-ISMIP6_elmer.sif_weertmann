@@ -122,7 +122,7 @@ Material 1
   SSA Friction Law = String "linear"
     ! linear needed parameter
     ! -------------------------------------
-     SSA Friction Parameter = Variable beta_1
+     SSA Friction Parameter = Equals beta_1
 
 !! For Save scalar to compute mass flux (=H*SSA_UV)
   Flux = Equals H

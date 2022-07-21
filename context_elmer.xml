@@ -122,7 +122,7 @@
 	      </field_group>
 
               <field_group id="elmer_restart" >
-                      <field id="beta"     grid_ref="GridNodes" />
+                      <field id="beta_1"   grid_ref="GridNodes" />
                       <field id="beta_cr"  grid_ref="GridNodes" />
                       <field id="eta"      grid_ref="GridNodes" />
                       <field id="mueta2"   grid_ref="GridNodes" />
