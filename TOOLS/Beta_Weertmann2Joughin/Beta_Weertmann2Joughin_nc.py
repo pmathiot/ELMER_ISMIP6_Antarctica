@@ -71,7 +71,6 @@ lbd.values[lbd.values<0]=1
 # définition du Beta qui sera injecté dans le modèle
 Beta_out1=Beta_j*1.0/lbd
 
-<<<<<<< HEAD
 # define a background value for floating part at 10kPa
 Beta_out1.values[da_gmask.values == -1] = 0.01
 

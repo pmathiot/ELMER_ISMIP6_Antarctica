@@ -28,14 +28,11 @@ USF_SSAViscosity:$(SRC)/USF_SSAViscosity.F90
 nearestpoint:$(SRC)/nearestpoint.F90
 	elmerf90 $(NCINC) $^ -o $(BLD)/$@ $(FFLAGS) $(NCLIB)
 
-<<<<<<< HEAD
 #---------------------------------------------------
 # SSA
 # SSA bugfix on Ceff
 SSASolver_bugfix:$(SRC)/USF_SSAViscosity.F90
 	elmerf90 $(NCINC) $^ -o $(BLD)/$@ $(FFLAGS) $(NCLIB)
 
-=======
->>>>>>> origin/main
 clean:
 	cd $(BLD) && rm -f $(LIBS)
