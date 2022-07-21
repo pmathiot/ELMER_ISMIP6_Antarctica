@@ -244,7 +244,10 @@ End
 !#              UPDATE and EXPORT BODY FORCE VARIABLES
 !#
 !#     - output : * mueta2 (mu * eta ^2 = Mean SSA viscosity)
+<<<<<<< HEAD
 !#                * 
+=======
+>>>>>>> origin/main
 !#                
 !#-----------------------------------------------------------------------
 !# 

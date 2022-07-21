@@ -32,7 +32,6 @@ rho_sea = 1027.0 * 1.0e-6 /(yrs**2)
 ## Load input files
 # load data
 ds_weert=xr.open_dataset(cfilein)
-ds_weert
 
 # geometry
 da_haf   = ds_weert['haf']
@@ -72,6 +71,7 @@ lbd.values[lbd.values<0]=1
 # définition du Beta qui sera injecté dans le modèle
 Beta_out1=Beta_j*1.0/lbd
 
+<<<<<<< HEAD
 # define a background value for floating part at 10kPa
 Beta_out1.values[da_gmask.values == -1] = 0.01
 
@@ -84,4 +84,3 @@ ds_cr.attrs['History']=('Coulomb regularised beta parameter computed '
                               'from Ceff available in file '+cfilein+' '
                               'using Beta_Weertmann2Joughin_nc script')
 ds_cr.to_netcdf(cfileout)
-
