@@ -6,7 +6,7 @@
 
 <!-- ============== Variable definition ======================== -->
     <variable_definition>
-       <variable id="nsec_per_year"  type="float"  > 86400.0*365.0 </variable>
+       <variable id="nsec_per_year"  type="float"  > 31536000 </variable>
        <variable id="rhoi"           type="float"  > 917.0         </variable>
     </variable_definition>
 
@@ -34,8 +34,8 @@
                       <field id="ismip6_libmassbfgr" name="libmassbfgr" long_name="Basal mass balance flux (only beneath grounded ice)" field_ref="libmassbf"       unit="kg m-2 s-1" > libmassbf*sftgrf*$rhoi/$nsec_per_year </field>
 	              <field id="ismip6_libmassbffl" name="libmassbffl" long_name="Basal mass balance flux (only beneath floating ice)" field_ref="libmassbf"       unit="kg m-2 s-1" > libmassbf*sftflf*$rhoi/$nsec_per_year </field>
 		      <field id="ismip6_dlithkdt"    name="dlithkdt"    field_ref="h velocity_elem" unit="m s-1"      > this*sftgif/$nsec_per_year </field>
-		      <field id="ismip6_ligroundf"   name="ligroundf"   field_ref="ligroundf"       unit="kg m-2 s-1" > -this*sftgif*$rhoi/$nsec_per_year</field>
-		      <field id="ismip6_lifmassbf" name="lifmassbf" unit="kg m-2 s-1" field_ref="calving_front_flux"  > -this*sftgif*$rhoi/$nsec_per_year </field>
+		      <field id="ismip6_ligroundf"   name="ligroundf" long_name="Loss of grounded ice mass resulting at grounding line"  field_ref="ligroundf"       unit="kg m-2 s-1" > this*sftgif*$rhoi/$nsec_per_year </field>
+		      <field id="ismip6_lifmassbf" name="lifmassbf" unit="kg m-2 s-1" long_name="Loss of ice mass resulting from ice front melting and calving" field_ref="calving_front_flux"  > this*sftgif*$rhoi/$nsec_per_year </field>
 	      </field_group>
 
 	      <field_group id="ismip6_1D" grid_ref="ScalarGrid_sum">
@@ -112,7 +112,7 @@
 		      <field id="vnorm" unit="m a-1" grid_ref="GridNodes" > sqrt(vx^2+vy^2) </field>
 		      <field id="vx_elem" field_ref="ssavelocity 1_elem" />
 		      <field id="vy_elem" field_ref="ssavelocity 2_elem" />
-		      <field id="ssavelocity_elem" unit="m a-1" grid_ref="GridNodes" > sqrt(vx_elem^2+vy_elem^2) </field>
+		      <field id="ssavelocity_elem" unit="m a-1" grid_ref="GridCells" > sqrt(vx_elem^2+vy_elem^2) </field>
 	      </field_group>
 
 
@@ -142,11 +142,8 @@
 	      </field_group>
 
               <field_group id="mesh_info2" operation= "instant" >
-                       <field id="node_x" name="x" standard_name="projection_x_coordinate" unit="m" grid_ref="GridNodes" >
-                             <variable name="int_attr" type="int"> 10 </variable>
-                             <variable name="double_attr" type="double"> 3.141592654 </variable>
-                       </field>
-                       <field id="node_y" name="y" standard_name="projection_y_coordinate" unit="m" comment="projection system is espg:3031" grid_ref="GridNodes" />
+                       <field id="node_x" name="x" standard_name="projection_x_coordinate" unit="m" grid_ref="GridNodes" />
+                       <field id="node_y" name="y" standard_name="projection_y_coordinate" unit="m" grid_ref="GridNodes" />
                        <field id="cell_area" name="cell_area" unit="m2" grid_ref="GridCells" />
                        <field id="true_cell_area" name="true_cell_area" unit="m2" grid_ref="GridCells" />
               </field_group>

@@ -2,19 +2,19 @@
 ulimit -s unlimited
 
 function mv_data_to_s() {
-   NCFILES=`echo "$1" | tr [:upper:] [:lower:]`
+   NCFILE=`echo "$1" | tr [:upper:] [:lower:]`
    # check file is present
-   if [ ! -f $NCFILES ]; then 
-      echo "$NCFILES missing; E R R O R"; nerr=$((nerr+1))
+   if [ ! -f $NCFILE ]; then 
+      echo "$NCFILE missing; E R R O R"; nerr=$((nerr+1))
    else
       # check file is a netcdf
-      cnc=$(ncdump -h $f 2> /dev/null | grep UNLIM )
+      cnc=$(ncdump -h $NCFILE 2> /dev/null | grep UNLIM )
       if [[ $? != 0 ]] ; then
-        printf "\e[0;31;1m                E R R O R : %-50s is not a valid netcdf\e[0m \n" $f
+        printf " E R R O R : %-50s is not a valid netcdf \n" $NCFILE
         nerr=$((nerr+1))
       else
         # all seem good, we move the file
-        mv $NCFILES  $SELMER/.  || nerr=$((nerr+1))
+        mv $NCFILE  $SELMER/.  || nerr=$((nerr+1))
       fi
    fi
                         }
@@ -95,6 +95,16 @@ if [[ $RUNSTATUS == 0 ]]; then
 
    # scalar
    NCFILES=`echo "ismip6_scalars_$CONFIG-${CASE}_${i}.nc" | tr [:upper:] [:lower:]`
+   mv_data_to_s $NCFILES
+   NCFILES=`echo "ismip6_scalars_true_cell_area_$CONFIG-${CASE}_${i}.nc" | tr [:upper:] [:lower:]`
+   mv_data_to_s $NCFILES
+
+   # elmer debug
+   NCFILES=`echo "elmer_debug_$CONFIG-${CASE}_${i}.nc" | tr [:upper:] [:lower:]`
+   mv_data_to_s $NCFILES
+
+   # elmer scalars
+   NCFILES=`echo "elmer_scalars_$CONFIG-${CASE}_${i}.nc" | tr [:upper:] [:lower:]`
    mv_data_to_s $NCFILES
 
    if [[ $nerr -ne 0 ]] ; then
