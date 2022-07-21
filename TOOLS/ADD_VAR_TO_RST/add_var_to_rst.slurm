@@ -56,6 +56,7 @@ ln -sf $MSHINITpath/partitioning.$NELMER/part.* $CCCWORKDIR/ELMER/TMPDIR/ADD_VAR
 # source
 \cp nearestpoint MY_WORK/.
 \cp USF_SSAViscosity MY_WORK/.
+\cp SSASolver_bugfix MY_WORK/.
 
 cd MY_WORK/.
 
@@ -71,3 +72,4 @@ echo add_var_to_rst.sif > ELMERSOLVER_STARTINFO
 run_elmer ; RUNSTATUS=$?
 
 ncks -A -v elmer_time elmer_scalars.nc restart_newmesh.nc
+ncap2 -O -s 'elmer_time=elmer_time*0.0' restart_newmesh.nc restart_newmesh_t0.nc

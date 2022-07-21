@@ -12,7 +12,7 @@ VPATH=$(BLD)
 FFLAGS=-I$(XIOS_INC) -g -traceback -O0 -fpe0 -CB -ftrapuv -debug all -CA
 # -fpe0 -CB -ftrapuv -debug
 
-LIBS= USF_SSAViscosity nearestpoint
+LIBS= USF_SSAViscosity nearestpoint SSASolver_bugfix
 
 all: $(LIBS)
 
@@ -26,6 +26,12 @@ USF_SSAViscosity:$(SRC)/USF_SSAViscosity.F90
 # PP
 # PP define basin
 nearestpoint:$(SRC)/nearestpoint.F90
+	elmerf90 $(NCINC) $^ -o $(BLD)/$@ $(FFLAGS) $(NCLIB)
+
+#---------------------------------------------------
+# SSA
+# SSA bugfix on Ceff
+SSASolver_bugfix:$(SRC)/USF_SSAViscosity.F90
 	elmerf90 $(NCINC) $^ -o $(BLD)/$@ $(FFLAGS) $(NCLIB)
 
 clean:

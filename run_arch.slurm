@@ -11,7 +11,7 @@
 #MSUB -o LOG/<NAME>.o%j
 #MSUB -n <NTASKS>
 #MSUB -x
-#MSUB -T 5400
+#MSUB -T 9600
 #MSUB -A <GROUPUSR>
 #MSUB -q rome
 #MSUB -m work,workflash,scratch

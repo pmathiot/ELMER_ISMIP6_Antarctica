@@ -6,8 +6,8 @@
 
 <!-- ============== Variable definition ======================== -->
     <variable_definition>
-       <variable id="nsec_per_year"  type="float" > 86400.0*365.0 </variable>
-       <variable id="rhoi"           type="float" > 917.0         </variable>
+       <variable id="nsec_per_year"  type="float"  > 31536000 </variable>
+       <variable id="rhoi"           type="float"  > 917.0         </variable>
     </variable_definition>
 
 <!-- ============== FIELD DEFINITION =========================== -->
@@ -16,8 +16,9 @@
       <!-- ismip6 variables  -->
       <field_group id="ismip6" >
 	      <field_group id="ismip6_2D_state"  operation="instant">
-		      <field id="ismip6_xvelmean"   name="xvelmean"   field_ref="ssavelocity 1" unit="m s-1" > this/$nsec_per_year </field> 
-		      <field id="ismip6_yvelmean"   name="yvelmean"   field_ref="ssavelocity 2" unit="m s-1" > this/$nsec_per_year </field>
+		      <field id="ismip6_xvelmean"   name="xvelmean"   field_ref="ssavelocity 1_elem" unit="m s-1" > this/$nsec_per_year </field> 
+		      <field id="ismip6_yvelmean"   name="yvelmean"   field_ref="ssavelocity 2_elem" unit="m s-1" > this/$nsec_per_year </field>
+		      <field id="ismip6_velmean"    name="velmean"    field_ref="ssavelocity_elem"   unit="m s-1" > this/$nsec_per_year </field>
 		      <field id="ismip6_lithk"      name="lithk"      field_ref="h_elem"  > this*sftgif </field>
 		      <field id="ismip6_orog"       name="orog"       field_ref="zs_elem" > this*sftgif </field>
 		      <field id="ismip6_base"       name="base"       field_ref="zb_elem" > this*sftgif </field>
@@ -33,8 +34,8 @@
                       <field id="ismip6_libmassbfgr" name="libmassbfgr" long_name="Basal mass balance flux (only beneath grounded ice)" field_ref="libmassbf"       unit="kg m-2 s-1" > libmassbf*sftgrf*$rhoi/$nsec_per_year </field>
 	              <field id="ismip6_libmassbffl" name="libmassbffl" long_name="Basal mass balance flux (only beneath floating ice)" field_ref="libmassbf"       unit="kg m-2 s-1" > libmassbf*sftflf*$rhoi/$nsec_per_year </field>
 		      <field id="ismip6_dlithkdt"    name="dlithkdt"    field_ref="h velocity_elem" unit="m s-1"      > this*sftgif/$nsec_per_year </field>
-		      <field id="ismip6_ligroundf"   name="ligroundf"   field_ref="ligroundf"       unit="kg m-2 s-1" > -this*sftgif*$rhoi/$nsec_per_year</field>
-		      <field id="ismip6_lifmassbf" name="lifmassbf" unit="kg m-2 s-1" field_ref="calving_front_flux"  > -this*sftgif*$rhoi/$nsec_per_year </field>
+		      <field id="ismip6_ligroundf"   name="ligroundf" long_name="Loss of grounded ice mass resulting at grounding line"  field_ref="ligroundf"       unit="kg m-2 s-1" > this*sftgif*$rhoi/$nsec_per_year </field>
+		      <field id="ismip6_lifmassbf" name="lifmassbf" unit="kg m-2 s-1" long_name="Loss of ice mass resulting from ice front melting and calving" field_ref="calving_front_flux"  > this*sftgif*$rhoi/$nsec_per_year </field>
 	      </field_group>
 
 	      <field_group id="ismip6_1D" grid_ref="ScalarGrid_sum">
@@ -70,22 +71,24 @@
 
 	      <field_group id="elmer_topo" >
 		      <field id="h"       standard_name="land_ice_thickness" unit="m" grid_ref="GridNodes"  />
-		      <field id="h_elem"  standard_name="land_ice_thickness" unit="m"  grid_ref="GridCells" />
+		      <field id="h_elem"  standard_name="land_ice_thickness" unit="m" grid_ref="GridCells"  />
 
 		      <field id="h velocity"                      standard_name="tendency_of_land_ice_thickness" unit="m a-1" grid_ref="GridNodes" />
 		      <field id="h velocity_elem" name="dlithkdt" standard_name="tendency_of_land_ice_thickness" unit="m a-1" grid_ref="GridCells" />
 
-		      <field id="zs"      standard_name="surface_altitude"   unit="m"  grid_ref="GridNodes" />
-		      <field id="zs_elem" standard_name="surface_altitude"   unit="m"  grid_ref="GridCells" />
+		      <field id="zs"      standard_name="surface_altitude"   unit="m"  grid_ref="GridNodes" comment="The altitude or surface elevation of the ice sheet wrt geoid EIGEN-6C4 (positive up)" />
+		      <field id="zs_elem" standard_name="surface_altitude"   unit="m"  grid_ref="GridCells" comment="The altitude or surface elevation of the ice sheet wrt geoid EIGEN-6C4 (positive up)" />
 
-		      <field id="zb"      standard_name="base_altitude"      unit="m"  grid_ref="GridNodes" />
-		      <field id="zb_elem" standard_name="base_altitude"      unit="m"  grid_ref="GridCells" />
+		      <field id="zb"      standard_name="base_altitude"      unit="m"  grid_ref="GridNodes" comment="The altitude of the lower ice surface elevation of the ice sheet wrt geoid EIGEN-6C4 (positive up)" />
+		      <field id="zb_elem" standard_name="base_altitude"      unit="m"  grid_ref="GridCells" comment="The altitude of the lower ice surface elevation of the ice sheet wrt geoid EIGEN-6C4 (positive up)" />
 
 		      <field id="haf"      standard_name="heigh_above_flotation" unit="m"  grid_ref="GridNodes" />
 		      <field id="haf_elem" standard_name="heigh_above_flotation" unit="m"  grid_ref="GridCells" />
 
-		      <field id="bedrock"      standard_name="bedrock_altitude" unit="m"  grid_ref="GridNodes" operation="once" />
-		      <field id="bedrock_elem" standard_name="bedrock_altitude" unit="m" grid_ref="GridCells" operation="once" />
+		      <field id="bedrock"      standard_name="bedrock_altitude" unit="m"  grid_ref="GridNodes" comment="The bedrock topography wrt geoid EIGEN-6C4 (positive up)" />
+		      <field id="bedrock_elem" standard_name="bedrock_altitude" unit="m" grid_ref="GridCells"  >
+                           <variable name="double_attr" type="double"> 3.141592654 </variable>
+                      </field>
 	      </field_group>
 
 	      <field_group id="elmer_masks" >
@@ -97,14 +100,19 @@
 	      </field_group>
 
                <field_group id="elmer_velocity">
-		      <field id="ssavelocity 1"   standard_name="land_ice_vertical_mean_x_velocity"             unit="m a-1" grid_ref="GridNodes" />
-		      <field id="ssavelocity 2"   standard_name="land_ice_vertical_mean_y_velocity"             unit="m a-1" grid_ref="GridNodes" />
-		      <field id="ligroundf"       standard_name="land_ice_specific_mass_flux_at_grounding_line" unit="m a-1" grid_ref="GridCells" />
+		      <field id="ssavelocity 1"      standard_name="land_ice_vertical_mean_x_velocity"             unit="m a-1" grid_ref="GridNodes" />
+		      <field id="ssavelocity 2"      standard_name="land_ice_vertical_mean_y_velocity"             unit="m a-1" grid_ref="GridNodes" />
+		      <field id="ssavelocity 1_elem" standard_name="land_ice_vertical_mean_x_velocity"             unit="m a-1" grid_ref="GridCells" />
+		      <field id="ssavelocity 2_elem" standard_name="land_ice_vertical_mean_y_velocity"             unit="m a-1" grid_ref="GridCells" />
+		      <field id="ligroundf"          standard_name="land_ice_specific_mass_flux_at_grounding_line" unit="m a-1" grid_ref="GridCells" />
                       <field id="calving_front_flux" standard_name="land_ice_specific_mass_flux_due_to_calving_and_ice_front_melting" unit="m a-1" grid_ref="GridCells" />
 
 		      <field id="vx" field_ref="ssavelocity 1" />
 		      <field id="vy" field_ref="ssavelocity 2" />
 		      <field id="vnorm" unit="m a-1" grid_ref="GridNodes" > sqrt(vx^2+vy^2) </field>
+		      <field id="vx_elem" field_ref="ssavelocity 1_elem" />
+		      <field id="vy_elem" field_ref="ssavelocity 2_elem" />
+		      <field id="ssavelocity_elem" unit="m a-1" grid_ref="GridCells" > sqrt(vx_elem^2+vy_elem^2) </field>
 	      </field_group>
 
 
@@ -126,8 +134,8 @@
 
 	      <field_group id="elmer_forcings" >
                       <field id="melt" long_name="basal_mass_balance_reference"                         unit="m a-1"  grid_ref="GridCells" />
-                      <field id="smb"  long_name="surface_mass_balance_reference"                       unit="m a-1"  grid_ref="GridNodes" operation="once" />
-		      <field id="dsmb" long_name="surface_mass_balance_anomaly"                         unit="m a-1"  grid_ref="GridNodes" operation="once" />
+                      <field id="smb"  long_name="surface_mass_balance_reference"                       unit="m a-1"  grid_ref="GridNodes" />
+		      <field id="dsmb" long_name="surface_mass_balance_anomaly"                         unit="m a-1"  grid_ref="GridNodes" />
 		      <field id="acabf"     standard_name="land_ice_surface_specific_mass_balance_flux" unit="m a-1"  grid_ref="GridCells" />
 		      <field id="libmassbf" standard_name="land_ice_basal_specific_mass_balance_flux"   unit="m a-1"  grid_ref="GridCells" />
 		      <field id="h loads"                                                               unit="m3 a-1" grid_ref="GridNodes" />

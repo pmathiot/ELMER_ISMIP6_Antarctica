@@ -53,6 +53,9 @@ Body Force 1
 
   mueta2 = Variable eta, mu
      REAL procedure "USF_SSAViscosity" "SSAViscosity"
+
+  beta_1 = Variable beta
+     REAL procedure "ElmerIceUSF" "TenPowerA"
 End
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 Material 1
@@ -60,16 +63,14 @@ Material 1
   Viscosity Exponent = Real $1.0/n
   Critical Shear Rate = Real 1.0e-12
 
-  SSA Mean Viscosity = Variable eta, mu
-     REAL procedure "USF_SSAViscosity" "SSAViscosity"
+  SSA Mean Viscosity = Equals mueta2
   SSA Mean Density = Real $rhoi
   SSA Critical Thickness = Real 1.0
 
   SSA Friction Law = String "linear"
     ! linear needed parameter
     ! -------------------------------------
-     SSA Friction Parameter = Variable beta
-        REAL procedure "ElmerIceUSF" "TenPowerA"
+     SSA Friction Parameter = Equals beta_1
 
 End
 
@@ -243,6 +244,7 @@ End
 !#              UPDATE and EXPORT BODY FORCE VARIABLES
 !#
 !#     - output : * mueta2 (mu * eta ^2 = Mean SSA viscosity)
+!#                * beta_1
 !#                
 !#-----------------------------------------------------------------------
 !# 
@@ -251,6 +253,7 @@ Solver 6
  Procedure = "ElmerIceSolvers" "UpdateExport"
 
  Exported Variable 1 = mueta2
+ Exported Variable 2 = beta_1
 End 
 
 !#-----------------------------------------------------------------------
@@ -272,7 +275,7 @@ End
 !#-----------------------------------------------------------------------
 Solver 7
   Equation = "SSA"
-  Procedure = "ElmerIceSolvers" "SSABasalSolver"
+  Procedure = "SSASolver_bugfix" "SSABasalSolver_bugfix"
 
   ! primary variable 
   Variable = -dofs 2 "SSAVelocity"
@@ -297,7 +300,9 @@ Solver 7
   Sub-Element GL parameterization = Logical True
   GL integration points number = Integer 20
 
-  velocity norm limit = Real 30000.0
+  !velocity norm limit = Real 30000.0
+
+  Exported Variable 1 = "Ceff"
 End
 
 !#-----------------------------------------------------------------------
@@ -364,6 +369,10 @@ Solver 8
 
    Scalar Field 14= String "ssavelocity 1"
    Scalar Field 15= String "ssavelocity 2"
+
+   Scalar Field 16= String "ceff"
+
+   Scalar Field 17= String "beta_1"
 
    !Global Variables
    Global Variable 1 = String "time"

@@ -11,18 +11,18 @@ NN=1
 # first iteration number (if more than 1, means restart i-1 are already in place)
 # end iteration
 STARTITER=1
-ENDITER=5
+ENDITER=10
 
 # define length of each segments
-NSTEP=146
-TIME_STP=2.5       # in days
+NSTEP=365
+TIME_STP=1 # in days
 
 calc() { awk "BEGIN{print $*}"; }
 TIME_RST=`calc $NSTEP*$TIME_STP` # in days
 
 # restart path and rst file (assume all in $IELMER)
 RSTINITpath=${IELMER}/RST_simplified2/
-RSTINITfile=restart_newmesh_beta_coulomg_reg_time_eq_0.nc
+RSTINITfile=restart_newmesh_t0_beta_coulomg_reg.nc
 
 # MSH path and file
 MSHINITpath=${IELMER}/MSH_simplified2/
