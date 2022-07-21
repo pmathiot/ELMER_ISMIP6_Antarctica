@@ -11,6 +11,4 @@ Elmer/Ice outputs variable in the Elmer/Ice unit system used for the ISMIP6 simu
 - Variable names and metadata checked
 - Integrated variables vs Save scalar output checked => still need to understand what about Melt
 - Melt check against LOG output
-
-*Check missing*:
-- Review all variable with paraview (need account on snow) => all variables reviewed. Need input for basal drag
+- Review all variable with paraview => all variables reviewed. Need input for basal drag
