@@ -37,8 +37,7 @@ SUBROUTINE boxmodel_solver( Model,Solver,dt,Transient )
 
   CHARACTER(len=MAX_NAME_LEN) ::  variabletype, VariableName
   CHARACTER(len = 200) :: meltValue
-  CHARACTER(LEN=MAX_NAME_LEN) :: SolverName='MELT_MISMIP', FName, DataF
-
+  CHARACTER(LEN=MAX_NAME_LEN) :: SolverName='MELT_MISMIP', FName, DataFT, DataFS
   INTEGER :: node,  e, t, n, i, j,  knd, kk, ii,  b,  ierr,  NetcdfStatus,varid,ncid
   INTEGER :: status(MPI_STATUS_SIZE)
   INTEGER :: maxbastmp
@@ -114,28 +113,43 @@ SUBROUTINE boxmodel_solver( Model,Solver,dt,Transient )
 
 
      !ALLOCATE(S_mean(MaxBas), T_mean(MaxBas))
-
-     DataF = ListGetString( Params, 'Data File', Found, UnFoundFatal )
-
-     NetCDFstatus = NF90_OPEN(DataF,NF90_NOWRITE,ncid)
-     NetCDFstatus = nf90_inq_dimid(ncid,'number_of_basins' , tmeanid)
-     NetCDFstatus = nf90_inquire_dimension(ncid, tmeanid , len=nlen)
-
-     ALLOCATE(S_mean(nlen), T_mean(nlen))
-
-     NetCDFstatus = nf90_inq_varid(ncid,'T_mean',varid)
-     NetCDFstatus = nf90_get_var(ncid, varid,T_mean)
+     
+     ! Temperature
+     DataFT = ListGetString( Params, 'data file T', Found, UnFoundFatal )
+     NetCDFstatus = NF90_OPEN( DataFT, NF90_NOWRITE, ncid )
+     NetCDFstatus = nf90_inq_dimid( ncid, 'number_of_basins' , tmeanid)
+     NetCDFstatus = nf90_inquire_dimension( ncid, tmeanid , len = nlen )
+     ALLOCATE( T_mean(nlen) )
+     !ALLOCATE(S_mean(nlen), T_mean(nlen))
+     NetCDFstatus = nf90_inq_varid( ncid, 'T_mean', varid)
+     NetCDFstatus = nf90_get_var( ncid, varid, T_mean )
      IF ( NetCDFstatus /= NF90_NOERR ) THEN
         CALL Fatal(Trim(SolverName), &
              'Unable to get netcdf variable T_mean')
      END IF
-
-     NetCDFstatus = nf90_inq_varid(ncid,'S_mean',varid)
-     NetCDFstatus = nf90_get_var(ncid, varid,S_mean)
+     print *, T_mean(2)
+     ! Salinity
+     DataFS = ListGetString( Params, 'data file S', Found, UnFoundFatal )
+     NetCDFstatus = NF90_OPEN( DataFS, NF90_NOWRITE, ncid )
+     NetCDFstatus = nf90_inq_dimid( ncid, 'number_of_basins' , tmeanid)
+     NetCDFstatus = nf90_inquire_dimension( ncid, tmeanid , len = nlen )
+     ALLOCATE( S_mean(nlen) )
+     !ALLOCATE(S_mean(nlen), T_mean(nlen))
+     NetCDFstatus = nf90_inq_varid( ncid, 'S_mean', varid)
+     NetCDFstatus = nf90_get_var( ncid, varid, S_mean )
      IF ( NetCDFstatus /= NF90_NOERR ) THEN
         CALL Fatal(Trim(SolverName), &
              'Unable to get netcdf variable S_mean')
      END IF
+     print *, S_mean(2)
+
+
+     !NetCDFstatus = nf90_inq_varid(ncid,'S_mean',varid)
+     !NetCDFstatus = nf90_get_var(ncid, varid,S_mean)
+     !IF ( NetCDFstatus /= NF90_NOERR ) THEN
+     !   CALL Fatal(Trim(SolverName), &
+     !        'Unable to get netcdf variable S_mean')
+     !END IF
 
      !NetCDFstatus = nf90_inq_varid(ncid,'max box',varid)
      !NetCDFstatus = nf90_get_var(ncid, varid,boxmax)

@@ -27,7 +27,7 @@ Constants
   Liquidus pressure coeff = Real $lambda3
   
   !Pico
-  Melt factor = Real $meltfac
+  Melt Factor = Real $meltfac
   Nb Boxes = Integer $Nbox_PICO
   Overturning Coefficient = Real $C_PICO
   Temperature Exchange Velocity = Real $gammaT_PICO
@@ -304,9 +304,9 @@ Solver 6
    Procedure = "boxmodel_solver" "boxmodel_solver"
 
    !# input file
-   data file = File "$data_dir$/$file_pico$"
-   !data file T = File "$data_dir$$file_T_pico$"
-   !data file S = File "$data_dir$$file_S_pico$"     
+   !data file = File "$data_dir$/$file_pico$"
+   data file T = File "$data_dir$$file_T_pico$"
+   data file S = File "$data_dir$$file_S_pico$"     
 
    !# output variables
    Exported Variable 1 = -dofs 1 -elem Melt
