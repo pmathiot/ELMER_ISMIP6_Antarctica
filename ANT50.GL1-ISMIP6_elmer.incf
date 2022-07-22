@@ -7,7 +7,7 @@ $name="ANT50.GL1-ISMIP6"
 $data_dir = "/ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT/"
 !
 ! define output_dir
-$out_dir = "/ccc/scratch/cont003/gen6035/mathiotp/ELMER/ANT50.GL1/ANT50.GL1-ISMIP6/ANT50.GL1-ISMIP6_S"
+$out_dir = "/ccc/scratch/cont003/gen6066/cailletj/ELMER/ANT50.GL1/ANT50.GL1-ISMIP6/ANT50.GL1-ISMIP6_S"
 !
 !-----------------------------------------------------------
 ! BMB files
@@ -22,8 +22,8 @@ $file_pico = "DATA_boxmodel.nc"
 ! SMB files
 !-----------------------------------------------------------
 ! define smb file
-$file_smb = "racmo_wessem_initmip8km_mean1995_2014_smbice.nc"
-$var_smb = "SMB"
+$file_smb = "FORCING/ATMOSPHERE/REFERENCE/racmo_wessem_ant50.gl1_mean1995_2014_smbice.nc"
+$var_smb = "smb"
 !
 ! define anomaly file
 ! TOADD once ready and file ready

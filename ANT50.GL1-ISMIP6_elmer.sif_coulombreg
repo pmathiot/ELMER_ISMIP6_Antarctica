@@ -53,7 +53,7 @@ Simulation
   Steady State Max Iterations = 4
   Steady State Min Iterations = 2
 
-  max output level = 4
+  max output level = 100
 End
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 Body 1
@@ -182,13 +182,13 @@ Solver 1
    Variable Name 10 = File "beta_cr"
 
    !# Elemental inputs
-   Variable Name 11 = File "smb"
-   Variable Name 12 = File "basins"
-   Variable Name 13 = File "true_cell_area"
+   !Variable Name 11 = File "smb"
+   Variable Name 11 = File "basins"
+   Variable Name 12 = File "true_cell_area"
 
 !# Time
-   Variable Name 14 = File "elmer_time"
-   Target Variable 14 = String "time"
+   Variable Name 13 = File "elmer_time"
+   Target Variable 13 = String "time"
 
 !# Export Constant inputs to feed next restart
    Exported Variable 1 = bedrock
@@ -216,16 +216,23 @@ End
 Solver 2
    Exec Solver = Before simulation
 
-   Equation = "ScatteredInter"
-   Variable = -nooutput "dumy"
+   !Equation = "ScatteredInter"
+   !Variable = -nooutput "dumy"
 
-   procedure = "Scattered2DDataInterpolator" "Scattered2DDataInterpolator"
-      Bounding Box dx = Real 200000.0
-   Variable 1 = File "$var_smb$"
-   Variable 1 data file = File "$data_dir$/$file_smb$"
-   Target Variable 1 = String "smb"
-   Variable 1 method = String "li"
-   Exported Variable 1 = smb
+   !procedure = "Scattered2DDataInterpolator" "Scattered2DDataInterpolator"
+   !   Bounding Box dx = Real 200000.0
+   !Variable 1 = File "$var_smb$"
+   !Variable 1 data file = File "$data_dir$/$file_smb$"
+   !Target Variable 1 = String "smb"
+   !Variable 1 method = String "li"
+   !Exported Variable 1 = smb
+
+   Equation = "SMBDataReader"
+   Procedure = "ElmerIceSolvers" "UGridDataReader"
+   
+   File Name = File "$data_dir$$file_smb$"
+   Variable Name 1 = File "smb"
+   Exported Variable 1 = -elem smb
 End
 
 !#-----------------------------------------------------------------------

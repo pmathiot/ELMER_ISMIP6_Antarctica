@@ -10,6 +10,10 @@ if [ -f zELMER_*ERROR* ]; then echo ' ERROR files still there. rm zERROR_*_* fil
 # source arch file
 . param_arch.bash
 
+if [ ! -d WELMER  ]; then mkdir -p  $WELMER   ; fi
+if [ ! -d RELMER  ]; then mkdir -p  $RELMER   ; fi
+if [ ! -d SELMER  ]; then mkdir -p  $SELMER   ; fi
+
 . run_param.bash
 
 # to fix issue for vtu group gidbit

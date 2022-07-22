@@ -16,7 +16,6 @@
                   <field field_ref="bedrock"        />
                   <field field_ref="groundedmask"   />
                   <field field_ref="beta_cr"        />
-                  <field field_ref="smb"            />
                   <field field_ref="mueta2"         />
 	          <field field_ref="ceff"           />
                   <field field_ref="basins"         />

@@ -1,11 +1,11 @@
 #!/bin/bash
 
 # group user 
-GROUPUSR=gen6035
+GROUPUSR=gen6066
 
 # define keywords
 ELMER_SCRATCHDIR=${CCCSCRATCHDIR}
-ELMER_WORKDIR=${GEN6035_ALL_CCCWORKDIR}
+ELMER_WORKDIR=${GEN6066_ALL_CCCWORKDIR}
 ELMER_HOMEDIR=${CCCHOME}
 
 # define workdir, restart dir, input dir and output dir
