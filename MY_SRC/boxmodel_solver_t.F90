@@ -15,74 +15,123 @@ SUBROUTINE boxmodel_solver( Model,Solver,dt,Transient )
   !------------------------------------------------------------------------------
   !    Local variables
   !------------------------------------------------------------------------------
+  CHARACTER(LEN=MAX_NAME_LEN) :: SolverName='MELT_MISMIP'
+
   TYPE(Mesh_t),POINTER :: Mesh
   TYPE(ValueList_t), POINTER :: Params
-  TYPE(Solver_t),POINTER :: PSolver
-  TYPE(Variable_t),POINTER :: MeltVar=>NULL(), GMVar=>NULL(), DepthVar=>NULL(), SVar=>NULL(), TVar=>NULL(), BoxVar=>NULL() 
-  TYPE(Variable_t),POINTER :: isfslopeVar=>NULL(), distGLVar=>NULL(), distIFVar=>NULL()
-  TYPE(Variable_t),POINTER :: TimeVar=>NULL()
-  TYPE(Nodes_t) :: ElementNodes
-  TYPE(GaussIntegrationPoints_t) :: IntegStuff
+
+  !! variables associated to elements and IPs
   TYPE(Element_t),POINTER ::  Element
-
-
-  REAL(kind=dp),ALLOCATABLE :: VisitedNode(:), db(:), Basis(:), dBasisdx(:,:), Depth(:)
+  TYPE(Nodes_t),SAVE :: ElementNodes
+  TYPE(GaussIntegrationPoints_t) :: IntegStuff
   REAL(kind=dp) :: u, v, w, SqrtElementMetric, s
+  REAL(kind=dp),ALLOCATABLE,SAVE :: Basis(:), dBasisdx(:,:)
+  INTEGER, POINTER :: NodeIndexes(:)
+  INTEGER :: Nmax
+  INTEGER :: n
 
-  INTEGER , POINTER :: MeltPerm(:), GMPerm(:), DepthPerm(:),NodeIndexes(:), SPerm(:), TPerm(:), BPerm(:), loc(:), isfslopePerm(:), distGLPerm(:), distIFPerm(:), Indexx
-  INTEGER , DIMENSION(:), ALLOCATABLE :: boxes(:)
-  REAL(KIND=dp) , POINTER :: Melt(:),GM(:),isfslope(:), Boxnumber(:), DATAPointer(:,:), distGL(:), distIF(:),DepthVal(:)
+  !! Mandatory variables and associated poiners
+  TYPE(Variable_t),POINTER :: BasinVar,BoxVar,MeltVar,GMVar,DepthVar,distGLVar,distIFVar
+  REAL(KIND=dp), POINTER ::  Basin(:),Boxnumber(:),Melt(:),GM(:),DepthVal(:),distGL(:),distIF(:)
+  INTEGER , POINTER :: BasinPerm(:),BPerm(:),MeltPerm(:),GMPerm(:),DepthPerm(:),distGLPerm(:),distIFPerm(:)
+  REAL(kind=dp),ALLOCATABLE :: Depth(:)
+
+  !! Variables related to nc
+  INTEGER :: NetcdfStatus,varid,ncid
+  CHARACTER(LEN=MAX_NAME_LEN) :: DataFT, DataFS
+  INTEGER :: tmeanid, nlen
+  INTEGER,SAVE :: nTime
+  INTEGER :: nTime2
+
+  INTEGER,SAVE :: VisitedTimes=0
+  INTEGER :: TimePoint
+  REAL(KIND=dp) :: Time
+
+  !! Physical Parameters
+  REAL(KIND=dp), SAVE :: sealevel, lbd1, lbd2, lbd3, meltfac, K, gT,  rhostar, CC,beta, alpha, mskcrit
+  INTEGER, SAVE :: boxmax,MaxBas
+  LOGICAL :: llGL
+
+  REAL(KIND=dp), DIMENSION(:,:), ALLOCATABLE, SAVE :: S_mean, T_mean
+  REAL(KIND=dp), DIMENSION(:,:), ALLOCATABLE,SAVE :: Zbox,Abox,Tbox,Sbox,Mbox
+  REAL(KIND=dp), DIMENSION(:), ALLOCATABLE,SAVE :: qqq,T0,S0,basin_Reduced,basinmax
+  INTEGER , DIMENSION(:), ALLOCATABLE,SAVE :: boxes
+  REAL(KIND=dp), DIMENSION(:), ALLOCATABLE,SAVE :: localunity,rr
+
+  REAL(KIND=dp) ::  Integ_Reduced, zzz, tmp1, xbox, Tstar,   &
+       &                 Area_Reduced, g1, g2, &
+       &                sn, max_Reduced, TT, SS, qqq_Reduced, totalmelt
+  REAL(KIND=dp) :: distmax,dmax
+
+  INTEGER ::  e, t,kk, b
+  INTEGER :: nD
+  INTEGER :: maxbastmp
+  INTEGER :: ierr
+  INTEGER ::  Indexx
 
   LOGICAL ::  stat, Found,UnFoundFatal=.TRUE.
+  LOGICAL, SAVE :: Firsttime=.TRUE.
+  LOGICAL, SAVE :: Parallel
 
-  CHARACTER(len=MAX_NAME_LEN) ::  variabletype, VariableName
   CHARACTER(len = 200) :: meltValue
-  CHARACTER(LEN=MAX_NAME_LEN) :: SolverName='MELT_MISMIP', FName, DataFT, DataFS
-  INTEGER :: node,  e, t, n, i, j,  knd, kk, ii,  b,  ierr,  NetcdfStatus,varid,ncid
-  INTEGER :: status(MPI_STATUS_SIZE)
-  INTEGER :: maxbastmp
-
-  REAL(KIND=dp) :: localInteg, Integ, Integ_Reduced, zzz, tmp1, xbox, Tstar,   &
-       &                 Area_Reduced, g1, g2,nn,nD,   &
-       &                sn, distmax, max_Reduced, TT, SS, qqq_Reduced, totalmelt
-  REAL(KIND=dp), DIMENSION(:), ALLOCATABLE :: basinmax,basin_Reduced , S0, T0,qqq, localunity,rr
-  REAL(KIND=dp), DIMENSION(:,:), ALLOCATABLE ::  Mbox, Tbox, Sbox, Zbox, Abox
-
-!!!! SAVE
-  TYPE(Variable_t),POINTER, SAVE :: BasinVar=>NULL()
-  LOGICAL,SAVE :: Initialized = .FALSE.,  ExtrudedMesh=.False.
-  LOGICAL, SAVE :: Firsttime=.TRUE.,llGL, Parallel 
-  INTEGER, SAVE :: boxmax, Nmax, MaxBas
-  INTEGER :: tmeanid, nlen
-  INTEGER, POINTER, SAVE :: BasinPerm(:)
-  REAL(KIND=dp), POINTER, SAVE :: Basin(:)
-  REAL(KIND=dp), DIMENSION(:), ALLOCATABLE, SAVE :: S_mean, T_mean
-  REAL(KIND=dp), SAVE :: sealevel, lbd1, lbd2, lbd3, meltfac, K, gT,  rhostar, CC,beta, alpha, mskcrit
-
 
   !------------------------------------------------------------------------------
-  ! 1- Read constants and parameters of the simulation :
+  ! 
   !------------------------------------------------------------------------------
-
-  !- Simulation parameters (idealized ocean forcing) :
-
   Params => GetSolverParams()
 
   Mesh => Model % Mesh
 
   Nmax = Solver % Mesh % NumberOfNodes
-  BasinVar => VariableGet( Model % Mesh % Variables, 'basins')
-  IF (.NOT.ASSOCIATED(BasinVar)) &
-       &    CALL FATAL(SolverName,'basins not found')
 
-  !IF ( BasinVar % TYPE .NE. Variable_on_element) &
-  !     &   CALL FATAL(SolverName,'basins not a vairable on element')
-
+  
+  !------------------------------------------------------------------------------
+  ! Get mandatory variables
+  !------------------------------------------------------------------------------
+  BasinVar => VariableGet( Model % Mesh % Variables, 'basins',UnFoundFatal=.TRUE.)
+  IF ( BasinVar % TYPE .NE. Variable_on_elements) &
+       &   CALL FATAL(SolverName,'basins is not a variable on elements')
   BasinPerm => BasinVar % Perm
   Basin => BasinVar % Values
 
+  BoxVar => VariableGet( Model % Mesh % Variables, 'Boxes',UnFoundFatal=.TRUE.)
+  IF ( BoxVar % TYPE .NE. Variable_on_elements) &
+       &   CALL FATAL(SolverName,'Boxes is not a variable on elements')
+  BPerm => BoxVar % Perm
+  Boxnumber  => BoxVar % Values
+
+  MeltVar => VariableGet( Model % Mesh % Variables, 'Melt',UnFoundFatal=.TRUE.)
+  IF (MeltVar % TYPE .NE. Variable_on_elements) &
+       &   CALL FATAL(SolverName,'Melt is not a variable on elements') 
+  MeltPerm => MeltVar % Perm
+  Melt => MeltVar % Values
+
+  GMVar => VariableGet( Model % Mesh % Variables, 'GroundedMask',UnFoundFatal=.TRUE.)
+  GMPerm => GMVar % Perm
+  GM => GMVar % Values
+
+  DepthVar => VariableGet( Model % Mesh % Variables, 'Zb', UnFoundFatal=.TRUE.)
+  DepthPerm => DepthVar % Perm
+  DepthVal => DepthVar % Values
+
+  distGLVar => VariableGet( Model % Mesh % Variables, 'distGL',UnFoundFatal=.TRUE.)
+  distGLPerm => distGLVar % Perm
+  distGL => distGLVar % Values
+
+  distIFVar => VariableGet( Model % Mesh % Variables, 'distIF',UnFoundFatal=.TRUE.)
+  distIFPerm => distIFVar % Perm
+  distIF => distIFVar % Values
+
+  ! Sanity check
+  IF (Solver % MeshChanged) &
+     CALL FATAL(SolverName,'Mesh has changed not supported ...')
+
+  !------------------------------------------------------------------------------
+  ! 1- Initialisation, Read constants and parameters of the simulation :
+  !------------------------------------------------------------------------------
   IF (Firsttime) THEN
      Firsttime=.False.
+
      ! - Grounding line :
      llGL=ListGetLogical( Model % Simulation, 'Grounding Line Melt', UnFoundFatal=UnFoundFatal )
 
@@ -104,95 +153,85 @@ SUBROUTINE boxmodel_solver( Model,Solver,dt,Transient )
      Parallel = (ParEnv %PEs > 1)
 
      maxbastmp=MAXVAL(NINT(Basin))
-
      IF (Parallel) THEN
         CALL MPI_ALLREDUCE(maxbastmp,MaxBas,1,MPI_INTEGER,MPI_MAX,ELMER_COMM_WORLD,ierr)
      ELSE
         MaxBas=maxbastmp
      END IF
 
+     !! Allocate arrays related to PICO
+     ALLOCATE( Zbox(boxmax,MaxBas), Abox(boxmax,MaxBas), Tbox(boxmax,MaxBas), Sbox(boxmax,MaxBas), Mbox(boxmax,MaxBas),qqq(MaxBas), T0(MaxBas), S0(MaxBas))
+     ALLOCATE(basin_Reduced(MaxBas),basinmax(MaxBas),boxes(MaxBas))
 
-     !ALLOCATE(S_mean(MaxBas), T_mean(MaxBas))
-     
+     !! ALLOCATE arrays with mesh dimensions
+     ALLOCATE(rr(Solver % NumberOfActiveElements),localunity(Solver % NumberOfActiveElements),Basis(Model % MaxElementNodes), dBasisdx(Model % MaxElementNodes,3))
+     Allocate (Depth(SIZE(DepthVal)))
+
+
+     !!------------------------------------------------------------------------------
+     ! Get forcings 
+     !!------------------------------------------------------------------------------     
      ! Temperature
      DataFT = ListGetString( Params, 'data file T', Found, UnFoundFatal )
-     NetCDFstatus = NF90_OPEN( DataFT, NF90_NOWRITE, ncid )
+     NetCDFstatus = NF90_OPEN( Trim(DataFT), NF90_NOWRITE, ncid )
      NetCDFstatus = nf90_inq_dimid( ncid, 'number_of_basins' , tmeanid)
+     IF (NetCDFstatus /= NF90_NOERR ) THEN
+        CALL Fatal(Trim(SolverName), &
+           "dim <number_of_basins> not found")
+     ENDIF
      NetCDFstatus = nf90_inquire_dimension( ncid, tmeanid , len = nlen )
-     ALLOCATE( T_mean(nlen) )
-     !ALLOCATE(S_mean(nlen), T_mean(nlen))
+     IF (nlen.NE.MaxBas) & 
+        CALL Fatal(Trim(SolverName),"number of basins do not agree")
+
+     !! check if we have a time dimension
+     NetCDFstatus = nf90_inq_dimid( ncid, 'time' , varid)
+     IF (NetCDFstatus.EQ.NF90_NOERR ) THEN
+        NetCDFstatus = nf90_inquire_dimension( ncid, varid , len = nTime )
+     ELSE
+        nTime = 1
+     ENDIF
+ 
+     ALLOCATE( T_mean(nlen,nTime) )
+
      NetCDFstatus = nf90_inq_varid( ncid, 'T_mean', varid)
      NetCDFstatus = nf90_get_var( ncid, varid, T_mean )
      IF ( NetCDFstatus /= NF90_NOERR ) THEN
         CALL Fatal(Trim(SolverName), &
              'Unable to get netcdf variable T_mean')
      END IF
-     !print *, T_mean(2)
-     ! Salinity
+      ! close file
+     NetCDFstatus=nf90_close(ncid)
+
      DataFS = ListGetString( Params, 'data file S', Found, UnFoundFatal )
-     NetCDFstatus = NF90_OPEN( DataFS, NF90_NOWRITE, ncid )
+     NetCDFstatus = NF90_OPEN( TRIM(DataFS), NF90_NOWRITE, ncid )
      NetCDFstatus = nf90_inq_dimid( ncid, 'number_of_basins' , tmeanid)
+     IF (NetCDFstatus /= NF90_NOERR ) THEN
+        CALL Fatal(Trim(SolverName), &
+           "dim <number_of_basins> not found")
+     ENDIF
      NetCDFstatus = nf90_inquire_dimension( ncid, tmeanid , len = nlen )
-     ALLOCATE( S_mean(nlen) )
-     !ALLOCATE(S_mean(nlen), T_mean(nlen))
+     IF (nlen.NE.MaxBas) & 
+        CALL Fatal(Trim(SolverName),"number of basins do not agree")
+
+     !! check if we have a time dimension
+     NetCDFstatus = nf90_inq_dimid( ncid, 'time' , varid)
+     IF (NetCDFstatus.EQ.NF90_NOERR ) THEN
+        NetCDFstatus = nf90_inquire_dimension( ncid, varid , len = nTime2 )
+     ELSE
+        nTime2 = 1
+     ENDIF
+     IF (nTime.NE.nTime2) &
+       CALL Fatal(Trim(SolverName),"Time dimension do not agree")
+
+     ALLOCATE( S_mean(nlen,nTime) )
      NetCDFstatus = nf90_inq_varid( ncid, 'S_mean', varid)
      NetCDFstatus = nf90_get_var( ncid, varid, S_mean )
      IF ( NetCDFstatus /= NF90_NOERR ) THEN
         CALL Fatal(Trim(SolverName), &
              'Unable to get netcdf variable S_mean')
      END IF
-     !print *, S_mean(2)
-
-
-     !NetCDFstatus = nf90_inq_varid(ncid,'S_mean',varid)
-     !NetCDFstatus = nf90_get_var(ncid, varid,S_mean)
-     !IF ( NetCDFstatus /= NF90_NOERR ) THEN
-     !   CALL Fatal(Trim(SolverName), &
-     !        'Unable to get netcdf variable S_mean')
-     !END IF
-
-     !NetCDFstatus = nf90_inq_varid(ncid,'max box',varid)
-     !NetCDFstatus = nf90_get_var(ncid, varid,boxmax)
-     !IF ( NetCDFstatus /= NF90_NOERR ) THEN
-     !   CALL Fatal(Trim(SolverName), &
-     !        'Unable to get netcdf max box')
-     !END IF
-
-     !NetCDFstatus = nf90_inq_varid(ncid,'Circulation_Parameter',varid)
-     !NetCDFstatus = nf90_get_var(ncid, varid,CC)
-     !IF ( NetCDFstatus /= NF90_NOERR ) THEN
-     !   CALL Fatal(Trim(SolverName), &
-     !        'Unable to get netcdf Circulation_Parameter')
-     !END IF
-
-     !NetCDFstatus = nf90_inq_varid(ncid,'Effective Exchange Velocity',varid)
-     !NetCDFstatus = nf90_get_var(ncid, varid,gT)
-     !IF ( NetCDFstatus /= NF90_NOERR ) THEN
-     !   CALL Fatal(Trim(SolverName), &
-     !        'Unable to get netcdf Effective Exchange Velocity')
-     !END IF
-
-     !NetCDFstatus = nf90_inq_varid(ncid,'Thermal Expansion coeff',varid)
-     !NetCDFstatus = nf90_get_var(ncid, varid,alpha)
-     !IF ( NetCDFstatus /= NF90_NOERR ) THEN
-     !   CALL Fatal(Trim(SolverName), &
-     !        'Unable to get netcdf Thermal Expansion coeff')
-     !END IF
-
-     !NetCDFstatus = nf90_inq_varid(ncid,'Salinity contraction coeff',varid)
-     !NetCDFstatus = nf90_get_var(ncid, varid,beta)
-     !IF ( NetCDFstatus /= NF90_NOERR ) THEN
-     !   CALL Fatal(Trim(SolverName), &
-     !        'Unable to get netcdf Salinity contraction coeff')
-     !END IF
-
-     !NetCDFstatus = nf90_inq_varid(ncid,'EOS ref Density',varid)
-     !NetCDFstatus = nf90_get_var(ncid, varid,rhostar)
-     !IF ( NetCDFstatus /= NF90_NOERR ) THEN
-     !   CALL Fatal(Trim(SolverName), &
-     !        'Unable to get netcdf EOS ref Density')
-     !END IF
-     !NetCDFstatus = nf90_close(ncid)
+      ! close file
+     NetCDFstatus=nf90_close(ncid)
 
      IF ( llGL ) THEN
         mskcrit =  0.5 ! Melt is at the Grounding Line and floating points
@@ -203,59 +242,30 @@ SUBROUTINE boxmodel_solver( Model,Solver,dt,Transient )
   END IF
   CALL INFO(Trim(SolverName),'START', Level =5)
 
-  BoxVar => VariableGet( Model % Mesh % Variables, 'Boxes')
-  IF (.NOT.ASSOCIATED(BoxVar)) &
-       &    CALL FATAL(SolverName,'boxes not found')
-
-  MeltVar => VariableGet( Model % Mesh % Variables, 'Melt')
-  IF (.NOT.ASSOCIATED(MeltVar)) &
-       &    CALL FATAL(SolverName,'Melt not found')
-
-  GMVar => VariableGet( Model % Mesh % Variables, 'GroundedMask')
-  IF (.NOT.ASSOCIATED(GMVar)) &
-       &    CALL FATAL(SolverName,'GroundedMask not found')
-
-  DepthVar => VariableGet( Model % Mesh % Variables, 'Zb')
-  IF (.NOT.ASSOCIATED(DepthVar)) &
-       &    CALL FATAL(SolverName,'Zb not found')
-
-  distGLVar => VariableGet( Model % Mesh % Variables, 'distGL')
-  IF (.NOT.ASSOCIATED(distGLVar)) &
-       &    CALL FATAL(SolverName,'distGL not found')
-
-  distIFVar => VariableGet( Model % Mesh % Variables, 'distIF')
-  IF (.NOT.ASSOCIATED(distIFVar)) &
-       &    CALL FATAL(SolverName,'distIF not found')
-
-  BPerm => BoxVar % Perm
-  Boxnumber  => BoxVar % Values
-
-  MeltPerm => MeltVar % Perm
-  Melt => MeltVar % Values
-
-  GMPerm => GMVar % Perm
-  GM => GMVar % Values
-
-  DepthPerm => DepthVar % Perm
-  DepthVal => DepthVar % Values
-  Allocate (Depth(SIZE(DepthVal)))
   Depth = sealevel - DepthVal     ! Depth < 0 under sea level
 
-  ALLOCATE( Zbox(boxmax,MaxBas), Abox(boxmax,MaxBas), Tbox(boxmax,MaxBas), Sbox(boxmax,MaxBas), Mbox(boxmax,MaxBas),qqq(MaxBas), T0(MaxBas), S0(MaxBas))
-  ALLOCATE(basin_Reduced(MaxBas),basinmax(MaxBas),boxes(MaxBas))
-  ALLOCATE(VisitedNode(Nmax),rr(Solver % NumberOfActiveElements),localunity(Solver % NumberOfActiveElements),Basis(Model % MaxElementNodes), dBasisdx(Model % MaxElementNodes,3))
+  IF (nTime.GT.1) THEN
+   ! get time index
+      VisitedTimes = VisitedTimes + 1
+      IF( ListGetLogical( Params, "Is Time Counter", Found ) ) THEN
+        TimePoint = VisitedTimes
+      ELSE
+        TimePoint = ListGetInteger( Params, "Time Index", Found )
+        IF (.NOT.Found) THEN
+          Time = ListGetCReal( Params, "Time Point", Found )
+          IF (.NOT.Found) Time=GetTime()
+          TimePoint = floor(time-dt/2) + 1
+        END IF
+      END IF
+      TimePoint = max(1,min(TimePoint,nTime))
+      CALL INFO(Trim(SolverName),"Use Time Index: "//I2S(TimePoint), Level=3)
+  ELSE
+    TimePoint=1
+  ENDIF
 
-  CALL INFO(Trim(SolverName),'LOAD Variables', Level =5)
+  T0(1:MaxBas) = T_mean(1:MaxBas,TimePoint) 
+  S0(1:MaxBas) = S_mean(1:MaxBas,TimePoint)
 
-  T0 = T_mean 
-  S0 = S_mean 
-  distGLPerm => distGLVar % Perm
-  distGL => distGLVar % Values
-
-  distIFPerm => distIFVar % Perm
-  distIF => distIFVar % Values
-
-  VisitedNode=0.0_dp
   Boxnumber(:)=0.0_dp
   totalmelt=0.0_dp
   Abox(:,:)=0.0_dp
@@ -272,30 +282,30 @@ SUBROUTINE boxmodel_solver( Model,Solver,dt,Transient )
   ! first loop on element to determine the number of boxes per basins
   DO e=1,Solver % NumberOfActiveElements
      Element => GetActiveElement(e)
-     CALL GetElementNodes( ElementNodes )
      n = GetElementNOFNodes()
      NodeIndexes => Element % NodeIndexes
-     Indexx => Element % ElementIndex
+     Indexx = Element % ElementIndex
      IF ( ANY( GM(GMPerm(NodeIndexes(:))) .GE. mskcrit ) ) CYCLE
      b = NINT(Basin(BasinPerm(Indexx)))
-     IF (basinmax(b) < MAXVAL(distGL(distGLPerm(NodeIndexes(1:n))))) THEN
-        basinmax(b)=MAXVAL(distGL(distGLPerm(NodeIndexes(1:n))))
+
+     dmax=MAXVAL(distGL(distGLPerm(NodeIndexes(1:n))))
+     IF (basinmax(b) < dmax ) THEN
+        basinmax(b)=dmax
      END IF
 
-     IF (distmax < MAXVAL(distGL(distGLPerm(NodeIndexes(1:n))))) THEN
-        distmax = MAXVAL(distGL(distGLPerm(NodeIndexes(1:n))))
+     dmax= MAXVAL(distGL(distGLPerm(NodeIndexes(1:n))))
+     IF (distmax < dmax) THEN
+        distmax = dmax
      END IF
   END DO
   IF (Parallel) THEN
      CALL MPI_ALLREDUCE(distmax,max_Reduced,1,MPI_DOUBLE_PRECISION,MPI_MAX,ELMER_COMM_WORLD,ierr)
      distmax= max_Reduced
   END IF
-  DO b=1,MaxBas
-     IF (Parallel) THEN
-        CALL MPI_ALLREDUCE(basinmax(b),basin_Reduced(b),1,MPI_DOUBLE_PRECISION,MPI_MAX,ELMER_COMM_WORLD,ierr)
-        basinmax(b) = basin_Reduced(b)
-     END IF
-  END DO
+  IF (Parallel) THEN
+   CALL MPI_ALLREDUCE(basinmax,basin_Reduced,MaxBas,MPI_DOUBLE_PRECISION,MPI_MAX,ELMER_COMM_WORLD,ierr)
+   basinmax(1:MaxBas) = basin_Reduced(1:MaxBas)
+  END IF
  
   boxes = 1+NINT(SQRT(basinmax/distmax)*(boxmax-1))
 
@@ -308,9 +318,8 @@ SUBROUTINE boxmodel_solver( Model,Solver,dt,Transient )
      CALL GetElementNodes( ElementNodes )
      n = GetElementNOFNodes()
      NodeIndexes => Element % NodeIndexes
-     Indexx => Element % ElementIndex
+     Indexx = Element % ElementIndex
 
-     VisitedNode(NodeIndexes(1:n))=VisitedNode(NodeIndexes(1:n))+1.0_dp
      IF ( ANY( GM(GMPerm(NodeIndexes(:))) .GE. mskcrit ) ) CYCLE      ! leave the loop if grounded point in the element
      b= NINT(Basin(BasinPerm(Indexx)))
      nD=boxes(b)
@@ -350,14 +359,13 @@ SUBROUTINE boxmodel_solver( Model,Solver,dt,Transient )
   Tbox(:,:)=0.d0 ; Sbox(:,:)=0.d0 ; qqq(:)=0.d0
   DO e=1,Solver % NumberOfActiveElements
      Element => GetActiveElement(e)
-     CALL GetElementNodes( ElementNodes )
      n = GetElementNOFNodes()
      NodeIndexes => Element % NodeIndexes
-     Indexx => Element % ElementIndex
+     Indexx = Element % ElementIndex
 
      IF (  Boxnumber(BPerm(Indexx))==1 ) THEN
         b= NINT(Basin(BasinPerm(Indexx)))
-        zzz=SUM(Depth(DepthPerm(NodeIndexes(:))))/SIZE(NodeIndexes(:)) !mean depth of an element
+        zzz=SUM(Depth(DepthPerm(NodeIndexes(1:n))))/n !mean depth of an element
         Tstar = lbd1*S0(b) + lbd2 + lbd3*zzz - T0(b)  !NB: Tstar should be < 0
         g1 = gT * Abox(1,b)
         tmp1 = g1 / (CC*rhostar*(beta*S0(b)*meltfac-alpha))
@@ -401,14 +409,13 @@ SUBROUTINE boxmodel_solver( Model,Solver,dt,Transient )
   DO kk=2,boxmax
      DO e=1,Solver % NumberOfActiveElements
         Element => GetActiveElement(e)
-        CALL GetElementNodes( ElementNodes )
         n = GetElementNOFNodes()
         NodeIndexes => Element % NodeIndexes
-             Indexx => Element % ElementIndex
+        Indexx = Element % ElementIndex
 
         IF (  Boxnumber(BPerm(Indexx))==kk ) THEN
            b= NINT(Basin(BasinPerm(Indexx)))
-           zzz = SUM(Depth(DepthPerm(NodeIndexes(:))))/SIZE(NodeIndexes(:)) !mean depth of an element
+           zzz = SUM(Depth(DepthPerm(NodeIndexes(1:n))))/n !mean depth of an element
            Tstar = lbd1*Sbox(kk-1,b) + lbd2 + lbd3*zzz - Tbox(kk-1,b)
            g1  = gT * Abox(kk,b)
            g2  = g1 * meltfac
@@ -436,24 +443,17 @@ SUBROUTINE boxmodel_solver( Model,Solver,dt,Transient )
 
   IF (Parallel) THEN
      CALL MPI_ALLREDUCE(TotalMelt,Integ_Reduced,1,MPI_DOUBLE_PRECISION,MPI_SUM,ELMER_COMM_WORLD,ierr)
-     IF (Solver % Matrix % ParMatrix % ParEnv % MyPE == 0) THEN
-        CALL INFO(SolverName,"----------------------------------------",Level=1)
-        WRITE(meltValue,'(F20.2)') Integ_Reduced*0.917/1.0e9
-        Message='PICO INTEGRATED BASAL MELT [Gt/a]: '//meltValue ! 0.917/1.0e6 to convert m3/a in Gt/a
-        CALL INFO(SolverName,Message,Level=1)
-        CALL INFO(SolverName,"----------------------------------------",Level=1)
-     END IF
   ELSE
-     Integ_Reduced = Integ
+     Integ_Reduced = TotalMelt
   ENDIF
+  CALL INFO(SolverName,"----------------------------------------",Level=1)
+  WRITE(meltValue,'(F20.2)') Integ_Reduced*0.917/1.0e9
+  Message='PICO INTEGRATED BASAL MELT [Gt/a]: '//meltValue ! 0.917/1.0e6 to convert m3/a in Gt/a
+  CALL INFO(SolverName,Message,Level=1)
+  CALL INFO(SolverName,"----------------------------------------",Level=1)
 
   ! reverse signe for Elmer (loss of mass (ie melt) is negative)
   Melt=-Melt
-
-  DEALLOCATE( Zbox, Abox, Tbox, Sbox, Mbox, T0, S0,rr,localunity)
-  DEALLOCATE(basin_Reduced,basinmax,boxes)
-  DEALLOCATE(VisitedNode, Basis, dBasisdx)
-
 
 END SUBROUTINE boxmodel_solver
 

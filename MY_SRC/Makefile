@@ -13,7 +13,7 @@ FFLAGS=-I$(XIOS_INC) -O2 -fpe0 -ftrapuv -g -traceback
 # -g -traceback -O0 -fpe0 -CB -ftrapuv -debug all -CA
 # -fpe0 -CB -ftrapuv -debug
 
-LIBS= USF_ExitCondition INITMIP_Scalar_OUTPUT boxmodel_solver FrontThickness_mask USF_CondFront USF_CondDistance SlipCoef SSASolver_bugfix
+LIBS= USF_ExitCondition INITMIP_Scalar_OUTPUT boxmodel_solver_t FrontThickness_mask USF_CondFront USF_CondDistance SlipCoef SSASolver_bugfix UGridDataReader_t
 #LIBS= USFs_Ronnie_inversion INITMIP_Scalar_OUTPUT Save_Netcdf Flotation3 Flotation2 boxmodel_solver nearestpoint FrontThickness_mask USF_CondFront USF_CondDistance USF_WaterPressure PDC_BASALMELT Elmer2NEMO_Interp NCFILE_BASALMELT TransientRestartInit USF_ExitCondition SlipCoef
 
 all: $(LIBS)
@@ -32,7 +32,7 @@ INITMIP_Scalar_OUTPUT:$(SRC)/INITMIP_Scalar_OUTPUT_modif.F90
 #---------------------------------------------------
 # BMB 
 # BMB: PICO
-boxmodel_solver:$(SRC)/boxmodel_solver.F90
+boxmodel_solver_t:$(SRC)/boxmodel_solver_t.F90
 	elmerf90 $(NCINC) $^ -o $(BLD)/$@ $(FFLAGS) $(NCLIB)
 
 FrontThickness_mask:$(SRC)/FrontThickness_mask.F90
@@ -44,6 +44,10 @@ USF_CondFront:$(SRC)/USF_CondFront.F90
 USF_CondDistance:$(SRC)/USF_CondDistance.F90
 	elmerf90 $^ -o $(BLD)/$@ $(FFLAGS)
 
+#---------------------------------------------------
+#SMB
+UGridDataReader_t:$(SRC)/UGridDataReader_t.F90
+	elmerf90 $(NCINC) $^ -o $(BLD)/$@ $(FFLAGS) $(NCLIB)
 #---------------------------------------------------
 # Slip Coeficient correction Coulomb
 SlipCoef:$(SRC)/SlipCoef.F90

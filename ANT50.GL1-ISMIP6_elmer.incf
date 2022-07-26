@@ -13,8 +13,6 @@ $out_dir = "/ccc/scratch/cont003/gen6066/cailletj/ELMER/ANT50.GL1/ANT50.GL1-ISMI
 ! BMB files
 !-----------------------------------------------------------
 ! define the PICO file
-!$file_pico = "DATA_boxmodel.nc"
-!
 !$file_T_pico = "FORCING/OCEAN/PICO/CESM2/CESM2-WACCM_SSP585_temperature_reference_PICO.nc"
 !$file_S_pico = "FORCING/OCEAN/PICO/CESM2/CESM2-WACCM_SSP585_salinity_reference_PICO.nc"
 !
@@ -27,12 +25,13 @@ $file_S_pico = "DATA_boxmodel.nc"
 !-----------------------------------------------------------
 ! SMB files
 !-----------------------------------------------------------
-! define smb file
+! define smb reference file
 $file_smb = "FORCING/ATMOSPHERE/REFERENCE/racmo_wessem_ant50.gl1_mean1995_2014_smbice.nc"
-$var_smb = "smb"
+!$var_smb = "smb"
 !
-! define anomaly file
-! TOADD once ready and file ready
+! define smb anomaly file
+$file_asmb = "FORCING/ATMOSPHERE/ANOMALY/CCSM4_ant50.gl1_anomaly_1995-2100.nc"
+!§var_asmb = "asmb"
 !
 !-----------------------------------------------------------
 ! PP files

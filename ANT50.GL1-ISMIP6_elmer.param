@@ -25,7 +25,7 @@ $cpw_SI    = 3974                             ! Specific heat capacity of sea wa
 $cpw       = cpw_SI * yearinsec^2             ! Specific heat capacity of sea water (m^2.yr^-2.°C^-1)
 
 $grav_SI   = 9.81                             ! Gravity (m.s^-2)
-$gravity   = -9.81 * yearinsec^2              ! Gravity (m.yr^-2) 
+$gravity   = -grav_SI * yearinsec^2              ! Gravity (m.yr^-2) 
 
 $lambda1   = -0.0575                          ! Liquidus slope  (°C.PSU^-1)
 $lambda2   = 0.0832                           ! Liquidus intercept  (°C)
@@ -59,6 +59,7 @@ $Hmin      = 1.0                              ! H limiter threshold (m)
 !---------------------------------------------------------------------
 
 $slope     = 2.9e-3                           ! Slope for the calculation of melt (mean_slope, semi-local, local...). In our case : Mean Antarctic slope sin(slope) = 2.9e-3 (Burgard et al. 2022)
+
 $K         = 11.8e-5                          ! Coefficient (tuned in Burgard et al. 2022 for quadratic local with Antarctic slope)
 
 !--------------------------------------------------------------------
@@ -66,12 +67,17 @@ $K         = 11.8e-5                          ! Coefficient (tuned in Burgard et
 !--------------------------------------------------------------------
 
 $Nbox_PICO       = 5                                               ! Nb of boxes in PICO
+
 $gammaT_PICO_SI  = 0.43e-5                                         ! Effective turbulent temperature exchange velocity (m.s^-1) - Reese et al. (2018)
 $gammaT_PICO     = gammaT_PICO_SI * yearinsec                      ! Effective turbulent temperature exchange velocity (m.yr^-1)
+
 $C_PICO_SI       = 12.9e6                                          ! Overturning coefficient (m^6.s^-1.kg^-1) - Reese et al. (2018)
 $C_PICO          = C_PICO_SI * (1.0e6 * yearinsec^3)               ! Overturning coefficient (m^5.yr^-3.MPa^-1)
+
 $alpha_PICO      = 7.5e-5                                          ! Thermal expansion coefficient for linear EOS (°C^-1)
 $beta_PICO       = 7.7e-4                                          ! Salinity contraction coefficient for linear EOS (PSU^-1)
+
 $rhostar_SI_PICO = 1033                                            ! In situ density for linear EOS (kg.m^-3)
 $rhostar_PICO    = rhostar_SI_PICO / (1.0e6 * yearinsec^2)         ! In situ density for linear EOS (MPa.m^-2.yr^2)
+
 $meltfac         = rhosw_SI * cpw_SI / ( rhoi_SI * Lf_SI )

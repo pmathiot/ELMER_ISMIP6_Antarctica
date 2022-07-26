@@ -76,19 +76,12 @@ Body Force 1
   Flow BodyForce 2 = Real 0.0
   Flow BodyForce 3 = Real $gravity
 
-  Top Surface Accumulation = Equals smb_tot
+  Top Surface Accumulation = Equals smb
 
   Bottom Surface Accumulation = Equals Melt
   
   ! H internal limiters (Thickness solver)
   H Lower Limit = Real $Hmin
- 
-
-  !---------------------------------------------
-  ! SMB body force
-  !---------------------------------------------
-  smb_tot = Variable smb, asmb
-    REAL LUA "tx[0] + tx[1]"
 
   !---------------------------------------------
   ! BMB body force PICO
@@ -241,6 +234,7 @@ Solver 2
 End   
 
 Solver 3
+   Exec Solver = Never
    Exec Interval =$ 365 / <STPINDAYS>
    !Exec Interval = 365
    Exec Solver = Before Timestep

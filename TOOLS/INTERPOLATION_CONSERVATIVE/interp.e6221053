@@ -1,0 +1,33 @@
+slurmstepd-irene4725: error: task[0] unable to set taskset '0x0'
++ SCRIPT_PID=99101
++ set +x
++ /bin/bash -x /tmp/jobstart.99047
++ unset _mlshdbg
++ '[' 1 = 1 ']'
++ case "$-" in
++ set +x
++ unset _mlshdbg
++ set -x
++ module load cdo
++ unset _mlshdbg
++ '[' 1 = 1 ']'
++ case "$-" in
++ set +x
+load module cdo/1.9.5 (CDO)
++ unset _mlshdbg
++ return 0
++ newgrp gen6066
++ cd /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT/SCRIPT/INTERPOLATION_CONSERVATIVE
++ export OMP_NUM_THREADS=32
++ OMP_NUM_THREADS=32
++ yearinsec=31536000.0
++ rhoi=917.0
++ cdo remap,ant50.gl1-ismip6_grid.nc,yCONweights_racmo_ant50.gl1.nc -selname,asmb -expr,smb=SMB /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT/FORCING/ATMOSPHERIC_FORCING/REFERENCE/racmo_wessem_initmip8km_mean1995_2014_smbice.nc racmo_wessem_ant50.gl1_mean1995_2014_smbice.nc
+cdo(2) selname: Process started
+cdo(3) expr: Process started
+cdo remap (Warning): HDF5 support not compiled in!
+cdo(2) selname (Warning): Variable name asmb not found!
+cdo(2) selname (Abort): No variables selected!
+terminate called without an active exception
+/tmp/jobstart.99047: line 29: 99138 Aborted                 (core dumped) cdo remap,ant50.gl1-ismip6_grid.nc,yCONweights_racmo_ant50.gl1.nc -selname,asmb -expr,"smb=SMB" /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT/FORCING/ATMOSPHERIC_FORCING/REFERENCE/racmo_wessem_initmip8km_mean1995_2014_smbice.nc racmo_wessem_ant50.gl1_mean1995_2014_smbice.nc
++ exit 0

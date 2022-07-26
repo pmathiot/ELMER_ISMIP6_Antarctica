@@ -95,6 +95,7 @@ do
         -e "s/<ID>/$(($i))/g"            \
         -e "s/<NSTEPS>/$NSTEP/g"         \
         -e "s/<STPINDAYS>/$TIME_STP/g"   \
+        -e "s/<OFFSET>/$OFFSET/g"        \
         -e "s/<RSTFILEnc>/$RSTFILEnc/g" ${NAME}_elmer.sif  > $WELMER/elmer_t$i.sif 
 
     # prepare run script

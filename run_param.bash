@@ -14,8 +14,13 @@ STARTITER=1
 ENDITER=1
 
 # define length of each segments
-NSTEP=2
+NSTEP=4
 TIME_STP=1 # in days
+
+# first year in forcing file / first year to read in the simulation 
+START_YEAR_FORCING=1995    
+START_YEAR_SIMU=2000
+OFFSET=$((START_YEAR_SIMU-START_YEAR_FORCING))
 
 calc() { awk "BEGIN{print $*}"; }
 TIME_RST=`calc $NSTEP*$TIME_STP` # in days

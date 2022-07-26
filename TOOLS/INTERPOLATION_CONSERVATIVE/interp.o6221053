@@ -1,0 +1,31 @@
+
+########## ########## ########## ########## ########## ########## ########## ##########
+Execution Sum Up
+########## ########## ########## ########## ########## ########## ########## ##########
+Jobid     : 6221053
+Jobname   : interp
+User      : cailletj
+Account   : gen6066@rome
+Limits    : time = 2:00 , memory/task = 1775 Mo
+Date      : submit = 19/07/2022 12:10:53 , start = 19/07/2022 12:11:13 , end = 19/07/2022 12:13:17
+Execution : partition = rome , QoS = normal , Comment = (null)
+Resources : ntasks = 128 , cpus/task = 1 , ncpus = 128 , nodes = 1
+   Nodes=irene4725 CPU_IDs=0-127 Mem=227200 GRES=
+ 
+Memory / step 
+--------------
+                          Resident Size (Mo)                     Virtual Size (Go)
+JobID            Max     (Node:Task)       AveTask    Max  (Node:Task)            AveTask
+-----------      ------------------------  -------    --------------------------  -------
+6221053.extern       0 (            :   0)       0      0.00 (            :   0)    0.00
+6221053.batch       18 (irene4725   :   0)      18      0.00 (irene4725   :   0)    0.00
+
+Accounting / step 
+------------------
+
+JobID           JobName                  Ntasks  Ncpus Nnodes  Layout       Elapsed               User         System     Eff  State
+------------    ------------             ------  ----- ------  -------      -------               -------      ------     ---  -----
+6221053         interp                        -    128      1        -     00:00:22   (100%)            -            -      -  -
+6221053.batch   batch                         1    128      1  Unknown     00:00:22   (100%)     00:00:00     00:00:00      0  RUNNING
+6221053.extern  extern                        1    128      1  Unknown     00:00:22 (100.0%)     00:00:00     00:00:00      0  RUNNING
+########## ########## ########## ########## ########## ########## ########## ##########
