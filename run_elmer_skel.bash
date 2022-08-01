@@ -1,16 +1,38 @@
 #!/bin/bash
 ulimit -s unlimited
 
+function mv_data_to_s() {
+   NCFILE=`echo "$1" | tr [:upper:] [:lower:]`
+   # check file is present
+   if [ ! -f $NCFILE ]; then 
+      echo "$NCFILE missing; E R R O R"; nerr=$((nerr+1))
+   else
+      # check file is a netcdf
+      cnc=$(ncdump -h $NCFILE 2> /dev/null | grep UNLIM )
+      if [[ $? != 0 ]] ; then
+        printf " E R R O R : %-50s is not a valid netcdf \n" $NCFILE
+        nerr=$((nerr+1))
+      else
+        # all seem good, we move the file
+        mv $NCFILE  $SELMER/.  || nerr=$((nerr+1))
+      fi
+   fi
+                        }
+
 HELMER=<HELMER>
 
 # INPUTS
 # segment number
 i=<ID>
 # restart name
-RSTFILEb=<RSTFILEb>
+RSTFILEnc=<RSTFILEnc>
 # conf case
 CONFIG=<ECONFIG>
 CASE=<ECASE>
+
+# LOG links
+ln -sf LOG/${CONFIG}-${CASE}_${i}.e$SLURM_JOBID elmer.err
+ln -sf LOG/${CONFIG}-${CASE}_${i}.o$SLURM_JOBID elmer.out
 
 # load arch parameter
 . ./param_arch.bash
@@ -33,9 +55,9 @@ if [ ! -f elmer_t${i}.sif ] ; then echo "E R R O R: sif file missing"; exit 42; 
 echo elmer_t${i}.sif > ELMERSOLVER_STARTINFO
 
 # manage restart
-if [[ $i -gt 1 ]] && [[ ! -f $WELMER/${RSTFILEb}.0 ]]; then
-   echo '$WELMER/${RSTFILEb}.0 is missing, we pick it up from $RELMER'
-   cp -f $RELMER/${RSTFILEb}.* $WELMER/MSH/. || nerr=$((nerr+1))
+if [[ $i -gt 1 ]] ; then
+   echo '$WELMER/${RSTFILEnc} is missing, we pick it up from $RELMER'
+   ln -sf $RELMER/${RSTFILEnc} $WELMER/MSH/restart_$((i-1)).nc || nerr=$((nerr+1))
 
    if [[ $nerr -ne 0 ]] ; then
    echo 'ERROR during copying restart file; please check'
@@ -52,24 +74,41 @@ if [[ $RUNSTATUS == 0 ]]; then
    
    # error count
    nerr=0
+   ls
+   # cp restart to RST dir
+   echo "cp restart to $RELMER"
+   RSTTIMEFILES=`echo "restart_time_$CONFIG-${CASE}_${i}.nc" | tr [:upper:] [:lower:]`
+   RSTFILES=`echo "restart_$CONFIG-${CASE}_${i}.nc" | tr [:upper:] [:lower:]`
+   ncks -A -v elmer_time $RSTTIMEFILES $RSTFILES             || nerr=$((nerr+1))
+   mv -f $RSTFILES $RELMER/$CONFIG-${CASE}_${i}.restart.nc   || nerr=$((nerr+1))
 
    # mv data to S dir
    echo ''
-   echo "mv vtu and dat to $SELMER"
-   mv MSH/$CONFIG-${CASE}_${i}_??np??_t????.vtu        $SELMER/. || nerr=$((nerr+1))
-   mv MSH/$CONFIG-${CASE}_${i}_t????.pvtu              $SELMER/. || nerr=$((nerr+1))
-   DATFILES=`echo "scalars_$CONFIG-${CASE}_${i}.nc" | tr [:upper:] [:lower:]`
-   mv scalars_$CONFIG-${CASE}_${i}.dat*                $SELMER/. || nerr=$((nerr+1))
-#   mv *INITMIP_Scalar_OUTPUT_$CONFIG-${CASE}_${i}.dat* $SELMER/. || nerr=$((nerr+1))
-   NCFILES=`echo "*_$CONFIG-${CASE}_${i}.nc" | tr [:upper:] [:lower:]`
-   mv $NCFILES                                         $SELMER/.   || nerr=$((nerr+1))
+   echo "mv ismip6 output to $SELMER"
+   # fluxes
+   NCFILES=`echo "ismip6_fluxes_$CONFIG-${CASE}_${i}.nc" | tr [:upper:] [:lower:]`
+   mv_data_to_s $NCFILES
 
-   # cp restart to RST dir
-   echo "cp result to $RELMER"
-   cp -f MSH/$CONFIG-${CASE}_${i}.result.* $RELMER/.   || nerr=$((nerr+1))
+   # states
+   NCFILES=`echo "ismip6_states_$CONFIG-${CASE}_${i}.nc" | tr [:upper:] [:lower:]`
+   mv_data_to_s $NCFILES
+
+   # scalar
+   NCFILES=`echo "ismip6_scalars_$CONFIG-${CASE}_${i}.nc" | tr [:upper:] [:lower:]`
+   mv_data_to_s $NCFILES
+   NCFILES=`echo "ismip6_scalars_true_cell_area_$CONFIG-${CASE}_${i}.nc" | tr [:upper:] [:lower:]`
+   mv_data_to_s $NCFILES
+
+   # elmer debug
+   NCFILES=`echo "elmer_debug_$CONFIG-${CASE}_${i}.nc" | tr [:upper:] [:lower:]`
+   mv_data_to_s $NCFILES
+
+   # elmer scalars
+   NCFILES=`echo "elmer_scalars_$CONFIG-${CASE}_${i}.nc" | tr [:upper:] [:lower:]`
+   mv_data_to_s $NCFILES
 
    if [[ $nerr -ne 0 ]] ; then
-      echo 'ERROR during copying output file/results; please check'
+      echo 'ERROR during copying output file/restarts; please check'
       mv ${HELMER}/zELMER_${i}_IN_PROGRESS ${HELMER}/zELMER_${i}_ERROR_pp
       exit 42
    fi

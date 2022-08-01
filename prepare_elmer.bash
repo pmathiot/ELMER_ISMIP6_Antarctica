@@ -45,9 +45,11 @@ echo
 \cp $CONFIG-${CASE}_elmer.param  $WELMER/elmer.param
 \cp $CONFIG-${CASE}_elmer.incf   $WELMER/elmer.incf
 \cp $CONFIG-${CASE}_elmer.lsol   $WELMER/elmer.lsol
-\cp $CONFIG-${CASE}_file_def.xml $WELMER/file_def_elmer.xml
 \cp iodef.xml                    $WELMER/.
 \cp context_elmer.xml            $WELMER/.
+
+# prepare file_def.xml
+sed -e "s/<TIME_RST>/$TIME_RST/g"   ${CONFIG}-${CASE}_file_def.xml > $WELMER/file_def_elmer.xml
 
 # link data
 # elmer point directly to the data dir => no need to do anything
@@ -62,6 +64,8 @@ echo '===================='
 for ((i=$STARTITER ; i<=$ENDITER ; i++))
 do
 
+    if [ -f zELMER_${i}_SUCCESSFUL ]; then echo "Run already successful. rm zELMER_${i}_SUCCESSFUL files if you want to overwrite this segment"; exit 42; fi
+
     # name
     NAME=$CONFIG-$CASE
 
@@ -70,24 +74,24 @@ do
     # except for the first one
     if [[ $((i-1)) -eq 0 ]]; then
       if [[ $RSTINITfile != NONE ]]; then
-         RSTFILEb=$RSTINITfile
-         ln -sf $RSTINITpath/${RSTINITfile}.* $WELMER/MSH/.
+         RSTFILEnc=$RSTINITfile
+         ln -sf $RSTINITpath/${RSTINITfile} $WELMER/MSH/restart_$((i-1)).nc
       fi
     else
-         RSTFILEb="${NAME}_$((i-1)).result"
+         RSTFILEnc="${NAME}_$((i-1)).restart.nc"
     fi   
-    RSTFILEa="${NAME}_${i}.result"
 
     echo ''
-    echo "start: ${NAME}_elmer_$i from $RSTFILEb"
+    echo "start: ${NAME}_elmer_$i from $RSTFILEnc"
     echo '======' 
     echo ''
 
     # prepare sif
-    sed -e "s/<ID-1>/$(($i-1))/g"     \
-        -e "s/<ID>/$(($i))/g"         \
-        -e "s/<RSTFILEb>/$RSTFILEb/g" \
-        -e "s/<RSTFILEa>/$RSTFILEa/g" ${NAME}_elmer.sif  > $WELMER/elmer_t$i.sif 
+    sed -e "s/<ID-1>/$(($i-1))/g"        \
+        -e "s/<ID>/$(($i))/g"            \
+        -e "s/<NSTEPS>/$NSTEP/g"         \
+        -e "s/<STPINDAYS>/$TIME_STP/g"   \
+        -e "s/<RSTFILEnc>/$RSTFILEnc/g" ${NAME}_elmer.sif  > $WELMER/elmer_t$i.sif 
 
     # prepare run script
     sed -e "s!<NAME>!${NAME}_$i!g"       \
@@ -95,7 +99,7 @@ do
         -e "s!<GROUPUSR>!${GROUPUSR}!g"  \
         -e "s!<NTASKS>!${NP}!g"        run_arch.slurm > run_elmer_${i}.slurm
 
-    sed -e "s!<RSTFILEb>!$RSTFILEb!g"    \
+    sed -e "s!<RSTFILEnc>!$RSTFILEnc!g"  \
         -e "s!<ECONFIG>!$CONFIG!g"       \
         -e "s!<ECASE>!$CASE!g"           \
         -e "s!<HELMER>!$HELMER!g"        \
