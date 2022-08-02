@@ -317,12 +317,12 @@ Solver 7
    Exec Solver = Before Timestep
    Equation = "box melt"
    Variable = -nooutput dummy
-   Procedure = "boxmodel_solver" "boxmodel_solver"
+   Procedure = "boxmodel_solver_t" "boxmodel_solver"
 
    !# input file
-   !data file = File "$data_dir$/$file_pico$"
-   data file T = File "$data_dir$$file_T_pico$"
-   data file S = File "$data_dir$$file_S_pico$"     
+   data file = File "$data_dir$/$file_pico$"
+   !data file T = File "$data_dir$$file_T_pico$"
+   !data file S = File "$data_dir$$file_S_pico$"     
 
    !# output variables
    Exported Variable 1 = -dofs 1 -elem Melt
@@ -347,7 +347,7 @@ End
 !#     - comments: * Friction law defined in material section
 !#-----------------------------------------------------------------------
 Solver 8
-  !Exec Solver = Never 
+  Exec Solver = Never 
   Equation = "SSA"
   Procedure = "SSASolver_bugfix" "SSABasalSolver_bugfix"
 
@@ -406,7 +406,7 @@ End
 !#                           * element averaged basal mass balance [XXX, >0 blabla] (elemental)
 !#-----------------------------------------------------------------------
 Solver 9 
-   !Exec Solver = Never
+   Exec Solver = Never
    Equation = "Thickness"
    Procedure = "ElmerIceSolvers" "ThicknessSolver"
 
@@ -475,7 +475,7 @@ End
 !#                           * floating fraction [] (elemental)
 !#-----------------------------------------------------------------------
 Solver 10
-   !Exec Solver = Never
+   Exec Solver = Never
    Equation = "Flotation"
    Procedure = "ElmerIceSolvers" "Flotation"
 
@@ -582,7 +582,7 @@ Solver 11
    Scalar Field 24 = String "basins"
    Scalar Field 25 = String "true_cell_area"
 
-   !Global Variables
+   ! Global Variables
    Global Variable 1 = String "time"
 
    Solver info level = integer 4
