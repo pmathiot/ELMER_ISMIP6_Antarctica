@@ -13,11 +13,7 @@ $out_dir = "/ccc/scratch/cont003/gen6066/cailletj/ELMER/ANT50.GL1/ANT50.GL1-ISMI
 ! BMB files
 !-----------------------------------------------------------
 ! define the PICO file
-!$file_T_pico = "FORCING/OCEAN/PICO/CESM2/CESM2-WACCM_SSP585_temperature_reference_PICO.nc"
-!$file_S_pico = "FORCING/OCEAN/PICO/CESM2/CESM2-WACCM_SSP585_salinity_reference_PICO.nc"
-!
-$file_T_pico = "DATA_boxmodel.nc"
-$file_S_pico = "DATA_boxmodel.nc"
+$file_pico = "FORCING/OCEAN/PICO/CESM2-WACCM_SSP585_years_PICO.nc"
 !
 ! define the quadratic local file
 ! TOADD once solver and file ready

@@ -18,7 +18,6 @@
                   <field field_ref="beta_cr"        />
                   <field field_ref="mueta2"         />
 	          <field field_ref="ceff"           />
-                  <field field_ref="basins"         />
               </field_group>
               <variable id="elmerversion" name="model_version" type="string"> elmer ice v9.0</variable>
       </file>
@@ -55,6 +54,9 @@
 	      <field name="vmax"      field_ref="vnorm" operation="maximum" />
               <field name="vmean"     field_ref="vnorm" operation="average" />
               <field name="vnorm"     field_ref="vnorm" />
+              <field name="smb"       field_ref="smb" />
+              <field name="asmb"      field_ref="asmb" />
+              <field name="melt"      field_ref="melt" />
       </file>
 
       </file_group>

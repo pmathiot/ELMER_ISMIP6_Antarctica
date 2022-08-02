@@ -146,6 +146,7 @@
                        <field id="node_y" name="y" standard_name="projection_y_coordinate" unit="m" grid_ref="GridNodes" />
                        <field id="cell_area" name="cell_area" unit="m2" grid_ref="GridCells" />
                        <field id="true_cell_area" name="true_cell_area" unit="m2" grid_ref="GridCells" />
+                       <field id="basins" standard_name="ice_catchments_basins_mask" unit="1" grid_ref="GridCells" />
               </field_group>
 
               <field_group id="elmer_global" grid_ref="ScalarGrid_sum">

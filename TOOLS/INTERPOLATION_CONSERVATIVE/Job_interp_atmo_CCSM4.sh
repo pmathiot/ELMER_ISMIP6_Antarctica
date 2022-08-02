@@ -29,8 +29,8 @@ rhoi=917.0
 ## data
 grid_Elmer_file="NC/ant50.gl1-ismip6_grid.nc" 
 weights_file="NC/yCONweights_4km_ant50.gl1.nc"
-initial_SMB_file="/ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT/FORCING/ATMOSPHERE/ANOMALY/CESM2/CESM2-WACCM_4km_anomaly_ssp585_1995-2299.nc"
-final_SMB_file="/ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT/FORCING/ATMOSPHERE/ANOMALY/CESM2/CESM2-WACCM_ant50.gl1_anomaly_ssp585_1995-2299.nc"
+initial_SMB_file="/ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT/FORCING/ATMOSPHERE/ANOMALY/CCSM4/CCSM4_4km_anomaly_1995-2300.nc"
+final_SMB_file="/ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT/FORCING/ATMOSPHERE/ANOMALY/CCSM4/CCSM4_ant50.gl1_anomaly_1995-2300.nc"
 #smb = "smb_anomaly"
 
 cdo remap,$grid_Elmer_file,$weights_file -selname,asmb -expr,"asmb=smb_anomaly*$yearinsec/$rhoi" $initial_SMB_file  $final_SMB_file
