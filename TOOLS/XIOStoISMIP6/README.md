@@ -1,23 +1,21 @@
-A2.1 File name convention
+### TO DO ###
 
-File name convention for 2D fields and scalar variables:
+initial grid have to be in GRID_XIOS directory with this foramt: <INPUT_GRID_NAME>_grid.nc
+target grid have to be in GRID_ISMIP6 directory with this format: <OUTPUT_GRID_NAME>_grid.nc
+Use link to spare space in your home if needed
 
-<variable>_<IS>_<GROUP>_<MODEL>_<EXP>.nc
+Usage:
+./process_XIOS_output.bash ant50.gl1-ismip6 ISMIP6_AIS_4000m ISMIP6
+ant50.gl1-ismip6 = <INPUT_GRID_NAME>
+ISMIP6_AIS_4000m = <OUTPUT_GRID_NAME>
+ISMIP6 = Experience name
 
-File name convention for readme file:
+Input data have to be in DATA_XIOS/<EXP_NAME>/ with this name format: ismip6_<STREAM>_ant50.gl1-<EXP_NAME in lower case>_???.nc
 
-README_<IS>_<GROUP>_<MODEL>.doc
+<STREAM> = states or fluxes
 
-where
+Require nco, cdo
 
-<variable> = variable name (e.g. lithk)
+Working on TGCC. Please adapte *.sh to match your computer
 
-<IS> = ice sheet (AIS or GIS)
-
-<GROUP> = group acronym (all upper case or numbers, no special characters)
-
-<MODEL> = model acronym (all upper case or numbers, no special characters)
-
-<EXP> = experiment name (from the experiment list, e.g. AE01)
-
-
+To generate the target grid, use build_grid_ISMIP6.ipynb (default is 4km resolution)
