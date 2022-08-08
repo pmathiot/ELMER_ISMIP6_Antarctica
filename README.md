@@ -16,12 +16,12 @@ Repository to work on the Elmer/Ice IGE contribution to ISMIP6.
     - [ ] ... to be completed
 - [ ] Benoit's grid (first)
     - [ ] grid with ice tongue and instruction to do it in README or elsewhere
-    - [ ] tools and instruction to convert restart from 1 grid to another that also manage change in partition numbers
+    - [X] tools and instruction to convert restart from 1 grid to another that also manage change in partition numbers
     - [ ] grid refined over all the run history and instruction to do it in README or elsewhere
 - [ ] Initial condition compatible with Benoit's grid (first)
     - [ ] Initial condition compatible with grid with no ice tongue
     - [ ] Initial condition compatible with grid refined
-    - [ ] Build netcdf restart => this will make obsolete the two previous points.
+    - [X] Build netcdf restart => this will make obsolete the two previous points.
 - [ ] Clean directory for only the production file
 
 ### SIF
@@ -70,9 +70,9 @@ Repository to work on the Elmer/Ice IGE contribution to ISMIP6.
 - [ ]
 
 ### Post Processing
-- [ ] review the ISMIP6 XIOS context file
-- [ ] review the ISMIP6 XIOS output file
-- [ ] build the pp script to convert XIOS output to ISMIP6 output
+- [X] review the ISMIP6 XIOS context file
+- [X] review the ISMIP6 XIOS output file
+- [X] build the pp script to convert XIOS output to ISMIP6 output
 - [ ] review the ISMIP6 output
 - [ ] process all the output
 
