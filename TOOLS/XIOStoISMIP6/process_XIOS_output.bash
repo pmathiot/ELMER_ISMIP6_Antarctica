@@ -47,8 +47,15 @@ fi
 cd TMPDIR
 echo ""
 echo "Compute weights for remapping from ${GRIDIN} to ${GRIDOUT}"
-WEIGHTS=ycon_weights_${GRIDIN}_to_${GRIDOUT}.nc
-cdo genycon,$GRIDOUTfile $GRIDINfile $WEIGHTS || exit 42
+echo '    destarea normalization weights'
+export CDO_REMAP_NORM='destarea'
+WEIGHTS_destarea=ycon_weights_${GRIDIN}_to_${GRIDOUT}_destarea.nc
+cdo genycon,$GRIDOUTfile $GRIDINfile $WEIGHTS_destarea || exit 42
+
+echo '    fracarea normalization weights'
+export CDO_REMAP_NORM='fracarea'
+WEIGHTS_fracarea=ycon_weights_${GRIDIN}_to_${GRIDOUT}_destarea.nc
+cdo genycon,$GRIDOUTfile $GRIDINfile $WEIGHTS_fracarea || exit 42
 
 if [[ $nerr != 0 ]]; then
    echo 'E R R O R during weight computation stage; exit 42'
@@ -68,6 +75,7 @@ for EXP in $EXPLST; do
    echo ""
    echo "Convert XIOS output in $EXP to ISMIP6 compliant output ..."
 
+   if [ ! -d LOG_$EXP ]; then mkdir LOG_$EXP; fi
    # work file by file : 
       # concatanate all the files for scalar, fluxes and states
       nerr=0
@@ -87,11 +95,11 @@ for EXP in $EXPLST; do
 
    # run conservative interpolation variable by variable
    FILE=ismip6_states_ant50.gl1-${cexp}.nc
-   for VAR in lithk orog base topg xvelmean yvelmean strbasemag sftgif sftgrf sftflf; do
+   for VAR in lithk orog base topg xvelmean yvelmean strbasemag ; do
       echo ""
       echo "Interpolate $VAR ..."
       echo ""
-      time ./compute_interpolation.bash $VAR $FILE $GRIDINfile $GRIDOUTfile $WEIGHTS ${ISNAME} ${EXP} > log_${VAR}_${ISNAME}_${EXP} || nerr=$((nerr+1)) &
+      time ./compute_interpolation.bash $VAR $FILE $GRIDINfile $GRIDOUTfile $WEIGHTS_fracarea ${ISNAME} ${EXP} > LOG_$EXP/log_${VAR}_${ISNAME}_${EXP} || nerr=$((nerr+1)) &
    done
 
    wait
@@ -106,7 +114,16 @@ for EXP in $EXPLST; do
       echo ""
       echo "Interpolate $VAR ..."
       echo ""
-      time ./compute_interpolation.bash $VAR $FILE $GRIDINfile $GRIDOUTfile $WEIGHTS ${ISNAME} ${EXP} > log_${VAR}_${EXP} || nerr=$((nerr+1)) &
+      time ./compute_interpolation.bash $VAR $FILE $GRIDINfile $GRIDOUTfile $WEIGHTS_fracarea ${ISNAME} ${EXP} > LOG_$EXP/log_${VAR}_${EXP} || nerr=$((nerr+1)) &
+   done
+
+   # ice fraction need to be normalized with destarea to represent the effective ice fraction in the output grid (ie to take into accound different coastline in src and targ grid)
+   for VAR in sftgif sftgrf sftflf ; do
+      echo ""
+      echo "Interpolate $VAR ..."
+      echo ""
+      time ./compute_interpolation.bash $VAR $FILE $GRIDINfile $GRIDOUTfile $WEIGHTS_destarea ${ISNAME} ${EXP} > LOG_$EXP/log_${VAR}_${EXP} || nerr=$((nerr+1)) &
+
    done
 
    wait
@@ -121,3 +138,17 @@ for EXP in $EXPLST; do
    echo "   $EXP DONE"
    echo ""
 done
+
+
+#ENVIRONMENT
+#    CDO_REMAP_NORM
+#        This variable is used to choose the normalization of the conservative interpolation. 
+#        By default CDO_REMAP_NORM is set to 'fracarea'. 'fracarea' uses the sum of the
+#        non-masked source cell intersected areas to normalize each target cell field value.
+#        This results in a reasonable flux value but the flux is not locally conserved.
+#        The option 'destarea' uses the total target cell area to normalize each target cell
+#        field value. Local flux conservation is ensured, but unreasonable flux values may result.
+#    REMAP_AREA_MIN
+#        This variable is used to set the minimum destination area fraction. The default
+#        of this variable is 0.0.
+
