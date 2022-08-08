@@ -11,7 +11,7 @@
 #MSUB -A gen6035                  # Project ID
 
 # input management
-if [[ $# != 6 ]]; then echo "Usage ./compute_interpolation.bash [input variable name] [input file name] [src grid file name] [target grid file name] [weights file name] [output file name]; exit 42"; exit 42; fi
+if [[ $# != 7 ]]; then echo "Usage ./compute_interpolation.bash [input variable name] [input file name] [src grid file name] [target grid file name] [weights file name] [ice sheet name (AIS/GIS)] [Experience name (hist, ...)] ]; exit 42"; exit 42; fi
 
 nerr=0
 
@@ -20,7 +20,10 @@ FILEIN=$2
 GRIDIN=$3
 GRIDOUT=$4
 WEIGHTS=$5
-FILEOUT=$6
+ISNAME=$6
+EXP=$7
+
+FILEOUT=${VAR}_${ISNAME}_IGE_ElmerIce_${EXP}.nc
 
 time_axis=time_centered
 
@@ -67,15 +70,32 @@ echo "   REMAPING DONE!!"
 
 # fix att, name ...
 ncrename -d nv4,nv -d $time_axis,time -v $time_axis,time $TMPf1 || exit 42
-ncks -A -v mapping $GRIDOUT $TMPf1 || exit 42
+ncks -A -v mapping $GRIDOUT $TMPf1                  || exit 42
 ncatted -a 'grid_mapping',$VAR,c,c,'mapping' $TMPf1 || exit 42
 ncatted -a 'mesh',$VAR,d,,                   $TMPf1 || exit 42
 ncatted -a 'location',$VAR,d,,               $TMPf1 || exit 42
 
 TMPf2=tmpout_${VAR}_spval.nc
-cdo setmissval,-1e20 $TMPf1 $TMPf2
+cdo setmissval,-1e20 $TMPf1 $TMPf2                 || exit 42
 ncatted -a 'missing_value',$VAR,d,,         $TMPf2 || exit 42
 ncks -O --dfl_lvl 1 --cnk_dmn x,200 --cnk_dmn y,200 --cnk_dmn time,1 $TMPf2 DATA_ISMIP6/$FILEOUT || exit 42
+
+ncatted -a uuid,global,d,, DATA_ISMIP6/$FILEOUT 
+ncatted -a timeStamp,global,d,, DATA_ISMIP6/$FILEOUT 
+ncatted -a Conventions,global,d,, DATA_ISMIP6/$FILEOUT 
+ncatted -a title,global,d,, DATA_ISMIP6/$FILEOUT
+ncatted -a description,global,d,, DATA_ISMIP6/$FILEOUT
+ncatted -a name,global,d,, DATA_ISMIP6/$FILEOUT
+
+ncatted -a title,global,a,c,"ISMIP6 simulation (extention to 2300): variable $VAR for experiment $EXP" DATA_ISMIP6/$FILEOUT
+ncatted -a url,global,a,c,"https://www.climate-cryosphere.org/wiki/index.php?title=ISMIP6-Projections-Antarctica" DATA_ISMIP6/$FILEOUT 
+ncatted -a experiment,global,a,c,'hist' DATA_ISMIP6/$FILEOUT 
+ncatted -a institution,global,a,c,"Institut des Géosciences de l'Environnement, CNRS, Grenoble, France" DATA_ISMIP6/$FILEOUT 
+ncatted -a contacts,global,a,c,"J. Caillet, P. Mathiot and F. Gillet Chollet" DATA_ISMIP6/$FILEOUT 
+ncatted -a reference,global,a,c,"Nowicki, S., Goelzer, H., Seroussi, H., Payne, A. J., Lipscomb, W. H., Abe-Ouchi, A., Agosta, C., Alexander, P., Asay-Davis, X. S., Barthel, A., Bracegirdle, T. J., Cullather, R., Felikson, D., Fettweis, X., Gregory, J. M., Hattermann, T., Jourdain, N. C., Kuipers Munneke, P., Larour, E., Little, C. M., Morlighem, M., Nias, I., Shepherd, A., Simon, E., Slater, D., Smith, R. S., Straneo, F., Trusel, L. D., van den Broeke, M. R., and van de Wal, R.: Experimental protocol for sea level projections from ISMIP6 stand-alone ice sheet models, The Cryosphere, 14, 2331–2368, https://doi.org/10.5194/tc-14-2331-2020, 2020." DATA_ISMIP6/$FILEOUT 
+
+ncatted -a history_of_appended_files,global,d,, DATA_ISMIP6/$FILEOUT
+ncatted -h -a history,global,d,, DATA_ISMIP6/$FILEOUT 
 
 rm -f tmp_${VAR}.nc tmpout_${VAR}.nc tmpout_${VAR}_spval.nc
 

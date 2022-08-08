@@ -1,10 +1,11 @@
 #!/bin/bash
 
-if [[ $# == 0 ]]; then echo "Usage process_XIOS_output [GRID IN (ant50.gl1-ismip6)] [GRID OUT ()] [EXP]"; exit 42; fi
+if [[ $# != 4 ]]; then echo "Usage process_XIOS_output [GRID IN (ant50.gl1-ismip6)] [GRID OUT ()] [AIS or GIS] [EXP]"; exit 42; fi
 
-EXPLST=${@:3}
+EXPLST=${@:4}
 GRIDIN=$1
 GRIDOUT=$2
+ISNAME=$3
 
 GRIDINfile=${GRIDIN}_grid.nc
 GRIDOUTfile=${GRIDOUT}_grid.nc
@@ -90,7 +91,7 @@ for EXP in $EXPLST; do
       echo ""
       echo "Interpolate $VAR ..."
       echo ""
-      time ./compute_interpolation.bash $VAR $FILE $GRIDINfile $GRIDOUTfile $WEIGHTS ${VAR}_IGE_ElmerIce_${EXP}.nc > log_${VAR}_${EXP} || nerr=$((nerr+1)) &
+      time ./compute_interpolation.bash $VAR $FILE $GRIDINfile $GRIDOUTfile $WEIGHTS ${ISNAME} ${EXP} > log_${VAR}_${ISNAME}_${EXP} || nerr=$((nerr+1)) &
    done
 
    wait
@@ -105,7 +106,7 @@ for EXP in $EXPLST; do
       echo ""
       echo "Interpolate $VAR ..."
       echo ""
-      time ./compute_interpolation.bash $VAR $FILE $GRIDINfile $GRIDOUTfile $WEIGHTS ${VAR}_IGE_ElmerIce_${EXP}.nc > log_${VAR}_${EXP} || nerr=$((nerr+1)) &
+      time ./compute_interpolation.bash $VAR $FILE $GRIDINfile $GRIDOUTfile $WEIGHTS ${ISNAME} ${EXP} > log_${VAR}_${EXP} || nerr=$((nerr+1)) &
    done
 
    wait
