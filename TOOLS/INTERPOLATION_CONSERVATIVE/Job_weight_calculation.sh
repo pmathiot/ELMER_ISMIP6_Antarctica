@@ -22,4 +22,4 @@ cd ${BRIDGE_MSUB_PWD}
 export OMP_NUM_THREADS=32
 
 ## conservative weights from ISM_ANT_4km to elmer ant50.gl1 grid
-cdo genycon,ant50.gl1-ismip6_grid.nc racmo_wessem_initmip8km_mean1995_2014_smbice.nc yCONweights_racmo_ant50.gl1.nc
+cdo genycon,/ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT/GRID/ant50.gl1-ismip6_grid.nc /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT/FORCING/ATMOSPHERE/REFERENCE/Atmospheric_MAR_forcing_reference.nc yCONweights_MAR_ant50.gl1.nc

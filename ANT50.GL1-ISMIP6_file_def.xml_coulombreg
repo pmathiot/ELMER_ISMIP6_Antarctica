@@ -55,7 +55,6 @@
               <field name="vmean"     field_ref="vnorm" operation="average" />
               <field name="vnorm"     field_ref="vnorm" />
               <field name="smb"       field_ref="smb" />
-              <field name="asmb"      field_ref="asmb" />
               <field name="melt"      field_ref="melt" />
       </file>
 

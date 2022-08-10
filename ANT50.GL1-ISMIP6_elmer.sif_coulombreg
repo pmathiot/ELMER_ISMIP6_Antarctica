@@ -78,16 +78,16 @@ Body Force 1
 
   ! definition of the SMB (with or without anomaly)
   ! with anomaly
-  Top Surface Accumulation = Equals smb_tot
-  
-  !---------------------------------------------
-  ! SMB body force
-  !---------------------------------------------
-  smb_tot = Variable smb, asmb
-    REAL LUA "tx[0] + tx[1]"
+!  Top Surface Accumulation = Equals smb_tot
+!  
+!  !---------------------------------------------
+!  ! SMB body force
+!  !---------------------------------------------
+!  smb_tot = Variable smb, asmb
+!    REAL LUA "tx[0] + tx[1]"
   
   ! without anomaly
-!  Top Surface Accumulation = Equals smb
+  Top Surface Accumulation = Equals smb
   
 
   Bottom Surface Accumulation = Equals Melt
@@ -203,7 +203,6 @@ Solver 1
    Variable Name 10 = File "beta_cr"
 
    !# Elemental inputs
-   !Variable Name 11 = File "smb"
    Variable Name 11 = File "basins"
    Variable Name 12 = File "true_cell_area"
 
@@ -248,9 +247,9 @@ End
 Solver 3
    Exec Interval =$ 365 / <STPINDAYS>
    ! SMB with anomaly
-   Exec Solver = Before Timestep
+!   Exec Solver = Before Timestep
    ! SMB without anomaly
-!   Exec Solver = Never
+   Exec Solver = Never
    Equation = "SMBDataReader"
    Procedure = "UGridDataReader_t" "UGridDataReader"
    
@@ -327,8 +326,6 @@ Solver 7
 
    !# input file
    data file = File "$data_dir$/$file_pico$"
-   !data file T = File "$data_dir$$file_T_pico$"
-   !data file S = File "$data_dir$$file_S_pico$"     
 
    !# output variables
    Exported Variable 1 = -dofs 1 -elem Melt
@@ -353,7 +350,7 @@ End
 !#     - comments: * Friction law defined in material section
 !#-----------------------------------------------------------------------
 Solver 8
-  Exec Solver = Never 
+
   Equation = "SSA"
   Procedure = "SSASolver_bugfix" "SSABasalSolver_bugfix"
 
@@ -411,8 +408,8 @@ End
 !#                           * element averaged surface mass balance [XXX, >0 blabla](elemental)
 !#                           * element averaged basal mass balance [XXX, >0 blabla] (elemental)
 !#-----------------------------------------------------------------------
-Solver 9 
-   Exec Solver = Never
+Solver 9
+
    Equation = "Thickness"
    Procedure = "ElmerIceSolvers" "ThicknessSolver"
 
@@ -481,7 +478,6 @@ End
 !#                           * floating fraction [] (elemental)
 !#-----------------------------------------------------------------------
 Solver 10
-   Exec Solver = Never
    Equation = "Flotation"
    Procedure = "ElmerIceSolvers" "Flotation"
 
@@ -593,10 +589,10 @@ Solver 11
    
    ! Optional
    ! SMB with anomaly
-   Scalar Field 26 = String "asmb"
+!   Scalar Field 26 = String "asmb"
    
    Solver info level = integer 4
-   
+
 End
 
 !#####
