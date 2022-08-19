@@ -20,6 +20,7 @@
 		      <field id="ismip6_yvelmean"   name="yvelmean"   field_ref="ssavelocity 2_elem" unit="m s-1" > this/$nsec_per_year </field>
 		      <field id="ismip6_velmean"    name="velmean"    field_ref="ssavelocity_elem"   unit="m s-1" > this/$nsec_per_year </field>
 		      <field id="ismip6_lithk"      name="lithk"      field_ref="h_elem"  > this*sftgif </field>
+		      <field id="ismip6_lithkaf"    name="lithkaf"    field_ref="haf_elem"> this*sftgif </field>
 		      <field id="ismip6_orog"       name="orog"       field_ref="zs_elem" > this*sftgif </field>
 		      <field id="ismip6_base"       name="base"       field_ref="zb_elem" > this*sftgif </field>
 		      <field id="ismip6_strbasemag" name="strbasemag" field_ref="strbasemag"  unit="Pa"> this*sftgif*1.0e6 </field>
