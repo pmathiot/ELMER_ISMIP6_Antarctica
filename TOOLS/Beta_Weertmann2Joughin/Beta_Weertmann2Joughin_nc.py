@@ -13,7 +13,7 @@ import xarray as xr
 
 ## Files names
 cfilein  = 'restart_newmesh_t0.nc'                  #'ANT50.GL1-ISMIP6_5.restart_weertman_only.nc'
-cfileout = 'restart_newmesh_t0_beta_coulomg_reg.nc' #ANT50.GL1-ISMIP6_5.restart_beta_coulomg_reg.nc_v2'
+cfileout = 'restart_newmesh_t0_beta_coulomg_reg.nc' #'ANT50.GL1-ISMIP6_5.restart_beta_coulomg_reg.nc_v2'
 
 ## Constants
 # Ice sheet parameters
@@ -47,18 +47,6 @@ da_ceff  = ds_weert['ceff']
 ## initialise output file
 ds_cr=ds_weert.copy(deep=True)
 
-## Retreive taub in from Ceff
-# Compute |ub|
-u_norm=np.sqrt(da_u**2 + da_v**2)
-
-# Compute taub
-taub = da_ceff * u_norm
-
-## Compute beta Coulomb Regularised
-coef=(u_norm/(u_norm+u0))
-Beta_j=taub/(coef**m)
-
-## Restore Beta_cr
 # In order to have a generic file, we need to increase beta when haf below a treshold (hth). The correction is based on haf.
 
 # coefficient reducteur lambda
@@ -68,17 +56,36 @@ lbd=da_haf/hth
 lbd.values[lbd.values>1]=1
 lbd.values[lbd.values<0]=1
 
+## Retreive taub in from Ceff
+# Compute |ub|
+u_norm=np.sqrt(da_u**2 + da_v**2)
+
+# Compute taub
+taub = da_ceff * u_norm
+
+## Compute beta Coulomb Regularised
 # définition du Beta qui sera injecté dans le modèle
-Beta_out1=Beta_j*1.0/lbd
+
+coef=(u_norm/(u_norm+u0))
+Beta_out1=taub/(coef**m)
+
+# treshold on beta
+Beta_out1_corr=Beta_out1*1.0/lbd
+#cutoff=np.percentile(Beta_out1, 90.)
+#Beta_out1_corr=xr.where( (Beta_out1_corr>cutoff) & (lbd < 1),cutoff,Beta_out1_corr)
 
 # define a background value for floating part at 10kPa
-Beta_out1.values[da_gmask.values == -1] = 0.01
+Beta_out1_corr.values[da_gmask.values == -1] = 0.01
 
 # add removed attributes
-Beta_out1.attrs=da_ceff.attrs
+Beta_out1_corr.attrs=da_ceff.attrs
 
+print(cutoff)
+print(Beta_out1_corr.max())
+print(xr.where( (lbd < 1),Beta_out1_corr,0).max())
 ## Save data
-ds_cr['beta_cr']=Beta_out1
+print('Write '+cfileout)
+ds_cr['beta_cr']=Beta_out1_corr
 ds_cr.attrs['History']=('Coulomb regularised beta parameter computed '
                               'from Ceff available in file '+cfilein+' '
                               'using Beta_Weertmann2Joughin_nc script')
