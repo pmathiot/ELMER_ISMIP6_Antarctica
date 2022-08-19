@@ -18,7 +18,7 @@
 
       TYPE(Variable_t), POINTER :: SSA,H
       REAL(KIND=dp) :: SSANorm,HNorm
-      REAL(KIND=dp),Parameter :: SSATreshold=1.0d08,HTreshold=1.0d08
+      REAL(KIND=dp),Parameter :: SSATreshold=1.0d04,HTreshold=1.0d05
 
       SSA => VariableGet(Model%Mesh%Variables,"ssavelocity",UnFoundFatal=.TRUE.)
       SSANorm = SSA % Norm

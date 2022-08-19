@@ -133,7 +133,7 @@ SUBROUTINE boxmodel_solver( Model,Solver,dt,Transient )
      Firsttime=.False.
 
      ! - Grounding line :
-     llGL=ListGetLogical( Model % Simulation, 'Grounding Line Melt', UnFoundFatal=UnFoundFatal )
+     llGL=ListGetLogical( Params, 'Grounding Line Melt', UnFoundFatal=UnFoundFatal )
 
      !- General :
      sealevel = ListGetCReal( Model % Constants, 'Sea Level', UnFoundFatal = UnFoundFatal )
@@ -171,68 +171,6 @@ SUBROUTINE boxmodel_solver( Model,Solver,dt,Transient )
      !!------------------------------------------------------------------------------
      ! Get forcings 
      !!------------------------------------------------------------------------------     
-     ! Temperature
-     !DataFT = ListGetString( Params, 'data file T', Found, UnFoundFatal )
-     !NetCDFstatus = NF90_OPEN( Trim(DataFT), NF90_NOWRITE, ncid )
-     !NetCDFstatus = nf90_inq_dimid( ncid, 'number_of_basins' , tmeanid)
-     !IF (NetCDFstatus /= NF90_NOERR ) THEN
-     !   CALL Fatal(Trim(SolverName), &
-     !      "dim <number_of_basins> not found")
-     !ENDIF
-     !NetCDFstatus = nf90_inquire_dimension( ncid, tmeanid , len = nlen )
-     !IF (nlen.NE.MaxBas) & 
-     !   CALL Fatal(Trim(SolverName),"number of basins do not agree")
-
-     !!! check if we have a time dimension
-     !NetCDFstatus = nf90_inq_dimid( ncid, 'time' , varid)
-     !IF (NetCDFstatus.EQ.NF90_NOERR ) THEN
-     !   NetCDFstatus = nf90_inquire_dimension( ncid, varid , len = nTime )
-     !ELSE
-     !   nTime = 1
-     !ENDIF
-     
-     !ALLOCATE( T_mean(nlen,nTime) )
-
-     !NetCDFstatus = nf90_inq_varid( ncid, 'T_mean', varid)
-     !NetCDFstatus = nf90_get_var( ncid, varid, T_mean )
-     !IF ( NetCDFstatus /= NF90_NOERR ) THEN
-     !   CALL Fatal(Trim(SolverName), &
-     !        'Unable to get netcdf variable T_mean')
-     !END IF
-     ! ! close file
-     !NetCDFstatus=nf90_close(ncid)
-
-     !DataFS = ListGetString( Params, 'data file S', Found, UnFoundFatal )
-     !NetCDFstatus = NF90_OPEN( TRIM(DataFS), NF90_NOWRITE, ncid )
-     !NetCDFstatus = nf90_inq_dimid( ncid, 'number_of_basins' , tmeanid)
-     !IF (NetCDFstatus /= NF90_NOERR ) THEN
-     !   CALL Fatal(Trim(SolverName), &
-     !      "dim <number_of_basins> not found")
-     !ENDIF
-     !NetCDFstatus = nf90_inquire_dimension( ncid, tmeanid , len = nlen )
-     !IF (nlen.NE.MaxBas) & 
-     !   CALL Fatal(Trim(SolverName),"number of basins do not agree")
-
-     !! check if we have a time dimension
-     !NetCDFstatus = nf90_inq_dimid( ncid, 'time' , varid)
-     !IF (NetCDFstatus.EQ.NF90_NOERR ) THEN
-     !   NetCDFstatus = nf90_inquire_dimension( ncid, varid , len = nTime2 )
-     !ELSE
-     !   nTime2 = 1
-     !ENDIF
-     !IF (nTime.NE.nTime2) &
-     !  CALL Fatal(Trim(SolverName),"Time dimension do not agree")
-
-     !ALLOCATE( S_mean(nlen,nTime) )
-     !NetCDFstatus = nf90_inq_varid( ncid, 'S_mean', varid)
-     !NetCDFstatus = nf90_get_var( ncid, varid, S_mean )
-     !IF ( NetCDFstatus /= NF90_NOERR ) THEN
-     !   CALL Fatal(Trim(SolverName), &
-     !        'Unable to get netcdf variable S_mean')
-     !END IF
-     ! ! close file
-     !NetCDFstatus=nf90_close(ncid)
-
 
      DataFT = ListGetString( Params, 'data file', Found, UnFoundFatal )
      NetCDFstatus = NF90_OPEN( Trim(DataFT), NF90_NOWRITE, ncid )
