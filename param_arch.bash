@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # group user 
-GROUPUSR=gen6066
+GROUPUSR=gen6035
 
 # define keywords
 ELMER_SCRATCHDIR=${CCCSCRATCHDIR}
@@ -38,6 +38,6 @@ function run_elmer() {
 ## function to load modules:
 function load_elmer_modules() {
      module purge
-     module load  elmerfem/elmerfem-bfd923fb-opt
-     module load  nco
+     module load elmerfem/elmerfem-29fd3bf4-opt
+     module load nco
            }
