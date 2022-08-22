@@ -14,7 +14,7 @@ STARTITER=1
 ENDITER=1
 
 # define length of each segments
-NSTEP=730
+NSTEP=2
 TIME_STP=1 # in days
 
 # first year in forcing file / first year to read in the simulation 

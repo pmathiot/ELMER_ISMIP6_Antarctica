@@ -54,7 +54,7 @@ SUBROUTINE boxmodel_solver( Model,Solver,dt,Transient )
 
   REAL(KIND=dp), DIMENSION(:,:), ALLOCATABLE, SAVE :: S_mean, T_mean
   REAL(KIND=dp), DIMENSION(:,:), ALLOCATABLE,SAVE :: Zbox,Abox,Tbox,Sbox,Mbox
-  REAL(KIND=dp), DIMENSION(:), ALLOCATABLE,SAVE :: qqq,T0,S0,basin_Reduced,basinmax
+  REAL(KIND=dp), DIMENSION(:), ALLOCATABLE,SAVE :: qqq,T0,S0,basin_Reduced,basinmax, delta_T
   INTEGER , DIMENSION(:), ALLOCATABLE,SAVE :: boxes
   REAL(KIND=dp), DIMENSION(:), ALLOCATABLE,SAVE :: localunity,rr
 
@@ -193,7 +193,8 @@ SUBROUTINE boxmodel_solver( Model,Solver,dt,Transient )
  
      ALLOCATE( T_mean(nlen,nTime) )
      ALLOCATE( S_mean(nlen,nTime) )
-
+     ALLOCATE( delta_T(nlen) ) 
+     
      NetCDFstatus = nf90_inq_varid( ncid, 'T_mean', varid)
      NetCDFstatus = nf90_get_var( ncid, varid, T_mean )
      IF ( NetCDFstatus /= NF90_NOERR ) THEN
@@ -206,6 +207,13 @@ SUBROUTINE boxmodel_solver( Model,Solver,dt,Transient )
      IF ( NetCDFstatus /= NF90_NOERR ) THEN
         CALL Fatal(Trim(SolverName), &
              'Unable to get netcdf variable S_mean')
+     END IF
+     
+     NetCDFstatus = nf90_inq_varid( ncid, 'delta_T', varid)
+     NetCDFstatus = nf90_get_var( ncid, varid, delta_T )
+     IF ( NetCDFstatus /= NF90_NOERR ) THEN
+        CALL Fatal(Trim(SolverName), &
+             'Unable to get netcdf variable delta_T')
      END IF
 
      ! close file
@@ -233,8 +241,6 @@ SUBROUTINE boxmodel_solver( Model,Solver,dt,Transient )
           Time = ListGetCReal( Params, "Time Point", Found )
           IF (.NOT.Found) Time=GetTime()
             TimePoint = floor(time-dt/2) + 1
-            print*, T_mean(1,TimePoint)
-            print*, S_mean(1,TimePoint)
         END IF
       END IF
       TimePoint = max(1,min(TimePoint,nTime))
@@ -243,7 +249,7 @@ SUBROUTINE boxmodel_solver( Model,Solver,dt,Transient )
     TimePoint=1
   ENDIF
 
-  T0(1:MaxBas) = T_mean(1:MaxBas,TimePoint) 
+  T0(1:MaxBas) = T_mean(1:MaxBas,TimePoint) + delta_T(1:MaxBas)
   S0(1:MaxBas) = S_mean(1:MaxBas,TimePoint)
 
   Boxnumber(:)=0.0_dp
@@ -290,7 +296,6 @@ SUBROUTINE boxmodel_solver( Model,Solver,dt,Transient )
   boxes = 1+NINT(SQRT(basinmax/distmax)*(boxmax-1))
 
   CALL INFO(TRIM(SolverName),'Boxes DONE', Level =5)
-
   !- Calculate total area of each box :
   ! second loop on element
   DO e=1,Solver % NumberOfActiveElements

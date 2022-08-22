@@ -11,7 +11,7 @@ VPATH=$(BLD)
 
 FFLAGS=-I$(XIOS_INC) -O2 -fpe0 -ftrapuv -g -traceback
 
-LIBS= USF_ExitCondition boxmodel_solver_t FrontThickness_mask USF_CondFront USF_CondDistance SlipCoef
+LIBS= USF_ExitCondition boxmodel_solver_t FrontThickness_mask USF_CondFront USF_CondDistance SlipCoef nearestpoint
 
 all: $(LIBS)
 
@@ -21,6 +21,13 @@ USF_ExitCondition:${SRC}/USF_ExitCondition.F90
 	elmerf90 $^ -o $(BLD)/$@ $(FFLAGS)
 
 #---------------------------------------------------
+# Post Porcessing
+# PP define basin
+nearestpoint:$(SRC)/nearestpoint.F90
+	elmerf90 $(NCINC) $^ -o $(BLD)/$@ $(FFLAGS) $(NCLIB)
+#
+#---------------------------------------------------
+
 # BMB 
 # BMB: PICO
 boxmodel_solver_t:$(SRC)/boxmodel_solver_t.F90
