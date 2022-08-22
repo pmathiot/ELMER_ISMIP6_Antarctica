@@ -61,7 +61,7 @@
       </file_group>
 
 <!-- ISMIP6 OUTPUTS -->
-      <file_group id="file20" output_freq="1d" >
+      <file_group id="file20" output_freq="1y" >
          <file id="state" name="ismip6_states" convention="UGRID" time_counter_name="time" time_counter="instant" time_units="days" >
 	      <field_group group_ref="mesh_info2" />
 	      <field_group group_ref="ismip6_2D_state"  />

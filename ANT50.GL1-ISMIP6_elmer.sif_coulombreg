@@ -200,10 +200,6 @@ Solver 1
    Variable Name 9  = File "mueta2"
    Variable Name 10 = File "beta_cr"
 
-   !# Elemental inputs
-   !Variable Name 11 = File "basins"
-   !Variable Name 12 = File "true_cell_area"
-
 !# Time
    Variable Name 11 = File "elmer_time"
    Target Variable 11 = String "time"
@@ -212,9 +208,6 @@ Solver 1
    Exported Variable 1 = bedrock
    Exported Variable 2 = mueta2
    Exported Variable 3 = beta_cr
-
-   !Exported Variable 4 = -elem basins
-   !Exported Variable 5 = -elem true_cell_area
 End
 
 
@@ -430,7 +423,6 @@ End
 !#     - comments: * Friction law defined in material section
 !#-----------------------------------------------------------------------
 Solver 11
-  !Exec Solver = Never
   Equation = "SSA"
   Procedure = "ElmerIceSolvers" "SSABasalSolver"
 
@@ -489,7 +481,6 @@ End
 !#                           * element averaged basal mass balance [XXX, >0 blabla] (elemental)
 !#-----------------------------------------------------------------------
 Solver 12
-   !Exec Solver = Never
    Equation = "Thickness"
    Procedure = "ElmerIceSolvers" "ThicknessSolver"
 
@@ -558,7 +549,6 @@ End
 !#                           * floating fraction [] (elemental)
 !#-----------------------------------------------------------------------
 Solver 13
-   !Exec Solver = Never
    Equation = "Flotation"
    Procedure = "ElmerIceSolvers" "Flotation"
 
