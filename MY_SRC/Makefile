@@ -13,7 +13,7 @@ FFLAGS=-I$(XIOS_INC) -O2 -fpe0 -ftrapuv -g -traceback
 # -g -traceback -O0 -fpe0 -CB -ftrapuv -debug all -CA
 # -fpe0 -CB -ftrapuv -debug
 
-LIBS= USF_ExitCondition INITMIP_Scalar_OUTPUT boxmodel_solver_t FrontThickness_mask USF_CondFront USF_CondDistance SlipCoef SSASolver_bugfix UGridDataReader_t
+LIBS= USF_ExitCondition INITMIP_Scalar_OUTPUT boxmodel_solver_t FrontThickness_mask USF_CondFront USF_CondDistance SlipCoef SSASolver_bugfix UGridDataReader_t nearestpoint
 #LIBS= USFs_Ronnie_inversion INITMIP_Scalar_OUTPUT Save_Netcdf Flotation3 Flotation2 boxmodel_solver nearestpoint FrontThickness_mask USF_CondFront USF_CondDistance USF_WaterPressure PDC_BASALMELT Elmer2NEMO_Interp NCFILE_BASALMELT TransientRestartInit USF_ExitCondition SlipCoef
 
 all: $(LIBS)
@@ -24,11 +24,15 @@ USF_ExitCondition:${SRC}/USF_ExitCondition.F90
 	elmerf90 $^ -o $(BLD)/$@ $(FFLAGS)
 
 #---------------------------------------------------
-# PP
+# Post Porcessing
 # PP compute scalar per basin
 INITMIP_Scalar_OUTPUT:$(SRC)/INITMIP_Scalar_OUTPUT_modif.F90
 	elmerf90 $(NCINC) $^ -o $(BLD)/$@ $(FFLAGS) $(NCLIB)
 
+# PP define basin
+nearestpoint:$(SRC)/nearestpoint.F90
+	elmerf90 $(NCINC) $^ -o $(BLD)/$@ $(FFLAGS) $(NCLIB)
+#
 #---------------------------------------------------
 # BMB 
 # BMB: PICO

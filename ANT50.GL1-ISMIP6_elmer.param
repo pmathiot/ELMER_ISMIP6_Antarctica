@@ -70,10 +70,10 @@ $K         = 11.8e-5                          ! Coefficient In our case : coeffi
 
 $Nbox_PICO       = 5                                               ! Nb of boxes in PICO
 
-$gammaT_PICO_SI  = 0.43e-5                                         ! Effective turbulent temperature exchange velocity (m.s^-1)
+$gammaT_PICO_SI  = 5.5e-5                                         ! Effective turbulent temperature exchange velocity (m.s^-1)
 $gammaT_PICO     = gammaT_PICO_SI * yearinsec                      ! Effective turbulent temperature exchange velocity (m.yr^-1)
 
-$C_PICO_SI       = 12.9e6                                          ! Overturning coefficient (m^6.s^-1.kg^-1)
+$C_PICO_SI       = 2e6                                          ! Overturning coefficient (m^6.s^-1.kg^-1)
 $C_PICO          = C_PICO_SI * (1.0e6 * yearinsec^3)               ! Overturning coefficient (m^5.yr^-3.MPa^-1)
 
 $alpha_PICO      = 7.5e-5                                          ! Thermal expansion coefficient for linear EOS (°C^-1)

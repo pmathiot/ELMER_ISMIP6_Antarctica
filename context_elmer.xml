@@ -51,15 +51,15 @@
 	      </field_group>
 
 	      <field_group id="ismip6_1D_true_cell_area" grid_ref="ScalarGrid_sum">
-		      <field id="ismip6_lim"             name="lim_tca"             standard_name="land_ice_mass" unit="kg" field_ref="ismip6_lithk"  > this*true_cell_area*$rhoi </field>
-		      <field id="ismip6_limnsw"          name="limnsw_tca"          standard_name="land_ice_mass_not_displacing_sea_water" unit="kg" field_ref="haf_elem"      > this*true_cell_area*$rhoi </field>
-                      <field id="ismip6_iareagr"         name="iareagr_tca"         standard_name="grounded_ice_sheet_area" unit="m2" field_ref="ismip6_sftgrf" > this*true_cell_area </field>
-                      <field id="ismip6_iareafl"         name="iareafl_tca"         standard_name="floating_ice_shelf_area" unit="m2" field_ref="ismip6_sftflf" > this*true_cell_area </field>
-                      <field id="ismip6_tendacabf"       name="tendacabf_tca"       standard_name="tendency_of_land_ice_mass_due_to_surface_mass_balance" unit="kg s-1" field_ref="ismip6_acabf" > this*true_cell_area </field>
-                      <field id="ismip6_tendlibmassbf"   name="tendlibmassbf_tca"   standard_name="tendency_of_land_ice_mass_due_to_basal_mass_balance" unit="kg s-1" field_ref="ismip6_libmassbffl" > this*true_cell_area </field>
-		      <field id="ismip6_tendlibmassbffl" name="tendlibmassbffl_tca" standard_name="tendency_of_land_ice_mass_due_to_basal_mass_balance" unit="kg s-1" field_ref="ismip6_libmassbffl" > this*true_cell_area </field>
-		      <field id="ismip6_tendligroundf"   name="tendligroundf_tca"   standard_name="tendency_of_grounded_ice_mass" unit="kg s-1" field_ref="ismip6_ligroundf" > this*true_cell_area </field>
-		      <field id="ismip6_tendlifmassbf"   name="tendlifmassbf_tca"   standard_name="tendency_of_land_ice_mass_due_to_calving_and_ice_front_melting" unit="kg s-1" field_ref="ismip6_lifmassbf" > this*true_cell_area </field>
+		      <field id="ismip6_lim_tca"             name="lim_tca"             standard_name="land_ice_mass" unit="kg" field_ref="ismip6_lithk"  > this*true_cell_area*$rhoi </field>
+		      <field id="ismip6_limnsw_tca"          name="limnsw_tca"          standard_name="land_ice_mass_not_displacing_sea_water" unit="kg" field_ref="haf_elem"      > this*true_cell_area*$rhoi </field>
+                      <field id="ismip6_iareagr_tca"         name="iareagr_tca"         standard_name="grounded_ice_sheet_area" unit="m2" field_ref="ismip6_sftgrf" > this*true_cell_area </field>
+                      <field id="ismip6_iareafl_tca"         name="iareafl_tca"         standard_name="floating_ice_shelf_area" unit="m2" field_ref="ismip6_sftflf" > this*true_cell_area </field>
+                      <field id="ismip6_tendacabf_tca"       name="tendacabf_tca"       standard_name="tendency_of_land_ice_mass_due_to_surface_mass_balance" unit="kg s-1" field_ref="ismip6_acabf" > this*true_cell_area </field>
+                      <field id="ismip6_tendlibmassbf_tca"   name="tendlibmassbf_tca"   standard_name="tendency_of_land_ice_mass_due_to_basal_mass_balance" unit="kg s-1" field_ref="ismip6_libmassbffl" > this*true_cell_area </field>
+		      <field id="ismip6_tendlibmassbffl_tca" name="tendlibmassbffl_tca" standard_name="tendency_of_land_ice_mass_due_to_basal_mass_balance" unit="kg s-1" field_ref="ismip6_libmassbffl" > this*true_cell_area </field>
+		      <field id="ismip6_tendligroundf_tca"   name="tendligroundf_tca"   standard_name="tendency_of_grounded_ice_mass" unit="kg s-1" field_ref="ismip6_ligroundf" > this*true_cell_area </field>
+		      <field id="ismip6_tendlifmassbf_tca"   name="tendlifmassbf_tca"   standard_name="tendency_of_land_ice_mass_due_to_calving_and_ice_front_melting" unit="kg s-1" field_ref="ismip6_lifmassbf" > this*true_cell_area </field>
 	      </field_group>
 
 
@@ -93,11 +93,12 @@
 
 	      <field_group id="elmer_masks" >
 		      <field id="groundedmask" unit="1" grid_ref="GridNodes" />
-		      <field id="sftgif"     standard_name="land_ice_area_fraction"           unit="1" grid_ref="GridCells" />
-                      <field id="sftgrf"     standard_name="grounded_ice_sheet_area_fraction" unit="1" grid_ref="GridCells" />
-		      <field id="sftflf"     standard_name="floating_ice_shelf_area_fraction" unit="1" grid_ref="GridCells" />
-                      <field id="basins"     standard_name="ice_catchments_basins_mask"       unit="1" grid_ref="GridCells" />
-	      </field_group>
+		      <field id="sftgif"     standard_name="land_ice_area_fraction"              unit="1" grid_ref="GridCells" />
+                      <field id="sftgrf"     standard_name="grounded_ice_sheet_area_fraction"    unit="1" grid_ref="GridCells" />
+		      <field id="sftflf"     standard_name="floating_ice_shelf_area_fraction"    unit="1" grid_ref="GridCells" />
+                      <field id="basins"     standard_name="ice_catchments_large_basins_mask"    unit="1" grid_ref="GridCells" />
+	              <field id="basins_isf" standard_name="ice_catchments_iceshelf_basins_mask" unit="1" grid_ref="GridCells" />
+              </field_group>
 
                <field_group id="elmer_velocity">
 		      <field id="ssavelocity 1"      standard_name="land_ice_vertical_mean_x_velocity"             unit="m a-1" grid_ref="GridNodes" />
@@ -136,7 +137,7 @@
                       <field id="melt" long_name="basal_mass_balance_reference"                         unit="m a-1"  grid_ref="GridCells" />
                       <field id="smb"  long_name="surface_mass_balance_reference"                       unit="m a-1"  grid_ref="GridCells" />
 		      <field id="asmb" long_name="surface_mass_balance_anomaly"                         unit="m a-1"  grid_ref="GridCells" />
-		      <field id="acabf"     standard_name="land_ice_surface_specific_mass_balance_flux" unit="m a-1"  grid_ref="GridCells" />
+                      <field id="acabf"     standard_name="land_ice_surface_specific_mass_balance_flux" unit="m a-1"  grid_ref="GridCells" />
 		      <field id="libmassbf" standard_name="land_ice_basal_specific_mass_balance_flux"   unit="m a-1"  grid_ref="GridCells" />
 		      <field id="h loads"                                                               unit="m3 a-1" grid_ref="GridNodes" />
 	      </field_group>
@@ -146,7 +147,8 @@
                        <field id="node_y" name="y" standard_name="projection_y_coordinate" unit="m" grid_ref="GridNodes" />
                        <field id="cell_area" name="cell_area" unit="m2" grid_ref="GridCells" />
                        <field id="true_cell_area" name="true_cell_area" unit="m2" grid_ref="GridCells" />
-                       <field id="basins" standard_name="ice_catchments_basins_mask" unit="1" grid_ref="GridCells" />
+                       <field id="basins" standard_name="ice_catchments_large_basins_mask" unit="1" grid_ref="GridCells" />
+                       <field id="basins_isf" standard_name="ice_catchments_iceshelf_basins_mask" unit="1" grid_ref="GridCells" />
               </field_group>
 
               <field_group id="elmer_global" grid_ref="ScalarGrid_sum">

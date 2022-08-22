@@ -24,6 +24,9 @@ HELMER=<HELMER>
 # INPUTS
 # segment number
 i=<ID>
+im1=<ID-1>
+ip1=<ID+1>
+
 # restart name
 RSTFILEnc=<RSTFILEnc>
 # conf case
@@ -57,7 +60,7 @@ echo elmer_t${i}.sif > ELMERSOLVER_STARTINFO
 # manage restart
 if [[ $i -gt 1 ]] ; then
    echo '$WELMER/${RSTFILEnc} is missing, we pick it up from $RELMER'
-   ln -sf $RELMER/${RSTFILEnc} $WELMER/MSH/restart_$((i-1)).nc || nerr=$((nerr+1))
+   ln -sf $RELMER/${RSTFILEnc} $WELMER/MSH/restart_${im1}.nc || nerr=$((nerr+1))
 
    if [[ $nerr -ne 0 ]] ; then
    echo 'ERROR during copying restart file; please check'
@@ -123,4 +126,4 @@ fi
 
 # manage indicator file
 mv ${HELMER}/zELMER_${i}_IN_PROGRESS ${HELMER}/zELMER_${i}_SUCCESSFUL
-touch ${HELMER}/zELMER_$((i+1))_READY
+touch ${HELMER}/zELMER_${ip1}_READY

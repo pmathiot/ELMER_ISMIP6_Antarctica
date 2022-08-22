@@ -67,9 +67,13 @@ echo '===================='
 
 for ((i=$STARTITER ; i<=$ENDITER ; i++))
 do
+    i=`printf %03d $i` ;
+    im1=`printf %03d $((i-1))` ;
+    ip1=`printf %03d $((i+1))` ;
 
     if [ -f zELMER_${i}_SUCCESSFUL ]; then echo "Run already successful. rm zELMER_${i}_SUCCESSFUL files if you want to overwrite this segment"; exit 42; fi
-
+     
+    
     # name
     NAME=$CONFIG-$CASE
 
@@ -79,25 +83,26 @@ do
     if [[ $((i-1)) -eq 0 ]]; then
       if [[ $RSTINITfile != NONE ]]; then
          RSTFILEnc=$RSTINITfile
-         ln -sf $RSTINITpath/${RSTINITfile} $WELMER/MSH/restart_$((i-1)).nc
+         ln -sf $RSTINITpath/${RSTINITfile} $WELMER/MSH/restart_${im1}.nc
       fi
     else
-         RSTFILEnc="${NAME}_$((i-1)).restart.nc"
+         RSTFILEnc="${NAME}_${im1}.restart.nc"
     fi   
-
+    
+    
     echo ''
     echo "start: ${NAME}_elmer_$i from $RSTFILEnc"
     echo '======' 
     echo ''
 
     # prepare sif
-    sed -e "s/<ID-1>/$(($i-1))/g"        \
-        -e "s/<ID>/$(($i))/g"            \
+    sed -e "s/<ID-1>/${im1}/g"           \
+        -e "s/<ID>/${i}/g"               \
         -e "s/<NSTEPS>/$NSTEP/g"         \
         -e "s/<STPINDAYS>/$TIME_STP/g"   \
         -e "s/<STARTYEAR>/$START_SIMU/g" \
         -e "s/<OFFSET>/$OFFSET/g"        \
-        -e "s/<RSTFILEnc>/$RSTFILEnc/g" ${NAME}_elmer.sif  > $WELMER/elmer_t$i.sif  
+        -e "s/<RSTFILEnc>/$RSTFILEnc/g" ${NAME}_elmer.sif  > $WELMER/elmer_t${i}.sif  
 
     # prepare run script
     sed -e "s!<NAME>!${NAME}_$i!g"       \
@@ -109,10 +114,12 @@ do
         -e "s!<ECONFIG>!$CONFIG!g"       \
         -e "s!<ECASE>!$CASE!g"           \
         -e "s!<HELMER>!$HELMER!g"        \
-        -e "s!<ID>!${i}!"           run_elmer_skel.bash >> run_elmer_${i}.slurm
+        -e "s!<ID>!${i}!g"               \
+        -e "s!<ID-1>!${im1}!g"           \
+        -e "s!<ID+1>!${ip1}!g"         run_elmer_skel.bash >> run_elmer_${i}.slurm
 
     # manage status file
-    if [[ $i == 1 ]];then touch ${HELMER}/zELMER_${i}_READY; fi
+    if [[ $((i)) == 1 ]];then touch ${HELMER}/zELMER_${i}_READY; fi
 
     # submit job
     if [ ! -z "$jobid0" ];then
