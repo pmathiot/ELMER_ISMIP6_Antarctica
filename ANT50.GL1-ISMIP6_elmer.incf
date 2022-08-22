@@ -7,13 +7,13 @@ $name="ANT50.GL1-ISMIP6"
 $data_dir = "/ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT/"
 !
 ! define output_dir
-$out_dir = "/ccc/scratch/cont003/gen6035/mathiotp/ELMER/ANT50.GL1/ANT50.GL1-ISMIP6/ANT50.GL1-ISMIP6_S"
+$out_dir = "/ccc/scratch/cont003/gen6066/cailletj/ELMER/ANT50.GL1/ANT50.GL1-ISMIP6/ANT50.GL1-ISMIP6_S"
 !
 !-----------------------------------------------------------
 ! BMB files
 !-----------------------------------------------------------
 ! define the PICO file
-$file_pico = "DATA_boxmodel.nc"
+$file_pico = "FORCING/OCEAN/PICO/Oceanic_forcing_reference_PICO_coeff_Ronja_19952014.nc"
 !
 ! define the quadratic local file
 ! TOADD once solver and file ready
@@ -21,15 +21,23 @@ $file_pico = "DATA_boxmodel.nc"
 !-----------------------------------------------------------
 ! SMB files
 !-----------------------------------------------------------
-! define smb file
-$file_smb = "racmo_wessem_initmip8km_mean1995_2014_smbice.nc"
-$var_smb = "SMB"
+! define smb reference file
+$file_smb = "FORCING/ATMOSPHERE/REFERENCE/Atmospheric_MAR_forcing_ant50.gl1_reference.nc"
+!$var_smb = "smb"
 !
-! define anomaly file
-! TOADD once ready and file ready
+! define smb anomaly file
+$file_asmb = "FORCING/ATMOSPHERE/ANOMALY/CCSM4_ant50.gl1_anomaly_1995-2100.nc"
+!§var_asmb = "asmb"
 !
 !-----------------------------------------------------------
-! PP files
+! Post Processing files
 !-----------------------------------------------------------
-! define basin file
+! define basin file (PICO basins)
 $file_basins = "schmidtko_initmip8km_means.nc"
+!
+! define basin file (iceshelf basins)
+$file_basins_isf = "IceBoundaries_Y2015-2017_Antarctica_v2.2.1_extrap.nc"
+$var_isf = "ID_isf"
+!
+! define true cell area
+$truecellarea = "true_cell_area.nc"

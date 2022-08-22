@@ -26,8 +26,8 @@ SUBROUTINE boxmodel_solver( Model,Solver,dt,Transient )
   TYPE(Element_t),POINTER ::  Element
 
 
-  REAL(kind=dp),ALLOCATABLE :: VisitedNode(:),db(:),Basis(:),dBasisdx(:,:) ,Depth(:)
-  REAL(kind=dp) :: u,v,w,SqrtElementMetric,s
+  REAL(kind=dp),ALLOCATABLE :: VisitedNode(:), db(:), Basis(:), dBasisdx(:,:), Depth(:)
+  REAL(kind=dp) :: u, v, w, SqrtElementMetric, s
 
   INTEGER , POINTER :: MeltPerm(:), GMPerm(:), DepthPerm(:),NodeIndexes(:), SPerm(:), TPerm(:), BPerm(:), loc(:), isfslopePerm(:), distGLPerm(:), distIFPerm(:), Indexx
   INTEGER , DIMENSION(:), ALLOCATABLE :: boxes(:)
@@ -37,8 +37,7 @@ SUBROUTINE boxmodel_solver( Model,Solver,dt,Transient )
 
   CHARACTER(len=MAX_NAME_LEN) ::  variabletype, VariableName
   CHARACTER(len = 200) :: meltValue
-  CHARACTER(LEN=MAX_NAME_LEN) :: SolverName='MELT_MISMIP', FName, DataF
-
+  CHARACTER(LEN=MAX_NAME_LEN) :: SolverName='MELT_MISMIP', FName, DataFT, DataFS
   INTEGER :: node,  e, t, n, i, j,  knd, kk, ii,  b,  ierr,  NetcdfStatus,varid,ncid
   INTEGER :: status(MPI_STATUS_SIZE)
   INTEGER :: maxbastmp
@@ -84,25 +83,24 @@ SUBROUTINE boxmodel_solver( Model,Solver,dt,Transient )
 
   IF (Firsttime) THEN
      Firsttime=.False.
-
+     ! - Grounding line :
      llGL=ListGetLogical( Model % Simulation, 'Grounding Line Melt', UnFoundFatal=UnFoundFatal )
 
      !- General :
+     sealevel = ListGetCReal( Model % Constants, 'Sea Level', UnFoundFatal = UnFoundFatal )
+     lbd1     = ListGetCReal( Model % Constants, 'Liquidus slope', UnFoundFatal = UnFoundFatal )
+     lbd2     = ListGetCReal( Model % Constants, 'Liquidus intercept', UnFoundFatal = UnFoundFatal )
+     lbd3     = ListGetCReal( Model % Constants, 'Liquidus pressure coeff', UnFoundFatal = UnFoundFatal )
 
-     sealevel = ListGetCReal( Model % Constants, 'Sea Level',UnFoundFatal=UnFoundFatal)
-
-
-     meltfac=ListGetCReal( Model % Constants, 'Melt factor',UnFoundFatal=UnFoundFatal)
-
-
-     lbd1 = ListGetCReal( Model % Constants, 'Liquidus slope',UnFoundFatal=UnFoundFatal )
-
-
-     lbd2 = ListGetCReal( Model % Constants, 'Liquidus intercept',UnFoundFatal=UnFoundFatal)
-
-     lbd3 = ListGetCReal( Model % Constants, 'Liquidus pressure coeff',UnFoundFatal=UnFoundFatal)
-
-
+     ! - PICO : 
+     boxmax   = ListGetInteger( Model % Constants, 'Nb Boxes', UnFoundFatal = UnFoundFatal )
+     CC       = ListGetCReal( Model % Constants, 'Overturning Coefficient', UnFoundFatal = UnFoundFatal )
+     gT       = ListGetCReal( Model % Constants, 'Temperature Exchange Velocity', UnFoundFatal = UnFoundFatal )
+     alpha    = ListGetCReal( Model % Constants, 'Thermal Expansion Coefficient EOS', UnFoundFatal = UnFoundFatal )
+     beta     = ListGetCReal( Model % Constants, 'Salinity Contraction Coefficient EOS', UnFoundFatal = UnFoundFatal )
+     rhostar  = ListGetCReal( Model % Constants, 'In Situ Density EOS', UnFoundFatal = UnFoundFatal )
+     meltfac  = ListGetCReal( Model % Constants, 'Melt Factor', UnFoundFatal = UnFoundFatal )     
+ 
      Parallel = (ParEnv %PEs > 1)
 
      maxbastmp=MAXVAL(NINT(Basin))
@@ -115,72 +113,86 @@ SUBROUTINE boxmodel_solver( Model,Solver,dt,Transient )
 
 
      !ALLOCATE(S_mean(MaxBas), T_mean(MaxBas))
-
-     DataF = ListGetString( Params, 'Data File', Found, UnFoundFatal )
-
-     NetCDFstatus = NF90_OPEN(DataF,NF90_NOWRITE,ncid)
-
-     NetCDFstatus = nf90_inq_dimid(ncid,'number_of_basins' , tmeanid)
-     NetCDFstatus = nf90_inquire_dimension(ncid, tmeanid , len=nlen)
-
-     ALLOCATE(S_mean(nlen), T_mean(nlen))
-
-     NetCDFstatus = nf90_inq_varid(ncid,'T_mean',varid)
-     NetCDFstatus = nf90_get_var(ncid, varid,T_mean)
+     
+     ! Temperature
+     DataFT = ListGetString( Params, 'data file T', Found, UnFoundFatal )
+     NetCDFstatus = NF90_OPEN( DataFT, NF90_NOWRITE, ncid )
+     NetCDFstatus = nf90_inq_dimid( ncid, 'number_of_basins' , tmeanid)
+     NetCDFstatus = nf90_inquire_dimension( ncid, tmeanid , len = nlen )
+     ALLOCATE( T_mean(nlen) )
+     !ALLOCATE(S_mean(nlen), T_mean(nlen))
+     NetCDFstatus = nf90_inq_varid( ncid, 'T_mean', varid)
+     NetCDFstatus = nf90_get_var( ncid, varid, T_mean )
      IF ( NetCDFstatus /= NF90_NOERR ) THEN
         CALL Fatal(Trim(SolverName), &
              'Unable to get netcdf variable T_mean')
      END IF
-
-     NetCDFstatus = nf90_inq_varid(ncid,'S_mean',varid)
-     NetCDFstatus = nf90_get_var(ncid, varid,S_mean)
+     !print *, T_mean(2)
+     ! Salinity
+     DataFS = ListGetString( Params, 'data file S', Found, UnFoundFatal )
+     NetCDFstatus = NF90_OPEN( DataFS, NF90_NOWRITE, ncid )
+     NetCDFstatus = nf90_inq_dimid( ncid, 'number_of_basins' , tmeanid)
+     NetCDFstatus = nf90_inquire_dimension( ncid, tmeanid , len = nlen )
+     ALLOCATE( S_mean(nlen) )
+     !ALLOCATE(S_mean(nlen), T_mean(nlen))
+     NetCDFstatus = nf90_inq_varid( ncid, 'S_mean', varid)
+     NetCDFstatus = nf90_get_var( ncid, varid, S_mean )
      IF ( NetCDFstatus /= NF90_NOERR ) THEN
         CALL Fatal(Trim(SolverName), &
              'Unable to get netcdf variable S_mean')
      END IF
+     !print *, S_mean(2)
 
-     NetCDFstatus = nf90_inq_varid(ncid,'max box',varid)
-     NetCDFstatus = nf90_get_var(ncid, varid,boxmax)
-     IF ( NetCDFstatus /= NF90_NOERR ) THEN
-        CALL Fatal(Trim(SolverName), &
-             'Unable to get netcdf max box')
-     END IF
 
-     NetCDFstatus = nf90_inq_varid(ncid,'Circulation_Parameter',varid)
-     NetCDFstatus = nf90_get_var(ncid, varid,CC)
-     IF ( NetCDFstatus /= NF90_NOERR ) THEN
-        CALL Fatal(Trim(SolverName), &
-             'Unable to get netcdf Circulation_Parameter')
-     END IF
+     !NetCDFstatus = nf90_inq_varid(ncid,'S_mean',varid)
+     !NetCDFstatus = nf90_get_var(ncid, varid,S_mean)
+     !IF ( NetCDFstatus /= NF90_NOERR ) THEN
+     !   CALL Fatal(Trim(SolverName), &
+     !        'Unable to get netcdf variable S_mean')
+     !END IF
 
-     NetCDFstatus = nf90_inq_varid(ncid,'Effective Exchange Velocity',varid)
-     NetCDFstatus = nf90_get_var(ncid, varid,gT)
-     IF ( NetCDFstatus /= NF90_NOERR ) THEN
-        CALL Fatal(Trim(SolverName), &
-             'Unable to get netcdf Effective Exchange Velocity')
-     END IF
+     !NetCDFstatus = nf90_inq_varid(ncid,'max box',varid)
+     !NetCDFstatus = nf90_get_var(ncid, varid,boxmax)
+     !IF ( NetCDFstatus /= NF90_NOERR ) THEN
+     !   CALL Fatal(Trim(SolverName), &
+     !        'Unable to get netcdf max box')
+     !END IF
 
-     NetCDFstatus = nf90_inq_varid(ncid,'Thermal Expansion coeff',varid)
-     NetCDFstatus = nf90_get_var(ncid, varid,alpha)
-     IF ( NetCDFstatus /= NF90_NOERR ) THEN
-        CALL Fatal(Trim(SolverName), &
-             'Unable to get netcdf Thermal Expansion coeff')
-     END IF
+     !NetCDFstatus = nf90_inq_varid(ncid,'Circulation_Parameter',varid)
+     !NetCDFstatus = nf90_get_var(ncid, varid,CC)
+     !IF ( NetCDFstatus /= NF90_NOERR ) THEN
+     !   CALL Fatal(Trim(SolverName), &
+     !        'Unable to get netcdf Circulation_Parameter')
+     !END IF
 
-     NetCDFstatus = nf90_inq_varid(ncid,'Salinity contraction coeff',varid)
-     NetCDFstatus = nf90_get_var(ncid, varid,beta)
-     IF ( NetCDFstatus /= NF90_NOERR ) THEN
-        CALL Fatal(Trim(SolverName), &
-             'Unable to get netcdf Salinity contraction coeff')
-     END IF
+     !NetCDFstatus = nf90_inq_varid(ncid,'Effective Exchange Velocity',varid)
+     !NetCDFstatus = nf90_get_var(ncid, varid,gT)
+     !IF ( NetCDFstatus /= NF90_NOERR ) THEN
+     !   CALL Fatal(Trim(SolverName), &
+     !        'Unable to get netcdf Effective Exchange Velocity')
+     !END IF
 
-     NetCDFstatus = nf90_inq_varid(ncid,'EOS ref Density',varid)
-     NetCDFstatus = nf90_get_var(ncid, varid,rhostar)
-     IF ( NetCDFstatus /= NF90_NOERR ) THEN
-        CALL Fatal(Trim(SolverName), &
-             'Unable to get netcdf EOS ref Density')
-     END IF
-     NetCDFstatus = nf90_close(ncid)
+     !NetCDFstatus = nf90_inq_varid(ncid,'Thermal Expansion coeff',varid)
+     !NetCDFstatus = nf90_get_var(ncid, varid,alpha)
+     !IF ( NetCDFstatus /= NF90_NOERR ) THEN
+     !   CALL Fatal(Trim(SolverName), &
+     !        'Unable to get netcdf Thermal Expansion coeff')
+     !END IF
+
+     !NetCDFstatus = nf90_inq_varid(ncid,'Salinity contraction coeff',varid)
+     !NetCDFstatus = nf90_get_var(ncid, varid,beta)
+     !IF ( NetCDFstatus /= NF90_NOERR ) THEN
+     !   CALL Fatal(Trim(SolverName), &
+     !        'Unable to get netcdf Salinity contraction coeff')
+     !END IF
+
+     !NetCDFstatus = nf90_inq_varid(ncid,'EOS ref Density',varid)
+     !NetCDFstatus = nf90_get_var(ncid, varid,rhostar)
+     !IF ( NetCDFstatus /= NF90_NOERR ) THEN
+     !   CALL Fatal(Trim(SolverName), &
+     !        'Unable to get netcdf EOS ref Density')
+     !END IF
+     !NetCDFstatus = nf90_close(ncid)
 
      IF ( llGL ) THEN
         mskcrit =  0.5 ! Melt is at the Grounding Line and floating points

@@ -16,10 +16,8 @@
                   <field field_ref="bedrock"        />
                   <field field_ref="groundedmask"   />
                   <field field_ref="beta_1"         />
-                  <field field_ref="smb"            />
                   <field field_ref="mueta2"         />
 	          <field field_ref="ceff"           />
-                  <field field_ref="basins"         />
               </field_group>
               <variable id="elmerversion" name="model_version" type="string"> elmer ice v9.0</variable>
       </file>
@@ -56,34 +54,35 @@
 	      <field name="vmax"      field_ref="vnorm" operation="maximum" />
               <field name="vmean"     field_ref="vnorm" operation="average" />
               <field name="vnorm"     field_ref="vnorm" />
+              <field name="smb"       field_ref="smb" />
+              <field name="melt"      field_ref="melt" />
       </file>
 
       </file_group>
 
 <!-- ISMIP6 OUTPUTS -->
       <file_group id="file20" output_freq="1y" >
-      <file id="state" name="ismip6_states" convention="UGRID" time_counter_name="time" time_counter="instant" time_units="days" >
+         <file id="state" name="ismip6_states" convention="UGRID" time_counter_name="time" time_counter="instant" time_units="days" >
 	      <field_group group_ref="mesh_info2" />
 	      <field_group group_ref="ismip6_2D_state"  />
 	      <variable id="elmerversion" name="model_version"       type="string"> elmer ice v9.0</variable>
               <variable id="altitude"     name="altitude_convention" type="string"> altitude reference against geoid EIGEN-6C4 </variable>
               <variable id="mapping"      name="projection"          type="string"> espg:3031 </variable>
-      </file>
-      <file id="flux" name="ismip6_fluxes" convention="UGRID" time_counter_name="time" time_counter="centered" time_units="days" >
+         </file>
+         <file id="flux" name="ismip6_fluxes" convention="UGRID" time_counter_name="time" time_counter="centered" time_units="days" >
 	      <field_group group_ref="mesh_info2" />
 	      <field_group group_ref="ismip6_2D_flux" />
 	      <variable id="elmerversion" name="model_version" type="string"> elmer ice v9.0</variable>
               <variable id="mapping"      name="projection"    type="string"> espg:3031 </variable>
-      </file>     
-      <file id="scalar" name="ismip6_scalars"  time_counter_name="time" time_counter="instant" time_units="days" >
+         </file>     
+         <file id="scalar" name="ismip6_scalars"  time_counter_name="time" time_counter="instant" time_units="days" >
               <field_group group_ref="ismip6_1D" />
               <variable id="elmerversion" name="model_version" type="string"> elmer ice v9.0</variable>
-      </file>
-      <file id="scalar_true_cell_area" name="ismip6_scalars_true_cell_area"  time_counter_name="time" time_counter="instant" time_units="days" >
+         </file>
+         <file id="scalar_true_cell_area" name="ismip6_scalars_true_cell_area"  time_counter_name="time" time_counter="instant" time_units="days" >
               <field_group group_ref="ismip6_1D_true_cell_area" />
               <variable id="elmerversion" name="model_version" type="string"> elmer ice v9.0</variable>
-      </file>
- 
+         </file>
       </file_group>
 
     </file_definition>

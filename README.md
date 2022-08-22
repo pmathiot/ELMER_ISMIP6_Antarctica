@@ -7,21 +7,20 @@ Repository to work on the Elmer/Ice IGE contribution to ISMIP6.
 ### Input
 - [ ] Setup a data directory and add it in the README
 - [ ] SMB input file
-    - [ ] Control
+    - [X] Control
     - [ ] Scenario XXX
-    - [ ] ... to be completed
 - [ ] Ocean forcing data file
-    - [ ] Control
+    - [X] Control
+    - [ ] delta T estimation
     - [ ] Scenario XXX
-    - [ ] ... to be completed
 - [ ] Benoit's grid (first)
     - [ ] grid with ice tongue and instruction to do it in README or elsewhere
-    - [ ] tools and instruction to convert restart from 1 grid to another that also manage change in partition numbers
+    - [X] tools and instruction to convert restart from 1 grid to another that also manage change in partition numbers
     - [ ] grid refined over all the run history and instruction to do it in README or elsewhere
 - [ ] Initial condition compatible with Benoit's grid (first)
     - [ ] Initial condition compatible with grid with no ice tongue
     - [ ] Initial condition compatible with grid refined
-    - [ ] Build netcdf restart => this will make obsolete the two previous points.
+    - [X] Build netcdf restart => this will make obsolete the two previous points.
 - [ ] Clean directory for only the production file
 
 ### SIF
@@ -39,12 +38,12 @@ Repository to work on the Elmer/Ice IGE contribution to ISMIP6.
 - [ ] Coulomb Regularisé
     - [X] Convert linear friction coef from initial condition to CR friction coefficient
     - [ ] Check all blocs
-- [ ] Check SMB solver
-    - [ ] Read reference SMB
-    - [ ] Read anomaly SMB year by year
-    - [ ] Compute SMB as it is required for ISMIP6
+- [X] Check SMB solver
+    - [X] Read reference SMB
+    - [X] Read anomaly SMB year by year
+    - [X] Compute SMB as it is required for ISMIP6
 - [ ] Check BMB solver
-    - [ ] PICO melt solver blocs and parameter
+    - [X] PICO melt solver blocs and parameter
     - [ ] Quadratic local melt blocs and parameter
     - [ ] Check SIF compatibility (not both melt activated ...)
     - [ ] Compute BMB as it is required for ISMIP6
@@ -70,11 +69,11 @@ Repository to work on the Elmer/Ice IGE contribution to ISMIP6.
 - [ ]
 
 ### Post Processing
-- [ ] review the ISMIP6 XIOS context file
-- [ ] review the ISMIP6 XIOS output file
-- [ ] build the pp script to convert XIOS output to ISMIP6 output
-- [ ] review the ISMIP6 output
-- [ ] process all the output
+- [X] review the ISMIP6 XIOS context file
+- [X] review the ISMIP6 XIOS output file
+- [X] build the pp script to convert XIOS output to ISMIP6 output
+- [X] review the ISMIP6 output
+- [ ] process all the output (available tools - need data)
 
 ### Distribution
 - [ ] push data on the server
