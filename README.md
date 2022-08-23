@@ -6,13 +6,13 @@ Repository to work on the Elmer/Ice IGE contribution to ISMIP6.
 
 ### Input
 - [ ] Setup a data directory and add it in the README
-- [ ] SMB input file
+- [X] SMB input file
     - [X] Control
-    - [ ] Scenario XXX
-- [ ] Ocean forcing data file
+    - [X] Scenario XXX
+- [X] Ocean forcing data file
     - [X] Control
-    - [ ] delta T estimation
-    - [ ] Scenario XXX
+    - [X] delta T estimation
+    - [X] Scenario XXX
 - [ ] Benoit's grid (first)
     - [ ] grid with ice tongue and instruction to do it in README or elsewhere
     - [X] tools and instruction to convert restart from 1 grid to another that also manage change in partition numbers
@@ -21,15 +21,14 @@ Repository to work on the Elmer/Ice IGE contribution to ISMIP6.
     - [ ] Initial condition compatible with grid with no ice tongue
     - [ ] Initial condition compatible with grid refined
     - [X] Build netcdf restart => this will make obsolete the two previous points.
-- [ ] Clean directory for only the production file
+- [X] Clean directory for only the production file
 
 ### SIF
-- [ ] Check SSA  solver
-- [ ] Check H    solver
-- [ ] Check XIOS solver
+- [X] Check SSA  solver
+- [X] Check H    solver
+- [X] Check XIOS solver
     - [X] Check metadata
     - [X] Check integrated value wrt to save scalar
-    - [ ] Clarify with only Melt give an integrated value different in Savescalar
     - [X] Check all netcdf varaible with paraview (need sno account)
 - [X] Netcdf restart
     - [X] Tools to interpolate from a result file to a netcdf file has been done
@@ -46,18 +45,18 @@ Repository to work on the Elmer/Ice IGE contribution to ISMIP6.
     - [X] PICO melt solver blocs and parameter
     - [ ] Quadratic local melt blocs and parameter
     - [ ] Check SIF compatibility (not both melt activated ...)
-    - [ ] Compute BMB as it is required for ISMIP6
+    - [X] Compute BMB as it is required for ISMIP6
 - [X] Nearestpoint => create basin mask : variable added in restart (see TOOL/ADD_RST_VAR for method)
 
 ### Solver
 - [ ] Build Quadratic melt Solver.F90
-- [ ] Update Benoit's regional pp to new variable name (dh/dt for example)
+- [X] Update Benoit's regional pp to new variable name (dh/dt for example)
 
 ### Test to do
 - [ ] Check Benoit's IMITMIP diag and XIOS integrated method
    - [ ] check all ouput with paraview (min, max, pattern ...)
    - [ ] when succesful rm Benoit's diag
-   - [ ] buil pp script to do it
+   - [X] buil pp script to do it
 - [ ] compare overall with Benoit's configuration
 
 ### Run to do
@@ -76,4 +75,5 @@ Repository to work on the Elmer/Ice IGE contribution to ISMIP6.
 - [ ] process all the output (available tools - need data)
 
 ### Distribution
+- [ ] write readme
 - [ ] push data on the server

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # group user 
-GROUPUSR=gen6035
+GROUPUSR=gen6066
 
 # define keywords
 ELMER_SCRATCHDIR=${CCCSCRATCHDIR}

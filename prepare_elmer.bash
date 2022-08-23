@@ -22,7 +22,7 @@ chgrp -R ${GROUPUSR} ${WELMER}
 # set symbolic link
 if [ ! -L MY_WORK    ]; then ln -s $WELMER MY_WORK    ; fi
 if [ ! -L MY_RESTART ]; then ln -s $RELMER MY_RESTART ; fi
-if [ ! -L MY_OUTPUT   ]; then ln -s $SELMER MY_OUTPUT   ; fi
+if [ ! -L MY_OUTPUT  ]; then ln -s $SELMER MY_OUTPUT  ; fi
 
 echo ''
 echo "Copy executable to $WELMER"
@@ -108,6 +108,7 @@ do
     sed -e "s!<NAME>!${NAME}_$i!g"       \
         -e "s!<NNODES>!${NN}!g"          \
         -e "s!<GROUPUSR>!${GROUPUSR}!g"  \
+        -e "s!<WALLTIME>!${WALLTIME}!g"  \
         -e "s!<NTASKS>!${NP}!g"        run_arch.slurm > run_elmer_${i}.slurm
 
     sed -e "s!<RSTFILEnc>!$RSTFILEnc!g"  \

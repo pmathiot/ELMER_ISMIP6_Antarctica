@@ -11,7 +11,7 @@
 #MSUB -o LOG/<NAME>.o%j
 #MSUB -n <NTASKS>
 #MSUB -x
-#MSUB -T 3600
+#MSUB -T <WALLTIME>
 #MSUB -A <GROUPUSR>
 #MSUB -q rome
 #MSUB -m work,workflash,scratch

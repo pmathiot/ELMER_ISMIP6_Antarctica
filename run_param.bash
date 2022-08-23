@@ -1,4 +1,5 @@
 #!/bin/bash
+# WARNING : this script only allows run witch begins in the 01/01 
 
 # number of elmer partition + xios server (48 + 1 in this case)
 NELMER=48
@@ -11,10 +12,11 @@ NN=1
 # first iteration number (if more than 1, means restart i-1 are already in place)
 # end iteration
 STARTITER=1
-ENDITER=1
+ENDITER=5
 
 # define length of each segments
-NSTEP=2
+WALLTIME=10800
+NSTEP=365
 TIME_STP=1 # in days
 
 # first year in forcing file / first year to read in the simulation 

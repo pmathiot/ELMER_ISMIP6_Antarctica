@@ -4,8 +4,8 @@ $SCALARS_INTERVAL=1
 $name="ANT50.GL1-ISMIP6"
 
 ! time/restart/output management
-$id=<ID>
-$idm1=<ID-1>
+$id="<ID>"
+$idm1="<ID-1>"
 !
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 include elmer.param
@@ -45,7 +45,6 @@ Simulation
   latitude_of_origin = Real -71.0
 
   Coordinate System  = Cartesian 2D
-  Grounding Line Melt = Logical False
 
   Simulation Type = Transient
   Simulation Timing = Logical True
@@ -76,21 +75,16 @@ Body Force 1
   Flow BodyForce 2 = Real 0.0
   Flow BodyForce 3 = Real $gravity
 
-  ! definition of the SMB (with or without anomaly)
-  ! with anomaly
-!  Top Surface Accumulation = Equals smb_tot
-!  
-!  !---------------------------------------------
-!  ! SMB body force
-!  !---------------------------------------------
-!  smb_tot = Variable smb, asmb
+  !---------------------------------------------
+  ! SMB body force
+  !---------------------------------------------
+     ! with anomaly
+! smb_tot = Variable smb, asmb
 !    REAL LUA "tx[0] + tx[1]"
+! Top Surface Accumulation = Equals smb_tot
   
   ! without anomaly
   Top Surface Accumulation = Equals smb
-  
-
-  Bottom Surface Accumulation = Equals Melt
   
   !---------------------------------------------
   ! BMB body force PICO
@@ -105,7 +99,11 @@ Body Force 1
   distIF Condition = Variable FrontMask
     Real procedure "USF_CondFront" "CondFront"
 
+  Bottom Surface Accumulation = Equals Melt
 
+  !---------------------------------------------
+  ! Other body forces
+  !---------------------------------------------
   ! H internal limiters (Thickness solver)
   H Lower Limit = Real $Hmin
 End
@@ -203,58 +201,128 @@ Solver 1
    Variable Name 9  = File "mueta2"
    Variable Name 10 = File "beta_1"
 
-   !# Elemental inputs
-   Variable Name 11 = File "basins"
-   Variable Name 12 = File "true_cell_area"
-
 !# Time
-   Variable Name 13 = File "elmer_time"
-   Target Variable 13 = String "time"
+   Variable Name 11 = File "elmer_time"
+   Target Variable 11 = String "time"
 
 !# Export Constant inputs to feed next restart
    Exported Variable 1 = bedrock
    Exported Variable 2 = mueta2
    Exported Variable 3 = beta_1
-
-   Exported Variable 4 = -elem basins
-   Exported Variable 5 = -elem true_cell_area
 End
+
+
+!#-----------------------------------------------------------------------
+!#                          Post processing SOLVER
+!#-----------------------------------------------------------------------
+!# SOLVER to add mask for post processing
+!#     - input  : * mask with large basins (PICO basins in Reese et al (2018))
+!#                * mask with iceshelves basins (cf Jeremie Mouginot's file)
+!#                * mask with true cell area
+!#
+!#     - principal output  : * N/A
+!#     - optional  outputs : * N/A
+!#-----------------------------------------------------------------------
+
+!  !---------------------------------------------
+!  ! ADD CORRECTED AREA CELL
+!  !---------------------------------------------
+Solver 2
+   Exec Solver = Before Simulation
+   Equation = "UGridDataReader_cellarea"
+   Procedure = "ElmerIceSolvers" "UGridDataReader"
+
+   File Name = File "$data_dir$/$truecellarea$"
+
+   Variable Name 1 = File "cell_area"
+   Target Variable 1 = String "true_cell_area"
+
+   Exported Variable 1 = -elem true_cell_area
+End
+
+!  !---------------------------------------------
+!  ! ADD MASK FOR BASINS
+!  !---------------------------------------------
+Solver 3
+   Exec Solver = Before Simulation
+   Equation = "point"
+   Variable = -nooutput "dumy"
+   procedure = "nearestpoint" "nearestpoint"
+
+   ! global basins
+   Variable 1 = File "basins"
+   Variable 1 data file = File "$data_dir$/$file_basins$"
+   Target Variable 1 = String "basins"
+
+   Exported Variable 1 = -dofs 1 -elem basins
+End
+
+Solver 4
+   Exec Solver = Before Simulation
+   Equation = "point_isf"
+   Variable = -nooutput "dumy"
+   procedure = "nearestpoint" "nearestpoint"
+
+   ! iceshelves basins
+   Variable 1 = File  "$var_isf$"
+   Variable 1 data file = File "$data_dir$/$file_basins_isf$"
+   Target Variable 1 = String "basins_isf"
+
+   Exported Variable 1 = -dofs 1 -elem basins_isf
+End
+
 
 !#-----------------------------------------------------------------------
 !#                          SMB SOLVER
 !#-----------------------------------------------------------------------
 !# SOLVER to read smb from netcdf file (typically RACMO or MAR output)
-!#     - input  : * smb netcdf file (Variable 1 data file)
-!#                * smb variable name (Variable 1)
+!#     - input  : * smb netcdf file (File Name data file)
+!#                * smb variable name (Variable Name 1)
 !#
-!#     - output : smb (Target Variable 1)
+!#     - output : smb (Exported Variable 1 = -elem smb)
 !#
 !#     - method : interpolation from RACMO grid to ELMER element
 !#                using linear interpolation (natural neighbourg, nn-c library)
 !#                for other interpolation method change method keyword value
 !#                (see elmerice/Solvers/Documentation/Scattered2DInterpolator.md)
+!#    
+!# SOLVER to read and add an anomaly to the smb reference variable (ASMB_DataReader)
+!#      - input   : * asmb netcdf file (File Name data file)
+!#                  * asmb variable name (Variable Name 1) 
+!#
+!#      - output  : asmb    (Exported Variable 1 = -elem asmb)
+!#                 smb_tot (Exported Variable 2 = -elem smb_tot) as body_force
+!#
+!#     - method   : interpolation from asmb input file grid to ELMER element
+!#                  (see smb comments for details)
+!#                
+!#     - comments : * if no asmb required for the simulation, simply desactivate it
+!#                    in Exec Solver using Never keyword (pre-written line) and switching comment in body_force
+!#                  * offset is automatically managed by run_param.bash and prepare_elmer.bash (need user input)
 !#-----------------------------------------------------------------------
-Solver 2
+Solver 5
    Exec Solver = Before simulation
 
-   Equation = "SMBrefDataReader"
+   Equation = "SMBref_DataReader"
    Procedure = "ElmerIceSolvers" "UGridDataReader"
 
-   File Name = File "$data_dir$$file_smb$"
+   File Name = File "$data_dir$/$file_smb$"
    Variable Name 1 = File "smb"
    Exported Variable 1 = -elem smb
 End   
 
-Solver 3
+Solver 6
    Exec Interval =$ 365 / <STPINDAYS>
-   ! SMB with anomaly
+
+      ! SMB with anomaly
 !   Exec Solver = Before Timestep
    ! SMB without anomaly
    Exec Solver = Never
-   Equation = "SMBDataReader"
-   Procedure = "UGridDataReader_t" "UGridDataReader"
+
+   Equation = "ASMB_DataReader"
+   Procedure = "ElmerIceSolvers" "UGridDataReader"
    
-   File Name = File "$data_dir$$file_asmb$"
+   File Name = File "$data_dir$/$file_asmb$"
    
    Time Point = Variable Time
      REAL LUA "<OFFSET> + tx[0]"
@@ -262,8 +330,9 @@ Solver 3
    Variable Name 1 = File "asmb"
    Exported Variable 1 = -elem asmb
 
-   Update Exported Variables = Logical True
+   ! allocate smb_tot and update body force
    Exported Variable 2 = -elem "smb_tot"
+   Update Exported Variables = Logical True
 End
 
 !#-----------------------------------------------------------------------
@@ -277,7 +346,7 @@ End
 !#                * Boxes definition (Exported Variable 2 Boxes)
 !#
 !#     - option : Mask melt based on current grounded mask (Mask melt)
-!#                       => tuning on treatment at GL based on Simulation flag : 'Grounding Line Melt'
+!#                       => tuning on treatment at GL based on flag : 'Grounding Line Melt'
 !#
 !#     - comments: PICO need some pre-compute varaible as :
 !#                                 * distGL
@@ -288,7 +357,7 @@ End
    !# Compute distance to Grounding Line
    !#    - Requierement: initialisation as body force
    !#------------------------------------------------
-Solver 4
+Solver 7
   Exec Solver = Before Timestep
   Equation = "distance GL"
   Variable = -dofs 1 distGL
@@ -298,7 +367,7 @@ End
 
    !# Compute Front mask (used by next solver)
    !#-----------------------------------------
-Solver 5
+Solver 8
   Exec Solver = Before Timestep
   Equation = "FrontMask"
   Variable = -dofs 1 FrontMask
@@ -308,7 +377,7 @@ End
    !# Compute distance to Ice Front
    !#    - Requierement: initialisation as body force
    !#------------------------------
-Solver 6
+Solver 9
    Exec Solver = Before Timestep   
    Equation = "Real distance IF"
    Variable = -dofs 1 distIF
@@ -318,12 +387,16 @@ End
 
    !# Compute basal melt using PICO
    !#    - Requierement: distGL, FrontMask, distIF
+   !#    - option : 'Grounding Line Melt' activates melt on partially floating elements
    !#------------------------------
-Solver 7
+Solver 10
    Exec Solver = Before Timestep
    Equation = "box melt"
    Variable = -nooutput dummy
    Procedure = "boxmodel_solver_t" "boxmodel_solver"
+
+   !# option
+   Grounding Line Melt = Logical False
 
    !# input file
    data file = File "$data_dir$/$file_pico$"
@@ -350,10 +423,9 @@ End
 !#
 !#     - comments: * Friction law defined in material section
 !#-----------------------------------------------------------------------
-Solver 8
-
+Solver 11
   Equation = "SSA"
-  Procedure = "SSASolver_bugfix" "SSABasalSolver_bugfix"
+  Procedure = "ElmerIceSolvers" "SSABasalSolver"
 
   ! primary variable
   Variable = -dofs 2 "SSAVelocity"
@@ -409,8 +481,7 @@ End
 !#                           * element averaged surface mass balance [XXX, >0 blabla](elemental)
 !#                           * element averaged basal mass balance [XXX, >0 blabla] (elemental)
 !#-----------------------------------------------------------------------
-Solver 9
-
+Solver 12
    Equation = "Thickness"
    Procedure = "ElmerIceSolvers" "ThicknessSolver"
 
@@ -478,7 +549,7 @@ End
 !#                           * grounded fraction [] (elemental)
 !#                           * floating fraction [] (elemental)
 !#-----------------------------------------------------------------------
-Solver 10
+Solver 13
    Equation = "Flotation"
    Procedure = "ElmerIceSolvers" "Flotation"
 
@@ -509,7 +580,7 @@ End
 !#     - principal output  : * N/A
 !#     - optional  outputs : * N/A
 !#-----------------------------------------------------------------------
-Solver 11
+Solver 14
    Exec Solver = After Timestep
 
    Equation = "XIOSOutPutSolve"
@@ -584,21 +655,22 @@ Solver 11
    ! others
    Scalar Field 24 = String "basins"
    Scalar Field 25 = String "true_cell_area"
+   Scalar Field 26 = String "basins_isf"
 
-   ! Global Variables
-   Global Variable 1 = String "time"
-   
    ! Optional
    ! SMB with anomaly
-!   Scalar Field 26 = String "asmb"
+!   Scalar Field 27 = String "asmb"
    
+   ! Global Variables
+   Global Variable 1 = String "time"
+    
    Solver info level = integer 4
 
 End
 
 !#####
 Equation 1
-  Active Solvers (11)= 1 2 3 4 5 6 7 8 9 10 11
+  Active Solvers (14)= 1 2 3 4 5 6 7 8 9 10 11 12 13 14
 End
 
 !#####

@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 print('load modules')
-import pandas as pd
 import re
 import os
 import glob

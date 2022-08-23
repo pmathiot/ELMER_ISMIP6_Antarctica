@@ -23,11 +23,9 @@ $file_pico = "FORCING/OCEAN/PICO/Oceanic_forcing_reference_PICO_coeff_Ronja_1995
 !-----------------------------------------------------------
 ! define smb reference file
 $file_smb = "FORCING/ATMOSPHERE/REFERENCE/Atmospheric_MAR_forcing_ant50.gl1_reference.nc"
-!$var_smb = "smb"
 !
 ! define smb anomaly file
 $file_asmb = "FORCING/ATMOSPHERE/ANOMALY/CCSM4_ant50.gl1_anomaly_1995-2100.nc"
-!§var_asmb = "asmb"
 !
 !-----------------------------------------------------------
 ! Post Processing files
