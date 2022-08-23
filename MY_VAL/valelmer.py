@@ -118,14 +118,14 @@ for cbasin in BASINs:
     ds_states=[]
     ds_fluxes=[]
     for runid in RUNIDs:
-        cfile_dat=cdir+'/'+CONFIG+'/SIMU/'+runid+'/MY_OUTPUT/ismip6_states_'+runid.lower()+'_1?.nc'
+        cfile_dat=cdir+'/'+CONFIG+'/SIMU/'+runid+'/MY_OUTPUT/ismip6_states_'+runid.lower()+'_[0-9]*.nc'
         ds=xr.open_mfdataset(cfile_dat,concat_dim='time')
         if ibasin > 0:
             ds_states.append(ds.where(ds['basins']==ibasin, drop=True))
         elif ibasin == 0:
             ds_states.append(ds.where(ds['basins']>=0, drop=True))
 
-        cfile_dat=cdir+'/'+CONFIG+'/SIMU/'+runid+'/MY_OUTPUT/ismip6_fluxes_'+runid.lower()+'_1?.nc'
+        cfile_dat=cdir+'/'+CONFIG+'/SIMU/'+runid+'/MY_OUTPUT/ismip6_fluxes_'+runid.lower()+'_[0-9]*.nc'
         ds=xr.open_mfdataset(cfile_dat,concat_dim='time')
         if ibasin > 0:
             ds_fluxes.append(ds.where(ds['basins']==ibasin, drop=True))
