@@ -83,7 +83,9 @@ do
     if [[ $((i-1)) -eq 0 ]]; then
       if [[ $RSTINITfile != NONE ]]; then
          RSTFILEnc=$RSTINITfile
-         ln -sf $RSTINITpath/${RSTINITfile} $WELMER/MSH/restart_${im1}.nc
+         cp $RSTINITpath/${RSTINITfile} $WELMER/MSH/restart_${im1}.nc
+         ncap2 -O -s "elmer_time=elmer_time*0" $WELMER/MSH/restart_${im1}.nc $WELMER/MSH/restart_${im1}.nc  
+         #ln -sf $RSTINITpath/${RSTINITfile} $WELMER/MSH/restart_${im1}.nc
       fi
     else
          RSTFILEnc="${NAME}_${im1}.restart.nc"

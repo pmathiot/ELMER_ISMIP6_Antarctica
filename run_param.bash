@@ -12,7 +12,7 @@ NN=1
 # first iteration number (if more than 1, means restart i-1 are already in place)
 # end iteration
 STARTITER=1
-ENDITER=5
+ENDITER=20
 
 # define length of each segments
 WALLTIME=10800
