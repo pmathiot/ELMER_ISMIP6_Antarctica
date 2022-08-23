@@ -10,6 +10,9 @@ if [ -f zELMER_*ERROR* ]; then echo ' ERROR files still there. rm zERROR_*_* fil
 # source arch file
 . param_arch.bash
 
+# load modules
+load_elmer_modules
+
 if [ ! -d WELMER  ]; then mkdir -p  $WELMER   ; fi
 if [ ! -d RELMER  ]; then mkdir -p  $RELMER   ; fi
 if [ ! -d SELMER  ]; then mkdir -p  $SELMER   ; fi
@@ -65,14 +68,13 @@ echo ''
 echo "$(($ENDITER - $STARTITER + 1)) segment to run"
 echo '===================='
 
-for ((i=$STARTITER ; i<=$ENDITER ; i++))
+for ((ijob=$STARTITER ; ijob<=$ENDITER ; ijob++))
 do
-    i=`printf %03d $i` ;
-    im1=`printf %03d $((i-1))` ;
-    ip1=`printf %03d $((i+1))` ;
+    im1=`printf %03d $((ijob-1))` ;
+    ip1=`printf %03d $((ijob+1))` ;
+    i=`printf %03d $((ijob))`     ;
 
     if [ -f zELMER_${i}_SUCCESSFUL ]; then echo "Run already successful. rm zELMER_${i}_SUCCESSFUL files if you want to overwrite this segment"; exit 42; fi
-     
     
     # name
     NAME=$CONFIG-$CASE
@@ -80,7 +82,7 @@ do
     # get restart
     # no need to do anything, elmer point directly to the directory
     # except for the first one
-    if [[ $((i-1)) -eq 0 ]]; then
+    if [[ $((ijob-1)) -eq 0 ]]; then
       if [[ $RSTINITfile != NONE ]]; then
          RSTFILEnc=$RSTINITfile
          cp $RSTINITpath/${RSTINITfile} $WELMER/MSH/restart_${im1}.nc
@@ -122,7 +124,7 @@ do
         -e "s!<ID+1>!${ip1}!g"         run_elmer_skel.bash >> run_elmer_${i}.slurm
 
     # manage status file
-    if [[ $((i)) == 1 ]];then touch ${HELMER}/zELMER_${i}_READY; fi
+    if [[ $((ijob)) == 1 ]];then touch ${HELMER}/zELMER_${i}_READY; fi
 
     # submit job
     if [ ! -z "$jobid0" ];then

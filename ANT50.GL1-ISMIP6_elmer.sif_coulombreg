@@ -1,8 +1,4 @@
 
-$SCALARS_INTERVAL=1
-
-$name="ANT50.GL1-ISMIP6"
-
 ! time/restart/output management
 $id="<ID>"
 $idm1="<ID-1>"
@@ -79,12 +75,12 @@ Body Force 1
   ! SMB body force
   !---------------------------------------------
      ! with anomaly
- smb_tot = Variable smb, asmb
-    REAL LUA "tx[0] + tx[1]"
- Top Surface Accumulation = Equals smb_tot
+! smb_tot = Variable smb, asmb
+!    REAL LUA "tx[0] + tx[1]"
+! Top Surface Accumulation = Equals smb_tot
   
   ! without anomaly
-!  Top Surface Accumulation = Equals smb
+  Top Surface Accumulation = Equals smb
   
   !---------------------------------------------
   ! BMB body force PICO
@@ -314,9 +310,9 @@ Solver 6
    Exec Interval =$ 365 / <STPINDAYS>
 
     ! SMB with anomaly
-   Exec Solver = Before Timestep
+!   Exec Solver = Before Timestep
    ! SMB without anomaly
-!   Exec Solver = Never
+   Exec Solver = Never
 
    Equation = "ASMB_DataReader"
    Procedure = "UGridDataReader_t" "UGridDataReader"
@@ -423,7 +419,6 @@ End
 !#     - comments: * Friction law defined in material section
 !#-----------------------------------------------------------------------
 Solver 11
-  Exec Solver = Never
   Equation = "SSA"
   Procedure = "SSASolver_bugfix" "SSABasalSolver_bugfix"
 
@@ -482,7 +477,6 @@ End
 !#                           * element averaged basal mass balance [XXX, >0 blabla] (elemental)
 !#-----------------------------------------------------------------------
 Solver 12
-   Exec Solver = Never
    Equation = "Thickness"
    Procedure = "ElmerIceSolvers" "ThicknessSolver"
 
@@ -551,7 +545,6 @@ End
 !#                           * floating fraction [] (elemental)
 !#-----------------------------------------------------------------------
 Solver 13
-   Exec Solver = Never
    Equation = "Flotation"
    Procedure = "ElmerIceSolvers" "Flotation"
 
@@ -661,7 +654,7 @@ Solver 14
 
    ! Optional
    ! SMB with anomaly
-   Scalar Field 27 = String "asmb"
+!   Scalar Field 27 = String "asmb"
    
    ! Global Variables
    Global Variable 1 = String "time"
