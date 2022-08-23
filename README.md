@@ -53,9 +53,9 @@ Repository to work on the Elmer/Ice IGE contribution to ISMIP6.
 - [X] Update Benoit's regional pp to new variable name (dh/dt for example)
 
 ### Test to do
-- [ ] Check Benoit's IMITMIP diag and XIOS integrated method
-   - [ ] check all ouput with paraview (min, max, pattern ...)
-   - [ ] when succesful rm Benoit's diag
+- [X] Check Benoit's IMITMIP diag and XIOS integrated method
+   - [X] check all ouput with paraview (min, max, pattern ...)
+   - [X] when succesful rm Benoit's diag
    - [X] buil pp script to do it
 - [ ] compare overall with Benoit's configuration
 
