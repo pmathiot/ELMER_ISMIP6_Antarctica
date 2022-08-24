@@ -58,7 +58,7 @@ if [ ! -f elmer_t${i}.sif ] ; then echo "E R R O R: sif file missing"; exit 42; 
 echo elmer_t${i}.sif > ELMERSOLVER_STARTINFO
 
 # manage restart
-if [[ $i -gt 1 ]] ; then
+if [[ $((10#$i)) -gt 1 ]] ; then
    echo '$WELMER/${RSTFILEnc} is missing, we pick it up from $RELMER'
    ln -sf $RELMER/${RSTFILEnc} $WELMER/MSH/restart_${im1}.nc || nerr=$((nerr+1))
 
