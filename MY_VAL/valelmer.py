@@ -20,7 +20,6 @@ print('load functions')
 def load_arguments():
     # deals with argument
     parser = argparse.ArgumentParser()
-    parser.add_argument("-cfg"  , metavar='cfg name'    , help="configuration name"                  , type=str, nargs=1   , required=True )
     parser.add_argument("-runid", metavar='runid list'  , help="used to look information in runid.db", type=str, nargs='+' , required=True )
     parser.add_argument("-basin", metavar='basin number', help="basin number"                       , type=str, nargs='+'  , required=False, default=['00'] )
     parser.add_argument("-dir"  , metavar='directory of input file' , help="directory of input file", type=str, nargs=1    , required=False, default=[os.environ['EDDIR']+'/'])
@@ -78,8 +77,6 @@ args=load_arguments()
 
 cdir=args.dir[0]
 
-CONFIG=args.cfg[0]
-
 if args.basin[0] == 'ALL':
     BASINs=["%.2d" % i for i in range(20)]
 else :
@@ -118,6 +115,7 @@ for cbasin in BASINs:
     ds_states=[]
     ds_fluxes=[]
     for runid in RUNIDs:
+        CONFIG=runid.split('-')[0]
         cfile_dat=cdir+'/'+CONFIG+'/SIMU/'+runid+'/MY_OUTPUT/ismip6_states_'+runid.lower()+'_[0-9]*.nc'
         ds=xr.open_mfdataset(cfile_dat,concat_dim='time')
         if ibasin > 0:
