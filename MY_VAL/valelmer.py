@@ -22,7 +22,7 @@ def load_arguments():
     parser = argparse.ArgumentParser()
     parser.add_argument("-runid", metavar='runid list'  , help="used to look information in runid.db", type=str, nargs='+' , required=True )
     parser.add_argument("-basin", metavar='basin number', help="basin number"                       , type=str, nargs='+'  , required=False, default=['00'] )
-    parser.add_argument("-dir"  , metavar='directory of input file' , help="directory of input file", type=str, nargs=1    , required=False, default=[os.environ['EDDIR']+'/'])
+    parser.add_argument("-dir"  , metavar='directory of input file' , help="directory of input file", type=str, nargs=1    , required=False, default=['EDDIR'])
     parser.add_argument("-o"    , metavar='figure_name', help="output figure name without extension", type=str, nargs=1    , required=False, default=['output'])
     parser.add_argument("-noshow" , help="do not display the figure (only save it)"                                        , required=False, action="store_true")
     return parser.parse_args()
@@ -76,6 +76,8 @@ print('load arguments and constants')
 args=load_arguments()
 
 cdir=args.dir[0]
+if cdir == 'EDDIR':
+    cdir=os.environ['EDDIR']+'/'
 
 if args.basin[0] == 'ALL':
     BASINs=["%.2d" % i for i in range(20)]
