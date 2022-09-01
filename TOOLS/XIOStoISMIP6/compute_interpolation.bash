@@ -45,7 +45,7 @@ if [[ $nerr != 0 ]]; then echo "$nerr detected; exit 42"; exit 42; fi
 echo "REMAP $VAR from $FILEIN on $GRIDIN toward $GRIDOUT grid"
 
 # time variable
-time_axis=`ncdump -h $FILEIN | grep "$VAR:coordinates" | egrep -o '(time)\w+'`
+time_axis=`ncdump -h $FILEIN | grep -P "\t$VAR:coordinates" | egrep -o '(time)\w+'`
 
 ## some renaming to be compatible with cdo....
 ## might be easier to use ESMF or xios foer the interpolation

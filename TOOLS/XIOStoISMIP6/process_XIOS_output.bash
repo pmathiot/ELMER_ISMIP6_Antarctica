@@ -29,8 +29,8 @@ echo "   DONE"
 echo ""
 echo "link ${GRIDIN} and ${GRIDOUT}"
 DIR=`pwd`
-if [ ! -d $TMPDIR  ]; then mkdir -p $TMPDIR; ln -sf $TMPDIR TMPDIR; fi
-if [ ! -d $DATAOUT ]; then mkdir -p $DATAOUT; ln -sf $DATAOUT DATA_ISMIP6; fi
+if [ ! -d $TMPDIR  ]; then mkdir -p $TMPDIR; fi ; ln -sf $TMPDIR TMPDIR;
+if [ ! -d $DATAOUT ]; then mkdir -p $DATAOUT; fi ; ln -sf $DATAOUT DATA_ISMIP6
 if [ ! -f GRID_XIOS/${GRIDINfile}  ]; then echo "E R R O R: $GRIDINfile  is missing"; exit 42; fi
 if [ ! -f GRID_ISMIP6/$GRIDOUTfile ]; then echo "E R R O R: $GRIDOUTfile is missing"; exit 42; fi
 ln -sf $DIR/GRID_XIOS/${GRIDINfile} $TMPDIR/.   || nerr=$((nerr+1))
@@ -77,29 +77,28 @@ for EXP in $EXPLST; do
 
    if [ ! -d LOG_$EXP ]; then mkdir LOG_$EXP; fi
    # work file by file : 
-      # concatanate all the files for scalar, fluxes and states
-      nerr=0
-      cexp=`echo "$EXP" | tr '[:upper:]' '[:lower:]'` || nerr=$((nerr+1))
-      if [ -f TMPDIR/ismip6_fluxes_ant50.gl1-${cexp}.nc ]; then rm TMPDIR/ismip6_fluxes_ant50.gl1-${cexp}.nc ; fi
-      ncrcat -O DATA_XIOS/$EXP/ismip6_fluxes_ant50.gl1-${cexp}_?.nc TMPDIR/ismip6_fluxes_ant50.gl1-${cexp}.nc || nerr=$((nerr+1)) &
+   # concatanate all the files for scalar, fluxes and states
+   nerr=0
+   cexp=`echo "$EXP" | tr '[:upper:]' '[:lower:]'` || nerr=$((nerr+1))
+   if [ -f TMPDIR/ismip6_fluxes_${cexp}.nc ]; then rm TMPDIR/ismip6_fluxes_${cexp}.nc ; fi
+   ncrcat -O DATA_XIOS/$EXP/ismip6_fluxes_${cexp}_???.nc TMPDIR/ismip6_fluxes_${cexp}.nc || nerr=$((nerr+1)) &
 
-      if [ -f TMPDIR/ismip6_states_ant50.gl1-${cexp}.nc ]; then rm TMPDIR/ismip6_states_ant50.gl1-${cexp}.nc ; fi
-      ncrcat -O DATA_XIOS/$EXP/ismip6_states_ant50.gl1-${cexp}_?.nc TMPDIR/ismip6_states_ant50.gl1-${cexp}.nc || nerr=$((nerr+1)) &
-      
-      wait
+   if [ -f TMPDIR/ismip6_states_${cexp}.nc ]; then rm TMPDIR/ismip6_states_${cexp}.nc ; fi
+   ncrcat -O DATA_XIOS/$EXP/ismip6_states_${cexp}_???.nc TMPDIR/ismip6_states_${cexp}.nc || nerr=$((nerr+1)) &
+   wait
 
-      if [[ $nerr != 0 ]]; then
-         echo 'E R R O R during concatenation stage; exit 42'
-         exit 42
-      fi
+   if [[ $nerr != 0 ]]; then
+      echo 'E R R O R during concatenation stage; exit 42'
+      exit 42
+   fi
 
    # run conservative interpolation variable by variable
-   FILE=ismip6_states_ant50.gl1-${cexp}.nc
-   for VAR in lithk orog base topg xvelmean yvelmean strbasemag ; do
+   FILE=ismip6_states_${cexp}.nc
+   for VAR in lithk orog base topg xvelmean yvelmean strbasemag lithkaf velmean; do
       echo ""
       echo "Interpolate $VAR ..."
       echo ""
-      time ./compute_interpolation.bash $VAR $FILE $GRIDINfile $GRIDOUTfile $WEIGHTS_fracarea ${ISNAME} ${EXP} > LOG_$EXP/log_${VAR}_${ISNAME}_${EXP} || nerr=$((nerr+1)) &
+      time ./compute_interpolation.bash $VAR $FILE $GRIDINfile $GRIDOUTfile $WEIGHTS_fracarea ${ISNAME} ${EXP} > LOG_$EXP/log_${VAR}_${ISNAME}_${EXP} || nerr=$((nerr+1))
    done
 
    wait
@@ -109,7 +108,7 @@ for EXP in $EXPLST; do
       exit 42
    fi
 
-   FILE=ismip6_fluxes_ant50.gl1-${cexp}.nc
+   FILE=ismip6_fluxes_${cexp}.nc
    for VAR in acabf libmassbfgr libmassbffl dlithkdt lifmassbf ligroundf ; do
       echo ""
       echo "Interpolate $VAR ..."
@@ -118,12 +117,12 @@ for EXP in $EXPLST; do
    done
 
    # ice fraction need to be normalized with destarea to represent the effective ice fraction in the output grid (ie to take into accound different coastline in src and targ grid)
+   FILE=ismip6_states_${cexp}.nc
    for VAR in sftgif sftgrf sftflf ; do
       echo ""
       echo "Interpolate $VAR ..."
       echo ""
       time ./compute_interpolation.bash $VAR $FILE $GRIDINfile $GRIDOUTfile $WEIGHTS_destarea ${ISNAME} ${EXP} > LOG_$EXP/log_${VAR}_${EXP} || nerr=$((nerr+1)) &
-
    done
 
    wait
