@@ -54,7 +54,7 @@ cdo genycon,$GRIDOUTfile $GRIDINfile $WEIGHTS_destarea || exit 42
 
 echo '    fracarea normalization weights'
 export CDO_REMAP_NORM='fracarea'
-WEIGHTS_fracarea=ycon_weights_${GRIDIN}_to_${GRIDOUT}_destarea.nc
+WEIGHTS_fracarea=ycon_weights_${GRIDIN}_to_${GRIDOUT}_fracarea.nc
 cdo genycon,$GRIDOUTfile $GRIDINfile $WEIGHTS_fracarea || exit 42
 
 if [[ $nerr != 0 ]]; then
