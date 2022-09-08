@@ -52,8 +52,11 @@ echo
 \cp $CONFIG-${CASE}_elmer.param  $WELMER/elmer.param
 \cp $CONFIG-${CASE}_elmer.incf   $WELMER/elmer.incf
 \cp $CONFIG-${CASE}_elmer.lsol   $WELMER/elmer.lsol
-\cp iodef.xml                    $WELMER/.
+\cp iodef_elmer.xml              $WELMER/.
 \cp context_elmer.xml            $WELMER/.
+\cp iodef_pp.xml                 $WELMER/.
+\cp context_pp.xml               $WELMER/.
+\cp $CONFIG-${CASE}_pp.sif       $WELMER/pp.sif
 
 # prepare file_def.xml
 sed -e "s/<TIME_RST>/$TIME_RST/g"   ${CONFIG}-${CASE}_file_def.xml > $WELMER/file_def_elmer.xml
@@ -62,7 +65,10 @@ sed -e "s/<TIME_RST>/$TIME_RST/g"   ${CONFIG}-${CASE}_file_def.xml > $WELMER/fil
 # elmer point directly to the data dir => no need to do anything
 # except for the mesh
 if [ ! -d $WELMER/MSH/partitioning.$NELMER ] ; then mkdir -p $WELMER/MSH/partitioning.$NELMER ; chmod g+s $WELMER/MSH ; chmod g+s $WELMER/MSH/partitioning.$NELMER ; fi
+echo '   - link partionned mesh'
 ln -sf $MSHINITpath/partitioning.$NELMER/part.* $WELMER/MSH/partitioning.$NELMER/.
+echo '   - link serial mesh'
+ln -sf $MSHINITpath/mesh.* $WELMER/MSH/.
 
 echo ''
 echo "$(($ENDITER - $STARTITER + 1)) segment to run"

@@ -69,6 +69,9 @@ if [[ $((10#$i)) -gt 1 ]] ; then
    fi
 fi
 
+# XIOS link
+ln -sf iodef_elmer.xml iodef.xml
+
 # run elmer (see function in param_hpc.bash)
 run_elmer ; RUNSTATUS=$?
 
@@ -77,7 +80,17 @@ if [[ $RUNSTATUS == 0 ]]; then
    
    # error count
    nerr=0
-   ls
+
+   # remove unconnected floating part
+   echo "Remove isolated icy cells"
+   RSTFILES=`echo "restart_$CONFIG-${CASE}_${i}.nc" | tr [:upper:] [:lower:]`
+   cp -f $RSTFILES restart.nc
+   ln -sf iodef_pp.xml iodel.xml
+   ElmerSolver pp.sif   ||  nerr=$((nerr+1))
+   if [[ $nerr -ne 0 ]] ; then echo 'E R R O R : pp failed (removing icebergs)' exit 42 ; fi
+   mv -f restart_pp.nc $RSTFILES ; rm restart.nc
+   mv -f output_pp.nc pp_$CONFIG-${CASE}_${i}.nc
+
    # cp restart to RST dir
    echo "cp restart to $RELMER"
    RSTTIMEFILES=`echo "restart_time_$CONFIG-${CASE}_${i}.nc" | tr [:upper:] [:lower:]`
