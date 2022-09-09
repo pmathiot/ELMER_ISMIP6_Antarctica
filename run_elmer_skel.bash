@@ -85,11 +85,14 @@ if [[ $RUNSTATUS == 0 ]]; then
    echo "Remove isolated icy cells"
    RSTFILES=`echo "restart_$CONFIG-${CASE}_${i}.nc" | tr [:upper:] [:lower:]`
    cp -f $RSTFILES restart.nc
-   ln -sf iodef_pp.xml iodel.xml
+   ln -sf iodef_pp.xml iodef.xml
    ElmerSolver pp.sif   ||  nerr=$((nerr+1))
-   if [[ $nerr -ne 0 ]] ; then echo 'E R R O R : pp failed (removing icebergs)' exit 42 ; fi
+   if [[ $nerr -ne 0 ]] ; then echo 'E R R O R : pp failed (removing icebergs)'; exit 42 ; fi
+   # process restart (add elmer_time)
+   ncks -A -v 'beta_*' $RSTFILES restart_pp.nc
    mv -f restart_pp.nc $RSTFILES ; rm restart.nc
-   mv -f output_pp.nc pp_$CONFIG-${CASE}_${i}.nc
+   # add output in debug file
+   ncks -A -v 'region*' output_pp.nc elmer_debug_$CONFIG-${CASE}_${i}.nc
 
    # cp restart to RST dir
    echo "cp restart to $RELMER"

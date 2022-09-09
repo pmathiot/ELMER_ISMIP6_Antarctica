@@ -15,19 +15,14 @@
        <field id="groundedmask" unit="1" grid_ref="GridNodes" />
        <field id="ssavelocity 1"      standard_name="land_ice_vertical_mean_x_velocity"             unit="m a-1" grid_ref="GridNodes" />
        <field id="ssavelocity 2"      standard_name="land_ice_vertical_mean_y_velocity"             unit="m a-1" grid_ref="GridNodes" />
+       <field id="beta_1" long_name="linear_friction_coefficent" unit="MPa m-1 a"   grid_ref="GridNodes" />
        <field id="mueta2" long_name="ssa_mean_viscosity" unit="MPa a1/3"  grid_ref="GridNodes" />
       </field_group>
     
        <field_group id="mesh_info2" operation= "instant" >
-          <field id="node_x" name="x" standard_name="projection_x_coordinate" unit="m" grid_ref="GridNodes" />
-          <field id="node_y" name="y" standard_name="projection_y_coordinate" unit="m" grid_ref="GridNodes" />
-          <field id="cell_area" name="cell_area" unit="m2" grid_ref="GridCells" />
-       </field_group>
-          
-       <field_group id="ExcludeArea" operation="instant" >
-          <field id="regionnumber" grid_ref="GridCells" />
-          <field id="regionarea"   grid_ref="GridCells" />
-          <field id="regionnoe"    grid_ref="GridCells" />
+        <field id="node_x" name="x" standard_name="projection_x_coordinate" unit="m" grid_ref="GridNodes" />
+        <field id="node_y" name="y" standard_name="projection_y_coordinate" unit="m" grid_ref="GridNodes" />
+        <field id="cell_area" name="cell_area" unit="m2" grid_ref="GridCells" />
        </field_group>
    </field_definition>
 
@@ -37,7 +32,7 @@
 
 <!-- RESTART OUTPUT (instant) -->
       <file_group id="file01" output_freq="1ts">
-      <file id="elmer_restart" name="restart_pp" convention="UGRID" time_counter_name="time" time_counter="instant" time_units="days" >
+      <file id="elmer_restart" name="restart_areasExcluded" convention="UGRID" time_counter_name="time" time_counter="instant" time_units="days" >
               <field_group prec="8" group_ref="mesh_info2" />
               <field_group prec="8" operation="instant">
                   <field field_ref="ssavelocity 1"  />
@@ -48,13 +43,10 @@
                   <field field_ref="haf"            />
                   <field field_ref="bedrock"        />
                   <field field_ref="groundedmask"   />
+                  <field field_ref="beta_1"         />
                   <field field_ref="mueta2"         />
               </field_group>
               <variable id="elmerversion" name="model_version" type="string"> elmer ice v9.0</variable>
-      </file>
-      <file id="elmer_excludeArea" name="output_pp" convention="UGRID" time_counter_name="time" time_counter="instant" time_units="days" >
-              <field_group prec="8" group_ref="mesh_info2" />
-              <field_group prec="8" group_ref="ExcludeArea" />
       </file>
      </file_group>
 </file_definition>
