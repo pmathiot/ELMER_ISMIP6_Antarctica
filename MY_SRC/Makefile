@@ -11,7 +11,7 @@ VPATH=$(BLD)
 
 FFLAGS=-I$(XIOS_INC) -O2 -fpe0 -ftrapuv -g -traceback
 
-LIBS= USF_ExitCondition boxmodel_solver_t FrontThickness_mask USF_CondFront USF_CondDistance SlipCoef SSASolver_bugfix UGridDataReader_t nearestpoint
+LIBS= USF_ExitCondition boxmodel_solver_t FrontThickness_mask USF_CondFront USF_CondDistance SlipCoef SSASolver_bugfix UGridDataReader_t nearestpoint GetConnectedAreas passive_cond ExcludeAreas
 
 all: $(LIBS)
 
@@ -59,5 +59,17 @@ clean:
 # Bug fix SSA coulomb reg
 SSASolver_bugfix:$(SRC)/SSASolver_bugfix.F90
 	elmerf90 $^ -o $(BLD)/$@ $(FFLAGS)
+
+#---------------------------------------------------
+# Processing icebergs
+GetConnectedAreas: $(SRC)/GetConnectedAreas.F90
+	elmerf90 $^ -o $(BLD)/$@ $(FFLAGS)
+
+passive_cond: $(SRC)/passive_cond.F90
+	elmerf90 $^ -o $(BLD)/$@ $(FFLAGS)
+
+ExcludeAreas: $(SRC)/ExcludeAreas.F90
+	elmerf90 $^ -o $(BLD)/$@ $(FFLAGS)
+
 clean:
 	cd $(BLD) && rm -f $(LIBS)
