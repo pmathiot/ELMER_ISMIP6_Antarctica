@@ -108,7 +108,7 @@ Solver 3
    Variable = -nooutput dumyEArea
      Procedure = "ExcludeAreas" "ExcludeAreas"
 
-   Critical Number of elements = Integer 5
+   Critical Number of elements = Integer 7
 End
 
 Solver 4
