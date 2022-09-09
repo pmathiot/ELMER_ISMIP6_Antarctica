@@ -133,7 +133,7 @@ Solver 5
    time_units=String "1y"
 ! 
 ! ... to see we should have the same date as in the initial file
-   reference date=String "2015-01-01"
+   reference date=String "0000-01-01"
 
 ! node and elem vars
    ! geometry

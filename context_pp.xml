@@ -2,7 +2,7 @@
 <!-- Context elmerice -->
 <context id="elmerice">
 
-    <calendar type="NoLeap" time_origin="1995-01-01 00:00:00" />
+    <calendar type="NoLeap" time_origin="0000-01-01 00:00:00" />
 
 <!-- ============== FIELD DEFINITION =========================== -->
   <field_definition enabled=".TRUE." >

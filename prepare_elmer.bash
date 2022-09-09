@@ -56,7 +56,6 @@ echo
 \cp context_elmer.xml            $WELMER/.
 \cp iodef_pp.xml                 $WELMER/.
 \cp context_pp.xml               $WELMER/.
-\cp $CONFIG-${CASE}_pp.sif       $WELMER/pp.sif
 
 # prepare file_def.xml
 sed -e "s/<TIME_RST>/$TIME_RST/g"   ${CONFIG}-${CASE}_file_def.xml > $WELMER/file_def_elmer.xml
@@ -113,6 +112,9 @@ do
         -e "s/<STARTYEAR>/$START_SIMU/g" \
         -e "s/<OFFSET>/$OFFSET/g"        \
         -e "s/<RSTFILEnc>/$RSTFILEnc/g" ${NAME}_elmer.sif  > $WELMER/elmer_t${i}.sif  
+
+    # prepare sif
+    sed -e "s/<STARTYEAR>/$START_SIMU/g" ${NAME}_pp.sif  > $WELMER/pp.sif
 
     # prepare run script
     sed -e "s!<NAME>!${NAME}_$i!g"       \

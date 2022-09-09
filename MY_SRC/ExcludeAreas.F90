@@ -70,9 +70,9 @@
       EThreshold = ListGetInteger(SolverParams,"Critical Number of elements",UnFoundFatal=.TRUE.)
 
       IF (FirstTime) THEN
-        n = MAX(Mesh % MaxElementNodes,Mesh % MaxElementDOFs)
-        ALLOCATE(Basis(n),NodalH(n),MinH(n))
-        FirstTime=.False.
+         n = MAX(Mesh % MaxElementNodes,Mesh % MaxElementDOFs)
+         ALLOCATE(Basis(n),NodalH(n),MinH(n))
+         FirstTime=.False.
       END IF
       
       ! Get Ice thickness
@@ -81,9 +81,9 @@
       ! Get NumberofEleemnts inside connected regions
       NoE => VariableGet( Mesh % Variables,'RegionNoE',UnfoundFatal=.True.)
       IF (.NOT.ASSOCIATED(NoE%Perm)) &
-        CALL FATAL(SolverName,"RegionNoE has no valid permutation")
+         CALL FATAL(SolverName,"RegionNoE has no valid permutation")
       IF (NoE%TYPE.NE.Variable_on_elements) &
-        CALL FATAL(SolverName,"RegionNoE should be on_elements")
+         CALL FATAL(SolverName,"RegionNoE should be on_elements")
       
       totarea=0._dp
       totvolume=0._dp
@@ -104,28 +104,28 @@
          Material => GetMaterial(Element)
          MinH = ListGetConstReal(BodyForce,'H Lower Limit', Gotit)
          IF (.NOT.Gotit) &
-           MinH = ListGetConstReal(Material,'Min H', Gotit)
+            MinH = ListGetConstReal(Material,'Min H', Gotit)
          IF (.NOT.GotIt) &
-           CALL FATAL("ExcludeAreas","Limit for H not found...")
+            CALL FATAL("ExcludeAreas","Limit for H not found...")
 
          CALL GetElementNodes(Nodes,Element)
          IP = GaussPoints( Element )
 
          DO p = 1, IP % n
-           stat = ElementInfo( Element, Nodes, IP % U(p), IP % V(p), &
-             IP % W(p), detJ, Basis) 
-           s = detJ * IP % S(p)    
+            stat = ElementInfo( Element, Nodes, IP % U(p), IP % V(p), &
+              IP % W(p), detJ, Basis) 
+            s = detJ * IP % S(p)    
 
-           HAtIP=SUM(NodalH(1:n)*Basis(1:n))
+            HAtIP=SUM(NodalH(1:n)*Basis(1:n))
 
-           totarea=totarea+s
-           totvolume=totvolume+HAtIP*s
-        END DO
+            totarea=totarea+s
+            totvolume=totvolume+HAtIP*s
+         END DO
 
-       DO i=1,n
-         j = HVar % Perm(Element % NodeIndexes(i))
-         IF(j>0) HVar%Values(j) = MinH(i)
-       END DO
+         DO i=1,n
+            j = HVar % Perm(Element % NodeIndexes(i))
+            IF(j>0) HVar%Values(j) = MinH(i)
+         END DO
 
       END DO
 

@@ -91,8 +91,6 @@ if [[ $RUNSTATUS == 0 ]]; then
    # process restart (add elmer_time)
    ncks -A -v 'beta_*' $RSTFILES restart_pp.nc
    mv -f restart_pp.nc $RSTFILES ; rm restart.nc
-   # add output in debug file
-   ncks -A -v 'region*' output_pp.nc elmer_debug_$CONFIG-${CASE}_${i}.nc
 
    # cp restart to RST dir
    echo "cp restart to $RELMER"
@@ -120,6 +118,8 @@ if [[ $RUNSTATUS == 0 ]]; then
 
    # elmer debug
    NCFILES=`echo "elmer_debug_$CONFIG-${CASE}_${i}.nc" | tr [:upper:] [:lower:]`
+   # add output in debug file
+   ncks -A --no_crd -v 'region*' output_pp.nc $NCFILES
    mv_data_to_s $NCFILES
 
    # elmer scalars
