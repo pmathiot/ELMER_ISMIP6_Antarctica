@@ -56,7 +56,7 @@ echo
 \cp context_elmer.xml            $WELMER/.
 \cp iodef_pp.xml                 $WELMER/.
 \cp context_pp.xml               $WELMER/.
-\cp ${NAME}_pp.sif               $WELMER/pp.sif
+\cp $CONFIG-${CASE}_pp.sif               $WELMER/pp.sif
 
 # prepare file_def.xml
 sed -e "s/<TIME_RST>/$TIME_RST/g"   ${CONFIG}-${CASE}_file_def.xml > $WELMER/file_def_elmer.xml
