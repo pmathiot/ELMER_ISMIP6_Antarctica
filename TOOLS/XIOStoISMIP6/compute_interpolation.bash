@@ -91,7 +91,7 @@ ncatted -a title,global,a,c,"ISMIP6 simulation (extention to 2300): variable $VA
 ncatted -a url,global,a,c,"https://www.climate-cryosphere.org/wiki/index.php?title=ISMIP6-Projections-Antarctica" DATA_ISMIP6/$FILEOUT 
 ncatted -a experiment,global,a,c,'hist' DATA_ISMIP6/$FILEOUT 
 ncatted -a institution,global,a,c,"Institut des Géosciences de l'Environnement, CNRS, Grenoble, France" DATA_ISMIP6/$FILEOUT 
-ncatted -a contacts,global,a,c,"J. Caillet, P. Mathiot and F. Gillet Chollet" DATA_ISMIP6/$FILEOUT 
+ncatted -a contacts,global,a,c,"J. Caillet, P. Mathiot and F. Gillet-Chaulet" DATA_ISMIP6/$FILEOUT 
 ncatted -a reference,global,a,c,"Nowicki, S., Goelzer, H., Seroussi, H., Payne, A. J., Lipscomb, W. H., Abe-Ouchi, A., Agosta, C., Alexander, P., Asay-Davis, X. S., Barthel, A., Bracegirdle, T. J., Cullather, R., Felikson, D., Fettweis, X., Gregory, J. M., Hattermann, T., Jourdain, N. C., Kuipers Munneke, P., Larour, E., Little, C. M., Morlighem, M., Nias, I., Shepherd, A., Simon, E., Slater, D., Smith, R. S., Straneo, F., Trusel, L. D., van den Broeke, M. R., and van de Wal, R.: Experimental protocol for sea level projections from ISMIP6 stand-alone ice sheet models, The Cryosphere, 14, 2331–2368, https://doi.org/10.5194/tc-14-2331-2020, 2020." DATA_ISMIP6/$FILEOUT 
 
 ncatted -a history_of_appended_files,global,d,, DATA_ISMIP6/$FILEOUT
