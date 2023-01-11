@@ -14,7 +14,7 @@ $out_dir = "/ccc/scratch/cont003/gen6066/cailletj/ELMER/ANT50.GL1/ANT50.GL1-ISMI
 ! BMB files
 !-----------------------------------------------------------
 ! define the PICO file
-$file_pico = "FORCING/OCEAN/PICO/Oceanic_forcing_reference_PICO_19952014.nc"
+$file_pico = "FORCING/OCEAN/PICO/CESM2_SSP585_years_PICO.nc"
 !
 ! define the quadratic local file
 ! TOADD once solver and file ready
@@ -26,7 +26,7 @@ $file_pico = "FORCING/OCEAN/PICO/Oceanic_forcing_reference_PICO_19952014.nc"
 $file_smb = "FORCING/ATMOSPHERE/REFERENCE/MAR/Atmo_MAR_forcing_ant50.gl1_reference.nc"
 !
 ! define smb anomaly file
-$file_asmb = "FORCING/ATMOSPHERE/ANOMALY/CESM2/CESM2_ant50.gl1_anomaly_ssp585_19952299.nc"
+$file_asmb = "FORCING/ATMOSPHERE/CESM2/CESM2_ant50.gl1_anomaly_ssp585_19952300.nc"
 !
 !-----------------------------------------------------------
 ! Post Processing files

@@ -75,12 +75,12 @@ Body Force 1
   ! SMB body force
   !---------------------------------------------
      ! with anomaly
-! smb_tot = Variable smb, asmb
-!    REAL LUA "tx[0] + tx[1]"
-! Top Surface Accumulation = Equals smb_tot
+  smb_tot = Variable smb, asmb
+     REAL LUA "tx[0] + tx[1]"
+  Top Surface Accumulation = Equals smb_tot
   
   ! without anomaly
-  Top Surface Accumulation = Equals smb
+!  Top Surface Accumulation = Equals smb
   
   !---------------------------------------------
   ! BMB body force PICO
@@ -300,7 +300,7 @@ Solver 5
    Exec Solver = Before simulation
 
    Equation = "SMBref_DataReader"
-   Procedure = "UGridDataReader_t" "UGridDataReader"
+   Procedure = "ElmerIceSolvers" "UGridDataReader"
 
    File Name = File "$data_dir$/$file_smb$"
    Variable Name 1 = File "smb"
@@ -310,13 +310,13 @@ End
 Solver 6
    Exec Interval =$ 365 / <STPINDAYS>
 
-    ! SMB with anomaly
-!   Exec Solver = Before Timestep
+   ! SMB with anomaly
+   Exec Solver = Before Timestep
    ! SMB without anomaly
-   Exec Solver = Never
+!   Exec Solver = Never
 
    Equation = "ASMB_DataReader"
-   Procedure = "UGridDataReader_t" "UGridDataReader"
+   Procedure = "ElmerIceSolvers" "UGridDataReader"
    
    File Name = File "$data_dir$/$file_asmb$"
    
@@ -421,7 +421,7 @@ End
 !#-----------------------------------------------------------------------
 Solver 11
   Equation = "SSA"
-  Procedure = "SSASolver_bugfix" "SSABasalSolver_bugfix"
+  Procedure = "ElmerIceSolvers" "SSABasalSolver"
 
   ! primary variable
   Variable = -dofs 2 "SSAVelocity"
@@ -655,7 +655,7 @@ Solver 14
 
    ! Optional
    ! SMB with anomaly
-!   Scalar Field 27 = String "asmb"
+   Scalar Field 27 = String "asmb"
    
    ! Global Variables
    Global Variable 1 = String "time"
