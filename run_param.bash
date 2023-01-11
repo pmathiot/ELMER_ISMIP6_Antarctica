@@ -12,16 +12,16 @@ NN=1
 # first iteration number (if more than 1, means restart i-1 are already in place)
 # end iteration
 STARTITER=1
-ENDITER=20
+ENDITER=2
 
 # define length of each segments
-WALLTIME=10800
+WALLTIME=50000
 NSTEP=365
-TIME_STP=1 # in days
+TIME_STP=5 # in days
 
 # first year in forcing file / first year to read in the simulation 
 START_YEAR_FORCING=1995    
-START_SIMU=1995
+START_SIMU=2015
 OFFSET=$((START_SIMU-START_YEAR_FORCING))
 
 calc() { awk "BEGIN{print $*}"; }
@@ -29,7 +29,7 @@ TIME_RST=`calc $NSTEP*$TIME_STP` # in days
 
 # restart path and rst file (assume all in $IELMER)
 RSTINITpath=${IELMER}/RST_simplified2/
-RSTINITfile=restart_newmesh_t0_beta_coulomg_reg.nc
+RSTINITfile=ISMIP6_C-histAE_020.restart.nc
 
 # MSH path and file
 MSHINITpath=${IELMER}/MSH_simplified2/
