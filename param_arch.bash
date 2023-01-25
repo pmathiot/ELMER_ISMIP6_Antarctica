@@ -38,6 +38,6 @@ function run_elmer() {
 ## function to load modules:
 function load_elmer_modules() {
      module purge
-     module load elmerfem/elmerfem-29fd3bf4-opt
+     module load elmerfem/elmerfem-29fd3bf4_bis-opt
      module load nco
            }

@@ -43,12 +43,12 @@ SUBROUTINE boxmodel_solver( Model,Solver,dt,Transient )
   INTEGER,SAVE :: nTime
   INTEGER :: nTime2
 
-  INTEGER,SAVE :: VisitedTimes=0
+  INTEGER,SAVE :: VisitedTimes=0, TimeOffset
   INTEGER :: TimePoint
   REAL(KIND=dp) :: Time
 
   !! Physical Parameters
-  REAL(KIND=dp), SAVE :: sealevel, lbd1, lbd2, lbd3, meltfac, K, gT,  rhostar, CC,beta, alpha, mskcrit
+  REAL(KIND=dp), SAVE :: sealevel, lbd1, lbd2, lbd3, yearinday, meltfac, K, gT,  rhostar, CC,beta, alpha, mskcrit
   INTEGER, SAVE :: boxmax,MaxBas
   LOGICAL :: llGL
 
@@ -133,14 +133,17 @@ SUBROUTINE boxmodel_solver( Model,Solver,dt,Transient )
      Firsttime=.False.
 
      ! - Grounding line :
-     llGL=ListGetLogical( Params, 'Grounding Line Melt', UnFoundFatal=UnFoundFatal )
-
+     llGL      = ListGetLogical( Params, 'Grounding Line Melt', UnFoundFatal = UnFoundFatal )
+     ! - Offset for reading data :
+     TimeOffset= ListGetInteger( Params, 'Time Counter start', UnFoundFatal = UnFoundFatal )
+     
      !- General :
      sealevel = ListGetCReal( Model % Constants, 'Sea Level', UnFoundFatal = UnFoundFatal )
      lbd1     = ListGetCReal( Model % Constants, 'Liquidus slope', UnFoundFatal = UnFoundFatal )
      lbd2     = ListGetCReal( Model % Constants, 'Liquidus intercept', UnFoundFatal = UnFoundFatal )
      lbd3     = ListGetCReal( Model % Constants, 'Liquidus pressure coeff', UnFoundFatal = UnFoundFatal )
-
+     yearinday= ListGetCReal( Model % Constants, 'Calendar', UnFoundFatal = UnFoundFatal )
+     
      ! - PICO : 
      boxmax   = ListGetInteger( Model % Constants, 'Nb Boxes', UnFoundFatal = UnFoundFatal )
      CC       = ListGetCReal( Model % Constants, 'Overturning Coefficient', UnFoundFatal = UnFoundFatal )
@@ -234,22 +237,33 @@ SUBROUTINE boxmodel_solver( Model,Solver,dt,Transient )
    ! get time index
       VisitedTimes = VisitedTimes + 1
       IF( ListGetLogical( Params, "Is Time Counter", Found ) ) THEN
-        TimePoint = VisitedTimes
+       TimePoint = VisitedTimes + TimeOffset
       ELSE
         TimePoint = ListGetInteger( Params, "Time Index", Found )
         IF (.NOT.Found) THEN
           Time = ListGetCReal( Params, "Time Point", Found )
-          IF (.NOT.Found) Time=GetTime()
-            TimePoint = floor(time-dt/2) + 1
+          IF (.NOT.Found) THEN
+            Time = GetTime()
+            dt = GetTimeStepSize()
+            TimePoint = floor((time/yearinday)-(dt/yearinday)/2) + 1 + TimeOffset
+          END IF
         END IF
       END IF
-      TimePoint = max(1,min(TimePoint,nTime))
+      !TimePoint = max(1,min(TimePoint,nTime))
       CALL INFO(Trim(SolverName),"Use Time Index: "//I2S(TimePoint), Level=3)
   ELSE
     TimePoint=1
   ENDIF
 
+  IF (TimePoint.GT.nTime) THEN
+        CALL Fatal(Trim(SolverName), &
+             'Unable to read the line of T and S in netCDF')
+  END IF
+
   T0(1:MaxBas) = T_mean(1:MaxBas,TimePoint) + delta_T(1:MaxBas)
+  IF (VisitedTimes == 1) THEN
+   write(*,*) T0(1)
+  END IF
   S0(1:MaxBas) = S_mean(1:MaxBas,TimePoint)
 
   Boxnumber(:)=0.0_dp
@@ -432,8 +446,8 @@ SUBROUTINE boxmodel_solver( Model,Solver,dt,Transient )
      Integ_Reduced = TotalMelt
   ENDIF
   CALL INFO(SolverName,"----------------------------------------",Level=1)
-  WRITE(meltValue,'(F20.2)') Integ_Reduced*0.917/1.0e9
-  Message='PICO INTEGRATED BASAL MELT [Gt/a]: '//meltValue ! 0.917/1.0e6 to convert m3/a in Gt/a
+  WRITE(meltValue,'(F20.3)') Integ_Reduced*917/1.0e12
+  Message='PICO INTEGRATED BASAL MELT [Gt/j] (rho=917): '//meltValue 
   CALL INFO(SolverName,Message,Level=1)
   CALL INFO(SolverName,"----------------------------------------",Level=1)
 
