@@ -318,7 +318,6 @@ Solver 6
    Equation = "ASMB_DataReader"
    Procedure = "UGridDataReader" "UGridDataReader"
    
-   Is Time Counter = logical True
    Time Counter start = Integer <OFFSET>
    
    File Name = File "$data_dir$/$file_asmb$"

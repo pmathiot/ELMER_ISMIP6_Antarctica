@@ -15,7 +15,7 @@ STARTITER=1
 ENDITER=2
 
 # define length of each segments
-WALLTIME=50000
+WALLTIME=12000
 NSTEP=365
 TIME_STP=5 # in days
 
@@ -25,7 +25,7 @@ START_SIMU=2015
 OFFSET=$((START_SIMU-START_YEAR_FORCING))
 
 # first year in oceanic forcing file / first year to read in the simulation
-START_YEAR_FORCING_OC=1995
+START_YEAR_FORCING_OC=2015
 OFFSETOC=$((START_SIMU-START_YEAR_FORCING_OC))
 
 calc() { awk "BEGIN{print $*}"; }

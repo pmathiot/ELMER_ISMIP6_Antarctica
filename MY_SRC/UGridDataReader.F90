@@ -90,10 +90,10 @@
       INTEGER :: dimids(2) 
       REAL(KIND=dp), ALLOCATABLE :: Values(:)
       REAL(KIND=dp) :: Time, yearinday
-      INTEGER :: TimeIndex,TimePoint,TimeOffset
+      INTEGER :: TimeIndex,TimePoint
       INTEGER :: EIndex,NIndex,VarIndex
-      LOGICAL :: Parallel,Found,VarExist
-      INTEGER, SAVE :: VisitedTimes=0
+      LOGICAL :: Parallel,Found,VarExist, UnFoundFatal=.TRUE.
+      INTEGER, SAVE :: VisitedTimes=0, TimeOffset
       LOGICAL, POINTER :: UnFoundNodes(:) => NULL()
       LOGICAL :: UnFoundNodesFatal
       LOGICAL :: DoInterp
@@ -117,6 +117,9 @@
 !------------------------------------------------------------------------------
 ! get parameters
       SolverParams => GetSolverParams()
+
+! - Offset for reading data :
+     TimeOffset= ListGetInteger( SolverParams, 'Time Counter start', UnFoundFatal = UnFoundFatal )
 
 ! get mesh
       ThisMesh => GetMesh(Solver)
