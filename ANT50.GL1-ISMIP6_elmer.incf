@@ -23,10 +23,9 @@ $file_pico = "FORCING/OCEAN/PICO/CESM2_SSP585_years_PICO.nc"
 ! SMB files
 !-----------------------------------------------------------
 ! define smb reference file
-$file_smb = "FORCING/ATMOSPHERE/REFERENCE/MAR/Atmo_MAR_forcing_ant50.gl1_reference.nc"
+$file_smb = "FORCING/ATMOSPHERE/REFERENCE/MAR/Atmo_MAR_forcing_ant50.gl1_ref_days.nc"
 !
-! define smb anomaly file
-$file_asmb = "FORCING/ATMOSPHERE/CESM2/CESM2_ant50.gl1_anomaly_ssp585_19952300.nc"
+$file_asmb = "FORCING/ATMOSPHERE/CESM2/CESM2_ant50.gl1_anomaly_ssp585_19952300_days.nc"
 !
 !-----------------------------------------------------------
 ! Post Processing files

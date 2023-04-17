@@ -23,6 +23,7 @@ Constants
   Liquidus pressure coeff = Real $lambda3
   
   !Pico
+  Calendar = Real $yearinday
   Melt Factor = Real $meltfac
   Nb Boxes = Integer $Nbox_PICO
   Overturning Coefficient = Real $C_PICO
@@ -48,7 +49,7 @@ Simulation
   Timestepping Method = "bdf"
   BDF Order = 2
   Timestep Intervals(1) = <NSTEPS>
-  Timestep Sizes(1) = $ <STPINDAYS> / 365.0 
+  Timestep Sizes(1) = $ <STPINDAYS> 
 
   ! Add check on the SSAnorm and Hnorm to force Exit in case Elmer did not stop before
   Exit Condition = Variable Time
@@ -108,7 +109,7 @@ End
 Material 1
 ! Material properties
   Viscosity Exponent = Real $1.0/n
-  Critical Shear Rate = Real 1.0e-12
+  Critical Shear Rate = Real $Shear
 
   SSA Mean Viscosity = Equals mueta2
   SSA Mean Density = Real $rhoi
@@ -128,10 +129,10 @@ Material 1
     !
     SSA Friction Parameter = Variable beta_cr, haf
        Real Procedure "SlipCoef" "Calcul_Slc"
-    SSA Friction Threshold Velocity = Real 300.0
-    SSA Friction Threshold Height = Real 75.0
+    SSA Friction Threshold Velocity = Real $Vthres
+    SSA Friction Threshold Height = Real $Hthres
     SSA Friction Exponent = Real $1.0/n  
-    SSA Friction Linear Velocity = Real 0.0001
+    SSA Friction Linear Velocity = Real $Vmin
 
 !  SSA Friction Law = String "linear"
 !    ! linear needed parameter
@@ -315,13 +316,11 @@ Solver 6
 !   Exec Solver = Never
 
    Equation = "ASMB_DataReader"
-   Procedure = "ElmerIceSolvers" "UGridDataReader"
+   Procedure = "UGridDataReader" "UGridDataReader"
+   
+   Time Counter start = Integer <OFFSET>
    
    File Name = File "$data_dir$/$file_asmb$"
-   
-   Time Point = Variable Time
-     REAL LUA "<OFFSET> + tx[0]"
-
    Variable Name 1 = File "asmb"
    Exported Variable 1 = -elem asmb
 
@@ -383,6 +382,7 @@ End
    !# Compute basal melt using PICO
    !#    - Requierement: distGL, FrontMask, distIF
    !#    - option : 'Grounding Line Melt' activates melt on partially floating elements
+   !#               'Time Counter start' apply an offset in the reading of netcdf_file
    !#------------------------------
 Solver 10
    Exec Solver = Before Timestep
@@ -392,6 +392,7 @@ Solver 10
 
    !# option
    Grounding Line Melt = Logical False
+   Time Counter start = Integer <OFFSETOC>
 
    !# input file
    data file = File "$data_dir$/$file_pico$"
@@ -426,7 +427,14 @@ Solver 11
   Variable = -dofs 2 "SSAVelocity"
 
   ! numerical setting
-  include elmer.lsol
+  Linear System Use Hypre = Logical True
+  Linear System Solver = Iterative
+  Linear System Iterative Method = "FlexGMRes"
+  Linear System Max Iterations = 1000
+  Linear System Convergence Tolerance = 1.0E-08
+  Linear System Abort Not Converged = True
+  Linear System Residual Output = 1
+  Linear System Preconditioning = "boomeramg"
 
   Nonlinear System Max Iterations = 25
   Nonlinear System Convergence Tolerance = 1.0e-04
@@ -581,7 +589,7 @@ Solver 14
    Equation = "XIOSOutPutSolve"
    Procedure = "ElmerIceSolvers" "XIOSOutputSolver"
 
-   time_units=String "1y"
+   time_units=String "1d"
 
 ! time-step: optional the duration of the tile step; other time_step=time_units*dt
    timestep=String "<STPINDAYS>d"

@@ -79,8 +79,8 @@
       TYPE(Element_t), POINTER :: Element
       INTEGER :: i,k
       INTEGER :: NN,nf
-      CHARACTER (len=MAX_NAME_LEN) :: FName
-      CHARACTER (len=MAX_NAME_LEN) :: VarName,TVarName
+      CHARACTER (len=MAX_STRING_LEN) :: FName
+      CHARACTER (len=MAX_NAME_LEN) :: VarName,TVarName,T2VarName
       CHARACTER (len=MAX_NAME_LEN) :: Txt
       CHARACTER (len=MAX_NAME_LEN) :: MeshName
 
@@ -89,11 +89,11 @@
       INTEGER :: NetCDFstatus
       INTEGER :: dimids(2) 
       REAL(KIND=dp), ALLOCATABLE :: Values(:)
-      REAL(KIND=dp) :: Time
+      REAL(KIND=dp) :: Time, yearinday
       INTEGER :: TimeIndex,TimePoint
       INTEGER :: EIndex,NIndex,VarIndex
-      LOGICAL :: Parallel,Found,VarExist
-      INTEGER, SAVE :: VisitedTimes=0
+      LOGICAL :: Parallel,Found,VarExist, UnFoundFatal=.TRUE.
+      INTEGER, SAVE :: VisitedTimes=0, TimeOffset
       LOGICAL, POINTER :: UnFoundNodes(:) => NULL()
       LOGICAL :: UnFoundNodesFatal
       LOGICAL :: DoInterp
@@ -117,6 +117,9 @@
 !------------------------------------------------------------------------------
 ! get parameters
       SolverParams => GetSolverParams()
+
+! - Offset for reading data :
+     TimeOffset= ListGetInteger( SolverParams, 'Time Counter start', UnFoundFatal = UnFoundFatal )
 
 ! get mesh
       ThisMesh => GetMesh(Solver)
@@ -162,21 +165,34 @@
       UnFoundNodesFatal = ListGetLogical(SolverParams,'UnFoundNodes Fatal',Found )
       IF (.NOT.Found) UnFoundNodesFatal = .TRUE.
 
+      ! Constants
+      yearinday= ListGetCReal( Model % Constants, 'Calendar' )
 
       ! get time index
       VisitedTimes = VisitedTimes + 1
       IF( ListGetLogical( SolverParams, "Is Time Counter", Found ) ) THEN
-        TimePoint = VisitedTimes
+        TimeOffset=ListGetInteger( SolverParams, "Time Counter start", Found )
+        IF (Found) THEN
+          TimePoint = VisitedTimes + TimeOffset
+        ELSE
+          TimePoint = VisitedTimes
+        ENDIF
       ELSE
         TimePoint = ListGetInteger( SolverParams, "Time Index", Found )
         IF (.NOT.Found) THEN
           Time = ListGetCReal( SolverParams, "Time Point", Found )
-          IF (.NOT.Found) Time=GetTime()
-          dt = GetTimeStepSize()
-          TimePoint = floor(time-dt/2) + 1
+          IF (.NOT.Found) THEN
+           Time = GetTime()
+           dt = GetTimeStepSize()
+           TimeOffset=ListGetInteger( SolverParams, "Time Counter start", Found )
+           IF (Found) THEN
+            TimePoint = floor((time/yearinday)-(dt/yearinday)/2) + 1 + TimeOffset
+           ELSE
+            TimePoint = floor((time/yearinday)-(dt/yearinday)/2) + 1 
+           END IF
+          END IF
         END IF
       END IF
-
 
       VarIndex=1
       VarName = ListGetString(SolverParams,'Variable Name 1',UnFoundFatal=.TRUE.)
@@ -250,6 +266,7 @@
             WRITE(Message,'(A,I0)') &
                     TRIM(VarName)//', reading time step: ',TimeIndex
             CALL INFO(SolverName,Trim(Message),level=4)
+
             NetCDFstatus=nf90_get_var(ncid,TVarId,Values,start=(/1,TimeIndex/),count=(/nvals/))
             IF ( NetCDFstatus /= NF90_NOERR ) &
                CALL FATAL(SolverName,"unable to get variable "//TRIM(VarName))
@@ -327,15 +344,22 @@
 
         ! close file
         NetCDFstatus=nf90_close(ncid)
-       
+
         IF (DoInterp.AND.(VarType.EQ.Variable_on_nodes)) THEN
+
+           ! Rename variable in this mesh with the name in the target mesh
+	   ! to do the interpolation
+	   WRITE(Txt,'(A,I0)') 'Target Mesh Variable ',VarIndex
+           T2VarName = ListGetString(SolverParams,TRIM(Txt),Found)
+           IF (.NOT.Found) T2VarName=TRIM(VarName)
+           Var % NameLen = StringToLowerCase( Var % Name,T2VarName)
 
           CALL InterpolateMeshToMesh( ThisMesh, &
                   TargetMesh, Var, TargetMesh % Variables,&
                   UnfoundNodes=UnfoundNodes)
 
           ! Validate the mapped variables
-          pVar => VariableGet( TargetMesh % Variables, TRIM(TVarName), ThisOnly = .TRUE.,UnFoundFatal=.TRUE. )
+          pVar => VariableGet( TargetMesh % Variables, TRIM(Var%Name), ThisOnly = .TRUE.,UnFoundFatal=.TRUE. )
           pVar % Valid = .TRUE.
           pVar % ValuesChanged = .TRUE.
 
