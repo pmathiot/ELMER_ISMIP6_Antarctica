@@ -13,8 +13,8 @@
        <field id="haf"      standard_name="heigh_above_flotation" unit="m"  grid_ref="GridNodes" />
        <field id="bedrock"      standard_name="bedrock_altitude" unit="m"  grid_ref="GridNodes" comment="The bedrock topography wrt geoid EIGEN-6C4 (positive up)" />
        <field id="groundedmask" unit="1" grid_ref="GridNodes" />
-       <field id="ssavelocity 1"      standard_name="land_ice_vertical_mean_x_velocity"             unit="m a-1" grid_ref="GridNodes" />
-       <field id="ssavelocity 2"      standard_name="land_ice_vertical_mean_y_velocity"             unit="m a-1" grid_ref="GridNodes" />
+       <field id="ssavelocity 1"      standard_name="land_ice_vertical_mean_x_velocity"             unit="m d-1" grid_ref="GridNodes" />
+       <field id="ssavelocity 2"      standard_name="land_ice_vertical_mean_y_velocity"             unit="m d-1" grid_ref="GridNodes" />
        <field id="mueta2" long_name="ssa_mean_viscosity" unit="MPa a1/3"  grid_ref="GridNodes" />
       </field_group>
     

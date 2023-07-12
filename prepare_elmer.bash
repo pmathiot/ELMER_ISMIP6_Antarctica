@@ -17,7 +17,44 @@ if [ ! -d WELMER  ]; then mkdir -p  $WELMER   ; fi
 if [ ! -d RELMER  ]; then mkdir -p  $RELMER   ; fi
 if [ ! -d SELMER  ]; then mkdir -p  $SELMER   ; fi
 
+# source run param file
 . run_param.bash
+
+## create Friction_Material
+FRICTION_lc=$(echo "$FRICTION" | tr '[:upper:]' '[:lower:]')
+case "$FRICTION_lc" in
+        linear)
+                echo "SSA Friction Law = String \"linear\"" > $WELMER/Friction_Material.sif || exit 42
+                echo "SSA Friction Parameter = Equals frC" >> $WELMER/Friction_Material.sif || exit 42
+                XIOS_frc_def="\<field id=\"frc\"  long_name=\"ssa_linear_friction_coefficent\" unit=\"MPa m-1 d\"    grid_ref=\"GridNodes\" \/\>"
+                ;;
+	weertman)
+		echo "SSA Friction Law = String \"Weertman\"" > $WELMER/Friction_Material.sif || exit 42
+		echo "SSA Friction Parameter = Equals frC" >> $WELMER/Friction_Material.sif || exit 42
+		echo "SSA Friction Exponent = Real $1.0/n" >> $WELMER/Friction_Material.sif || exit 42
+		echo "SSA Friction Linear Velocity = Real $Vmin" >> $WELMER/Friction_Material.sif || exit 42
+		parsed_exp=$(echo $1.0/n | sed 's/[$# ]//g;s@/@\\/@g' )
+		XIOS_frc_def="\<field id=\"frc\"  long_name=\"ssa_weertman_friction_coefficent\" unit=\"MPa m^-$parsed_exp d^$parsed_exp\"    grid_ref=\"GridNodes\" \/\>"
+		;;
+	"regularized coulomb")
+		echo "SSA Friction Law = String \"Regularized coulomb\"" > $WELMER/Friction_Material.sif || exit 42
+		echo "SSA Friction Parameter = Variable frC, haf" >> $WELMER/Friction_Material.sif || exit 42
+		echo "   Real Procedure "SlipCoef" "Calcul_Slc"" >> $WELMER/Friction_Material.sif || exit 42
+                echo "SSA Friction Exponent = Real $1.0/n" >> $WELMER/Friction_Material.sif || exit 42
+                echo "SSA Friction Linear Velocity = Real $Vmin" >> $WELMER/Friction_Material.sif || exit 42
+                echo "SSA Friction Threshold Velocity=Real $Vthres" >> $WELMER/Friction_Material.sif  || exit 42
+		echo "SSA Friction Threshold Height=Real $Hthres" >> $WELMER/Friction_Material.sif  || exit 42
+                XIOS_frc_def="\<field id=\"frc\"  long_name=\"ssa_RegCoulomb_friction_coefficent\" unit=\"MPa\"    grid_ref=\"GridNodes\" \/\>"
+		;;
+
+        *)  echo "Sorry Friction Law not ready; exit"; exit 42
+esac
+
+echo "----------------------------------------------------"
+echo "Friction law definition :"
+cat $WELMER/Friction_Material.sif
+echo "----------------------------------------------------"
+
 
 # to fix issue for vtu group gidbit
 chgrp -R ${GROUPUSR} ${WELMER}
@@ -51,7 +88,6 @@ echo "======================="
 echo
 \cp $CONFIG-${CASE}_elmer.param  $WELMER/elmer.param
 \cp $CONFIG-${CASE}_elmer.incf   $WELMER/elmer.incf
-\cp $CONFIG-${CASE}_elmer.lsol   $WELMER/elmer.lsol
 \cp iodef_elmer.xml              $WELMER/.
 \cp context_elmer.xml            $WELMER/.
 \cp iodef_pp.xml                 $WELMER/.
@@ -129,7 +165,9 @@ do
         -e "s!<ID>!${i}!g"               \
         -e "s!<ID-1>!${im1}!g"           \
         -e "s!<ID+1>!${ip1}!g"         run_elmer_skel.bash >> run_elmer_${i}.slurm
-
+    
+    # prepare xml file
+    sed "s/<FRICTION_FIELD>/$XIOS_frc_def/g" context_elmer.xml > $WELMER/context_elmer.xml || exit 42
     # manage status file
     if [[ $((ijob)) == 1 ]];then touch ${HELMER}/zELMER_${i}_READY; fi
 
