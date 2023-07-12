@@ -89,7 +89,7 @@ if [[ $RUNSTATUS == 0 ]]; then
    ElmerSolver pp.sif   ||  nerr=$((nerr+1))
    if [[ $nerr -ne 0 ]] ; then echo 'E R R O R : pp failed (removing icebergs)'; exit 42 ; fi
    # process restart (add elmer_time)
-   ncks -A -v 'beta_*' $RSTFILES restart_pp.nc
+   ncks -A -v 'frc' $RSTFILES restart_pp.nc
    mv -f restart_pp.nc $RSTFILES ; rm restart.nc
 
    # cp restart to RST dir

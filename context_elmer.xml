@@ -125,8 +125,7 @@
 	      </field_group>
 
               <field_group id="elmer_restart" >
-                      <field id="beta_1"   unit="MPa m-1 d" grid_ref="GridNodes" />
-                      <field id="beta_cr"  unit="MPa" grid_ref="GridNodes" />
+                      <FRICTION_FIELD>
                       <field id="eta"      unit="1" grid_ref="GridNodes" />
                       <field id="mueta2"   unit="MPa d1/3" grid_ref="GridNodes" />
 	      </field_group>

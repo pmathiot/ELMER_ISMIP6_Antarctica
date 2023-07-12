@@ -130,7 +130,7 @@ Solver 5
    Equation = "XIOSOutPutSolve"
    Procedure = "ElmerIceSolvers" "XIOSOutputSolver"
 
-   time_units=String "1y"
+   time_units=String "1d"
 ! 
 ! ... to see we should have the same date as in the initial file
    reference date=String "0000-01-01"
