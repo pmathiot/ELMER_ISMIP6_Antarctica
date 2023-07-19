@@ -61,7 +61,7 @@ $Shear     = 1.0e-16                          ! Shear rate limiter threshold (d^
 ! nothing
 
 !---------------------------- Weertman --------------------------------
-$Vmin      = 1.0e-6                           ! Velocity limiter threshold (min velocity for linearisation) (m.d^-1)
+$Vmin       = 1.0e-6                           ! Velocity limiter threshold (min velocity for linearisation) (m.d^-1)
 
 !---------------------------- Regularized Coulomb ---------------------
 $Vmin      = 1.0e-6                           ! Velocity limiter threshold (min velocity for linearisation) (m.d^-1)
@@ -80,7 +80,7 @@ $Hthres    = 75                               ! Thickness threshold (see Joughin
 ! see (Burgard et al. 2022) for definition of the parameters and example of tuning
 !---------------------------------------------------------------------
 $slope     = 2.9e-3                           ! Slope for the calculation of melt (mean_slope, semi-local, local...). In our case : Mean Antarctic slope sin(slope) = 2.9e-3 (Burgard et al. 2022)
-$K         = 11.8e-5                          ! Coefficient In our case : coefficient tuned in Burgard et al. 2022
+$K         = 11.6e-5                          ! Coefficient In our case : coefficient tuned in Burgard et al. 2022
 
 !--------------- PICO melt parameterisation --------------------------
 ! see (Reese et al. (2018)) or (Burgard et al. 2022) for the definition of the parameters and example of tuning
