@@ -1,7 +1,7 @@
 
 SRC=./
 
-BLD=../MY_BLD/
+BLD=../MY_BLD
 
 NCINC=-I$(NETCDFFORTRAN_INCDIR) -I$(NETCDFC_INCDIR)
 
@@ -11,9 +11,11 @@ VPATH=$(BLD)
 
 FFLAGS=-I$(XIOS_INC) -O2 -fpe0 -ftrapuv -g -traceback
 
-LIBS= USF_ExitCondition boxmodel_solver_t FrontThickness_mask USF_CondFront USF_CondDistance SlipCoef nearestpoint GetConnectedAreas passive_cond ExcludeAreas UGridDataReader
+LIBS= Melt USF_ExitCondition FrontThickness_mask USF_CondFront USF_CondDistance SlipCoef nearestpoint GetConnectedAreas passive_cond ExcludeAreas UGridDataReader
 
 all: $(LIBS)
+
+#only_melt: DistanceModule.o PICO.o Melt
 
 #---------------------------------------------------
 # USR function
@@ -33,8 +35,11 @@ nearestpoint:$(SRC)/nearestpoint.F90
 
 # BMB 
 # BMB: PICO
-boxmodel_solver_t:$(SRC)/boxmodel_solver_t.F90
-	elmerf90 $(NCINC) $^ -o $(BLD)/$@ $(FFLAGS) $(NCLIB)
+#
+
+Melt: $(SRC)/DistanceModule.F90 $(SRC)/PICO.F90 $(SRC)/Melt.F90
+	rm -f $(BLD)/*.mod
+	elmerf90 $^ -o $(BLD)/$@ $(FFLAGS) $(NCINC) $(NCLIB)
 
 FrontThickness_mask:$(SRC)/FrontThickness_mask.F90
 	elmerf90 $^ -o $(BLD)/$@ $(FFLAGS)

@@ -19,8 +19,8 @@ ENDITER=1
 
 # define length of each segments
 WALLTIME=12000
-NSTEP=365
-TIME_STP=5 # in days
+NSTEP=438
+TIME_STP=2.5 # in days
 calc() { awk "BEGIN{print $*}"; }
 TIME_RST=`calc $NSTEP*$TIME_STP` # in days
 
