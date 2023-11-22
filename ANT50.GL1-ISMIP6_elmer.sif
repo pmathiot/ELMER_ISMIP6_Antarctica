@@ -64,6 +64,12 @@ Body 1
   Equation = 1
   Material = 1
   Body Force = 1
+  Initial Condition = 1
+End
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+Initial Condition 1
+  !Initialise pvar here (always active)
+  pvar = Real 1.0
 End
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 Body Force 1
@@ -182,6 +188,7 @@ Solver 1
    Exported Variable 1 = bedrock
    Exported Variable 2 = mueta2
    Exported Variable 3 = frc
+   Exported Variable 4 = -elem "pvar"
 End
 
 
@@ -608,10 +615,12 @@ Solver 11
    Scalar Field 24 = String "basins"
    Scalar Field 25 = String "true_cell_area"
    Scalar Field 26 = String "basins_isf"
+   Scalar Field 27 = String "pvar"
+
 
    ! Optional
    ! SMB with anomaly
-   Scalar Field 27 = String "asmb"
+   Scalar Field 28 = String "asmb"
    
    ! Global Variables
    Global Variable 1 = String "time"
