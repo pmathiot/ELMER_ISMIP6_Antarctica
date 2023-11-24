@@ -112,8 +112,9 @@ do
         -e "s/<NSTEPS>/$NSTEP/g"         \
         -e "s/<STPINDAYS>/$TIME_STP/g"   \
         -e "s/<STARTYEAR>/$START_SIMU/g" \
+	-e "s/<MELT>/$MELT/g"            \
         -e "s/<OFFSET>/$OFFSET/g"        \
-        -e "s/<OFFSETOC>/$OFFSETOC/g"        \
+        -e "s/<OFFSETOC>/$OFFSETOC/g"    \
         -e "s/<RSTFILEnc>/$RSTFILEnc/g" ${NAME}_elmer.sif  > $WELMER/elmer_t${i}.sif  
 
     # prepare run script
@@ -173,7 +174,25 @@ do
 
 
     # prepare xml file
-    sed "s@<FRICTION_FIELD>@$XIOS_frc_def@g" context_elmer.xml > $WELMER/context_elmer.xml || exit 42
+    year=`grep '$yearinsec' ${CONFIG}-${CASE}_elmer.param`
+    year=${year#*=}      #supress before =
+    year=${year%\!*}     #supress after !
+    
+    day=`grep '$dayinsec' ${CONFIG}-${CASE}_elmer.param`
+    day=${day#*=}      #supress before =
+    day=${day%\!*}     #supress after !
+
+    rho=`grep '$rhoi_SI' ${CONFIG}-${CASE}_elmer.param`
+    rho=${rho#*=}      #supress before =
+    rho=${rho%\!*}     #supress after !
+
+    sed -e "s!<SEC_YEAR>!${year}!g"                \
+        -e "s!<SEC_DAY>!${day}!g"                  \
+     	-e "s!<RHOI>!$rho!g"                       \
+        -e "s!<ORIGINE>!$TIME_ORIGINE!g"           \
+	-e "s!<FRICTION_FIELD>!${XIOS_frc_def}!g"  context_elmer.xml > $WELMER/context_elmer.xml || exit 42
+    #sed "s@<FRICTION_FIELD>@$XIOS_frc_def@g" context_elmer.xml > $WELMER/context_elmer.xml || exit 42
+    
     # manage status file
     if [[ $((ijob)) == 1 ]];then touch ${HELMER}/zELMER_${i}_READY; fi
 

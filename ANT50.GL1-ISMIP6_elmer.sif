@@ -339,14 +339,14 @@ Solver 7
   Variable = -nooutput dummy
   Procedure = "Melt" "MeltSolver"
 
-  data file = File "$data_dir$/$file_pico$"
+  data file = File "$data_dir$/$file_melt$"
 
   Bottom Surface Variable Name = String "zb"
   Grounding Line Melt = Logical False
   PanAntarctic = Logical True
   Time Counter start = Integer <OFFSETOC>
 
-  Parameterisation Name = string "PICO"
+  Parameterisation Name = string <MELT>
   DistGL Name = string "distGL"
   DistIF Name = string "distIF"
 

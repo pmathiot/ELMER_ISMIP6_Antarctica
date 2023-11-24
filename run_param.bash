@@ -32,10 +32,12 @@ START_YEAR_FORCING=1995
 START_SIMU=2015
 OFFSET=$((START_SIMU-START_YEAR_FORCING))
 
-# first year in oceanic forcing file / first year to read in the simulation
+# first year in oceanic forcing file
 START_YEAR_FORCING_OC=1995
 OFFSETOC=$((START_SIMU-START_YEAR_FORCING_OC))
 
+# time orginie for output
+TIME_ORIGINE=1995
 #------------------------------------------------------------------------------
 #                               RESTART DATA
 #------------------------------------------------------------------------------

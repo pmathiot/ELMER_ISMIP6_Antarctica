@@ -2,13 +2,13 @@
 <!-- Context elmerice -->
    <context id="elmerice">
 
-    <calendar type="NoLeap" time_origin="1995-01-01 00:00:00" />
+	   <calendar type="NoLeap" time_origin="<ORIGINE>-01-01 00:00:00" />
 
 <!-- ============== Variable definition ======================== -->
     <variable_definition>
-       <variable id="nsec_per_year"  type="float"  > 31536000 </variable>
-       <variable id="nsec_per_day"   type="float"  > 86400    </variable>
-       <variable id="rhoi"           type="float"  > 917.0    </variable>
+       <variable id="nsec_per_year"  type="float"  > <SEC_YEAR>  </variable>
+       <variable id="nsec_per_day"   type="float"  > <SEC_DAY>   </variable>
+       <variable id="rhoi"           type="float"  > <RHOI>      </variable>
     </variable_definition>
 
 <!-- ============== FIELD DEFINITION =========================== -->
