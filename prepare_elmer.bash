@@ -24,6 +24,23 @@ if [ ! -d SELMER  ]; then mkdir -p  $SELMER   ; fi
 # to fix issue for vtu group gidbit
 chgrp -R ${GROUPUSR} ${WELMER}
 
+# Calculate time offsets of forcing files
+function value_from_incf_file {
+    # Print value (from incf file) of variable given as argument.
+    echo $(grep -E "^[ \t]*\\\$$1[ \t]*=" $CONFIG-${CASE}_elmer.incf | cut -d= -f2 | cut -d! -f1 | cut -d\" -f2)
+}
+function start_year_of_netcdf_file {
+    # Print year of first time frame in netcdf file (given the name of the file in incf file).
+    typeset filepath=$(value_from_incf_file data_dir)/$(value_from_incf_file $1)
+    # For now, we rely on the netcdf file having a properly defined time
+    # variable. Other methods can be implemented later on a need basis
+    echo $(ncdump -t -v time $filepath | grep -E "^ time = \"" | cut -d\" -f2 | cut -d- -f1)
+}
+[ -z ${START_YEAR_FORCING+x} ] && START_YEAR_FORCING=$(start_year_of_netcdf_file file_asmb)
+[ -z ${START_YEAR_FORCING_OC+x} ] && START_YEAR_FORCING_OC=$(start_year_of_netcdf_file file_pico)
+OFFSET=$((START_SIMU-START_YEAR_FORCING))
+OFFSETOC=$((START_SIMU-START_YEAR_FORCING_OC))
+
 # set symbolic link
 if [ ! -L MY_WORK    ]; then ln -s $WELMER MY_WORK    ; fi
 if [ ! -L MY_RESTART ]; then ln -s $RELMER MY_RESTART ; fi

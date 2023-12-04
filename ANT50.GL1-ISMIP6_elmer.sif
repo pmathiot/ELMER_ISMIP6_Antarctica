@@ -271,7 +271,11 @@ End
 !#                
 !#     - comments : * if no asmb required for the simulation, simply desactivate it
 !#                    in Exec Solver using Never keyword (pre-written line) and switching comment in body_force
-!#                  * offset is automatically managed by run_param.bash and prepare_elmer.bash (need user input)
+!#                  * offset is managed by run_param.bash and prepare_elmer.bash. By default, it is calculated
+!#                    automatically by prepare_elmer.bash from the forcing file start date and the simulation
+!#                    start date, although users can override the value of the forcing file start date by
+!#                    defining it explicitly in run_param.bash.
+!#                    NB: same comment for offset of ocean forcing file below.
 !#-----------------------------------------------------------------------
 Solver 5
    Exec Solver = Before simulation
