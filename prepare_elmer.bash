@@ -34,10 +34,17 @@ function start_year_of_netcdf_file {
     typeset filepath=$(value_from_incf_file data_dir)/$(value_from_incf_file $1)
     # For now, we rely on the netcdf file having a properly defined time
     # variable. Other methods can be implemented later on a need basis
-    echo $(ncdump -t -v time $filepath | grep -E "^ time = \"" | cut -d\" -f2 | cut -d- -f1)
+    typeset ncdata=$(ncdump -t -v time $filepath)
+    if [ $? != 0 ] ; then
+        echo "-999"
+    else
+        echo "$ncdata" | grep -E "^ time = \"" | cut -d\" -f2 | cut -d- -f1
+    fi
 }
 [ -z ${START_YEAR_FORCING+x} ] && START_YEAR_FORCING=$(start_year_of_netcdf_file file_asmb)
 [ -z ${START_YEAR_FORCING_OC+x} ] && START_YEAR_FORCING_OC=$(start_year_of_netcdf_file file_pico)
+[ $START_YEAR_FORCING = -999 ] && echo "Problem with start date of atmospheric forcing file. Exiting..." && exit -2
+[ $START_YEAR_FORCING_OC = -999 ] && echo "Problem with start date of oceanic forcing file. Exiting..." && exit -2
 OFFSET=$((START_SIMU-START_YEAR_FORCING))
 OFFSETOC=$((START_SIMU-START_YEAR_FORCING_OC))
 
