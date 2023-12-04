@@ -27,14 +27,13 @@ TIME_RST=`calc $NSTEP*$TIME_STP` # in days
 #------------------------------------------------------------------------------
 #                               FORCING DATA
 #------------------------------------------------------------------------------
-# first year in atmospheric forcing file / first year to read in the simulation 
-START_YEAR_FORCING=1995    
 START_SIMU=2015
-OFFSET=$((START_SIMU-START_YEAR_FORCING))
-
-# first year in oceanic forcing file / first year to read in the simulation
-START_YEAR_FORCING_OC=1995
-OFFSETOC=$((START_SIMU-START_YEAR_FORCING_OC))
+# The starting year of forcing files is detected automatically by
+# prepare_elmer.bash. To override this automatic detection, you can set one or
+# both of the following variables (for the atmospheric and oceanic forcing
+# files, respectively)
+# START_YEAR_FORCING=1995
+# START_YEAR_FORCING_OC=1995
 
 #------------------------------------------------------------------------------
 #                               RESTART DATA
