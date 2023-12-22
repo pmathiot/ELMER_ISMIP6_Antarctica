@@ -105,24 +105,75 @@ do
     echo "start: ${NAME}_elmer_$i from $RSTFILEnc"
     echo '======' 
     echo ''
+    
+    ## simulation with or without smb anomaly
+    SMB_lc=$(echo "$SMB_METHOD" | tr '[:upper:]' '[:lower:]')
+    case "$SMB_lc" in
+             anomaly)
+		    echo "Simulation with constant SMB and variable ASMB" 
+                    Ini_Condition="! asmb = Real 0.0"
+		    Execution1="Before simulation"
+		    Execution2="Before Timestep"
+		    DATA="asmb"
+                    ;;
+             constant)
+                    echo "Simulation with constant SMB" 
+                    Ini_Condition="asmb = Real 0.0"
+                    Execution1="Before simulation"
+		    Execution2="Never"
+		    DATA="asmb"
+                    ;;
+             variable)
+                    echo "Simulation with variable SMB" 
+                    Ini_Condition="asmb = Real 0.0"
+		    Execution1="Never"
+                    Execution2="Before Timestep"
+                    DATA="smb"
+                    ;;
+             *)     echo "Sorry SMB method not found; exit"; exit 42
+    esac
+ 
+    ## parameterisation of basal melting
+    PARAM_MELT_lc=$(echo "$MELT" | tr '[:upper:]' '[:lower:]')
+    case "$PARAM_MELT_lc" in
+             pico)
+                    echo "Simulation with PICO parameterisation"
+		    # sed -e '/<PARAMETER_MELT>/ {' -e 'r PICO_Param.txt' -e 'd' -e '}' -i $WELMER/elmer_t${i}.sif
+		    sed '/<PARAMETER_MELT>/ s/.*/cat PICO_Param.txt/e' ${NAME}_elmer.sif > ${NAME}_elmer_melt.sif
+                    ;;
+             quadratic)
+                    echo "Simulation with QUADRATIC parameterisation"
+		    sed '/<PARAMETER_MELT>/ s/.*/cat QUADRATIC_Param.txt/e' ${NAME}_elmer.sif > ${NAME}_elmer_melt1.sif
+		    sed -e "s/<SLOPE>/$SLOPE/g" \
+		        -e "s/<CORR_T>/$CORRECTION/g" ${NAME}_elmer_melt1.sif > ${NAME}_elmer_melt.sif
+		    rm -f ${NAME}_elmer_melt1.sif
+		    ;;
+             *)     echo "Sorry Melt Parameterisation not found; exit"; exit 42
+    esac
+
+
 
     # prepare sif
-    sed -e "s/<ID-1>/${im1}/g"           \
-        -e "s/<ID>/${i}/g"               \
-        -e "s/<NSTEPS>/$NSTEP/g"         \
-        -e "s/<STPINDAYS>/$TIME_STP/g"   \
-        -e "s/<STARTYEAR>/$START_SIMU/g" \
-	-e "s/<MELT>/$MELT/g"            \
-        -e "s/<OFFSET>/$OFFSET/g"        \
-        -e "s/<OFFSETOC>/$OFFSETOC/g"    \
-        -e "s/<RSTFILEnc>/$RSTFILEnc/g" ${NAME}_elmer.sif  > $WELMER/elmer_t${i}.sif  
+    sed -e "s/<ID-1>/${im1}/g"               \
+        -e "s/<ID>/${i}/g"                   \
+        -e "s/<NSTEPS>/$NSTEP/g"             \
+        -e "s/<STPINDAYS>/$TIME_STP/g"       \
+        -e "s/<STARTYEAR>/$START_SIMU/g"     \
+	-e "s/<MELT>/$MELT/g"                \
+        -e "s/<OFFSET>/$OFFSET/g"            \
+        -e "s/<OFFSETOC>/$OFFSETOC/g"        \
+	-e "s/<INI_COND>/${Ini_Condition}/g" \
+	-e "s/<EXEC_C>/${Execution1}/g"      \
+	-e "s/<EXEC_V>/${Execution2}/g"      \
+	-e "s/<DATA_V>/${DATA}/g"            \
+        -e "s/<RSTFILEnc>/$RSTFILEnc/g"      ${NAME}_elmer_melt.sif  > $WELMER/elmer_t${i}.sif  
 
     # prepare run script
     sed -e "s!<NAME>!${NAME}_$i!g"       \
         -e "s!<NNODES>!${NN}!g"          \
         -e "s!<GROUPUSR>!${GROUPUSR}!g"  \
         -e "s!<WALLTIME>!${WALLTIME}!g"  \
-        -e "s!<NTASKS>!${NP}!g"        run_arch.slurm > run_elmer_${i}.slurm
+        -e "s!<NTASKS>!${NP}!g"          run_arch.slurm > run_elmer_${i}.slurm
 
     sed -e "s!<RSTFILEnc>!$RSTFILEnc!g"  \
         -e "s!<ECONFIG>!$CONFIG!g"       \
@@ -130,7 +181,7 @@ do
         -e "s!<HELMER>!$HELMER!g"        \
         -e "s!<ID>!${i}!g"               \
         -e "s!<ID-1>!${im1}!g"           \
-        -e "s!<ID+1>!${ip1}!g"         run_elmer_skel.bash >> run_elmer_${i}.slurm
+        -e "s!<ID+1>!${ip1}!g"           run_elmer_skel.bash >> run_elmer_${i}.slurm
    
 
 
@@ -208,4 +259,5 @@ do
     jobid0=$jobid
  
 done
+rm -f ${NAME}_elmer_melt.sif
 echo ''

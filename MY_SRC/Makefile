@@ -34,10 +34,10 @@ nearestpoint:$(SRC)/nearestpoint.F90
 #---------------------------------------------------
 
 # BMB 
-# BMB: PICO
+# BMB: PICO OR QUADRATIC
 #
 
-Melt: $(SRC)/DistanceModule.F90 $(SRC)/PICO.F90 $(SRC)/Melt.F90
+Melt: $(SRC)/DistanceModule.F90 $(SRC)/PICO.F90 $(SRC)/MyGridDataReader.F90 $(SRC)/QUADRATIC.F90 $(SRC)/Melt.F90
 	rm -f $(BLD)/*.mod
 	elmerf90 $^ -o $(BLD)/$@ $(FFLAGS) $(NCINC) $(NCLIB)
 

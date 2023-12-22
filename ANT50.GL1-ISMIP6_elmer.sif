@@ -12,18 +12,23 @@ Header
 End
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 Constants
+  Calendar = Real $yearinday   
+
   !Physical
+  Ice density = Real $rhoi
+  Ice fusion latent heat = Real $Lf
   Sea Level = Real $zsl
   Water Density = Real $rhow
   Sea Water Specific heat = Real $cpw
-  Ice density = Real $rhoi
-  Ice fusion latent heat = Real $Lf
+  Gravity = Real $gravity
   Liquidus slope = Real $lambda1
   Liquidus intercept = Real $lambda2
   Liquidus pressure coeff = Real $lambda3
-  
+  Gravity = Real $gravity
+  Salinity coefficient = Real $beta_S
+  Coriolis = Real $coriolis
+ 
   !Pico
-  Calendar = Real $yearinday
   Melt Factor = Real $meltfac
   Nb Boxes = Integer $Nbox_PICO
   Overturning Coefficient = Real $C_PICO
@@ -31,6 +36,13 @@ Constants
   Thermal Expansion Coefficient EOS = Real $alpha_PICO
   Salinity Contraction Coefficient EOS = Real $beta_PICO
   In Situ Density EOS = Real $rhostar_PICO
+
+  !Quadratic
+  Slope = Real $slope
+  Coeff_K = Real $K
+
+  !File_Temperature = File "$data_dir$/$file_temperature_quadratic$"
+  !File_Salinity = File "$data_dir$/$file_salinity_quadratic$"
 End
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 Simulation
@@ -57,7 +69,7 @@ Simulation
   Steady State Max Iterations = 4
   Steady State Min Iterations = 2
 
-  max output level = 4
+  max output level = 5
 End
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 Body 1
@@ -70,6 +82,8 @@ End
 Initial Condition 1
   !Initialise pvar here (always active)
   pvar = Real 1.0
+  ! Initialisation smb anomaly if needed
+  <INI_COND> 
 End
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 Body Force 1
@@ -80,13 +94,9 @@ Body Force 1
   !---------------------------------------------
   ! SMB body force
   !---------------------------------------------
-     ! with anomaly
   smb_tot = Variable smb, asmb
     REAL LUA "tx[0] + tx[1]"
   Top Surface Accumulation = Equals smb_tot
-  
-  ! without anomaly
-!  Top Surface Accumulation = Equals smb
   
   !---------------------------------------------
   ! BMB body force PICO
@@ -229,15 +239,40 @@ Solver 3
    Variable = -nooutput "dumy"
    procedure = "nearestpoint" "nearestpoint"
 
-   ! global basins
-   Variable 1 = File "basins"
+   ! Reese  basins
+   Variable 1 = File "$var_Reese$"
    Variable 1 data file = File "$data_dir$/$file_basins$"
    Target Variable 1 = String "basins"
-
    Exported Variable 1 = -dofs 1 -elem basins
 End
 
 Solver 4
+   Exec Solver = Before Simulation
+   Equation = "point_IMBIE"
+   Variable = -nooutput "dumy"
+   procedure = "nearestpoint" "nearestpoint"
+
+   ! IMBIE basins
+   Variable 1  = File "$var_IMBIE_area$"
+   Variable 1 data file = File "$data_dir$/$file_areas_IMBIE$"
+   Target Variable 1  = String "imbie_basins"
+   Exported Variable 1 = -dofs 1 -elem imbie_basins
+End
+
+Solver 5
+   Exec Solver = Before Simulation
+   Equation = "point_IMBIE2"
+   Variable = -nooutput "dumy"
+   procedure = "nearestpoint" "nearestpoint"
+
+   ! IMBIE subbasins 
+   Variable 1 = File "$var_IMBIE_basin$"
+   Variable 1 data file = File "$data_dir$/$file_basins_IMBIE$"
+   Target Variable 1  = String "imbie_subbasins"
+   Exported Variable 1 = -dofs 1 -elem imbie_subbasins
+End
+
+Solver 6
    Exec Solver = Before Simulation
    Equation = "point_isf"
    Variable = -nooutput "dumy"
@@ -250,7 +285,6 @@ Solver 4
 
    Exported Variable 1 = -dofs 1 -elem basins_isf
 End
-
 
 !#-----------------------------------------------------------------------
 !#                          SMB SOLVER
@@ -280,9 +314,8 @@ End
 !#                    in Exec Solver using Never keyword (pre-written line) and switching comment in body_force
 !#                  * offset is automatically managed by run_param.bash and prepare_elmer.bash (need user input)
 !#-----------------------------------------------------------------------
-Solver 5
-   Exec Solver = Before simulation
-
+Solver 7
+   Exec Solver = <EXEC_C>
    Equation = "SMBref_DataReader"
    Procedure = "ElmerIceSolvers" "UGridDataReader"
 
@@ -291,22 +324,18 @@ Solver 5
    Exported Variable 1 = -elem smb
 End   
 
-Solver 6
-   Exec Interval =$ 365 / <STPINDAYS>
-
-   ! SMB with anomaly
-   Exec Solver = Before Timestep
-   ! SMB without anomaly
-!   Exec Solver = Never
+Solver 8
+   Exec Interval =$ yearinday / <STPINDAYS>
+   Exec Solver = <EXEC_V>
 
    Equation = "ASMB_DataReader"
    Procedure = "UGridDataReader" "UGridDataReader"
    
    Time Counter start = Integer <OFFSET>
    
-   File Name = File "$data_dir$/$file_asmb$"
-   Variable Name 1 = File "asmb"
-   Exported Variable 1 = -elem asmb
+   File Name = File "$data_dir$/$file_<DATA_V>$"
+   Variable Name 1 = File "<DATA_V>"
+   Exported Variable 1 = -elem <DATA_V>
 
    ! allocate smb_tot and update body force
    Exported Variable 2 = -elem "smb_tot"
@@ -332,30 +361,14 @@ End
 !#                                 * distIF (ice shelf front)
 !#-----------------------------------------------------------------------
 
-Solver 7
-  Exec Solver = Before Timestep
-  !Exec Solver = Never  
+Solver 9
+  Exec Solver = Before Timestep  
   Equation = "MELT"
   Variable = -nooutput dummy
   Procedure = "Melt" "MeltSolver"
 
-  data file = File "$data_dir$/$file_melt$"
-
-  Bottom Surface Variable Name = String "zb"
-  Grounding Line Melt = Logical False
-  PanAntarctic = Logical True
-  Time Counter start = Integer <OFFSETOC>
-
   Parameterisation Name = string <MELT>
-  DistGL Name = string "distGL"
-  DistIF Name = string "distIF"
-
-  Exported variable 1 = -dofs 1 distGL
-  Exported variable 2 = -dofs 1 FrontMask
-  Exported variable 3 = -dofs 1 distIF
-  Exported Variable 4 = -dofs 1 -elem Boxes
-  Exported Variable 5 = -dofs 1 -elem Melt
-  Exported variable 6 = -dofs 1 -elem basins
+  <PARAMETER_MELT>
 End
 
 !#-----------------------------------------------------------------------
@@ -375,7 +388,7 @@ End
 !#
 !#     - comments: * Friction law defined in material section
 !#-----------------------------------------------------------------------
-Solver 8
+Solver 10
   Equation = "SSA"
   Procedure = "ElmerIceSolvers" "SSABasalSolver"
 
@@ -440,7 +453,7 @@ End
 !#                           * element averaged surface mass balance [XXX, >0 blabla](elemental)
 !#                           * element averaged basal mass balance [XXX, >0 blabla] (elemental)
 !#-----------------------------------------------------------------------
-Solver 9
+Solver 11
    Equation = "Thickness"
    Procedure = "ElmerIceSolvers" "ThicknessSolver"
 
@@ -508,7 +521,7 @@ End
 !#                           * grounded fraction [] (elemental)
 !#                           * floating fraction [] (elemental)
 !#-----------------------------------------------------------------------
-Solver 10
+Solver 12
    Equation = "Flotation"
    Procedure = "ElmerIceSolvers" "Flotation"
 
@@ -539,7 +552,7 @@ End
 !#     - principal output  : * N/A
 !#     - optional  outputs : * N/A
 !#-----------------------------------------------------------------------
-Solver 11
+Solver 13
    Exec Solver = After Timestep
 
    Equation = "XIOSOutPutSolve"
@@ -615,12 +628,15 @@ Solver 11
    Scalar Field 24 = String "basins"
    Scalar Field 25 = String "true_cell_area"
    Scalar Field 26 = String "basins_isf"
-   Scalar Field 27 = String "pvar"
+   Scalar Field 27 = String "imbie_basins"
+   Scalar Field 28 = String "imbie_subbasins"
+   Scalar Field 29 = String "pvar"
 
 
-   ! Optional
-   ! SMB with anomaly
-   Scalar Field 28 = String "asmb"
+   Scalar Field 30 = String "asmb"
+   Scalar Field 31 = String "tf"
+   Scalar Field 32 = String "salinity"
+   Scalar Field 33 = String "temperature"   
    
    ! Global Variables
    Global Variable 1 = String "time"
@@ -631,7 +647,7 @@ End
 
 !#####
 Equation 1
-  Active Solvers (11)= 1 2 3 4 5 6 7 8 9 10 11
+  Active Solvers (13)= 1 2 3 4 5 6 7 8 9 10 11 12 13
 End
 
 !#####

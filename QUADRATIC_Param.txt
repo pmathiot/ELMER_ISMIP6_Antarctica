@@ -1,0 +1,34 @@
+  !Time Offset = Real $( yearinday * (<OFFSETOC>-1))
+  !Index Read = Logical True
+  Time Offset = Real <OFFSETOC>
+  
+  Slope Method = string <SLOPE>
+
+  File_Salinity = File "$data_dir$/$file_salinity_quadratic$"
+  File_Temperature = File "$data_dir$/$file_temperature_quadratic$" 
+
+  Correction = Logical <CORR_T>
+  Data file = File "$data_dir$/$file_correction$"
+  
+  !X Dim Name = File "x"
+  !Y Dim Name = File "y"
+  !Z Dim Name = File "z"
+  !Time Dim Name = File "time"
+
+  !X Var Name = File "x"
+  !Y Var Name = File "y"
+  !Z Var Name = File "z"
+  !Time Var Name = File "time"
+
+  !Elmer Coordinate 3 = String "zb"
+  !Get Cell Value = Logical True
+  !Allow bound mismatch = Logical True
+  !Read full array = logical True
+  
+  !Grounding Line Melt = Logical False
+
+  Exported Variable 1 = -dofs 1 -elem Melt
+  Exported Variable 2 = -dofs 1 -elem TF
+  Exported variable 3 = -dofs 1 salinity
+  Exported variable 4 = -dofs 1 temperature
+

@@ -47,17 +47,20 @@
 
       <file id="elmer_debug" name="elmer_debug" convention="UGRID" time_counter_name="time" time_counter="instant" time_units="days" >
 	      <field_group group_ref="mesh_info2" />
-	      <field name="dhdt_max"  field_ref="h velocity" operation="maximum" />
-	      <field name="dhdt_min"  field_ref="h velocity" operation="minimum" />
-	      <field name="dhdt_mean" field_ref="h velocity" operation="average" />
-              <field name="dhdt"      field_ref="h velocity" />
-	      <field name="vmin"      field_ref="vnorm" operation="minimum" />
-	      <field name="vmax"      field_ref="vnorm" operation="maximum" />
-              <field name="vmean"     field_ref="vnorm" operation="average" />
-	      <field name="vnorm"     field_ref="vnorm" />
-	      <field name="passive"   field_ref="pvar" />
-              <field name="smb"       field_ref="smb" />
-              <field name="melt"      field_ref="melt" />
+	      <field name="dhdt_max"    field_ref="h velocity" operation="maximum" />
+	      <field name="dhdt_min"    field_ref="h velocity" operation="minimum" />
+	      <field name="dhdt_mean"   field_ref="h velocity" operation="average" />
+              <field name="dhdt"        field_ref="h velocity" />
+	      <field name="vmin"        field_ref="vnorm" operation="minimum" />
+	      <field name="vmax"        field_ref="vnorm" operation="maximum" />
+              <field name="vmean"       field_ref="vnorm" operation="average" />
+	      <field name="vnorm"       field_ref="vnorm" />
+	      <field name="passive"     field_ref="pvar" />
+              <field name="smb"         field_ref="smb" />
+	      <field name="melt"        field_ref="melt" />
+	      <field name="salinity"    field_ref="salinity" />
+	      <field name="temperature" field_ref="temperature" />
+	      <field name="zb"          field_ref="zb" />
       </file>
 
       </file_group>

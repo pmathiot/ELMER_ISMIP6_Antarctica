@@ -72,9 +72,9 @@ MODULE PICO
     INTEGER :: n
 
     !! Mandatory variables and associated pointers
-    TYPE(Variable_t),POINTER :: BasinVar, BoxVar, MeltVar, GMVar, DepthVar, distGLVar, distIFVar
-    REAL(KIND=dp), POINTER ::  Basin(:), Boxnumber(:), Melt(:), GM(:), DepthVal(:), distGL(:), distIF(:)
-    INTEGER , POINTER :: BasinPerm(:), BPerm(:), MeltPerm(:), GMPerm(:), DepthPerm(:), distGLPerm(:), distIFPerm(:)
+    TYPE(Variable_t),POINTER :: BasinVar, BoxVar, MeltVar, GMVar, DepthVar, distGLVar, distIFVar, TFVar
+    REAL(KIND=dp), POINTER ::  Basin(:), Boxnumber(:), Melt(:), GM(:), DepthVal(:), distGL(:), distIF(:), TF(:)
+    INTEGER , POINTER :: BasinPerm(:), BPerm(:), MeltPerm(:), GMPerm(:), DepthPerm(:), distGLPerm(:), distIFPerm(:), TFPerm(:)
     REAL(KIND=dp),ALLOCATABLE :: Depth(:)
 
     !! Variables related to netcd (containing input variables)
@@ -140,6 +140,10 @@ MODULE PICO
     MeltVar => VariableGet(Model % Mesh % Variables, 'Melt', UnFoundFatal=.TRUE.)
     MeltPerm => MeltVar % Perm
     Melt => MeltVar % Values
+
+    TFVar => VariableGet(Model % Mesh % Variables, 'TF', UnFoundFatal=.FALSE.)
+    TFPerm => TFVar % Perm
+    TF => TFVar % Values
 
     ! cm: for now, the 3d version works only with nodal variable, this should be fixed/cleaned in the future
     MeltNodal = ListGetLogical( Params,'Nodal Melt',Found) 
@@ -340,6 +344,7 @@ MODULE PICO
     basin_Reduced(:) = 0.0_dp
     boxes(:) = 0.0_dp
     Melt(:) = 0.0_dp
+    TF(:) = 0.0_dp
     localunity(:) = 0.0_dp
     rr(:) = 0.0_dp
 
@@ -521,11 +526,13 @@ MODULE PICO
 
       IF (MeltNodal) THEN
         Melt(MeltPerm(NodeIndexes(1:n))) = - gT * meltfac * ( lbd1*SS + lbd2 + lbd3*zzz - TT ) 
+        TF(TFPerm(NodeIndexes(1:n))) = TT - ( lbd1*SS + lbd2 + lbd3*zzz )
         totalmelt = totalmelt &
           & + SUM(Melt(MeltPerm(NodeIndexes(1:n))))/n &
           & * SUM(localunity(NodeIndexes(1:n)))/n
       ELSE 
         Melt(MeltPerm(Indexx)) = - gT * meltfac * ( lbd1*SS + lbd2 + lbd3*zzz - TT )
+        TF(TFPerm(Indexx)) = TT - ( lbd1*SS + lbd2 + lbd3*zzz )
         totalmelt = totalmelt + Melt(MeltPerm(Indexx)) * localunity(Indexx)
       ENDIF 
     END DO
@@ -584,12 +591,14 @@ MODULE PICO
         Sbox(kk,b) =  Sbox(kk,b) + SS * surf
 
         IF (MeltNodal) THEN
-          Melt(MeltPerm(NodeIndexes(1:n))) = - gT * meltfac * ( lbd1*SS + lbd2 + lbd3*zzz - TT )  
+          Melt(MeltPerm(NodeIndexes(1:n))) = - gT * meltfac * ( lbd1*SS + lbd2 + lbd3*zzz - TT ) 
+          TF(TFPerm(NodeIndexes(1:n))) = TT - ( lbd1*SS + lbd2 + lbd3*zzz ) 
           totalmelt = totalmelt &
             & + SUM(Melt(MeltPerm(NodeIndexes(1:n))))/n &
             & * SUM(localunity(NodeIndexes(1:n)))/n
         ELSE 
           Melt(MeltPerm(Indexx)) = - gT * meltfac * ( lbd1*SS + lbd2 + lbd3*zzz - TT )
+          TF(TFPerm(Indexx)) = TT - ( lbd1*SS + lbd2 + lbd3*zzz )
           totalmelt = totalmelt + Melt(MeltPerm(Indexx)) * localunity(Indexx)
         ENDIF 
        
@@ -619,8 +628,8 @@ MODULE PICO
     CALL INFO(TRIM(SolverName),'Melt Other Boxes DONE', Level = 5)
 
     CALL INFO(SolverName,"----------------------------------------", Level=1)
-    WRITE(meltValue,'(F20.2)') Integ_Reduced*0.917/1.0e9
-    Message = 'PICO INTEGRATED BASAL MELT [Gt/a]: '//meltValue ! 0.917/1.0e9 to convert m3/a in Gt/a
+    WRITE(meltValue,'(F20.2)') Integ_Reduced * 917 * 365 / 1.0e12 ! convert m/d in Gt/y
+    Message = 'PICO INTEGRATED BASAL MELT [Gt/y]: '//meltValue
     CALL INFO(SolverName, Message, Level=1)
     CALL INFO(SolverName,"----------------------------------------", Level=1)
     

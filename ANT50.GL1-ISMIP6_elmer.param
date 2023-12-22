@@ -5,6 +5,7 @@
 ! the usual units in Elmer are MPa (Megapascal) - m (meter) - yr (year)
 ! here we use MPa (Megapascal) - m (meter) - d (day)
 !----------------------------------------------------------------------
+! Be careful : don't use * for yearinsec, dayinsec, yearinday and rhoi_SI
 
 $yearinsec = 31536000                         ! time with calendar 365j (s)
 $dayinsec  = 86400                            ! time with calendar 365j (s)
@@ -32,7 +33,8 @@ $gravity   = -grav_SI * dayinsec^2            ! Gravity (m.d^-2)
 
 $lambda1   = -0.0575                          ! Liquidus slope  (°C.PSU^-1)
 $lambda2   = 0.0832                           ! Liquidus intercept  (°C)
-$lambda3   = -7.737e-8 * grav_SI * rhosw_SI   ! Liquidus pressure coefficient  (°C.m^-1)
+!$lambda3   = -7.737e-8 * grav_SI * rhosw_SI   ! Liquidus pressure coefficient  (°C.m^-1)
+$lambda3   = -7.59e-4
 
 $beta_S    = 7.86e-4                          ! Salinity contraction coefficient (PSU^-1)
 
@@ -64,9 +66,9 @@ $Shear     = 1.0e-16                          ! Shear rate limiter threshold (d^
 $Vmin       = 1.0e-6                           ! Velocity limiter threshold (min velocity for linearisation) (m.d^-1)
 
 !---------------------------- Regularized Coulomb ---------------------
-$Vmin      = 1.0e-6                           ! Velocity limiter threshold (min velocity for linearisation) (m.d^-1)
-$Vthres    = 300 / 365                        ! Velocity threshold u_0 (see Joughin's paper) (m.d^-1)
-$Hthres    = 75                               ! Thickness threshold (see Joughin's paper) (m)
+!$Vmin      = 1.0e-6                           ! Velocity limiter threshold (min velocity for linearisation) (m.d^-1)
+!$Vthres    = 300 / 365                        ! Velocity threshold u_0 (see Joughin's paper) (m.d^-1)
+!$Hthres    = 75                               ! Thickness threshold (see Joughin's paper) (m)
 
 !----------------------------------------------------------------------
 !                         MELT PARAMETERISATION PARAMETERS

@@ -1,0 +1,17 @@
+  data file = File "$data_dir$/$file_pico$"
+
+  Time Counter start = Integer <OFFSETOC>
+  
+  !Bottom Surface Variable Name = String "zb"
+  !Grounding Line Melt = Logical False
+  !PanAntarctic = Logical True
+  !DistGL Name = string "distGL"
+  !DistIF Name = string "distIF"
+  
+  Exported Variable 1 = -dofs 1 -elem Melt
+  Exported Variable 2 = -dofs 1 -elem TF
+  Exported variable 3 = -dofs 1 distGL
+  Exported variable 4 = -dofs 1 FrontMask
+  Exported variable 5 = -dofs 1 distIF
+  Exported Variable 6 = -dofs 1 -elem Boxes
+  Exported variable 7 = -dofs 1 -elem basins

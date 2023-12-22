@@ -92,25 +92,29 @@
 		      <field id="haf_elem"        long_name="Ice thickness above flotation (cell)" unit="m"     grid_ref="GridCells" />
 		      <field id="bedrock"         long_name="Bedrock elevation (node)"             unit="m"     grid_ref="GridNodes" comment="ref : wrt geoid EIGEN-6C4 (positive up)" />
 		      <field id="bedrock_elem"    long_name="Bedrock elevation (cell)"             unit="m"     grid_ref="GridCells" comment="ref : wrt geoid EIGEN-6C4 (positive up)" />
+		      <field id="salinity"        long_name="ocean salinity"                       unit="g/kg"  grid_ref="GridNodes" />
+		      <field id="temperature"     long_name="ocean temperature"                    unit="°C"    grid_ref="GridNodes" />
 	      </field_group>
 
 	      <field_group id="elmer_masks" >
-		      <field id="groundedmask"                                              unit="1" grid_ref="GridNodes" />
-		      <field id="sftgif"       long_name="Land ice area fraction"           unit="1" grid_ref="GridCells" />
-                      <field id="sftgrf"       long_name="Grounded ice sheet area fraction" unit="1" grid_ref="GridCells" />
-		      <field id="sftflf"       long_name="Floating ice sheet area fraction" unit="1" grid_ref="GridCells" />
-                      <field id="pvar"         long_name="Mask passive/active cell"         unit="1" grid_ref="GridCells" />
-                      <field id="basins"       long_name="Mask large ice catchments"        unit="1" grid_ref="GridCells" />
-	              <field id="basins_isf"   long_name="Mask iceshelf catchments"         unit="1" grid_ref="GridCells" />
-              </field_group>
+		      <field id="groundedmask"                                                           unit="1" grid_ref="GridNodes" />
+		      <field id="sftgif"          long_name="Land ice area fraction"                     unit="1" grid_ref="GridCells" />
+                      <field id="sftgrf"          long_name="Grounded ice sheet area fraction"           unit="1" grid_ref="GridCells" />
+		      <field id="sftflf"          long_name="Floating ice sheet area fraction"           unit="1" grid_ref="GridCells" />
+                      <field id="pvar"            long_name="Mask passive/active cell"                   unit="1" grid_ref="GridCells" />
+                      <field id="basins"          long_name="Mask of sub-ice catchments from Reese"      unit="1" grid_ref="GridCells" />
+	              <field id="basins_isf"      long_name="Mask of iceshelf ice catchments from IMBIE" unit="1" grid_ref="GridCells" />
+	              <field id="imbie_basins"    long_name="Mask of large ice catchments from IMBIE"    unit="1" grid_ref="GridCells" />
+                      <field id="imbie_subbasins" long_name="Mask of sub-ice catchments from IMBIE"      unit="1" grid_ref="GridCells" />
+	      </field_group>
 
                <field_group id="elmer_velocity" >
 		      <field id="ssavelocity 1"                                     long_name="Mean velocity in x (node)"        unit="m d-1" grid_ref="GridNodes" />
 		      <field id="ssavelocity 2"                                     long_name="Mean velocity in y (node)"        unit="m d-1" grid_ref="GridNodes" />
 		      <field id="ssavelocity 1_elem"                                long_name="Mean velocity in x (cell)"        unit="m d-1" grid_ref="GridCells" />
 		      <field id="ssavelocity 2_elem"                                long_name="Mean velocity in y (cell)"        unit="m d-1" grid_ref="GridCells" />
-		      <field id="ligroundf"                                         long_name="Grounding line speed"             unit="m d-1" grid_ref="GridCells" />
-                      <field id="calving_front_flux"                                long_name="Ice front melt and calving speed" unit="m d-1" grid_ref="GridCells" />
+		      <field id="ligroundf"                                         long_name="Grounding line flux"              unit="m d-1" grid_ref="GridCells" />
+                      <field id="calving_front_flux"                                long_name="Ice front melt and calving flux"  unit="m d-1" grid_ref="GridCells" />
 		      <field id="vx"                 field_ref="ssavelocity 1"      long_name="Mean velocity in x (node)"        unit="m d-1" grid_ref="GridNodes" />
 		      <field id="vy"                 field_ref="ssavelocity 2"      long_name="Mean velocity in y (node)"        unit="m d-1" grid_ref="GridNodes" />
 		      <field id="vnorm"                                             long_name="Mean velocity (node)"             unit="m d-1" grid_ref="GridNodes" > sqrt(vx^2+vy^2)           </field>
@@ -139,19 +143,22 @@
                       <field id="melt"      long_name="Basal Mass Balance"               unit="m d-1"  grid_ref="GridCells" />
                       <field id="smb"       long_name="Surface Mass Balance (reference)" unit="m d-1"  grid_ref="GridCells" />
 		      <field id="asmb"      long_name="Surface Mass Balance (anomaly)"   unit="m d-1"  grid_ref="GridCells" />
-                      <field id="acabf"     long_name="Surface Mass Balance (total)"     unit="m d-1"  grid_ref="GridCells" />
+		      <field id="acabf"     long_name="Surface Mass Balance (total)"     unit="m d-1"  grid_ref="GridCells" />
+		      <field id="tf"        long_name="Thermal Forcing"                  unit="K"      grid_ref="GridCells" />
 		      <field id="libmassbf" long_name="Basal Mass Balance"               unit="m d-1"  grid_ref="GridCells" />
 		      <field id="h loads"                                                unit="m3 d-1" grid_ref="GridNodes" />
 	      </field_group>
 
               <field_group id="mesh_info2" operation= "instant" >
-                      <field id="node_x"         name="x"              long_name="projected x coordinate"              unit="m"  grid_ref="GridNodes" />
-                      <field id="node_y"         name="y"              long_name="projected y coordinate"              unit="m"  grid_ref="GridNodes" />
-                      <field id="cell_area"      name="cell_area"      long_name="cell area"                           unit="m2" grid_ref="GridCells" />
-                      <field id="true_cell_area" name="true_cell_area" long_name="true value of cell area (projected)" unit="m2" grid_ref="GridCells" />
-                      <field id="basins"                               long_name="Mask large ice catchments"           unit="1"  grid_ref="GridCells" />
-                      <field id="basins_isf"                           long_name="Mask iceshelf catchments"            unit="1"  grid_ref="GridCells" />
-              </field_group>
+                      <field id="node_x"         name="x"              long_name="projected x coordinate"                     unit="m"  grid_ref="GridNodes" />
+                      <field id="node_y"         name="y"              long_name="projected y coordinate"                     unit="m"  grid_ref="GridNodes" />
+                      <field id="cell_area"      name="cell_area"      long_name="cell area"                                  unit="m2" grid_ref="GridCells" />
+                      <field id="true_cell_area" name="true_cell_area" long_name="true value of cell area (projected)"        unit="m2" grid_ref="GridCells" />
+	              <field id="basins"                               long_name="Mask of sub-ice catchments from Reese"      unit="1"  grid_ref="GridCells" />
+                      <field id="basins_isf"                           long_name="Mask of iceshelf ice catchments from IMBIE" unit="1"  grid_ref="GridCells" />
+                      <field id="imbie_basins"                         long_name="Mask of large ice catchments from IMBIE"    unit="1"  grid_ref="GridCells" />
+                      <field id="imbie_subbasins"                      long_name="Mask of sub-ice catchments from IMBIE"      unit="1"  grid_ref="GridCells" />
+	      </field_group>
 
               <field_group id="elmer_global" grid_ref="ScalarGrid_sum">
                       <field id="time" name="elmer_time" long_name="time" unit="d" prec="8" />
