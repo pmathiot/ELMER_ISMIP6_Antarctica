@@ -1,5 +1,3 @@
-  !Time Offset = Real $( yearinday * (<OFFSETOC>-1))
-  !Index Read = Logical True
   Time Offset = Real <OFFSETOC>
   
   Slope Method = string <SLOPE>
@@ -13,12 +11,13 @@
   !X Dim Name = File "x"
   !Y Dim Name = File "y"
   !Z Dim Name = File "z"
-  !Time Dim Name = File "time"
 
   !X Var Name = File "x"
   !Y Var Name = File "y"
   !Z Var Name = File "z"
-  !Time Var Name = File "time"
+  
+  <TIME_DIM>
+  <TIME_VAR> 
 
   !Elmer Coordinate 3 = String "zb"
   !Get Cell Value = Logical True

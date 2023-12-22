@@ -91,16 +91,16 @@ SUBROUTINE MeltSolver_Init0( Model,Solver,dt,TransientSimulation )
         CALL ListAddString(Params,'Y Dim Name','y')
       IF(.NOT. ListCheckPresent(Params,'Z Dim Name')) &
         CALL ListAddString(Params,'Z Dim Name','z')
-      IF(.NOT. ListCheckPresent(Params,'Time Dim Name')) &
-        CALL ListAddString(Params,'Time Dim Name','time')
+      !IF(.NOT. ListCheckPresent(Params,'Time Dim Name')) &
+      !  CALL ListAddString(Params,'Time Dim Name','time')
       IF(.NOT. ListCheckPresent(Params,'X Var Name')) &
         CALL ListAddString(Params,'X Var Name','x')
       IF(.NOT. ListCheckPresent(Params,'Y Var Name')) &
         CALL ListAddString(Params,'Y Var Name','y')
       IF(.NOT. ListCheckPresent(Params,'Z Var Name')) &
         CALL ListAddString(Params,'Z Var Name','z')
-      IF(.NOT. ListCheckPresent(Params,'Time Var Name')) &
-        CALL ListAddString(Params,'Time Var Name','time')
+      !IF(.NOT. ListCheckPresent(Params,'Time Var Name')) &
+      !  CALL ListAddString(Params,'Time Var Name','time')
       IF(.NOT. ListCheckPresent(Params,'Elmer Coordinate 3')) &
         CALL ListAddString(Params,'Elmer Coordinate 3','zb')
       IF(.NOT. ListCheckPresent(Params,'Get Cell Value')) &
@@ -183,8 +183,8 @@ SUBROUTINE MeltSolver( Model,Solver,dt,TransientSimulation )
       !------------------------------------
       !1 - Read 3D file for T and S
       !------------------------------------
-      step = NINT(yearinday/Timestepsize) + 1
-      IF (VisitedTimes.EQ.1 .OR. MOD(VisitedTimes,step).EQ.0) THEN
+      step = NINT(yearinday/Timestepsize)
+      IF (VisitedTimes.EQ.1 .OR. MOD(VisitedTimes,step).EQ.1) THEN
       !PRINT *,'step',step
       !PRINT *,'VIsit',VisitedTimes
         tpoint = NINT(Time/yearinday) + 1

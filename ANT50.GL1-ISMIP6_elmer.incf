@@ -21,10 +21,13 @@ $out_dir = "/ccc/scratch/cont003/gen6066/cailletj/ELMER/ANT50.GL1/ANT50.GL1-ISMI
 !
 ! PICO file
 $file_pico = "FORCING/OCEAN/PICO/CESM2_SSP585_years_PICO.nc"
+!$file_pico = "FORCING/OCEAN/PICO/Oceanic_forcing_reference_PICO_19952014.nc"
 !
 ! Quadratic file
-$file_temperature_quadratic = "FORCING/OCEAN/CCSM4/CCSM4_RCP85_temperature_8km_x_60m.nc"
-$file_salinity_quadratic = "FORCING/OCEAN/CCSM4/CCSM4_RCP85_salinity_8km_x_60m.nc"
+!$file_temperature_quadratic = "FORCING/OCEAN/CCSM4/CCSM4_RCP85_temperature_8km_x_60m.nc"
+!$file_salinity_quadratic = "FORCING/OCEAN/CCSM4/CCSM4_RCP85_salinity_8km_x_60m.nc"
+$file_temperature_quadratic = "FORCING/OCEAN/ACTUAL/temperature_8km_x_60m_19952014.nc"
+$file_salinity_quadratic = "FORCING/OCEAN/ACTUAL/salinity_8km_x_60m_19952014.nc"
 $file_correction = "FORCING/OCEAN/ACTUAL/correction_IMBIE_quadratic_04.nc"
 !
 !-----------------------------------------------------------
