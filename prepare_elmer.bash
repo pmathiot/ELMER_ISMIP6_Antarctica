@@ -34,7 +34,8 @@ function start_year_of_netcdf_file {
     typeset filepath=$(value_from_incf_file data_dir)/$(value_from_incf_file $1)
     # For now, we rely on the netcdf file having a properly defined time
     # variable. Other methods can be implemented later on a need basis
-    typeset ncdata=$(ncdump -t -v time $filepath)
+    typeset ncdata
+    ncdata=$(ncdump -t -v time $filepath)
     if [ $? != 0 ] ; then
         echo "-999"
     else
@@ -172,7 +173,7 @@ do
                         variable)
                                 [ -z ${START_YEAR_FORCING_OC+x} ] && START_YEAR_FORCING_OC=$(start_year_of_netcdf_file file_pico)
                                 [ $START_YEAR_FORCING_OC = -999 ] && echo "Problem with start date of oceanic forcing file. Exiting..." && exit -2
-                                OFFSETOC=$((START_SIMU-START_YEAR_FORCING_OC))
+				OFFSETOC=$((START_SIMU-START_YEAR_FORCING_OC))
                                 ;;
                         *)      echo "Sorry Forcing type for quadratic law not found;exit";exit 42
                     esac
@@ -194,7 +195,7 @@ do
                                 Timedim="Time Dim Name = File "time""
                                 Timevar="Time Var Name = File "time""
 				[ -z ${START_YEAR_FORCING_OC+x} ] && START_YEAR_FORCING_OC=$(start_year_of_netcdf_file file_temperature_quadratic)
-                                [ $START_YEAR_FORCING_OC = -999 ] && echo "Problem with start date of oceanic forcing file. Exiting..." && exit -2
+				[ $START_YEAR_FORCING_OC = -999 ] && echo "Problem with start date of oceanic forcing file. Exiting..." && exit -2
                                 OFFSETOC=$((START_SIMU-START_YEAR_FORCING_OC))
                                 ;;
                         *)      echo "Sorry Forcing type for quadratic law not found;exit";exit 42

@@ -35,13 +35,13 @@ TIME_ORIGINE=1995
 # nature of oceanic forcing
 # constant : for constant forcing
 # variable : for variable forcing
-FORCING='constant'
+FORCING='variable'
 
 # smb without or with anomaly (constant, anomaly or variable)
 # constant : forcing is read at the beginning of the simulation only
 # anomaly : sum of a constant forcing and an anomaly forcing which varie each year
 # variable : forcing read each year
-SMB_METHOD='constant'
+SMB_METHOD='anomaly'
 
 # The starting year of forcing files is detected automatically by
 # prepare_elmer.bash. To override this automatic detection, you can set one or
