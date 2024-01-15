@@ -280,10 +280,10 @@ Solver 6
 
    ! iceshelves basins
    Variable 1 = File  "$var_isf$"
-   Variable 1 data file = File "$data_dir$/$file_basins_isf$"
-   Target Variable 1 = String "basins_isf"
+   Variable 1 data file = File "$data_dir$/$file_iceshelf_IMBIE$"
+   Target Variable 1 = String "imbie_iceshelf"
 
-   Exported Variable 1 = -dofs 1 -elem basins_isf
+   Exported Variable 1 = -dofs 1 -elem imbie_iceshelf
 End
 
 !#-----------------------------------------------------------------------
@@ -631,7 +631,7 @@ Solver 13
    ! others
    Scalar Field 24 = String "basins"
    Scalar Field 25 = String "true_cell_area"
-   Scalar Field 26 = String "basins_isf"
+   Scalar Field 26 = String "imbie_iceshelf"
    Scalar Field 27 = String "imbie_basins"
    Scalar Field 28 = String "imbie_subbasins"
    Scalar Field 29 = String "pvar"

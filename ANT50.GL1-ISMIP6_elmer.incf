@@ -44,12 +44,12 @@ $file_asmb = "FORCING/ATMOSPHERE/CESM2/CESM2_ant50.gl1_anomaly_ssp585_19952300_d
 !-----------------------------------------------------------
 ! Post Processing files
 !-----------------------------------------------------------
-! define basin file (PICO basins)
+! define basin file (PICO/QUADRATIC basins)
 $file_basins = "BASIN/schmidtko_initmip8km_means.nc"
 $var_Reese = "basins"
 !
 ! define basin file (IMBIE iceshelf basins)
-$file_basins_isf = "BASIN/Mask_Iceshelf_IMBIE.nc"
+$file_iceshelf_IMBIE = "BASIN/Mask_Iceshelf_IMBIE.nc"
 $var_isf = "Iceshelf_extrap"
 !
 ! define basin file (IMBIE basins)

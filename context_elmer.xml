@@ -103,7 +103,7 @@
 		      <field id="sftflf"          long_name="Floating ice sheet area fraction"           unit="1" grid_ref="GridCells" />
                       <field id="pvar"            long_name="Mask passive/active cell"                   unit="1" grid_ref="GridCells" />
                       <field id="basins"          long_name="Mask of sub-ice catchments from Reese"      unit="1" grid_ref="GridCells" />
-	              <field id="basins_isf"      long_name="Mask of iceshelf ice catchments from IMBIE" unit="1" grid_ref="GridCells" />
+	              <field id="imbie_iceshelf"  long_name="Mask of iceshelf ice catchments from IMBIE" unit="1" grid_ref="GridCells" />
 	              <field id="imbie_basins"    long_name="Mask of large ice catchments from IMBIE"    unit="1" grid_ref="GridCells" />
                       <field id="imbie_subbasins" long_name="Mask of sub-ice catchments from IMBIE"      unit="1" grid_ref="GridCells" />
 	      </field_group>
@@ -155,7 +155,7 @@
                       <field id="cell_area"      name="cell_area"      long_name="cell area"                                  unit="m2" grid_ref="GridCells" />
                       <field id="true_cell_area" name="true_cell_area" long_name="true value of cell area (projected)"        unit="m2" grid_ref="GridCells" />
 	              <field id="basins"                               long_name="Mask of sub-ice catchments from Reese"      unit="1"  grid_ref="GridCells" />
-                      <field id="basins_isf"                           long_name="Mask of iceshelf ice catchments from IMBIE" unit="1"  grid_ref="GridCells" />
+                      <field id="imbie_iceshelf"                       long_name="Mask of iceshelf ice catchments from IMBIE" unit="1"  grid_ref="GridCells" />
                       <field id="imbie_basins"                         long_name="Mask of large ice catchments from IMBIE"    unit="1"  grid_ref="GridCells" />
                       <field id="imbie_subbasins"                      long_name="Mask of sub-ice catchments from IMBIE"      unit="1"  grid_ref="GridCells" />
 	      </field_group>

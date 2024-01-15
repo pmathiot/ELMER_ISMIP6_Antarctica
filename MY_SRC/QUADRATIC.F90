@@ -136,7 +136,7 @@ MODULE QUADRATIC
     TempPerm => TempVar % Perm
     Temp => TempVar % Values
 
-    BasinVar => VariableGet(Model % Mesh % Variables, 'imbie_subbasins',UnFoundFatal=.FALSE.)
+    BasinVar => VariableGet(Model % Mesh % Variables, 'basins',UnFoundFatal=.FALSE.)
     BasinPerm => BasinVar % Perm
     Basin => BasinVar % Values
 
