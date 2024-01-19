@@ -260,7 +260,7 @@ do
                     echo "SSA Friction Parameter = Equals frC" >> $WELMER/Friction_Material.sif || exit 42
                     echo "SSA Friction Exponent = Real $ 1.0/n" >> $WELMER/Friction_Material.sif || exit 42
                     echo "SSA Friction Linear Velocity = Real $ Vmin" >> $WELMER/Friction_Material.sif || exit 42
-                    n=$(\echo $(\grep "^ *\$n *= *[0-9]" ANT50.GL1-ISMIP6_elmer.param | \cut -d= -f2 | \cut -d! -f1) | \sed s/.0$//g)
+                    n=$(\echo $(\grep "^ *\$n *= *[0-9]" $CONFIG-${CASE}_elmer.param | \cut -d= -f2 | \cut -d! -f1) | \sed s/.0$//g)
 		    echo "n = $n"
 		    XIOS_frc_def="\<field id=\"frc\"  long_name=\"ssa_weertman_friction_coefficent\" unit=\"MPa m^-1/$n d^1/$n\"    grid_ref=\"GridNodes\" \/\>"
                     ;;

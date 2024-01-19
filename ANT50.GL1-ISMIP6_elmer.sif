@@ -239,8 +239,8 @@ Solver 3
    Variable = -nooutput "dumy"
    procedure = "nearestpoint" "nearestpoint"
 
-   ! Reese  basins
-   Variable 1 = File "$var_Reese$"
+   ! Melt parameterisation  basins
+   Variable 1 = File "$var_param$"
    Variable 1 data file = File "$data_dir$/$file_basins$"
    Target Variable 1 = String "basins"
    Exported Variable 1 = -dofs 1 -elem basins
