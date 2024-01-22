@@ -80,8 +80,6 @@ Body 1
 End
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 Initial Condition 1
-  !Initialise pvar here (always active)
-  pvar = Real 1.0
   ! Initialisation smb anomaly if needed
   <INI_COND> 
 End
@@ -198,7 +196,6 @@ Solver 1
    Exported Variable 1 = bedrock
    Exported Variable 2 = mueta2
    Exported Variable 3 = frc
-   Exported Variable 4 = -elem "pvar"
 End
 
 
@@ -634,13 +631,12 @@ Solver 13
    Scalar Field 26 = String "imbie_iceshelf"
    Scalar Field 27 = String "imbie_basins"
    Scalar Field 28 = String "imbie_subbasins"
-   Scalar Field 29 = String "pvar"
 
 
-   Scalar Field 30 = String "asmb"
-   Scalar Field 31 = String "tf"
-   !Scalar Field 32 = String "salinity"
-   !Scalar Field 33 = String "temperature"   
+   Scalar Field 29 = String "asmb"
+   Scalar Field 30 = String "tf"
+   !Scalar Field 31 = String "salinity"
+   !Scalar Field 32 = String "temperature"   
    
    ! Global Variables
    Global Variable 1 = String "time"

@@ -18,7 +18,6 @@
                   <field field_ref="frc"            />
                   <field field_ref="mueta2"         />
 		  <field field_ref="ceff"           />
-		  <field field_ref="pvar"           />
               </field_group>
               <variable id="elmerversion" name="model_version" type="string"> elmer ice v9.0</variable>
       </file>
@@ -55,7 +54,6 @@
 	      <field name="vmax"        field_ref="vnorm" operation="maximum" />
               <field name="vmean"       field_ref="vnorm" operation="average" />
 	      <field name="vnorm"       field_ref="vnorm" />
-	      <field name="passive"     field_ref="pvar" />
               <field name="smb"         field_ref="smb" />
 	      <field name="melt"        field_ref="melt" />
 	      <field name="salinity"    field_ref="salinity" />
