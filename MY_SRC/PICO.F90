@@ -373,13 +373,15 @@ MODULE PICO
       ENDIF
   
       ! check maximal distance to GL at current element (for each basin)
-      dmax = MAXVAL(distGL(distGLPerm(NodeIndexes(1:n))))
+      !dmax = MAXVAL(distGL(distGLPerm(NodeIndexes(1:n))))
+      dmax = (SUM(distGL(distGLPerm(NodeIndexes(:))))/MAX(1,SIZE(distGL(distGLPerm(NodeIndexes(:))))))
       IF (basinmax(b) < dmax ) THEN
           basinmax(b) = dmax
       END IF
 
       !check maximal distance to GL for all the basins
-      dmax = MAXVAL(distGL(distGLPerm(NodeIndexes(1:n))))
+      !dmax = MAXVAL(distGL(distGLPerm(NodeIndexes(1:n))))
+      dmax = (SUM(distGL(distGLPerm(NodeIndexes(:))))/MAX(1,SIZE(distGL(distGLPerm(NodeIndexes(:))))))
       IF (distmax < dmax) THEN
           distmax = dmax
       END IF
@@ -458,7 +460,8 @@ MODULE PICO
         ENDDO
       ELSE
         DO kk=1,nD
-          IF ( rr(Indexx) .GT. 1.0-SQRT(1.0*(nD-kk+1)/nD) .AND. rr(Indexx) .LE. 1.0-SQRT(1.0*(nD-kk)/nD) ) THEN
+
+          IF ( rr(Indexx) .GE. 1.0-SQRT(1.0*(nD-kk+1)/nD) .AND. rr(Indexx) .LE. 1.0-SQRT(1.0*(nD-kk)/nD) ) THEN
             Abox(kk,b) = Abox(kk,b) + localunity(Indexx)  !air of box kk in basin b
             Boxnumber(BPerm(Indexx)) = kk
           ENDIF
