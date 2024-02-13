@@ -106,9 +106,9 @@ if args.compute_nc:
     print('Compute all the datasets :')
 
     varflx_lst=[plot_ncvar[istream] for istream,cstream in enumerate(plot_ncfil) if cstream == 'fluxes']
-    varflx_lst.extend(['basins','time','time_centered','cell_area'])
+    varflx_lst.extend(['imbie_subbasins','time','time_centered','cell_area'])
     varsts_lst=[plot_ncvar[istream] for istream,cstream in enumerate(plot_ncfil) if cstream == 'states']
-    varsts_lst.extend(['basins','time','time_instant','cell_area'])
+    varsts_lst.extend(['imbie_subbasins','time','time_instant','cell_area'])
     
     for runid in runid_lst:
         print(runid)
@@ -118,14 +118,14 @@ if args.compute_nc:
         # open data
         print('    load data')
         CONFIG=runid.split('-')[0]
-        cfile_dat=cdir+'/'+CONFIG+'/SIMU/'+runid+'/MY_OUTPUT/ismip6_states_'+runid.lower()+'_???.nc'
+        cfile_dat=cdir+'/SIMU/'+runid+'/MY_OUTPUT/ismip6_states_'+runid.lower()+'_???.nc'
         ds_states=xr.open_mfdataset(cfile_dat,concat_dim='time', chunks={'time': 1}, preprocess=lambda ds: ds[varsts_lst])
     
-        cfile_dat=cdir+'/'+CONFIG+'/SIMU/'+runid+'/MY_OUTPUT/ismip6_fluxes_'+runid.lower()+'_???.nc'
+        cfile_dat=cdir+'/SIMU/'+runid+'/MY_OUTPUT/ismip6_fluxes_'+runid.lower()+'_???.nc'
         ds_fluxes=xr.open_mfdataset(cfile_dat,concat_dim='time', chunks={'time': 1}, preprocess=lambda ds: ds[varflx_lst])
         
         print('    compute data')
-        da_basin=ds_states['basins'].isel(time=0).drop('time_instant').drop('time')  
+        da_basin=ds_states['imbie_subbasins'].isel(time=0).drop('time_instant').drop('time')  
         basinlst=["%.2d" % int(i) for i in set(da_basin.values)]
         basinlst.append('00')
         for cbasin in basinlst:
@@ -134,11 +134,11 @@ if args.compute_nc:
     
             # mask data
             if ibasin > 0:
-                ds_int_flx=ds_fluxes.where(ds_fluxes['basins']==ibasin, drop=True)
-                ds_int_sts=ds_states.where(ds_states['basins']==ibasin, drop=True)
+                ds_int_flx=ds_fluxes.where(ds_fluxes['imbie_subbasins']==ibasin, drop=True)
+                ds_int_sts=ds_states.where(ds_states['imbie_subbasins']==ibasin, drop=True)
             elif ibasin == 0:
-                ds_int_flx=ds_fluxes.where(ds_fluxes['basins']>0, drop=True)
-                ds_int_sts=ds_states.where(ds_states['basins']>0, drop=True)
+                ds_int_flx=ds_fluxes.where(ds_fluxes['imbie_subbasins']>0, drop=True)
+                ds_int_sts=ds_states.where(ds_states['imbie_subbasins']>0, drop=True)
 
             # compute dataset for each run
             for ikey,ckey in enumerate(plot_keys):
@@ -158,8 +158,8 @@ if args.compute_nc:
                     data_vars_fluxes[ckey+'_'+cbasin] = da_int
     
         print('    add basin')    
-        data_vars_fluxes['basins']=da_basin
-        data_vars_states['basins']=da_basin
+        data_vars_fluxes['imbie_subbasins']=da_basin
+        data_vars_states['imbie_subbasins']=da_basin
         
         ds_fluxes=xr.Dataset(data_vars_fluxes)
         ds_states=xr.Dataset(data_vars_states)
@@ -168,8 +168,10 @@ if args.compute_nc:
         print('   write dataset')
         cfout_fluxes='ismip6_fluxes_'+runid.lower()+'_monitoring.nc'
         cfout_states='ismip6_states_'+runid.lower()+'_monitoring.nc'
-        ds_fluxes.to_netcdf(cfout_fluxes)
-        ds_states.to_netcdf(cfout_states)   
+        #ds_fluxes.to_netcdf(cfout_fluxes)
+        #ds_states.to_netcdf(cfout_states) 
+        ds_fluxes.to_netcdf(cfout_fluxes, engine='netcdf4')
+        ds_states.to_netcdf(cfout_states, engine='netcdf4')  
     print('End computing nc')
 
 elif args.plt:
@@ -184,7 +186,7 @@ elif args.plt:
         data_runid_states.append(ds_states)
    
     # get basin list 
-    da_basin=ds_states['basins']
+    da_basin=ds_states['imbie_subbasins']
     basinlst=["%.2d" % int(i) for i in set(da_basin.values)]
     basinlst.append('00')
 
@@ -252,8 +254,8 @@ elif args.plt:
                     print('       plot map basin')
                     proj = ccrs.Stereographic(central_latitude=-90.0, central_longitude=0.0) 
                     axes[count-1] = fig.add_subplot(3,3,9,projection=proj)
-                    data=basin_df.where(basin_df.basins == int(cbasin), drop=True)
-                    data.basins.plot(x='lon', y='lat', transform=ccrs.PlateCarree(),add_colorbar=False)
+                    data=basin_df.where(basin_df.SubBasins_extrap == int(cbasin), drop=True)
+                    data.SubBasins_extrap.plot(x='lon', y='lat', transform=ccrs.PlateCarree(),add_colorbar=False)
                     axes[count-1].set_extent((-180, 180, -90, -65), ccrs.PlateCarree())
                     feature=cartopy.feature.NaturalEarthFeature('physical', 'antarctic_ice_shelves_polys', '50m', facecolor='none')
                     axes[count-1].add_feature(feature,linewidth=0.5,edgecolor='k')

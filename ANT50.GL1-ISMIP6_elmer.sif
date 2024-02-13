@@ -337,9 +337,17 @@ Solver 8
    File Name = File "$data_dir$/$file_<DATA_V>$"
    Variable Name 1 = File "<DATA_V>"
    Exported Variable 1 = -elem <DATA_V>
+End
 
-   ! allocate smb_tot and update body force
-   Exported Variable 2 = -elem "smb_tot"
+Solver 9
+  Exec Interval = $ yearinday / <STPINDAYS>
+  Exec Solver = Before Timestep
+
+  Equation = "SMB_DataUpdate"
+  Procedure = "ElmerIceSolvers" "UpdateExport"
+
+  ! allocate smb_tot and update body force
+   Exported Variable 1 = -elem "smb_tot"
    Update Exported Variables = Logical True
 End
 
@@ -362,7 +370,7 @@ End
 !#                                 * distIF (ice shelf front)
 !#-----------------------------------------------------------------------
 
-Solver 9
+Solver 10
   Exec Solver = Before Timestep  
   Equation = "MELT"
   Variable = -nooutput dummy
@@ -389,7 +397,7 @@ End
 !#
 !#     - comments: * Friction law defined in material section
 !#-----------------------------------------------------------------------
-Solver 10
+Solver 11
   Equation = "SSA"
   Procedure = "ElmerIceSolvers" "SSABasalSolver"
 
@@ -406,7 +414,7 @@ Solver 10
   Linear System Residual Output = 1
   Linear System Preconditioning = "boomeramg"
 
-  Nonlinear System Max Iterations = 25
+  Nonlinear System Max Iterations = 15
   Nonlinear System Convergence Tolerance = 1.0e-04
   Nonlinear System Newton After Iterations = 3 
   Nonlinear System Newton After Tolerance = 1.0e-04
@@ -454,7 +462,7 @@ End
 !#                           * element averaged surface mass balance [XXX, >0 blabla](elemental)
 !#                           * element averaged basal mass balance [XXX, >0 blabla] (elemental)
 !#-----------------------------------------------------------------------
-Solver 11
+Solver 12
    Equation = "Thickness"
    Procedure = "ElmerIceSolvers" "ThicknessSolver"
 
@@ -522,7 +530,7 @@ End
 !#                           * grounded fraction [] (elemental)
 !#                           * floating fraction [] (elemental)
 !#-----------------------------------------------------------------------
-Solver 12
+Solver 13
    Equation = "Flotation"
    Procedure = "ElmerIceSolvers" "Flotation"
 
@@ -553,7 +561,7 @@ End
 !#     - principal output  : * N/A
 !#     - optional  outputs : * N/A
 !#-----------------------------------------------------------------------
-Solver 13
+Solver 14
    Exec Solver = After Timestep
 
    Equation = "XIOSOutPutSolve"
@@ -647,7 +655,7 @@ End
 
 !#####
 Equation 1
-  Active Solvers (13)= 1 2 3 4 5 6 7 8 9 10 11 12 13
+  Active Solvers (14)= 1 2 3 4 5 6 7 8 9 10 11 12 13 14
 End
 
 !#####
