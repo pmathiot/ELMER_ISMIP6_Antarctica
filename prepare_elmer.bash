@@ -264,10 +264,12 @@ do
 		    echo "n = $n"
 		    XIOS_frc_def="\<field id=\"frc\"  long_name=\"ssa_weertman_friction_coefficent\" unit=\"MPa m^-1/$n d^1/$n\"    grid_ref=\"GridNodes\" \/\>"
                     ;;
-             "regularized coulomb")
+             regularized_coulomb)
                     echo "SSA Friction Law = String \"Regularized coulomb\"" > $WELMER/Friction_Material.sif || exit 42
                     echo "SSA Friction Parameter = Variable frC, haf" >> $WELMER/Friction_Material.sif || exit 42
-                    echo "   Real Procedure "SlipCoef" "Calcul_Slc"" >> $WELMER/Friction_Material.sif || exit 42
+                    echo "   Real Procedure \"SlipCoef_Limiter\" \"Calcul_Slc_Lim\"" >> $WELMER/Friction_Material.sif || exit 42
+		    echo "SSA Friction CR Coeff Min = Real $ lim_min_cr" >> $WELMER/Friction_Material.sif || exit 42
+		    echo "SSA Friction CR Coeff Max = Real $ lim_max_cr" >> $WELMER/Friction_Material.sif || exit 42
                     echo "SSA Friction Exponent = Real $ 1.0/n" >> $WELMER/Friction_Material.sif || exit 42
                     echo "SSA Friction Linear Velocity = Real $ Vmin" >> $WELMER/Friction_Material.sif || exit 42
                     echo "SSA Friction Threshold Velocity=Real $ Vthres" >> $WELMER/Friction_Material.sif  || exit 42

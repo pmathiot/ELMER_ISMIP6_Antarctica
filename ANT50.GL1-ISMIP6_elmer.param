@@ -31,10 +31,9 @@ $cpw       = cpw_SI * dayinsec^2              ! Specific heat capacity of sea wa
 $grav_SI   = 9.81                             ! Gravity (m.s^-2)
 $gravity   = -grav_SI * dayinsec^2            ! Gravity (m.d^-2) 
 
-$lambda1   = -0.0575                          ! Liquidus slope  (°C.PSU^-1)
+$lambda1   = -0.0573                          ! Liquidus slope  (°C.PSU^-1)
 $lambda2   = 0.0832                           ! Liquidus intercept  (°C)
-!$lambda3   = -7.737e-8 * grav_SI * rhosw_SI   ! Liquidus pressure coefficient  (°C.m^-1)
-$lambda3   = -7.59e-4
+$lambda3   = -7.737e-8 * grav_SI * rhosw_SI   ! Liquidus pressure coefficient  (°C.m^-1)
 
 $beta_S    = 7.86e-4                          ! Salinity contraction coefficient (PSU^-1)
 
@@ -66,10 +65,12 @@ $Shear     = 1.0e-16                          ! Shear rate limiter threshold (d^
 $Vmin       = 1.0e-6                           ! Velocity limiter threshold (min velocity for linearisation) (m.d^-1)
 
 !---------------------------- Regularized Coulomb ---------------------
-!$Vmin      = 1.0e-6                           ! Velocity limiter threshold (min velocity for linearisation) (m.d^-1)
-!$Vthres    = 300 / 365                        ! Velocity threshold u_0 (see Joughin's paper) (m.d^-1)
-!$Hthres    = 75                               ! Thickness threshold (see Joughin's paper) (m)
-
+$Vmin       = 1.0e-6                           ! Velocity limiter threshold (min velocity for linearisation) (m.d^-1)
+$Vthres     = 300 / 365                        ! Velocity threshold u_0 (see Joughin's paper) (m.d^-1)
+$Hthres     = 75                               ! Thickness threshold (see Joughin's paper) (m)
+$lim_min_cr = 5e-3                             ! valeur min de beta (MPa)
+$lim_max_cr = 1e5                              ! valeur max de beta (MPa)
+  
 !----------------------------------------------------------------------
 !                         MELT PARAMETERISATION PARAMETERS
 !----------------------------------------------------------------------
@@ -82,8 +83,7 @@ $Vmin       = 1.0e-6                           ! Velocity limiter threshold (min
 ! see (Burgard et al. 2022) for definition of the parameters and example of tuning
 !---------------------------------------------------------------------
 $slope     = 2.9e-3                           ! Slope for the calculation of melt (mean_slope, semi-local, local...). In our case : Mean Antarctic slope sin(slope) = 2.9e-3 (Burgard et al. 2022)
-!$K         = 11.6e-5                          ! Coefficient In our case : coefficient tuned in Burgard et al. 2022
-$K         = 7.9e-5
+$K         = 3.5e-5                          ! Coefficient In our case : coefficient tuned in Burgard et al. 2022
 
 !--------------- PICO melt parameterisation --------------------------
 ! see (Reese et al. (2018)) or (Burgard et al. 2022) for the definition of the parameters and example of tuning

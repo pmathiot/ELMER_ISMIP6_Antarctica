@@ -11,7 +11,7 @@ VPATH=$(BLD)
 
 FFLAGS=-I$(XIOS_INC) -O2 -fpe0 -ftrapuv -g -traceback
 
-LIBS= Melt USF_ExitCondition FrontThickness_mask USF_CondFront USF_CondDistance SlipCoef nearestpoint GetConnectedAreas passive_cond ExcludeAreas UGridDataReader
+LIBS= Melt USF_ExitCondition FrontThickness_mask USF_CondFront USF_CondDistance SlipCoef_Limiter nearestpoint GetConnectedAreas passive_cond ExcludeAreas UGridDataReader
 
 all: $(LIBS)
 
@@ -52,7 +52,7 @@ USF_CondDistance:$(SRC)/USF_CondDistance.F90
 
 #---------------------------------------------------
 # Slip Coefficient correction Coulomb
-SlipCoef:$(SRC)/SlipCoef.F90
+SlipCoef_Limiter:$(SRC)/SlipCoef_Limiter.F90
 	elmerf90 $^ -o $(BLD)/$@ $(FFLAGS)
 
 clean:

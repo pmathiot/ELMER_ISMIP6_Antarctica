@@ -68,7 +68,7 @@ MSHINITpath=${IELMER}/MSH_simplified2/
 #------------------------------------------------------------------------------
 #                               PARAM DATA
 #------------------------------------------------------------------------------
-# friction (linear, weertman or regularized coulomb)
+# friction (linear, weertman or regularized_coulomb)
 FRICTION='linear'
 
 # melt parameterisation (PICO or QUADRATIC)
