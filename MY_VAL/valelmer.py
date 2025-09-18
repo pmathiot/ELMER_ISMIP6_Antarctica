@@ -219,8 +219,8 @@ def process_basin_data(ds_fluxes, ds_states, mask_dict, runid):
     data_vars_fluxes, data_vars_states = {}, {}
     for cbasin, mask in mask_dict.items():
         print(f'Processing data for basin {cbasin}')
-        ds_int_flx = ds_fluxes.where(mask, drop=True)
-        ds_int_sts = ds_states.where(mask, drop=True)
+        ds_int_flx = ds_fluxes.where(mask.compute(), drop=True)
+        ds_int_sts = ds_states.where(mask.compute(), drop=True)
         
         for key, props in PLOT_VARIABLES.items():
             cvar = props["ncvar"]
@@ -295,7 +295,6 @@ def open_dataset(runid, var_list, file_type, dir_pattern, file_pattern):
     print(f'Opening {cdir}/{cfiles}')
     ds = xr.open_mfdataset(
         f'{cdir}/{cfiles}',
-        concat_dim='time',
         chunks={'time': 1},
         preprocess=lambda ds: ds[var_list],
         engine="netcdf4"

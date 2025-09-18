@@ -1,21 +1,21 @@
-File : /ccc/workflash/cont003/gen6035/gen6035/MODEL_INPUTS/ELMER/ANT50.GL1/schmidtko_initmip8km_means.nc
+File : /ccc/work/cont003/gen6035/mathiotp/ELMER/ANT50.GL1/ANT50.GL1-I/Mask_SubRegions_IMBIE2_v2.nc 
+Variable : SubBasins
 00 | Antarctica
-01 | FRIS
-02 | Riiser/Brunt
-03 | Fimbul
-04 | Baudouin
-05 | Rayner/Edward VIII
-06 | Amery
-07 | West/Shackelton
-08 | Totten 
-09 | Mertz/Ninnis/Cook
-10 | Rennick
-11 | Drygalski
-12 | Ross
-13 | Getz
-14 | PIG/Twaites
-15 | Abbot
-16 | Belings. Sea IS
-17 | Wordie
-18 | Larsen_C
-19 | Larsen D-G 
+01 | A-Ap
+02 | Ap-B
+03 | B-C (Amery)
+04 | C-Cp 
+05 | Cp-D
+06 | D-Dp
+07 | Dp-E
+08 | E-Ep (Ross East)
+09 | Ep-F (Ross West)
+10 | F-G (Getz)
+11 | G-H (Amunsdsen)
+12 | H-Hp
+13 | Hp-I (George VI)
+14 | I-Ipp (Peninsula)
+15 | Ipp-J (Larsens)
+16 | J-Jpp (Ronne)
+17 | Jpp-K (Filchner)
+18 | K-A
