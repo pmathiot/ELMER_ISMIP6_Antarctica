@@ -1,7 +1,7 @@
 
 SRC=./
 
-BLD=../MY_BLD/
+BLD=../MY_BLD
 
 NCINC=-I$(NETCDFFORTRAN_INCDIR) -I$(NETCDFC_INCDIR)
 
@@ -11,9 +11,11 @@ VPATH=$(BLD)
 
 FFLAGS=-I$(XIOS_INC) -O2 -fpe0 -ftrapuv -g -traceback
 
-LIBS= USF_ExitCondition boxmodel_solver_t FrontThickness_mask USF_CondFront USF_CondDistance SlipCoef nearestpoint GetConnectedAreas passive_cond ExcludeAreas UGridDataReader
+LIBS= Melt USF_ExitCondition FrontThickness_mask USF_CondFront USF_CondDistance SlipCoef_Limiter nearestpoint GetConnectedAreas passive_cond ExcludeAreas UGridDataReader
 
 all: $(LIBS)
+
+#only_melt: DistanceModule.o PICO.o Melt
 
 #---------------------------------------------------
 # USR function
@@ -32,9 +34,12 @@ nearestpoint:$(SRC)/nearestpoint.F90
 #---------------------------------------------------
 
 # BMB 
-# BMB: PICO
-boxmodel_solver_t:$(SRC)/boxmodel_solver_t.F90
-	elmerf90 $(NCINC) $^ -o $(BLD)/$@ $(FFLAGS) $(NCLIB)
+# BMB: PICO OR QUADRATIC
+#
+
+Melt: $(SRC)/DistanceModule.F90 $(SRC)/PICO.F90 $(SRC)/MyGridDataReader.F90 $(SRC)/QUADRATIC.F90 $(SRC)/Melt.F90
+	rm -f $(BLD)/*.mod
+	elmerf90 $^ -o $(BLD)/$@ $(FFLAGS) $(NCINC) $(NCLIB)
 
 FrontThickness_mask:$(SRC)/FrontThickness_mask.F90
 	elmerf90 $^ -o $(BLD)/$@ $(FFLAGS)
@@ -47,7 +52,7 @@ USF_CondDistance:$(SRC)/USF_CondDistance.F90
 
 #---------------------------------------------------
 # Slip Coefficient correction Coulomb
-SlipCoef:$(SRC)/SlipCoef.F90
+SlipCoef_Limiter:$(SRC)/SlipCoef_Limiter.F90
 	elmerf90 $^ -o $(BLD)/$@ $(FFLAGS)
 
 clean:

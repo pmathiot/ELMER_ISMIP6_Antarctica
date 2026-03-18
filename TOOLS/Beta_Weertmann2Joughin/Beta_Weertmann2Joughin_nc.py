@@ -20,14 +20,7 @@ cfileout = 'restart_newmesh_t0_beta_coulomg_reg.nc' #'ANT50.GL1-ISMIP6_5.restart
 m    =   1.0 / 3.0  # Exposant loi Weertman NL ou Schoof
 Cmax =   0.4        # Cmax loi Schoof
 hth  =  75          # [m]   treshold on high above flotation 
-u0   = 300          # [m/a]  
-
-# Physical constant (yrs**2 and 1e-6 factors are used to convert to 'Elmer/Ice unit system')
-z_sl =        0       # [m] sea level heigh
-yrs  = 31556926.0     # [s]
-g    = 9.81 * yrs**2
-rho_ice = 917.0  * 1.0e-6 /(yrs**2)
-rho_sea = 1027.0 * 1.0e-6 /(yrs**2)
+u0   = 300 / 365    # [m/j]  
 
 ## Load input files
 # load data
@@ -42,7 +35,7 @@ da_u     = ds_weert['ssavelocity 1']
 da_v     = ds_weert['ssavelocity 2']
 
 # ceff (use Ceff instead of beta to be more generic as it will work for any friction law)
-da_ceff  = ds_weert['ceff']
+da_ceff  = ds_weert['beta_1']
 
 ## initialise output file
 ds_cr=ds_weert.copy(deep=True)
@@ -87,6 +80,6 @@ print(xr.where( (lbd < 1),Beta_out1_corr,0).max())
 print('Write '+cfileout)
 ds_cr['beta_cr']=Beta_out1_corr
 ds_cr.attrs['History']=('Coulomb regularised beta parameter computed '
-                              'from Ceff available in file '+cfilein+' '
+                              'from Beta_1 available in file '+cfilein+' '
                               'using Beta_Weertmann2Joughin_nc script')
 ds_cr.to_netcdf(cfileout)

@@ -12,18 +12,23 @@ Header
 End
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 Constants
+  Calendar = Real $yearinday   
+
   !Physical
+  Ice density = Real $rhoi
+  Ice fusion latent heat = Real $Lf
   Sea Level = Real $zsl
   Water Density = Real $rhow
   Sea Water Specific heat = Real $cpw
-  Ice density = Real $rhoi
-  Ice fusion latent heat = Real $Lf
+  Gravity = Real $gravity
   Liquidus slope = Real $lambda1
   Liquidus intercept = Real $lambda2
   Liquidus pressure coeff = Real $lambda3
-  
+  Gravity = Real $gravity
+  Salinity coefficient = Real $beta_S
+  Coriolis = Real $coriolis
+ 
   !Pico
-  Calendar = Real $yearinday
   Melt Factor = Real $meltfac
   Nb Boxes = Integer $Nbox_PICO
   Overturning Coefficient = Real $C_PICO
@@ -31,6 +36,13 @@ Constants
   Thermal Expansion Coefficient EOS = Real $alpha_PICO
   Salinity Contraction Coefficient EOS = Real $beta_PICO
   In Situ Density EOS = Real $rhostar_PICO
+
+  !Quadratic
+  Slope = Real $slope
+  Coeff_K = Real $K
+
+  !File_Temperature = File "$data_dir$/$file_temperature_quadratic$"
+  !File_Salinity = File "$data_dir$/$file_salinity_quadratic$"
 End
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 Simulation
@@ -57,13 +69,19 @@ Simulation
   Steady State Max Iterations = 4
   Steady State Min Iterations = 2
 
-  max output level = 4
+  max output level = 5
 End
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 Body 1
   Equation = 1
   Material = 1
   Body Force = 1
+  Initial Condition = 1
+End
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+Initial Condition 1
+  ! Initialisation smb anomaly if needed
+  <INI_COND> 
 End
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 Body Force 1
@@ -74,13 +92,9 @@ Body Force 1
   !---------------------------------------------
   ! SMB body force
   !---------------------------------------------
-     ! with anomaly
   smb_tot = Variable smb, asmb
     REAL LUA "tx[0] + tx[1]"
   Top Surface Accumulation = Equals smb_tot
-  
-  ! without anomaly
-!  Top Surface Accumulation = Equals smb
   
   !---------------------------------------------
   ! BMB body force PICO
@@ -222,15 +236,40 @@ Solver 3
    Variable = -nooutput "dumy"
    procedure = "nearestpoint" "nearestpoint"
 
-   ! global basins
-   Variable 1 = File "basins"
+   ! Melt parameterisation  basins
+   Variable 1 = File "$var_param$"
    Variable 1 data file = File "$data_dir$/$file_basins$"
    Target Variable 1 = String "basins"
-
    Exported Variable 1 = -dofs 1 -elem basins
 End
 
 Solver 4
+   Exec Solver = Before Simulation
+   Equation = "point_IMBIE"
+   Variable = -nooutput "dumy"
+   procedure = "nearestpoint" "nearestpoint"
+
+   ! IMBIE basins
+   Variable 1  = File "$var_IMBIE_area$"
+   Variable 1 data file = File "$data_dir$/$file_areas_IMBIE$"
+   Target Variable 1  = String "imbie_basins"
+   Exported Variable 1 = -dofs 1 -elem imbie_basins
+End
+
+Solver 5
+   Exec Solver = Before Simulation
+   Equation = "point_IMBIE2"
+   Variable = -nooutput "dumy"
+   procedure = "nearestpoint" "nearestpoint"
+
+   ! IMBIE subbasins 
+   Variable 1 = File "$var_IMBIE_basin$"
+   Variable 1 data file = File "$data_dir$/$file_basins_IMBIE$"
+   Target Variable 1  = String "imbie_subbasins"
+   Exported Variable 1 = -dofs 1 -elem imbie_subbasins
+End
+
+Solver 6
    Exec Solver = Before Simulation
    Equation = "point_isf"
    Variable = -nooutput "dumy"
@@ -238,12 +277,11 @@ Solver 4
 
    ! iceshelves basins
    Variable 1 = File  "$var_isf$"
-   Variable 1 data file = File "$data_dir$/$file_basins_isf$"
-   Target Variable 1 = String "basins_isf"
+   Variable 1 data file = File "$data_dir$/$file_iceshelf_IMBIE$"
+   Target Variable 1 = String "imbie_iceshelf"
 
-   Exported Variable 1 = -dofs 1 -elem basins_isf
+   Exported Variable 1 = -dofs 1 -elem imbie_iceshelf
 End
-
 
 !#-----------------------------------------------------------------------
 !#                          SMB SOLVER
@@ -277,9 +315,8 @@ End
 !#                    defining it explicitly in run_param.bash.
 !#                    NB: same comment for offset of ocean forcing file below.
 !#-----------------------------------------------------------------------
-Solver 5
-   Exec Solver = Before simulation
-
+Solver 7
+   Exec Solver = <EXEC_C>
    Equation = "SMBref_DataReader"
    Procedure = "ElmerIceSolvers" "UGridDataReader"
 
@@ -288,25 +325,29 @@ Solver 5
    Exported Variable 1 = -elem smb
 End   
 
-Solver 6
-   Exec Interval =$ 365 / <STPINDAYS>
-
-   ! SMB with anomaly
-   Exec Solver = Before Timestep
-   ! SMB without anomaly
-!   Exec Solver = Never
+Solver 8
+   Exec Interval =$ yearinday / <STPINDAYS>
+   Exec Solver = <EXEC_V>
 
    Equation = "ASMB_DataReader"
    Procedure = "UGridDataReader" "UGridDataReader"
    
    Time Counter start = Integer <OFFSET>
    
-   File Name = File "$data_dir$/$file_asmb$"
-   Variable Name 1 = File "asmb"
-   Exported Variable 1 = -elem asmb
+   File Name = File "$data_dir$/$file_<DATA_V>$"
+   Variable Name 1 = File "<DATA_V>"
+   Exported Variable 1 = -elem <DATA_V>
+End
 
-   ! allocate smb_tot and update body force
-   Exported Variable 2 = -elem "smb_tot"
+Solver 9
+  Exec Interval = $ yearinday / <STPINDAYS>
+  Exec Solver = Before Timestep
+
+  Equation = "SMB_DataUpdate"
+  Procedure = "ElmerIceSolvers" "UpdateExport"
+
+  ! allocate smb_tot and update body force
+   Exported Variable 1 = -elem "smb_tot"
    Update Exported Variables = Logical True
 End
 
@@ -329,58 +370,14 @@ End
 !#                                 * distIF (ice shelf front)
 !#-----------------------------------------------------------------------
 
-   !# Compute distance to Grounding Line
-   !#    - Requierement: initialisation as body force
-   !#------------------------------------------------
-Solver 7
-  Exec Solver = Before Timestep
-  Equation = "distance GL"
-  Variable = -dofs 1 distGL
-    Procedure = "DistanceSolve" "DistanceSolver1"
-  Optimize Bandwidth = logical False
-End
-
-   !# Compute Front mask (used by next solver)
-   !#-----------------------------------------
-Solver 8
-  Exec Solver = Before Timestep
-  Equation = "FrontMask"
-  Variable = -dofs 1 FrontMask
-    Procedure = "FrontThickness_mask" "FrontThickness_mask"
-End
-
-   !# Compute distance to Ice Front
-   !#    - Requierement: initialisation as body force
-   !#------------------------------
-Solver 9
-   Exec Solver = Before Timestep   
-   Equation = "Real distance IF"
-   Variable = -dofs 1 distIF
-      Procedure = "DistanceSolve" "DistanceSolver1"
-   Optimize Bandwidth = logical False
-End
-
-   !# Compute basal melt using PICO
-   !#    - Requierement: distGL, FrontMask, distIF
-   !#    - option : 'Grounding Line Melt' activates melt on partially floating elements
-   !#               'Time Counter start' apply an offset in the reading of netcdf_file
-   !#------------------------------
 Solver 10
-   Exec Solver = Before Timestep
-   Equation = "box melt"
-   Variable = -nooutput dummy
-   Procedure = "boxmodel_solver_t" "boxmodel_solver"
+  Exec Solver = Before Timestep  
+  Equation = "MELT"
+  Variable = -nooutput dummy
+  Procedure = "Melt" "MeltSolver"
 
-   !# option
-   Grounding Line Melt = Logical False
-   Time Counter start = Integer <OFFSETOC>
-
-   !# input file
-   data file = File "$data_dir$/$file_pico$"
-
-   !# output variables
-   Exported Variable 1 = -dofs 1 -elem Melt
-   Exported Variable 2 = -dofs 1 -elem Boxes
+  Parameterisation Name = string <MELT>
+  <PARAMETER_MELT>
 End
 
 !#-----------------------------------------------------------------------
@@ -417,7 +414,7 @@ Solver 11
   Linear System Residual Output = 1
   Linear System Preconditioning = "boomeramg"
 
-  Nonlinear System Max Iterations = 25
+  Nonlinear System Max Iterations = 15
   Nonlinear System Convergence Tolerance = 1.0e-04
   Nonlinear System Newton After Iterations = 3 
   Nonlinear System Newton After Tolerance = 1.0e-04
@@ -639,11 +636,15 @@ Solver 14
    ! others
    Scalar Field 24 = String "basins"
    Scalar Field 25 = String "true_cell_area"
-   Scalar Field 26 = String "basins_isf"
+   Scalar Field 26 = String "imbie_iceshelf"
+   Scalar Field 27 = String "imbie_basins"
+   Scalar Field 28 = String "imbie_subbasins"
 
-   ! Optional
-   ! SMB with anomaly
-   Scalar Field 27 = String "asmb"
+
+   Scalar Field 29 = String "asmb"
+   Scalar Field 30 = String "tf"
+   !Scalar Field 31 = String "salinity"
+   !Scalar Field 32 = String "temperature"   
    
    ! Global Variables
    Global Variable 1 = String "time"
@@ -663,6 +664,6 @@ Boundary Condition 1
   Target Boundaries = 1
 
   Calving Front = logical true
-
+  Ice Front = Logical True
   Save Scalars = Logical True
 End

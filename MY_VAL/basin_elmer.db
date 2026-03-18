@@ -1,21 +1,20 @@
-File : /ccc/workflash/cont003/gen6035/gen6035/MODEL_INPUTS/ELMER/ANT50.GL1/schmidtko_initmip8km_means.nc
+File : /ccc/work/cont003/gen6066/gen6066/ISMIP6/ISMIP6_ANT/BASIN/Mask_SubRegions_IMBIE2_v2.nc
 00 | Antarctica
-01 | FRIS
-02 | Riiser/Brunt
-03 | Fimbul
-04 | Baudouin
-05 | Rayner/Edward VIII
-06 | Amery
-07 | West/Shackelton
-08 | Totten 
-09 | Mertz/Ninnis/Cook
-10 | Rennick
-11 | Drygalski
-12 | Ross
-13 | Getz
-14 | PIG/Twaites
-15 | Abbot
-16 | Belings. Sea IS
-17 | Wordie
-18 | Larsen_C
-19 | Larsen D-G 
+01 | Fimbul/Baudouin
+02 | Rayner/Edward VIII
+03 | Amery
+04 | West/Shackleton
+05 | Totten/Moscow
+06 | Mertz/Ninnis/Cook
+07 | Drygalski/Rennick
+08 | Ross East
+09 | Ross West
+10 | Getz
+11 | PIG/Thwaites
+12 | Abbot/Ferrigno
+13 | Stange/GeorgesVI/Wilkins
+14 | Wordie/LarsenC
+15 | LarsenD-G
+16 | Ronne
+17 | Filchner
+18 | Riiser/Brunt
